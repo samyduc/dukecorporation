@@ -45,8 +45,8 @@ MenuScene = pc.Scene.extend('MenuScene',
             menuItem.addComponent(pc.components.Spatial.create({ w: 250, h: 40 }));
             menuItem.addComponent(pc.components.Alpha.create({}));
             menuItem.addComponent(pc.components.Layout.create({ vertical: 'middle', horizontal: 'left', margin: {left: 45 }}));
-            menuItem.addComponent(pc.components.Rect.create({color : '#aaaaaa', lineWidth:0 }));
-            menuItem.addComponent(pc.components.Text.create({ fontHeight: 25, text: ['Entrer dans le cube'], offset: { x:15, y:-10 } }));
+            menuItem.addComponent(pc.components.Rect.create({color: '#aaaaaa', lineWidth: 0 }));
+            menuItem.addComponent(pc.components.Text.create({ fontHeight: 25, text: ['Entrer dans le cube'], offset: { x: 15, y: -10 } }));
 
             var fader = pc.components.Fade.create({ fadeInTime: 500, fadeOutTime: 500, loops: 0 });
             menuItem.addComponent(fader);
@@ -61,21 +61,22 @@ MenuScene = pc.Scene.extend('MenuScene',
             document.getElementById("LoginForm").style = 'display : block;';
 
 
-
         },
 
         // handle menu actions
         onAction: function (actionName, event, pos, uiTarget) {
             if (actionName === 'execute') {
- var username = document.getElementById("username").value;
+                var username = document.getElementById("username").value;
 
-                if(username.length > 0) { var socket = pc.device.game.socket;
-                socket.emit('message', { login: 'lol' });
-                socket.on('loginresponse', function (data) {
-                   if(data.ok)
-                     pc.device.game.deactivateMenu();
-}
-                });            }
+                if (username.length > 0) {
+                    var socket = pc.device.game.socket;
+                    socket.emit('message', { login: username });
+                    socket.on('loginresponse', function (data) {
+                        if (data.ok)
+                            pc.device.game.deactivateMenu();
+                    });
+                }
+            }
 
             return false;
 

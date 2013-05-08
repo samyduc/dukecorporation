@@ -1,0 +1,2 @@
+node gateway.js
+@pause

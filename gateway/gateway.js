@@ -1,42 +1,38 @@
 // require
 var socketio = require('socket.io');
-var rabbitmq = require('rabbit.js');
+var redis = require("redis");
 
 // init
-var rabbitcontext = rabbitmq.createContext('amqp://localhost');
 var io = socketio.listen(80);
+pub = redis.createClient();
 
-io.sockets.on('connection', function (connection) {
+io.sockets.on('connection', function (socket) {
 
-	var pubConnect = rabbitcontext.socket('PUB');
-	var pub = rabbitcontext.socket('PUB');
-	var sub = rabbitcontext.socket('SUB');
+	sub = redis.createClient();
 
-	pubConnect.setEncoding('utf8');
-	pub.setEncoding('utf8');
-	sub.setEncoding('utf8');
+	var push_key = "world:1";
+	var rsp_key = "node:".concat(socket.id);
 
-	pubConnect.connect("connection");
-	pub.connect("gateway:".concat(connection.id));
-	sub.connect("client:".concat(connection.id));
-
-	connection.on('message', function(msg) {
-    	pub.write(msg);
+	socket.on('message', function(msg) {
+		console.log(msg);
+		msg['id'] = socket.id;
+    	pub.publish(push_key, JSON.stringify(msg));
 	});
 
-	sub.on('data', function(msg) {
-		connection.emit('message', msg);
+	sub.on("message", function (channel, msg) {
+		console.log("Send to client");
+		console.log(msg);
+        socket.emit('message', msg);
+    });
+
+	socket.on('disconnect', function() {
+		console.log("Client disconnected")
+
+		sub.unsubscribe();
+		sub.end();
 	});
 
-	connection.on('disconnect', function() {
-		sub.write(JSON.stringify({'event': 'disconnect'}))
-
-		pubConnect.destroy();
-		pub.destroy();
-		sub.destroy();
-	});
-
-	pubConnect.write(JSON.stringify({'event': 'connection', 'socketId':connection.id}));
+	sub.subscribe(rsp_key);
 });
 
 

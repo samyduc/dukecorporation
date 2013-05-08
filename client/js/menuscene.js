@@ -67,12 +67,15 @@ MenuScene = pc.Scene.extend('MenuScene',
         // handle menu actions
         onAction: function (actionName, event, pos, uiTarget) {
             if (actionName === 'execute') {
-                var username = document.getElementById("username").value;
+ var username = document.getElementById("username").value;
 
-                if(username.length > 0) {
-                  pc.device.game.deactivateMenu();
-                }
-            }
+                if(username.length > 0) { var socket = pc.device.game.socket;
+                socket.emit('message', { login: 'lol' });
+                socket.on('loginresponse', function (data) {
+                   if(data.ok)
+                     pc.device.game.deactivateMenu();
+}
+                });            }
 
             return false;
 

@@ -8,14 +8,17 @@ var io = socketio.listen(80);
 
 io.sockets.on('connection', function (socket) {
 
+	var pubConnect = context.socket('PUB');
 	var pub = context.socket('PUB');
 	var sub = context.socket('SUB');
 
+	pubConnect.setEncoding('utf8');
 	pub.setEncoding('utf8');
 	sub.setEncoding('utf8');
 
-	pub.connect("pub:".concat(socket.id))
-	sub.connect("sub:".concat(socket.id))
+	pubConnect.connect("connection");
+	pub.connect("gateway:".concat(socket.id));
+	sub.connect("client:".concat(socket.id));
 
 	connection.on('message', function(msg) {
     	pub.write(msg);
@@ -28,9 +31,12 @@ io.sockets.on('connection', function (socket) {
 	connection.on('disconnect', function() {
 		sub.write(JSON.stringify({'event': 'disconnect'}))
 
+		pubConnect.destroy();
 		pub.destroy();
 		sub.destroy();
 	});
+
+	pubConnect.write(JSON.stringify({'event': 'connection', 'socketId':socket.id}));
 });
 
 

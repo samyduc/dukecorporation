@@ -6,7 +6,7 @@ MenuScene = pc.Scene.extend('MenuScene',
     { },
     {
         menuLayer: null,
-        submitItem: null,
+        menuItem: null,
         userNameLabel: null,
 
 
@@ -33,7 +33,7 @@ MenuScene = pc.Scene.extend('MenuScene',
             // title
             var title = pc.Entity.create(this.menuLayer);
             title.addComponent(pc.components.Spatial.create({ w: 200, h: 50 }));
-            title.addComponent(pc.components.Layout.create({ vertical: 'middle', horizontal: 'left', margin: { left: 40, bottom: 50 }}));
+            title.addComponent(pc.components.Layout.create({ vertical: 'middle', horizontal: 'left', margin: { left: 40, bottom: 70 }}));
             title.addComponent(pc.components.Text.create({ fontHeight: 40, lineWidth: 1, strokeColor: '#ffffff', color: '#222288', text: ['Menu'] }));
 
 
@@ -42,10 +42,11 @@ MenuScene = pc.Scene.extend('MenuScene',
 
             // notice the layout component doesn't have an x, y (that's because positioning is taken care of
             // by the layout system/component)
-            menuItem.addComponent(pc.components.Spatial.create({ w: 200, h: 40 }));
+            menuItem.addComponent(pc.components.Spatial.create({ w: 250, h: 40 }));
             menuItem.addComponent(pc.components.Alpha.create({}));
-            menuItem.addComponent(pc.components.Layout.create({ vertical: 'middle', horizontal: 'left', margin: {left: 50 }}));
-            menuItem.addComponent(pc.components.Text.create({ fontHeight: 30, text: ['Entrer dans le cube'] }));
+            menuItem.addComponent(pc.components.Layout.create({ vertical: 'middle', horizontal: 'left', margin: {left: 45 }}));
+            menuItem.addComponent(pc.components.Rect.create({color : '#aaaaaa', lineWidth:0 }));
+            menuItem.addComponent(pc.components.Text.create({ fontHeight: 25, text: ['Entrer dans le cube'], offset: { x:15, y:-10 } }));
 
             var fader = pc.components.Fade.create({ fadeInTime: 500, fadeOutTime: 500, loops: 0 });
             menuItem.addComponent(fader);
@@ -57,31 +58,24 @@ MenuScene = pc.Scene.extend('MenuScene',
             pc.device.input.bindAction(this, 'execute', 'ENTER', menuItem.getComponent('spatial'));
             pc.device.input.bindAction(this, 'execute', 'TOUCH', menuItem.getComponent('spatial'));
 
+            document.getElementById("LoginForm").style = 'display : block;';
 
 
 
-            this.changeMenuSelection(0); // default select the first item
-
-
-        },
-
-        changeMenuSelection: function (newSelection) {
-
-            this.currentMenuSelection = newSelection;
         },
 
         // handle menu actions
         onAction: function (actionName, event, pos, uiTarget) {
             if (actionName === 'execute') {
-                //TODO connect method
-                var socket = pc.device.game.socket;
+ var username = document.getElementById("username").value;
+
+                if(username.length > 0) { var socket = pc.device.game.socket;
                 socket.emit('message', { login: 'lol' });
                 socket.on('loginresponse', function (data) {
                    if(data.ok)
                      pc.device.game.deactivateMenu();
-                });
-               
-            }
+}
+                });            }
 
             return false;
 

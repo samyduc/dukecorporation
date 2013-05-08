@@ -49,12 +49,14 @@ TheGame = pc.Game.extend('TheGame',
 
         activateMenu:function()
         {
+            $("#LoginForm").show();
             this.deactivateScene(this.gameScene);
             this.activateScene(this.menuScene);
         },
 
         deactivateMenu:function()
         {
+            $("#LoginForm").hide();
             this.deactivateScene(this.menuScene);
             this.activateScene(this.gameScene);
         }

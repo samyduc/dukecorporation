@@ -74,7 +74,13 @@ MenuScene = pc.Scene.extend('MenuScene',
         onAction: function (actionName, event, pos, uiTarget) {
             if (actionName === 'execute') {
                 //TODO connect method
-                pc.device.game.deactivateMenu();
+                var socket = pc.device.game.socket;
+                socket.emit('message', { login: 'lol' });
+                socket.on('loginresponse', function (data) {
+                   if(data.ok)
+                     pc.device.game.deactivateMenu();
+                });
+               
             }
 
             return false;

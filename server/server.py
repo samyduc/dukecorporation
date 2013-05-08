@@ -1,41 +1,54 @@
-import pika
+import json
+import redis
 
-channel = None
+from world import World
+from player import Player
 
-def on_open(connection):
-    # Invoked when the connection is open
-    connection.channel(on_channel_open)
 
-def on_channel_open(new_channel):
-    """Called when our channel has opened"""
-    global channel
-    channel = new_channel
-    channel.queue_declare(queue="connection", durable=True, exclusive=False, auto_delete=True, callback=on_queue_declared)
 
-def on_queue_declared(frame):
-    """Called when RabbitMQ has told us our Queue has been declared, frame is the response from RabbitMQ"""
-    channel.basic_consume(handle_delivery, queue='connection')
+class Server:
 
-def handle_delivery(channel, method, header, body):
-    """Called when we receive a message from RabbitMQ"""
-    print body
 
-    # resp back
-    #channel.basic_publish(	'test_exchange',
-    #                    	'test_routing_key',
-    #                   	'message body value',
-    #                    	pika.BasicProperties(	content_type='text/json',
-    #                        						delivery_mode=1))
+	def __init__(self):
+		self.globalWorld = World(50 , 50)
+		self.globalWorld.GenerateWorld()
 
-# Create our connection object, passing in the on_open method
-parameters = pika.ConnectionParameters()
-connection = pika.SelectConnection(parameters, on_open)
+		self.redis_subscriber = redis.Redis("localhost")
+		self.ps = self.redis_subscriber.pubsub()
+		self.ps.subscribe("world:1")
 
-try:
-    # Loop so we can communicate with RabbitMQ
-    connection.ioloop.start()
-except KeyboardInterrupt:
-    # Gracefully close the connection
-    connection.close()
-    # Loop until we're fully closed, will stop on its own
-    connection.ioloop.start()
+		self.client = redis.Redis("localhost")
+
+	def BuildPlayer(self, id, username, password):
+
+		return Player(self.client, id, username, password)
+
+	def MainLoop(self):
+
+		for item in self.ps.listen():
+			if item['type'] == 'message':
+				print item['channel']
+				print item['data']
+				json_data = json.loads(item['data'])
+
+				# filter events
+				if 'event' in json_data:
+
+					event = json_data['event']
+
+					if event == 'connection':
+
+						# do authentification
+						player = self.BuildPlayer(json_data['id'], json_data['username'], json_data['password'])
+						if player.Authentification():
+							self.globalWorld.AddPlayer(player)
+
+						player.Send_Connection()
+					else:
+						print("unknown event")
+
+				#client.publish('node:%s' % json_data['id'], item['data'])
+
+
+server = Server()
+server.MainLoop()

@@ -23,6 +23,14 @@ class Server:
 
 		return Player(self.client, id, username, password)
 
+	def OnAuthentification(self, json_data):
+		# do authentification
+		player = self.BuildPlayer(json_data['id'], json_data['username'], json_data['password'])
+		if player.Authentification():
+			self.globalWorld.AddPlayer(player)
+
+		player.Send_Connection()
+
 	def MainLoop(self):
 
 		for item in self.ps.listen():
@@ -37,13 +45,7 @@ class Server:
 					event = json_data['event']
 
 					if event == 'connection':
-
-						# do authentification
-						player = self.BuildPlayer(json_data['id'], json_data['username'], json_data['password'])
-						if player.Authentification():
-							self.globalWorld.AddPlayer(player)
-
-						player.Send_Connection()
+						self.OnAuthentification(event)
 					else:
 						print("unknown event")
 

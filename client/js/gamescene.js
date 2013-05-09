@@ -17,7 +17,7 @@ GameScene = pc.Scene.extend('GameScene',
     {
         gameLayer: null,
         boxes: null,
-
+        roomSheet: null,
         init: function () {
             this._super();
 
@@ -41,7 +41,8 @@ GameScene = pc.Scene.extend('GameScene',
 
                 this.boxes.push(box);
             }
-
+            this.roomSheet = new pc.SpriteSheet({ image:pc.device.loader.get('room').resource, useRotation:false });
+           
             // bind some keys/clicks/touches to access the menu
             pc.device.input.bindAction(this, 'menu', 'ENTER');
             pc.device.input.bindAction(this, 'menu', 'ESC');
@@ -84,6 +85,7 @@ GameScene = pc.Scene.extend('GameScene',
         createRoom: function (jsonRoom) {
             var room = pc.Entity.create(this.gameLayer);
             room.addComponent(BasicRoom.Create({ id: jsonRoom.id, playerList: jsonRoom.players, deadBodies: jsonRoom.dead_nb, x: jsonRoom.x, y: jsonRoom.y}));
+            room.addComponent(pc.components.Sprite.create({ spriteSheet:this.roomSheet}));
             switch (jsonRoom.type) {
                 case this.ROOM_RANDOM_DEATH:
                     room.addComponent(RandomDeathRoom.Create({killRate: jsonRoom.killRate}));

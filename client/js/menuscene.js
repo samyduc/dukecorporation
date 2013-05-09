@@ -47,7 +47,6 @@ MenuScene = pc.Scene.extend('MenuScene',
             menuItem.addComponent(pc.components.Layout.create({ vertical: 'middle', horizontal: 'left', margin: {left: 45 }}));
             menuItem.addComponent(pc.components.Rect.create({color: '#aaaaaa', lineWidth: 0 }));
             menuItem.addComponent(pc.components.Text.create({ fontHeight: 25, text: ['Entrer dans le cube'], offset: { x: 15, y: -10 } }));
-
             var fader = pc.components.Fade.create({ fadeInTime: 500, fadeOutTime: 500, loops: 0 });
             menuItem.addComponent(fader);
             fader.active = false;

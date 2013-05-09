@@ -28,6 +28,7 @@ class Server:
 		player = self.BuildPlayer(json_data['id'], json_data['username'], json_data['password'])
 		if player.Authentification():
 			self.globalWorld.AddPlayer(player)
+			data = self.globalWorld.UpdatePlayer(player)
 
 		player.Send_Connection()
 

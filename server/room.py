@@ -7,7 +7,7 @@ class RoomType:
 	dead = 3 # rentre signifie la mort
 	deadporcent = 4 # pourcentage de chance de mourir
 	safe = 5 # totalemetn sans danger
-	teleport = 6 # teleporte vers une autre salle du même type
+	teleport = 6 # teleporte vers une autre salle du meme type
 	prison = 7 # bloque pendant un certain cooldown
 	spawn = 8 # spawn de depart
 	exit = 9 # salle de sortie

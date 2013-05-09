@@ -12,10 +12,15 @@ GameScene = pc.Scene.extend('GameScene',
         ROOM_TELEPORT: 6, // teleporte vers une autre salle du meme type
         ROOM_PRISON: 7, // bloque pendant un certain cooldown
         ROOM_SPAWN: 8, // spawn de depart
-        ROOM_EXIT: 9 //salle de sortie
+        ROOM_EXIT: 9, //salle de sortie
+
+        //Layer's zIndex
+        ZINDEX_ROOM_LAYER:1,
+        ZINDEX_PLAYER_LAYER:2
     },
     {
-        gameLayer: null,
+        roomLayer: null,
+        playerLayer:null,
         boxes: null,
 
         init: function () {
@@ -24,23 +29,21 @@ GameScene = pc.Scene.extend('GameScene',
             this.boxes = [];
 
             //-----------------------------------------------------------------------------
-            // game layer
+            // room layer
             //-----------------------------------------------------------------------------
-            this.gameLayer = this.addLayer(new pc.EntityLayer('game layer', 10000, 10000));
+            this.roomLayer = this.addLayer(new pc.EntityLayer('room layer', 10000, 10000), this.ZINDEX_ROOM_LAYER);
 
-            // all we need is the render and effects systems
-            this.gameLayer.addSystem(new pc.systems.Render());
-            this.gameLayer.addSystem(new pc.systems.Effects());
-            this.gameLayer.addSystem(new BasicRoomSystem());
-            this.gameLayer.addSystem(new RandomDeathRoomSystem());
+            // all we need to handle the rooms
+            this.roomLayer.addSystem(new BasicRoomSystem());
+            this.roomLayer.addSystem(new RandomDeathRoomSystem());
 
-            for (var i = 0; i < 3; i++) {
-                var box = pc.Entity.create(this.gameLayer);
-                box.addComponent(pc.components.Spatial.create({ x: 200 + (i * 100), y: 200, w: 75, h: 75 }));
-                box.addComponent(pc.components.Rect.create({ color: [ pc.Math.rand(0, 255), pc.Math.rand(0, 255), pc.Math.rand(0, 255) ] }));
+            //-----------------------------------------------------------------------------
+            // player layer
+            //-----------------------------------------------------------------------------
+            this.playerLayer = this.addLayer(new pc.EntityLayer('player layer', 10000, 10000), this.ZINDEX_PLAYER_LAYER);
 
-                this.boxes.push(box);
-            }
+            // all we need to handle the players
+            this.playerLayer.addSystem(new PlayerSystem());
 
             // bind some keys/clicks/touches to access the menu
             pc.device.input.bindAction(this, 'menu', 'ENTER');

@@ -1,7 +1,7 @@
 import time
 import random
 
-import gevent
+#import gevent
 
 import player
 import room

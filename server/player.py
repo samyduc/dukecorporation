@@ -56,12 +56,14 @@ class Player:
 		data_json = self.Serialize()
 		response.update(data_json)
 		
-		gevent.spawn(self.Send_Data, response)
+		#gevent.spawn(self.Send_Data, response)
+		self.Send_Data(response)
 
 	def Send_Update(self, data_json):
 		response = {'event': 'update'}
 		response.update(data_json)
 
-		gevent.spawn(self.Send_Data, response)
+		#gevent.spawn(self.Send_Data, response)
+		self.Send_Data(response)
 
 

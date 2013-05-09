@@ -2,13 +2,13 @@
  * RandomDeathRoom
  */
 
-RandomDeathRoomSystem = pc.systems.EntitySystem.extend('RandomDeathRoom',
+RandomDeathRoomSystem = pc.systems.EntitySystem.extend('RandomDeathRoomSystem',
     {},
     {
 
         init:function ()
         {
-            this._super([ 'RandomDeathRoom' ]);
+            this._super([ 'RandomDeathRoomSystem' ]);
         },
 
         process:function (entity)

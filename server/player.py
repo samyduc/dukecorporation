@@ -1,5 +1,11 @@
 import json
 
+class PlayerAction:
+	IDLE = 1
+	MOVING = 2
+	WATCHING = 3
+	PUSHING = 4
+
 class Player:
 
 	def __init__(self, redis_client, id, username, password):
@@ -11,6 +17,8 @@ class Player:
 		self.username = username
 		self.password = password
 		self.auth = False
+
+		self.action = PlayerAction.IDLE
 
 		self.pub_key = "node:%s" % id
 		self.redis_client = redis_client
@@ -26,7 +34,8 @@ class Player:
 
 		return {'id': self.id,
 				'username': self.username,
-				'room':id_room}
+				'room':id_room,
+				'action': self.action}
 
 	def Authentification(self):
 		"""
@@ -45,6 +54,8 @@ class Player:
 	def Send_Connection(self):
 
 		response = {'event': 'connection', 'status':self.auth}
+		data_json = self.Serialize()
+		response.update(data_json)
 		
 		self.Send_Data(response)
 

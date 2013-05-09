@@ -35,7 +35,7 @@ TheGame = pc.Game.extend('TheGame',
         onLoaded:function ()
         {
 
-            this.socket = io.connect('http://GIBSON');
+            this.socket = io.connect('http://192.168.1.25');
             var that = this;
             this.socket.on("message",function(data){
                 var response = JSON.parse(data);
@@ -45,7 +45,7 @@ TheGame = pc.Game.extend('TheGame',
                         that.deactivateMenu();
                     }
                     break;
-                    case update:
+                    case "update":
                     console.log(response);
                     break;
                     default:

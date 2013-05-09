@@ -39,18 +39,22 @@ TheGame = pc.Game.extend('TheGame',
             var that = this;
             this.socket.on("message",function(data){
                 var response = JSON.parse(data);
+                console.log("receive server message:");
+                 console.log(response);
                 switch(response.event){
                     case "connection":
+                    
                     if(response.status){
                         that.deactivateMenu();
+                       // that.initGameScene();
                     }
                     break;
-                    case update:
-                    console.log(response);
+                    case "update":
+                        that.updateGameScene(response.rooms);
                     break;
                     default:
-                    console.log("unkonow event:");
-                    console.log(response);
+                    console.log("unkonow event");
+                    
                     break;
                 }
             });
@@ -65,6 +69,10 @@ TheGame = pc.Game.extend('TheGame',
             // resources are all ready, start the main game scene
             // (or a menu if you have one of those)
             this.activateScene(this.menuScene);
+        },
+
+        updateGameScene:function(rooms){
+            this.gameScene.update(rooms);
         },
 
         activateMenu:function()

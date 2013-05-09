@@ -68,7 +68,10 @@ MenuScene = pc.Scene.extend('MenuScene',
 
                 if (username.length > 0) {
                     var socket = pc.device.game.socket;
-                    socket.emit('message', { 'username': username, 'password':password, 'event':'connection' });
+                    var message = { 'username': username, 'password':password, 'event':'connection' };
+                    socket.emit('message', message);
+                    console.log("send message:");
+                    console.log(message);
                 }
             }
 

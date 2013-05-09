@@ -23,6 +23,7 @@ GameScene = pc.Scene.extend('GameScene',
         playerLayer:null,
         boxes: null,
         roomSheet: null,
+        isInit:false,
         init: function () {
             this._super();
 
@@ -36,7 +37,7 @@ GameScene = pc.Scene.extend('GameScene',
             // all we need to handle the rooms
             this.roomLayer.addSystem(new BasicRoomSystem());
             this.roomLayer.addSystem(new RandomDeathRoomSystem());
-
+            this.roomLayer.addSystem(new pc.systems.Render());
             //-----------------------------------------------------------------------------
             // player layer
             //-----------------------------------------------------------------------------
@@ -45,7 +46,6 @@ GameScene = pc.Scene.extend('GameScene',
             // all we need to handle the players
             this.playerLayer.addSystem(new PlayerSystem());
             this.roomSheet = new pc.SpriteSheet({ image:pc.device.loader.get('room').resource, useRotation:false });
-           
             // bind some keys/clicks/touches to access the menu
             pc.device.input.bindAction(this, 'menu', 'ENTER');
             pc.device.input.bindAction(this, 'menu', 'ESC');
@@ -77,24 +77,35 @@ GameScene = pc.Scene.extend('GameScene',
             //
         },
 
-        initMap: function (rooms) {
-            var roomList = JSON.parse(rooms);
-            for (var i = 0; i < roomList.count; i++) {
+        update:function(rooms){
+            if(this.isInit){
+
+            } else {
+                this.initMap(rooms);
+                this.isInit=true;
+            }
+        },
+
+        initMap: function (roomList) {
+            for (var i = 0; i < roomList.length; i++) {
                 var jsonRoom = roomList[i];
-                createRoom(jsonRoom);
+                this.createRoom(jsonRoom);
             }
         },
 
         createRoom: function (jsonRoom) {
-            var room = pc.Entity.create(this.gameLayer);
-            room.addComponent(BasicRoom.Create({ id: jsonRoom.id, playerList: jsonRoom.players, deadBodies: jsonRoom.dead_nb, x: jsonRoom.x, y: jsonRoom.y}));
-            room.addComponent(pc.components.Sprite.create({ spriteSheet:this.roomSheet}));
+            var room = pc.Entity.create(this.roomLayer);
+            room.addComponent(BasicRoom.create({ id: jsonRoom.id, playerList: jsonRoom.players, deadBodies: jsonRoom.dead_nb, x: jsonRoom.x, y: jsonRoom.y}));
+            var roomSprite = pc.components.Sprite.create({ spriteSheet:this.roomSheet});
+            room.addComponent(roomSprite);
+            room.addComponent(pc.components.Spatial.create({x:100+jsonRoom.x*this.roomSheet.frameWidth, y:100+jsonRoom.y*this.roomSheet.frameHeight, dir:0,
+                        w:this.roomSheet.frameWidth, h:this.roomSheet.frameHeight}));
             switch (jsonRoom.type) {
                 case this.ROOM_RANDOM_DEATH:
-                    room.addComponent(RandomDeathRoom.Create({killRate: jsonRoom.killRate}));
+                    room.addComponent(RandomDeathRoom.create({killRate: jsonRoom.killRate}));
                     break;
                 case this.ROOM_DEATH:
-                    room.addComponent(RandomDeathRoom.Create({killRate: 100}));
+                    room.addComponent(RandomDeathRoom.create({killRate: 100}));
                     break;
                 default:
                     break;

@@ -4,11 +4,11 @@ var redis = require("redis");
 
 // init
 var io = socketio.listen(80);
-pub = redis.createClient();
+var pub = redis.createClient();
 
 io.sockets.on('connection', function (socket) {
 
-	sub = redis.createClient();
+	var sub = redis.createClient();
 
 	var push_key = "world:1";
 	var rsp_key = "node:".concat(socket.id);

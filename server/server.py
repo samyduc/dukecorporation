@@ -1,5 +1,5 @@
-from gevent import monkey
-monkey.patch_all()
+#from gevent import monkey
+#monkey.patch_all()
 
 import gevent
 
@@ -19,11 +19,15 @@ class Server:
 		self.globalWorld = World(50 , 50)
 		self.globalWorld.GenerateWorld()
 
-		self.redis_subscriber = redis.Redis("localhost")
+		pool1 = redis.ConnectionPool()
+		self.redis_subscriber = redis.Redis(connection_pool=pool1)
+
 		self.ps = self.redis_subscriber.pubsub()
 		self.ps.subscribe("world:1")
 
-		self.client = redis.Redis("localhost")
+
+		pool2 = redis.ConnectionPool()
+		self.client = redis.Redis(connection_pool=pool2)
 
 	def BuildPlayer(self, id, username, password):
 
@@ -44,19 +48,21 @@ class Server:
 			self.globalWorld.UpdatePlayer(player, json_data['action'], json_data['room'])
 
 	def MainLoop(self):
-		green_logic = gevent.spawn(self.MainLoopLogic)
-		green_redis = gevent.spawn(self.MainLoopRedis)
+		self.MainLoopRedis()
 
-		gevent.joinall((green_logic, green_redis))
+		#green_logic = gevent.spawn(self.MainLoopLogic)
+		#green_redis = gevent.spawn(self.MainLoopRedis)
+
+		#gevent.joinall((green_logic, green_redis))
+		pass
 
 	def MainLoopLogic(self):
 
 		while True:
-			print 'MainLoopLogic'
-			gevent.sleep()
+			self.globalWorld.Update()
+			#gevent.sleep()
 
 	def MainLoopRedis(self):
-		gevent.sleep()
 
 		for item in self.ps.listen():
 			if item['type'] == 'message':
@@ -70,15 +76,15 @@ class Server:
 					event = json_data['event']
 
 					if event == 'connection':
-						gevent.spawn(self.OnAuthentification, json_data)
+						self.OnAuthentification( json_data)
 					elif event == 'update':
-						gevent.spawn(self.OnUpdate, json_data)
+						self.OnUpdate( json_data)
 					else:
 						print("unknown event")
 
-			gevent.sleep()
+			#gevent.sleep()
 
-				#client.publish('node:%s' % json_data['id'], item['data'])
+			#client.publish('node:%s' % json_data['id'], item['data'])
 
 if __name__ == "__main__":
 	server = Server()

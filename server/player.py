@@ -1,4 +1,5 @@
 import json
+import gevent
 
 class PlayerAction:
 	IDLE = 1
@@ -25,7 +26,7 @@ class Player:
 
 		self.linked_room = None
 
-	def __str__(self):
+	def __repr__(self):
 		return str(self.Serialize())
 
 	def Serialize(self):
@@ -55,12 +56,14 @@ class Player:
 		data_json = self.Serialize()
 		response.update(data_json)
 		
+		#gevent.spawn(self.Send_Data, response)
 		self.Send_Data(response)
 
 	def Send_Update(self, data_json):
 		response = {'event': 'update'}
 		response.update(data_json)
 
+		#gevent.spawn(self.Send_Data, response)
 		self.Send_Data(response)
 
 

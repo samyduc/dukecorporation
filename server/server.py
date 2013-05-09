@@ -20,10 +20,14 @@ class Server:
 		self.globalWorld.GenerateWorld()
 
 		self.redis_subscriber = redis.Redis("localhost")
+		gevent.sleep()
 		self.ps = self.redis_subscriber.pubsub()
+		gevent.sleep()
 		self.ps.subscribe("world:1")
+		gevent.sleep()
 
 		self.client = redis.Redis("localhost")
+		gevent.sleep()
 
 	def BuildPlayer(self, id, username, password):
 
@@ -52,7 +56,7 @@ class Server:
 	def MainLoopLogic(self):
 
 		while True:
-			print 'MainLoopLogic'
+			self.globalWorld.Update()
 			gevent.sleep()
 
 	def MainLoopRedis(self):
@@ -70,9 +74,9 @@ class Server:
 					event = json_data['event']
 
 					if event == 'connection':
-						gevent.spawn(self.OnAuthentification, json_data)
+						self.OnAuthentification( json_data)
 					elif event == 'update':
-						gevent.spawn(self.OnUpdate, json_data)
+						self.OnUpdate( json_data)
 					else:
 						print("unknown event")
 

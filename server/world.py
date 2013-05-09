@@ -1,5 +1,11 @@
+import time
+import random
+
+import gevent
+
 import player
 import room
+
 
 class World:
 
@@ -16,6 +22,40 @@ class World:
 
 		self.spawn_room = None
 		self.exit_room = None
+
+		self.shuffle_time = 0
+		self.shuffle_duration = 60
+
+	def Serialize(self):
+		return {'rooms':[], 
+				'shuffle_start':self.shuffle_time, 
+				'shuffle_duration':self.shuffle_duration}
+
+	def Update(self):
+
+		if time.time() - self.shuffle_time > self.shuffle_duration:
+			self.shuffle_time = time.time()
+			gevent.spawn_later(self.shuffle_duration, self.Shuffle)
+
+	def Shuffle(self):
+		
+		print("shuffleing !")
+		# big random
+		random.shuffle(self.board)
+
+		for array in self.board:
+			random.shuffle(array)
+
+		# write new position to rooms
+		for x, x_rooms in enumerate(self.board):
+			for y, room in enumerate(x_rooms):
+				room.x = x
+				room.y = y
+
+		# send update to all players
+		for key, player in self.players.iteritems():
+			self.OnShuffle(player)
+
 
 	def GenerateWorld(self):
 		
@@ -57,9 +97,6 @@ class World:
 					around_rooms.append(self.board[i][j])
 
 		return around_rooms
-
-	def Shuffle(self):
-		pass
 
 	def AddPlayer(self, player):
 		
@@ -103,6 +140,21 @@ class World:
 
 		self.OnUpdatePlayer(player)
 
+	def OnShuffle(self, player):
+		"""
+		Update one player on shuffle
+
+		"""
+
+		current_room = self.rooms[player.linked_room]
+		rooms = self.GetRoomFromCenter(current_room)
+		
+		data_json = self.Serialize()
+		for room in rooms:
+			data_json['rooms'].append(room.Serialize())
+
+		player.Send_Update(data_json)
+
 	def OnUpdatePlayer(self, player):
 		"""
 		Update all players concerned by a change
@@ -116,11 +168,15 @@ class World:
 
 		current_room = self.rooms[player.linked_room]
 		rooms = self.GetRoomFromCenter(current_room)
+
+		print "debug sendback"
+		print rooms
 		
-		data_json = {'rooms':[]}
+		data_json = self.Serialize()
 		for room in rooms:
 			data_json['rooms'].append(room.Serialize())
 
 		for current_room in rooms:
 			for key, player in current_room.players.iteritems():
+				print "sending back222 %s" % player
 				player.Send_Update(data_json)

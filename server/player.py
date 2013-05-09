@@ -2,7 +2,7 @@ import json
 
 class Player:
 
-	def __init__(redis_client, id, username, password):
+	def __init__(self, redis_client, id, username, password):
 		"""
 
 		"""
@@ -15,8 +15,18 @@ class Player:
 		self.pub_key = "node:%s" % id
 		self.redis_client = redis_client
 
-		self.x = 0
-		self.y = 0
+		self.linked_room = None
+
+	def Serialize(self):
+
+		id_room = -1
+
+		if self.linked_room:
+			id_room = self.linked_room.id
+
+		return {'id': self.id,
+				'username': self.username,
+				'room':id_room}
 
 	def Authentification(self):
 		"""
@@ -27,9 +37,21 @@ class Player:
 		self.auth = True
 		return self.auth
 
+	def Send_Data(self, data):
+
+		data_raw = json.dumps(data)
+		self.redis_client.publish(self.pub_key, data_raw)
+
 	def Send_Connection(self):
 
-		response = {'event': connection, 'status':self.auth}
-		response_json = json.dumps(response)
+		response = {'event': 'connection', 'status':self.auth}
+		
+		self.Send_Data(response)
 
-		self.redis_client.publish(self.pub_key, response_json)
+	def Send_Update(self, data_json):
+		response = {'event': 'update'}
+		response.update(data_json)
+
+		self.Send_Data(response)
+
+

@@ -24,7 +24,7 @@ TheGame = pc.Game.extend('TheGame',
 
             // fire up the loader
             pc.device.loader.start(this.onLoading.bind(this), this.onLoaded.bind(this));
-            this.socket = io.connect('http://localhost');
+            this.socket = io.connect('http://GIBSON');
         },
 
         onLoading:function (percentageComplete)

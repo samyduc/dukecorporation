@@ -69,10 +69,6 @@ MenuScene = pc.Scene.extend('MenuScene',
                 if (username.length > 0) {
                     var socket = pc.device.game.socket;
                     socket.emit('message', { 'username': username, 'password':password, 'event':'connection' });
-                    socket.on('message', function (data) {
-                        if (data.ok)
-                            pc.device.game.deactivateMenu();
-                    });
                 }
             }
 

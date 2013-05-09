@@ -25,16 +25,14 @@ class Player:
 
 		self.linked_room = None
 
+	def __str__(self):
+		return str(self.Serialize())
+
 	def Serialize(self):
-
-		id_room = -1
-
-		if self.linked_room:
-			id_room = self.linked_room.id
 
 		return {'id': self.id,
 				'username': self.username,
-				'room':id_room,
+				'room':self.linked_room,
 				'action': self.action}
 
 	def Authentification(self):

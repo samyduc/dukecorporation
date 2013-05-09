@@ -22,7 +22,7 @@ class Room:
 
 		"""
 
-		self.players = []
+		self.players = {}
 		self.dead_nb = 0
 
 		self.id = id
@@ -31,9 +31,29 @@ class Room:
 		self.x = x
 		self.y = y
 
+	def __str__(self):
+		return str(self.Serialize())
+
+	def RemovePlayer(self, player):
+		if player.username in self.players:
+			print("Del player %s in room %s" % (player, self))
+			del self.players[player.username]
+			player.linked_room = None
+		else:
+			print("WARNING: player:%s not in a room %s" % (player, self))
+
+	def AddPlayer(self, player):
+
+		if player.linked_room:
+			print("WARNING: player:%s is already in a room %s" % (player, self))
+
+		print("Add player %s in room %s" % (player, self))
+		self.players[player.username] = player
+		player.linked_room = self.id
+
 	def Serialize(self):
 		return {'id':self.id, 
-				'players':[player.Serialize() for player in players],
+				'players':[player.Serialize() for key, player in self.players.iteritems()],
 				'dead_nb':self.dead_nb,
 				'type':self.type,
 				'x': self.x,

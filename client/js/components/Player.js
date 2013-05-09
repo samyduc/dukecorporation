@@ -14,7 +14,10 @@ Player = pc.components.Component('Player' ,
     {
         id:null,
         username:null,
+        //The room the player is in
         roomId:null,
+        //The rooms the player can see
+        rooms:null,
 
         init:function (id, username, roomId)
         {
@@ -27,6 +30,7 @@ Player = pc.components.Component('Player' ,
             this.id = id;
             this.username = username;
             this.roomId = roomId;
+            this.rooms = [];
         }
 
     });

@@ -25,12 +25,20 @@ class Server:
 
 	def OnAuthentification(self, json_data):
 		# do authentification
+		#data_json = None
 		player = self.BuildPlayer(json_data['id'], json_data['username'], json_data['password'])
 		if player.Authentification():
-			self.globalWorld.AddPlayer(player)
-			data = self.globalWorld.UpdatePlayer(player)
+			player = self.globalWorld.AddPlayer(player)
+			#data_json = self.globalWorld.UpdatePlayer(player)
 
 		player.Send_Connection()
+		self.globalWorld.OnUpdatePlayer(player)
+
+	def OnUpdate(self, json_data):
+		player = self.globalWorld.GetPlayerByID(json_data['id'])
+
+		if player:
+			self.globalWorld.UpdatePlayer(player, json_data['action'], json_data['room'])
 
 	def MainLoop(self):
 
@@ -47,6 +55,8 @@ class Server:
 
 					if event == 'connection':
 						self.OnAuthentification(json_data)
+					elif event == 'update':
+						self.OnUpdate(json_data)
 					else:
 						print("unknown event")
 

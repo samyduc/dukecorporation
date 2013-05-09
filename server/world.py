@@ -63,20 +63,55 @@ class World:
 
 	def AddPlayer(self, player):
 		
-		self.players[player.username] = player
+		if player.username not in self.players:
+			self.players[player.username] = player
+		else: 
+			player_store = self.players[player.username]
+			player_store.id = player.id
+			player = player_store
 
 		if not player.linked_room:
 			player.linked_room = self.spawn_room
 
-	def UpdatePlayer(self, player):
+		return player
+
+	def GetPlayerByID(self, id):
+		current_player = None
+
+		# search player
+		for key, player in self.players.iteritems():
+			if player.id == id:
+				current_player = player
+				break
+
+		return current_player
+
+	def UpdatePlayer(self, player, action, linked_room):
 		"""
 		Update a given player
 
 		"""
 
+		player.action = action
+		player.linked_room = linked_room
+
+		self.OnUpdatePlayer(player)
+
+	def OnUpdatePlayer(self, player):
+		"""
+		Update all players concerned by a change
+
+		"""
+
+		# check if the player does not already exists
+
+		# TODO
+		# replace it
+
 		current_room = player.linked_room
 		rooms = self.GetRoomFromCenter(current_room)
-
 		data_json = [room.Serialize() for room in rooms]
 
-		return data_json
+		for current_room in rooms:
+			for player in current_room.players:
+				player.Send_Update(data_json)

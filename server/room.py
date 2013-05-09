@@ -31,7 +31,7 @@ class Room:
 		self.x = x
 		self.y = y
 
-	def __str__(self):
+	def __repr__(self):
 		return str(self.Serialize())
 
 	def RemovePlayer(self, player):

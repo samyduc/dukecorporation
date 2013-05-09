@@ -1,5 +1,12 @@
+import time
+import random
+import threading
+
+#import gevent
+
 import player
 import room
+
 
 class World:
 
@@ -16,6 +23,45 @@ class World:
 
 		self.spawn_room = None
 		self.exit_room = None
+
+		self.shuffle_time = time.time()
+		self.shuffle_duration = 60
+
+		self.g_lock = threading.Lock()
+
+	def Serialize(self):
+		return {'rooms':[], 
+				'shuffle_start':self.shuffle_time, 
+				'shuffle_duration':self.shuffle_duration}
+
+	def Update(self):
+
+		if time.time() - self.shuffle_time > self.shuffle_duration:
+			self.shuffle_time = time.time()
+			self.Shuffle()
+
+	def Shuffle(self):
+		
+		self.g_lock.acquire()
+		print("shuffleing !")
+		# big random
+		random.shuffle(self.board)
+
+		for array in self.board:
+			random.shuffle(array)
+
+		# write new position to rooms
+		for x, x_rooms in enumerate(self.board):
+			for y, room in enumerate(x_rooms):
+				room.x = x
+				room.y = y
+
+		# send update to all players
+		for key, player in self.players.iteritems():
+			self.OnShuffle(player)
+
+		self.g_lock.release()
+
 
 	def GenerateWorld(self):
 		
@@ -58,11 +104,10 @@ class World:
 
 		return around_rooms
 
-	def Shuffle(self):
-		pass
-
 	def AddPlayer(self, player):
 		
+		self.g_lock.acquire()
+
 		if player.username not in self.players:
 			self.players[player.username] = player
 		else: 
@@ -73,6 +118,7 @@ class World:
 		if not player.linked_room:
 			self.spawn_room.AddPlayer(player)
 
+		self.g_lock.release()
 
 		return player
 
@@ -103,6 +149,21 @@ class World:
 
 		self.OnUpdatePlayer(player)
 
+	def OnShuffle(self, player):
+		"""
+		Update one player on shuffle
+
+		"""
+
+		current_room = self.rooms[player.linked_room]
+		rooms = self.GetRoomFromCenter(current_room)
+		
+		data_json = self.Serialize()
+		for room in rooms:
+			data_json['rooms'].append(room.Serialize())
+
+		player.Send_Update(data_json)
+
 	def OnUpdatePlayer(self, player):
 		"""
 		Update all players concerned by a change
@@ -116,11 +177,15 @@ class World:
 
 		current_room = self.rooms[player.linked_room]
 		rooms = self.GetRoomFromCenter(current_room)
+
+		print "debug sendback"
+		print rooms
 		
-		data_json = {'rooms':[]}
+		data_json = self.Serialize()
 		for room in rooms:
 			data_json['rooms'].append(room.Serialize())
 
 		for current_room in rooms:
 			for key, player in current_room.players.iteritems():
+				print "sending back222 %s" % player
 				player.Send_Update(data_json)

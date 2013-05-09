@@ -22,6 +22,8 @@ GameScene = pc.Scene.extend('GameScene',
             // all we need is the render and effects systems
             this.gameLayer.addSystem(new pc.systems.Render());
             this.gameLayer.addSystem(new pc.systems.Effects());
+            this.gameLayer.addSystem(new BasicRoomSystem());
+            this.gameLayer.addSystem(new RandomDeathRoomSystem());
 
             for (var i = 0; i < 3; i++)
             {
@@ -63,5 +65,21 @@ GameScene = pc.Scene.extend('GameScene',
             //
             // ... do extra processing in here
             //
+        },
+
+        initMap:function(rooms)    {
+           var roomList =  JSON.parse(rooms);
+               for(var i =0; i < roomList.count; i++){
+                   var jsonRoom = roomList[i];
+                   var room = pc.Entity.create(this.gameLayer);
+                   room.addComponent(BasicRoom.Create({ id: jsonRoom.id, playerList: jsonRoom.players, deadBodies:jsonRoom.deadBodies, x: jsonRoom.x, y:jsonRoom.y}));
+                   switch(jsonRoom.type)
+                   {
+                       case "RandomDeathRoom":
+                           room.addComponent(RandomDeathRoom.Create({killRate:jsonRoom.killRate}));
+                           break;
+                       default:
+                   }
+               }
         }
     });

@@ -46,7 +46,7 @@ TheGame = pc.Game.extend('TheGame',
                     
                     if(response.status){
                         that.deactivateMenu();
-                       // that.initGameScene();
+                        that.initGameScene(response);
                     }
                     break;
                     case "update":
@@ -69,6 +69,10 @@ TheGame = pc.Game.extend('TheGame',
             // resources are all ready, start the main game scene
             // (or a menu if you have one of those)
             this.activateScene(this.menuScene);
+        },
+
+        initGameScene:function(response){
+            this.gameScene.initPlayerFromJSON(response);
         },
 
         updateGameScene:function(rooms){

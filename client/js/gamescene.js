@@ -42,6 +42,7 @@ GameScene = pc.Scene.extend('GameScene',
             this.roomLayer.addSystem(new BasicRoomSystem());
             this.roomLayer.addSystem(new RandomDeathRoomSystem());
             this.roomLayer.addSystem(new pc.systems.Render());
+             this.roomLayer.addSystem(new pc.systems.Effects());
 
             //-----------------------------------------------------------------------------
             // player layer
@@ -102,6 +103,11 @@ GameScene = pc.Scene.extend('GameScene',
             // ... do extra processing in here
             //
         },
+        initPlayerFromJSON:function (reponse) {
+            var playerEntity = pc.Entity.create(this.playerLayer);
+            playerEntity.addComponent(Player.create(reponse.id,reponse.username,reponse.room));
+            this.player=playerEntity;
+        },
 
         update:function(rooms){
             if(this.isInit){
@@ -113,18 +119,48 @@ GameScene = pc.Scene.extend('GameScene',
         },
 
         initMap: function (roomList) {
-            for (var i = 0; i < roomList.length; i++) {
-                var jsonRoom = roomList[i];
-                this.createRoom(jsonRoom);
+            var k =0;
+            var find= false;
+            while(k<roomList.length && !find  ){
+                var players = roomList[k].players;
+                var l =0;
+                while(l<players.length && players[l].id==this.player.getComponent('player').id ){
+                    l++;
+                }
+                if(l<players.length){
+                    find=true;
+                } else {
+                    k++;
+                }
             }
+            if(k<roomList.length){
+                var playerRoom=roomList[k];
+                var baseX=0;
+                if(playerRoom.x!=0){
+                    baseX=playerRoom.x-1;
+                }
+                var baseY=0;
+                if(playerRoom.y!=0){
+                    baseY=playerRoom.y-1;
+                }
+                var basePoint = pc.Point.create(baseX,baseY) ;
+                for (var i = 0; i < roomList.length; i++) {
+                    var jsonRoom = roomList[i];
+                    this.createRoom(jsonRoom,basePoint);
+                }
+             }
+
         },
 
-        createRoom: function (jsonRoom) {
+        createRoom: function (jsonRoom,basePoint) {
             var room = pc.Entity.create(this.roomLayer);
             room.addComponent(BasicRoom.create({ id: jsonRoom.id, playerList: jsonRoom.players, deadBodies: jsonRoom.dead_nb, x: jsonRoom.x, y: jsonRoom.y}));
             var roomSprite = pc.components.Sprite.create({ spriteSheet:this.roomSheet});
             room.addComponent(roomSprite);
-            room.addComponent(pc.components.Spatial.create({x:100+jsonRoom.x*this.roomSheet.frameWidth, y:100+jsonRoom.y*this.roomSheet.frameHeight, dir:0,
+           // room.addComponent( pc.components.Scale.create( { x: 0.5, y: 0.5} ));
+           var posx = 100+(jsonRoom.x-basePoint.x)*this.roomSheet.frameWidth;
+           var posy = 100+(jsonRoom.y-basePoint.y)*this.roomSheet.frameHeight;
+            room.addComponent(pc.components.Spatial.create({x:posx, y:posy, dir:0,
                         w:this.roomSheet.frameWidth, h:this.roomSheet.frameHeight}));
             switch (jsonRoom.type) {
                 case this.ROOM_RANDOM_DEATH:

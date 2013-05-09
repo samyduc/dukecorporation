@@ -99,7 +99,7 @@ class World:
 
 		for i in range(top_left_x, top_left_x + size_square):
 			for j in range(top_left_y, top_left_y + size_square):
-				if i >= 0 and j >= 0:
+				if (i >= 0 and i<self.size_x) and (j >= 0 and j<self.size_y):
 					around_rooms.append(self.board[i][j])
 
 		return around_rooms
@@ -112,7 +112,7 @@ class World:
 			self.players[player.username] = player
 		else: 
 			player_store = self.players[player.username]
-			player_store.id = player.id
+			player_store.ChangeID(player.id)
 			player = player_store
 
 		if not player.linked_room:

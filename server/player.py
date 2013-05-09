@@ -20,14 +20,17 @@ class Player:
 		self.auth = False
 
 		self.action = PlayerAction.IDLE
-
-		self.pub_key = "node:%s" % id
+		self.ChangeID(id)
+		
 		self.redis_client = redis_client
 
 		self.linked_room = None
 
 	def __repr__(self):
 		return str(self.Serialize())
+
+	def ChangeID(self, id):
+		self.pub_key = "node:%s" % id
 
 	def Serialize(self):
 

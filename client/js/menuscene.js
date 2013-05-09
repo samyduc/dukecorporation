@@ -58,9 +58,6 @@ MenuScene = pc.Scene.extend('MenuScene',
             pc.device.input.bindAction(this, 'execute', 'ENTER', menuItem.getComponent('spatial'));
             pc.device.input.bindAction(this, 'execute', 'TOUCH', menuItem.getComponent('spatial'));
 
-            document.getElementById("LoginForm").style = 'display : block;';
-
-
         },
 
         // handle menu actions

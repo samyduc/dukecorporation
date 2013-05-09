@@ -67,11 +67,12 @@ MenuScene = pc.Scene.extend('MenuScene',
         onAction: function (actionName, event, pos, uiTarget) {
             if (actionName === 'execute') {
                 var username = document.getElementById("username").value;
+                var password = document.getElementById("password").value;
 
                 if (username.length > 0) {
                     var socket = pc.device.game.socket;
-                    socket.emit('message', { login: username });
-                    socket.on('loginresponse', function (data) {
+                    socket.emit('message', { 'username': username, 'password':password, 'event':'connection' });
+                    socket.on('message', function (data) {
                         if (data.ok)
                             pc.device.game.deactivateMenu();
                     });

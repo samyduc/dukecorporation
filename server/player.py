@@ -2,7 +2,7 @@ import json
 
 class Player:
 
-	def __init__(redis_client, id, username, password):
+	def __init__(self, redis_client, id, username, password):
 		"""
 
 		"""

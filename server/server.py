@@ -46,7 +46,7 @@ class Server:
 					event = json_data['event']
 
 					if event == 'connection':
-						self.OnAuthentification(event)
+						self.OnAuthentification(json_data)
 					else:
 						print("unknown event")
 

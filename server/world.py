@@ -51,9 +51,9 @@ class World:
 
 		around_rooms = []
 
-		for i in range(top_left_x, top_left_x + size_square - 1):
-			for j in range(top_left_y, top_left_y + size_square - 1):
-				if i > 0 and j > 0:
+		for i in range(top_left_x, top_left_x + size_square):
+			for j in range(top_left_y, top_left_y + size_square):
+				if i >= 0 and j >= 0:
 					around_rooms.append(self.board[i][j])
 
 		return around_rooms
@@ -71,7 +71,8 @@ class World:
 			player = player_store
 
 		if not player.linked_room:
-			player.linked_room = self.spawn_room
+			self.spawn_room.AddPlayer(player)
+
 
 		return player
 
@@ -92,8 +93,13 @@ class World:
 
 		"""
 
+		old_room = self.rooms[player.linked_room]
+		old_room.RemovePlayer(player)
+
+		new_room = self.rooms[linked_room]
+		new_room.AddPlayer(player)
+
 		player.action = action
-		player.linked_room = linked_room
 
 		self.OnUpdatePlayer(player)
 
@@ -108,10 +114,13 @@ class World:
 		# TODO
 		# replace it
 
-		current_room = player.linked_room
+		current_room = self.rooms[player.linked_room]
 		rooms = self.GetRoomFromCenter(current_room)
-		data_json = [room.Serialize() for room in rooms]
+		
+		data_json = {'rooms':[]}
+		for room in rooms:
+			data_json['rooms'].append(room.Serialize())
 
 		for current_room in rooms:
-			for player in current_room.players:
+			for key, player in current_room.players.iteritems():
 				player.Send_Update(data_json)

@@ -55,8 +55,8 @@ GameScene = pc.Scene.extend('GameScene',
             //-----------------------------------------------------------------------------
             this.metaLayer = this.addLayer(new pc.EntityLayer('meta layer', 10000, 10000), this.ZINDEX_META_LAYER);
 
-            // all we need to handle the players
-            this.metaLayer.addSystem(new pc.System.Render());
+             // all we need to handle the players
+            this.metaLayer.addSystem(new pc.systems.Render());
 
 
             // bind some keys/clicks/touches to access the menu
@@ -111,7 +111,7 @@ GameScene = pc.Scene.extend('GameScene',
 
         createRoom: function (jsonRoom) {
             var room = pc.Entity.create(this.roomLayer);
-            room.addComponent(BasicRoom.Create({ id: jsonRoom.id, playerList: jsonRoom.players, deadBodies: jsonRoom.dead_nb, x: jsonRoom.x, y: jsonRoom.y}));
+            room.addComponent(BasicRoom.create({ id: jsonRoom.id, playerList: jsonRoom.players, deadBodies: jsonRoom.dead_nb, x: jsonRoom.x, y: jsonRoom.y}));
             room.addComponent(pc.components.Sprite.create({ spriteSheet: this.roomSheet}));
             switch (jsonRoom.type) {
                 case this.ROOM_RANDOM_DEATH:

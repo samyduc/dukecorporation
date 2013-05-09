@@ -1,5 +1,6 @@
 import time
 import random
+import threading
 
 #import gevent
 
@@ -23,8 +24,10 @@ class World:
 		self.spawn_room = None
 		self.exit_room = None
 
-		self.shuffle_time = 0
+		self.shuffle_time = time.time()
 		self.shuffle_duration = 60
+
+		self.g_lock = threading.Lock()
 
 	def Serialize(self):
 		return {'rooms':[], 
@@ -35,10 +38,11 @@ class World:
 
 		if time.time() - self.shuffle_time > self.shuffle_duration:
 			self.shuffle_time = time.time()
-			gevent.spawn_later(self.shuffle_duration, self.Shuffle)
+			self.Shuffle()
 
 	def Shuffle(self):
 		
+		self.g_lock.acquire()
 		print("shuffleing !")
 		# big random
 		random.shuffle(self.board)
@@ -55,6 +59,8 @@ class World:
 		# send update to all players
 		for key, player in self.players.iteritems():
 			self.OnShuffle(player)
+
+		self.g_lock.release()
 
 
 	def GenerateWorld(self):
@@ -100,6 +106,8 @@ class World:
 
 	def AddPlayer(self, player):
 		
+		self.g_lock.acquire()
+
 		if player.username not in self.players:
 			self.players[player.username] = player
 		else: 
@@ -110,6 +118,7 @@ class World:
 		if not player.linked_room:
 			self.spawn_room.AddPlayer(player)
 
+		self.g_lock.release()
 
 		return player
 

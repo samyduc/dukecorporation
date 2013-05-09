@@ -1,8 +1,8 @@
 #from gevent import monkey
 #monkey.patch_all()
 
-import gevent
-
+import threading
+import time
 
 import json
 import redis
@@ -48,6 +48,10 @@ class Server:
 			self.globalWorld.UpdatePlayer(player, json_data['action'], json_data['room'])
 
 	def MainLoop(self):
+
+		thread_logic = threading.Thread(None, self.MainLoopLogic, "MainLoopLogic")
+		thread_logic.start()
+
 		self.MainLoopRedis()
 
 		#green_logic = gevent.spawn(self.MainLoopLogic)
@@ -61,6 +65,7 @@ class Server:
 		while True:
 			self.globalWorld.Update()
 			#gevent.sleep()
+			time.sleep(0.1)
 
 	def MainLoopRedis(self):
 

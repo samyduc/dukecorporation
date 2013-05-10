@@ -194,8 +194,13 @@ GameScene = pc.Scene.extend('GameScene',
     createActionIcons: function (room) {
         //var player = this.player.getComponent('player');
         //if(player != null && !this.player.rooms.contains(room.id)){
+        var player_component = this.player.getComponent('player');
+        var room_temp = this.getRoomById(player_component.roomId);
+        var room_center_component = room_temp.getComponent('basicroom');
+        var tilePos = room.getTilePosition(room_center_component);
+        var screenPos =   this.tileLayer.tileToScreenTile(tilePos);
         this.lookAction = pc.Entity.create(this.uiLayer);
-        this.lookAction.addComponent(pc.components.Spatial.create({ x: 200, y: 200, w: 89, h: 75 }));
+        this.lookAction.addComponent(pc.components.Spatial.create({ x: 3*this.tileLayer.px_room/5+screenPos.x, y:  3*this.tileLayer.px_room/5+screenPos.y, w: this.tileLayer.px_room/5, h: this.tileLayer.px_room/5 }));
         this.lookAction.addComponent(pc.components.Rect.create({ color: [ pc.Math.rand(0, 255), pc.Math.rand(0, 255), pc.Math.rand(0, 255) ] }));
         this.lookAction.addComponent(pc.components.Text.create({ fontHeight: 25, text: ['<=>'], offset: { x:15, y:-10 } }));
 
@@ -253,7 +258,7 @@ GameScene = pc.Scene.extend('GameScene',
         var node = list_entities.first;
 
         while(node) {
-            room_component = node.object().getComponent('basicroom');
+            var room_component = node.object().getComponent('basicroom');
 
             if(room_component.id == id){
                 room = node.object();

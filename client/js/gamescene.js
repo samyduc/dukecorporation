@@ -178,7 +178,9 @@ GameScene = pc.Scene.extend('GameScene',
 
     createRoom: function (network_room) {
         var room = pc.Entity.create(this.roomLayer);
-        room.addComponent(BasicRoom.create({ id: network_room.id, playerList: network_room.players, deadBodies: network_room.dead_nb, x: network_room.x, y: network_room.y}));
+        room.addComponent(BasicRoom.create(network_room.id, network_room.players, network_room.dead_nb, network_room.x, network_room.y));
+        room.addComponent(pc.components.Spatial.create({ w: 200, h: 50 }));
+        room.addComponent(pc.components.Text.create({ fontHeight: 25, text: [''], offset: { x:0, y:0 } }));
         switch (network_room.type) {
             case this.ROOM_RANDOM_DEATH:
                 room.addComponent(RandomDeathRoom.create({killRate: Math.floor((Math.random()*100)) }));
@@ -262,6 +264,7 @@ GameScene = pc.Scene.extend('GameScene',
 
             if(room_component.id == id){
                 room = node.object();
+                break;
             }
 
             node = node.next();

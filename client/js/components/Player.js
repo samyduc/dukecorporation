@@ -37,6 +37,10 @@ Player = pc.components.Component('Player' ,
             this.roomId = roomId;
             this.action = action;
             this.dirty = true;
+        },
+
+        getLinkedRoom: function() {
+            return this.getEntity().layer.scene.getRoomById(this.roomId);
         }
 
     });

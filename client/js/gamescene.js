@@ -293,5 +293,5 @@ GameScene = pc.Scene.extend('GameScene',
 
         return pos;
     }
-
+ 
 });

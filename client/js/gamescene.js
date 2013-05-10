@@ -44,7 +44,8 @@ GameScene = pc.Scene.extend('GameScene',
             this.roomLayer.addSystem(new BasicRoomSystem());
             this.roomLayer.addSystem(new RandomDeathRoomSystem());
             this.roomLayer.addSystem(new pc.systems.Render());
-             this.roomLayer.addSystem(new pc.systems.Effects());
+            this.roomLayer.addSystem(new pc.systems.Effects());
+            this.roomLayer.addSystem(new pc.systems.Input());
 
             //-----------------------------------------------------------------------------
             // player layer
@@ -62,6 +63,7 @@ GameScene = pc.Scene.extend('GameScene',
 
             // all we need to handle the players
             this.metaLayer.addSystem(new pc.systems.Render());
+            this.metaLayer.addSystem(new pc.systems.Input());
 
 
             // bind some keys/clicks/touches to access the menu
@@ -75,22 +77,9 @@ GameScene = pc.Scene.extend('GameScene',
             if (pc.device.game.menuScene.active)
                 return true;
 
-            var room = null;
-            if (uiTarget != null) {
-                var roomEntity = uiTarget.getEntity() ;
-                   room = roomEntity.getComponent('BasicRoom');
-            }
             if (actionName === 'menu')
                 pc.device.game.activateMenu();
-            if (actionName === 'displayPossibleActions') {
-                this.createActionIcons(room);
-            }
-            if (actionName === 'look') {
-                this.player.getComponent('player').rooms[this.player.rooms.length] = room.id;
-            }
-            if (actionName === 'enter') {
-                this.player.getComponent('player').roomId = room.id;
-            }
+
 
             return false; // eat the event (so it wont pass through to the newly activated menuscene
         },
@@ -106,10 +95,10 @@ GameScene = pc.Scene.extend('GameScene',
             // ... do extra processing in here
             //
         },
-        initPlayerFromJSON:function (reponse) {
+        initPlayerFromJSON: function (reponse) {
             var playerEntity = pc.Entity.create(this.playerLayer);
-            playerEntity.addComponent(Player.create(reponse.id,reponse.username,reponse.room));
-            this.player=playerEntity;
+            playerEntity.addComponent(Player.create(reponse.id, reponse.username, reponse.room));
+            this.player = playerEntity;
         },
 
         update: function (rooms) {
@@ -122,49 +111,58 @@ GameScene = pc.Scene.extend('GameScene',
         },
 
         initMap: function (roomList) {
-            var k =0;
-            var find= false;
-            while(k<roomList.length && !find  ){
+            var k = 0;
+            var find = false;
+            while (k < roomList.length && !find) {
                 var players = roomList[k].players;
-                var l =0;
-                while(l<players.length && players[l].id==this.player.getComponent('player').id ){
+                var l = 0;
+                while (l < players.length && players[l].id == this.player.getComponent('player').id) {
                     l++;
                 }
-                if(l<players.length){
-                    find=true;
+                if (l < players.length) {
+                    find = true;
                 } else {
                     k++;
                 }
             }
-            if(k<roomList.length){
-                var playerRoom=roomList[k];
-                var baseX=0;
-                if(playerRoom.x!=0){
-                    baseX=playerRoom.x-1;
+            if (k < roomList.length) {
+                var playerRoom = roomList[k];
+                var baseX = 0;
+                if (playerRoom.x != 0) {
+                    baseX = playerRoom.x - 1;
                 }
-                var baseY=0;
-                if(playerRoom.y!=0){
-                    baseY=playerRoom.y-1;
+                var baseY = 0;
+                if (playerRoom.y != 0) {
+                    baseY = playerRoom.y - 1;
                 }
-                var basePoint = pc.Point.create(baseX,baseY) ;
+                var basePoint = pc.Point.create(baseX, baseY);
                 for (var i = 0; i < roomList.length; i++) {
                     var jsonRoom = roomList[i];
-                    this.createRoom(jsonRoom,basePoint);
+                    this.createRoom(jsonRoom, basePoint);
                 }
-             }
+            }
 
         },
 
-        createRoom: function (jsonRoom,basePoint) {
+        createRoom: function (jsonRoom, basePoint) {
             var room = pc.Entity.create(this.roomLayer);
             room.addComponent(BasicRoom.create({ id: jsonRoom.id, playerList: jsonRoom.players, deadBodies: jsonRoom.dead_nb, x: jsonRoom.x, y: jsonRoom.y}));
             var roomSprite = pc.components.Sprite.create({ spriteSheet: this.roomSheet});
             room.addComponent(roomSprite);
- // room.addComponent( pc.components.Scale.create( { x: 0.5, y: 0.5} ));
-           var posx = 100+(jsonRoom.x-basePoint.x)*this.roomSheet.frameWidth;
-           var posy = 100+(jsonRoom.y-basePoint.y)*this.roomSheet.frameHeight;
-            room.addComponent(pc.components.Spatial.create({x:posx, y:posy, dir:0,
-                        w:this.roomSheet.frameWidth, h:this.roomSheet.frameHeight}));            switch (jsonRoom.type) {
+            //room.addComponent( pc.components.Scale.create( { x: 0.5, y: 0.5} ));
+            var posx = 100 + (jsonRoom.x - basePoint.x) * this.roomSheet.frameWidth;
+            var posy = 100 + (jsonRoom.y - basePoint.y) * this.roomSheet.frameHeight;
+            room.addComponent(pc.components.Spatial.create({x: posx, y: posy, dir: 0,
+                w: this.roomSheet.frameWidth, h: this.roomSheet.frameHeight}));
+            room.addComponent(pc.components.Input.create(
+                {
+                    actions:
+                       [ ['displayPossibleActions', ['TOUCH', 'MOUSE_BUTTON_LEFT_DOWN']]    ]  ,
+                    target : this
+
+                }));
+
+            switch (jsonRoom.type) {
                 case this.ROOM_RANDOM_DEATH:
                     room.addComponent(RandomDeathRoom.create({killRate: jsonRoom.killRate}));
                     break;
@@ -176,23 +174,6 @@ GameScene = pc.Scene.extend('GameScene',
             }
         },
 
-        createActionIcons: function (room) {
-            //var player = this.player.getComponent('player');
-            //if(player != null && !this.player.rooms.contains(room.id)){
-            this.lookAction = pc.Entity.create(this.metaLayer);
-            this.lookAction.addComponent(pc.components.Spatial.create({ x: 200, y: 200, w: 89, h: 75 }));
-            this.lookAction.addComponent(pc.components.Rect.create({ color: [ pc.Math.rand(0, 255), pc.Math.rand(0, 255), pc.Math.rand(0, 255) ] }));
-            this.lookAction.addComponent(pc.components.Text.create({ fontHeight: 25, text: ['<=>'], offset: { x:15, y:-10 } }));
 
-            pc.device.input.bindAction(this, 'look', 'MOUSE_BUTTON_LEFT_DOWN', this.lookAction.getComponent("spatial"));
-            //  }
-            // if(player.roomId != room.id){
-            this.enterAction = pc.Entity.create(this.metaLayer);
-            this.enterAction.addComponent(pc.components.Spatial.create({ x: 500, y: 200, w: 75, h: 75 }));
-            this.enterAction.addComponent(pc.components.Rect.create({ color: [ pc.Math.rand(0, 255), pc.Math.rand(0, 255), pc.Math.rand(0, 255) ] }));
-            this.enterAction.addComponent(pc.components.Text.create({ fontHeight: 25, text: ['|\'|'], offset: { x:15, y:-10 } }));
-            pc.device.input.bindAction(this, 'enter', 'MOUSE_BUTTON_LEFT_DOWN', this.enterAction.getComponent("spatial"));
-            //  }
-        }
 
     });

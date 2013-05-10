@@ -41,7 +41,7 @@ BasicRoom = pc.components.Component('BasicRoom' ,
             this.lookAction.addComponent(pc.components.Spatial.create({ x: 200, y: 200, w: 89, h: 75 }));
             this.lookAction.addComponent(pc.components.Rect.create({ color: [ pc.Math.rand(0, 255), pc.Math.rand(0, 255), pc.Math.rand(0, 255) ] }));
             this.lookAction.addComponent(pc.components.Text.create({ fontHeight: 25, text: ['<=>'], offset: { x: 15, y: -10 } }));
-            this.lookAction.addComponent(pc.components.Input.create({actions: [['look', ['MOUSE_BUTTON_LEFT_DOWN']]],   }));
+            this.lookAction.addComponent(pc.components.Input.create({actions: [['look', ['MOUSE_BUTTON_LEFT_DOWN']]]   }));
             //  }
             // if(player.roomId != room.id){
             this.enterAction = pc.Entity.create(this.layer);

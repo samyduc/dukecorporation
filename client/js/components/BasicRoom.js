@@ -45,6 +45,10 @@ BasicRoom = pc.components.Component('BasicRoom' ,
             this.dirty = true;
         },
 
+        getTilePosition: function(room_center){
+            return({x: Math.abs(room_center.x - this.x - 1), y: Math.abs(room_center.y - this.y - 1)});
+        },
+
         createActionIcons: function () {
             //var player = this.player.getComponent('player');
             //if(player != null && !this.player.rooms.contains(room.id)){

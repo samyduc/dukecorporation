@@ -50,7 +50,7 @@ TheGame = pc.Game.extend('TheGame',
                     }
                     break;
                     case "update":
-                        that.updateGameScene(response.rooms);
+                        that.updateGameScene(response);
                     break;
                     default:
                     console.log("unkonow event");
@@ -75,8 +75,8 @@ TheGame = pc.Game.extend('TheGame',
             this.gameScene.initPlayerFromJSON(response);
         },
 
-        updateGameScene:function(rooms){
-            this.gameScene.update(rooms);
+        updateGameScene:function(input_network){
+            this.gameScene.onNetwork(input_network);
         },
 
         activateMenu:function()

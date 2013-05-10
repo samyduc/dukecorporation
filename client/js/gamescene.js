@@ -33,8 +33,6 @@ GameScene = pc.Scene.extend('GameScene',
     init: function () {
         this._super();
 
-        this.rooms = new pc.Hashmap();
-
         this.nb_room = 3;
 
         //-----------------------------------------------------------------------------
@@ -149,10 +147,11 @@ GameScene = pc.Scene.extend('GameScene',
         for (var i = 0; i < roomList.length; i++) {
             var network_room = roomList[i];
             
-            if(this.rooms.hasKey(network_room.id.toString())) {
+            var temp_room = this.getRoomById(network_room.id);
+
+            if(temp_room != null) {
                 // update
-                room = this.rooms.get(network_room.id.toString());
-                basic_component = room.getComponent('basicroom');
+                basic_component = temp_room.getComponent('basicroom');
                 basic_component.onNetwork(network_room.players, network_room.dead_nb, network_room.x, network_room.y)
             }
             else {
@@ -190,8 +189,6 @@ GameScene = pc.Scene.extend('GameScene',
             default:
                 break;
         }
-
-        this.rooms.put(network_room.id.toString(), room);
     },
 
     createActionIcons: function (room) {
@@ -249,17 +246,37 @@ GameScene = pc.Scene.extend('GameScene',
         this.tileLayer.prerender();
     },
 
+    getRoomById: function(id){
+        var room = null;
+
+        var list_entities = this.roomLayer.entityManager.entities;
+        var node = list_entities.first;
+
+        while(node) {
+            room_component = node.object().getComponent('basicroom');
+
+            if(room_component.id == id){
+                room = node.object();
+            }
+
+            node = node.next();
+        }
+
+        return room;
+    },
+
     tileToWorldRoom: function(tilePos, player){
         var list_entities = this.roomLayer.entityManager.entities;
         var pos = pc.Point.create(-1, -1);
         var node = list_entities.first;
         var player_component = player.getComponent('player');
 
-        if(!this.rooms.hasKey(player_component.roomId.toString())) {
+        var room_temp = this.getRoomById(player_component.roomId);
+        if(room_temp == null) {
             return pos;
         }
 
-        var room_center_component = this.rooms.get(player_component.roomId.toString()).getComponent('basicroom');
+        var room_center_component = room_temp.getComponent('basicroom');
 
         while(node) {
             room_component = node.object().getComponent('basicroom');

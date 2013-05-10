@@ -107,7 +107,6 @@ GameScene = pc.Scene.extend('GameScene',
             pc.device.game.activateMenu();
         if (actionName === 'clicAction') {
             var roomCoordinates = this.tileLayer.screenToTilePos(pos);
-
             this.createActionIcons(room);
         }
 
@@ -185,7 +184,7 @@ GameScene = pc.Scene.extend('GameScene',
     createActionIcons: function (room) {
         //var player = this.player.getComponent('player');
         //if(player != null && !this.player.rooms.contains(room.id)){
-        this.lookAction = pc.Entity.create(this.metaLayer);
+        this.lookAction = pc.Entity.create(this.uiLayer);
         this.lookAction.addComponent(pc.components.Spatial.create({ x: 200, y: 200, w: 89, h: 75 }));
         this.lookAction.addComponent(pc.components.Rect.create({ color: [ pc.Math.rand(0, 255), pc.Math.rand(0, 255), pc.Math.rand(0, 255) ] }));
         this.lookAction.addComponent(pc.components.Text.create({ fontHeight: 25, text: ['<=>'], offset: { x:15, y:-10 } }));
@@ -193,7 +192,7 @@ GameScene = pc.Scene.extend('GameScene',
         pc.device.input.bindAction(this, 'look', 'MOUSE_BUTTON_LEFT_DOWN', this.lookAction.getComponent("spatial"));
         //  }
         // if(player.roomId != room.id){
-        this.enterAction = pc.Entity.create(this.metaLayer);
+        this.enterAction = pc.Entity.create(this.uiLayer);
         this.enterAction.addComponent(pc.components.Spatial.create({ x: 500, y: 200, w: 75, h: 75 }));
         this.enterAction.addComponent(pc.components.Rect.create({ color: [ pc.Math.rand(0, 255), pc.Math.rand(0, 255), pc.Math.rand(0, 255) ] }));
         this.enterAction.addComponent(pc.components.Text.create({ fontHeight: 25, text: ['|\'|'], offset: { x:15, y:-10 } }));

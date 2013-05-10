@@ -12,12 +12,10 @@ TimerSystem = pc.systems.EntitySystem.extend('TimerSystem',
 
         process:function (entity)
         {
-            var timer_component = entity.getComponent('TimerComponent');
+            var timer_component = entity.getComponent('timercomponent');
 
-            if(timer_component != null) {
-                var text_component = entity.getComponent('text');
-                text_component.text = [timer_component.getTimeLeft().toString()];
-            }
+            var text_component = entity.getComponent('text');
+            text_component.text = [timer_component.getTimeLeft().toString()];
         }
 
     });

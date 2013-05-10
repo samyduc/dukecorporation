@@ -23,9 +23,9 @@ BasicRoomSystem = pc.systems.EntitySystem.extend('BasicRoomSystem',
                 var room_player = player_component.getLinkedRoom();
 
                 if(room_player != null) {
-                    var room_player_component = room_player.getComponent('room_component');
+                    var room_player_component = room_player.getComponent('basicroom');
 
-                    var posTile = room_component.getTilePosition(room_player);
+                    var posTile = room_component.getTilePosition(room_player_component);
                     var posPx = entity.layer.scene.tileLayer.tileToScreenTile(posTile);
                     // debug
                     

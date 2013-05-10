@@ -15,9 +15,9 @@ GameScene = pc.Scene.extend('GameScene',
     ROOM_EXIT: 9, //salle de sortie
 
     //Layer's zIndex
-    ZINDEX_ROOM_LAYER: 1,
-    ZINDEX_PLAYER_LAYER: 2,
-    ZINDEX_META_LAYER: 3
+    ZINDEX_ROOM_LAYER: 30,
+    ZINDEX_PLAYER_LAYER: 20,
+    ZINDEX_META_LAYER: 10
 }, 
 {
     roomLayer: null,
@@ -38,10 +38,12 @@ GameScene = pc.Scene.extend('GameScene',
         //-----------------------------------------------------------------------------
         // room layer
         //-----------------------------------------------------------------------------
-        this.roomLayer = this.addLayer(new pc.EntityLayer('room layer', 10000, 10000), this.ZINDEX_ROOM_LAYER);
+        this.roomLayer = this.addLayer(new pc.EntityLayer('room layer', 10000, 10000), this.ZINDEX_META_LAYER);
 
         // all we need to handle the rooms
         this.roomLayer.addSystem(new BasicRoomSystem());
+        this.roomLayer.addSystem(new pc.systems.Render());
+
         this.roomSheet = new pc.SpriteSheet({ image: pc.device.loader.get('room').resource, useRotation: false });
 
         //-----------------------------------------------------------------------------
@@ -56,7 +58,7 @@ GameScene = pc.Scene.extend('GameScene',
         this.tileMap = new pc.TileMap(new pc.TileSet(this.roomSheet), this.nb_room, this.nb_room, 200, 200);
         this.tileMap.generate(0);
 
-        this.tileLayer = this.addLayer(new CubeTileLayer('tileLayer', true, this.tileMap), this.ZINDEX_META_LAYER);
+        this.tileLayer = this.addLayer(new CubeTileLayer('tileLayer', true, this.tileMap), this.ZINDEX_ROOM_LAYER);
         this.onResize(pc.device.canvasWidth, pc.device.canvasHeight);
 
         //-----------------------------------------------------------------------------
@@ -76,7 +78,7 @@ GameScene = pc.Scene.extend('GameScene',
         // fps counter
         this.ui_fpsCounter = pc.Entity.create(this.uiLayer);
         this.ui_fpsCounter.addComponent(pc.components.Spatial.create({ w: 200, h: 50 }));
-        this.ui_fpsCounter.addComponent(pc.components.Text.create({ fontHeight: 20, lineWidth: 1, strokeColor: '#ffffff', color: '#222288', text: ['NIL'] }));
+        this.ui_fpsCounter.addComponent(pc.components.Text.create({ fontHeight: 20, lineWidth: 1, strokeColor: '#ffffff', color: '##222288', text: ['NIL'] }));
         this.ui_fpsCounter.addComponent(pc.components.Layout.create({ vertical: 'top', horizontal: 'left', margin: { left: 40, bottom: 70 }}));
         this.ui_fpsCounter.addComponent(FPSCounterComponent.create());
 
@@ -180,7 +182,8 @@ GameScene = pc.Scene.extend('GameScene',
         var room = pc.Entity.create(this.roomLayer);
         room.addComponent(BasicRoom.create(network_room.id, network_room.players, network_room.dead_nb, network_room.x, network_room.y));
         room.addComponent(pc.components.Spatial.create({ w: 200, h: 50 }));
-        room.addComponent(pc.components.Text.create({ fontHeight: 25, text: [''], offset: { x:0, y:0 } }));
+        //room.addComponent(pc.components.Layout.create({ vertical: 'middle', horizontal: 'right', margin: { left: 240, bottom: 70 }}));
+        room.addComponent(pc.components.Text.create({ fontHeight: 20, lineWidth: 2, strokeColor: '#ff9800', color: '#ff9800', text: ['NIL'] }));
         switch (network_room.type) {
             case this.ROOM_RANDOM_DEATH:
                 room.addComponent(RandomDeathRoom.create({killRate: Math.floor((Math.random()*100)) }));

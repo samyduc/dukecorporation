@@ -80,14 +80,14 @@ GameScene = pc.Scene.extend('GameScene',
         // fps counter
         this.ui_fpsCounter = pc.Entity.create(this.uiLayer);
         this.ui_fpsCounter.addComponent(pc.components.Spatial.create({ w: 200, h: 50 }));
-        this.ui_fpsCounter.addComponent(pc.components.Text.create({ fontHeight: 15, lineWidth: 1, strokeColor: '#ffffff', color: '##222288', text: ['NIL'] }));
+        this.ui_fpsCounter.addComponent(pc.components.Text.create({ fontHeight: 20, lineWidth: 1, strokeColor: '#ffffff', color: '##222288', text: ['NIL'] }));
         this.ui_fpsCounter.addComponent(pc.components.Layout.create({ vertical: 'top', horizontal: 'left', margin: { left: 40, bottom: 70 }}));
         this.ui_fpsCounter.addComponent(FPSCounterComponent.create());
 
         // shuffle timer
         this.ui_shuffleTimer = pc.Entity.create(this.uiLayer);
         this.ui_shuffleTimer.addComponent(pc.components.Spatial.create({ w: 200, h: 50 }));
-        this.ui_shuffleTimer.addComponent(pc.components.Text.create({ fontHeight: 15, lineWidth: 1, strokeColor: '#ffffff', color: '#222288', text: ['NIL'] }));
+        this.ui_shuffleTimer.addComponent(pc.components.Text.create({ fontHeight: 20, lineWidth: 1, strokeColor: '#ffffff', color: '#222288', text: ['NIL'] }));
         this.ui_shuffleTimer.addComponent(pc.components.Layout.create({ vertical: 'top', horizontal: 'left', margin: { left: 40, bottom: 70 }}));
         this.ui_shuffleTimer.addComponent(TimerComponent.create(0, 0));
 
@@ -185,7 +185,7 @@ GameScene = pc.Scene.extend('GameScene',
         room.addComponent(BasicRoom.create(network_room.id, network_room.players, network_room.dead_nb, network_room.x, network_room.y));
         room.addComponent(pc.components.Spatial.create({ w: 200, h: 50 }));
         //room.addComponent(pc.components.Layout.create({ vertical: 'middle', horizontal: 'right', margin: { left: 240, bottom: 70 }}));
-        room.addComponent(pc.components.Text.create({ fontHeight: 20, lineWidth: 2, strokeColor: '#ff9800', color: '#ff9800', text: ['NIL'] }));
+        room.addComponent(pc.components.Text.create({ fontHeight: 15, lineWidth: 2, strokeColor: '#FFFFFF', color: '#ffffff', text: ['NIL'] }));
         switch (network_room.type) {
             case this.ROOM_RANDOM_DEATH:
                 room.addComponent(RandomDeathRoom.create({killRate: Math.floor((Math.random()*100)) }));

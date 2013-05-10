@@ -36,9 +36,9 @@ class World:
 
 	def Update(self):
 
-		#if time.time() - self.shuffle_time > self.shuffle_duration:
-		#	self.shuffle_time = time.time()
-		#	self.Shuffle()
+		if time.time() - self.shuffle_time > self.shuffle_duration:
+			self.shuffle_time = time.time()
+			self.Shuffle()
 		pass
 
 	def Shuffle(self):

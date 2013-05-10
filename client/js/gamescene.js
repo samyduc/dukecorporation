@@ -142,6 +142,13 @@ GameScene = pc.Scene.extend('GameScene',
         }
     },
 
+    onNetwork: function(input_network) {
+        var timer_component = this.ui_shuffleTimer.getComponent("timercomponent");
+        timer_component.config(input_network.shuffle_start, input_network.shuffle_duration);
+
+
+    },
+
     initMap: function (roomList) {
         var k =0;
         var find= false;

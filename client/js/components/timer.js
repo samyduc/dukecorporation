@@ -26,7 +26,7 @@ TimerComponent = pc.components.Component('TimerComponent' ,
 
         getTimeLeft: function () {
             // helper : give us the time left
-            return this.duration - (pc.device.now - this.start_time);
+            return this.duration - (pc.device.now/1000 - this.start_time);
         }
 
     });

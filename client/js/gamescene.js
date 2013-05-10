@@ -43,8 +43,8 @@ GameScene = pc.Scene.extend('GameScene',
         this.roomLayer = this.addLayer(new pc.EntityLayer('room layer', 10000, 10000), this.ZINDEX_ROOM_LAYER);
 
         // all we need to handle the rooms
-        this.roomLayer.addSystem(new BasicRoomSystem());
-        this.roomLayer.addSystem(new RandomDeathRoomSystem());
+        this.roomLayer.addSystem(new RoomSystem());
+        this.roomSheet = new pc.SpriteSheet({ image: pc.device.loader.get('room').resource, useRotation: false });
 
         //-----------------------------------------------------------------------------
         // player layer
@@ -53,7 +53,6 @@ GameScene = pc.Scene.extend('GameScene',
 
         // all we need to handle the players
         this.playerLayer.addSystem(new PlayerSystem());
-        this.roomSheet = new pc.SpriteSheet({ image: pc.device.loader.get('room').resource, useRotation: false });
 
         // background (build default then resize)
         this.tileMap = new pc.TileMap(new pc.TileSet(this.roomSheet), this.nb_room, this.nb_room, 200, 200);
@@ -71,6 +70,7 @@ GameScene = pc.Scene.extend('GameScene',
         // bind some keys/clicks/touches to access the menu
 
         pc.device.input.bindAction(this, 'menu', 'ESC');
+        pc.device.input.bindAction(this, 'clicAction', 'MOUSE_BUTTON_LEFT_DOWN');
 
     },
 
@@ -101,19 +101,16 @@ GameScene = pc.Scene.extend('GameScene',
         var room = null;
         if (uiTarget != null) {
             var roomEntity = uiTarget.getEntity() ;
-               room = roomEntity.getComponent('BasicRoom');
+               room = roomEntity.getComponent('basicroom');
         }
         if (actionName === 'menu')
             pc.device.game.activateMenu();
-        if (actionName === 'displayPossibleActions') {
+        if (actionName === 'clicAction') {
+
+
             this.createActionIcons(room);
         }
-        if (actionName === 'look') {
-            this.player.getComponent('player').rooms[this.player.rooms.length] = room.id;
-        }
-        if (actionName === 'enter') {
-            this.player.getComponent('player').roomId = room.id;
-        }
+
 
         return false; // eat the event (so it wont pass through to the newly activated menuscene
     },

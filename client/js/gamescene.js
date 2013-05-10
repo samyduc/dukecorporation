@@ -33,7 +33,7 @@ GameScene = pc.Scene.extend('GameScene',
     init: function () {
         this._super();
 
-        this.boxes = [];
+        this.rooms = new pc.Hashmap();
 
         this.nb_room = 3;
 
@@ -128,9 +128,8 @@ GameScene = pc.Scene.extend('GameScene',
         this._super();
     },
     initPlayerFromJSON:function (reponse) {
-        var playerEntity = pc.Entity.create(this.playerLayer);
-        playerEntity.addComponent(Player.create(reponse.id,reponse.username,reponse.room));
-        this.player=playerEntity;
+        this.player = pc.Entity.create(this.playerLayer);
+        this.player.addComponent(Player.create(reponse.id,reponse.username,reponse.room));
     },
 
     update: function (rooms) {
@@ -142,53 +141,41 @@ GameScene = pc.Scene.extend('GameScene',
         }
     },
 
+    onNetworkRoomUpdate: function(network_rooms) {
+        var player_component = this.player.getComponent('player');
+        var roomList = network_rooms;
+
+        for (var i = 0; i < roomList.length; i++) {
+            var network_room = roomList[i];
+            
+            if(this.rooms.hasKey(network_room.id.toString())) {
+                // update
+                room = this.rooms.get(network_room.id.toString());
+                basic_component = room.getComponent('basicroom');
+                basic_component.onNetwork(network_room.players, network_room.dead_nb, network_room.x, network_room.y)
+            }
+            else {
+                this.createRoom(network_room)
+            }
+        }
+    },
+
     onNetwork: function(input_network) {
         var timer_component = this.ui_shuffleTimer.getComponent("timercomponent");
         timer_component.config(input_network.shuffle_start, input_network.shuffle_duration);
 
-
-    },
-
-    initMap: function (roomList) {
-        var k =0;
-        var find= false;
-        while(k<roomList.length && !find  ){
-            var players = roomList[k].players;
-            var l =0;
-            while(l<players.length && players[l].id==this.player.getComponent('player').id ){
-                l++;
-            }
-            if(l<players.length){
-                find=true;
-            } else {
-                k++;
-            }
+        if(input_network.event == 'update'){
+            // sync local data with new
+            this.onNetworkRoomUpdate(input_network.rooms);
         }
-        if(k<roomList.length){
-            var playerRoom=roomList[k];
-            var baseX=0;
-            if(playerRoom.x!=0){
-                baseX=playerRoom.x-1;
-            }
-            var baseY=0;
-            if(playerRoom.y!=0){
-                baseY=playerRoom.y-1;
-            }
-            var basePoint = pc.Point.create(baseX,baseY) ;
-            for (var i = 0; i < roomList.length; i++) {
-                var jsonRoom = roomList[i];
-                this.createRoom(jsonRoom,basePoint);
-            }
-         }
-
     },
 
-    createRoom: function (jsonRoom,basePoint) {
+    createRoom: function (network_room) {
         var room = pc.Entity.create(this.roomLayer);
-        room.addComponent(BasicRoom.create({ id: jsonRoom.id, playerList: jsonRoom.players, deadBodies: jsonRoom.dead_nb, x: jsonRoom.x, y: jsonRoom.y}));
-        switch (jsonRoom.type) {
+        room.addComponent(BasicRoom.create({ id: network_room.id, playerList: network_room.players, deadBodies: network_room.dead_nb, x: network_room.x, y: network_room.y}));
+        switch (network_room.type) {
             case this.ROOM_RANDOM_DEATH:
-                room.addComponent(RandomDeathRoom.create({killRate: jsonRoom.killRate}));
+                room.addComponent(RandomDeathRoom.create({killRate: Math.floor((Math.random()*100)) }));
                 break;
             case this.ROOM_DEATH:
                 room.addComponent(RandomDeathRoom.create({killRate: 100}));

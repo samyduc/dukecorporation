@@ -43,7 +43,7 @@ GameScene = pc.Scene.extend('GameScene',
         this.roomLayer = this.addLayer(new pc.EntityLayer('room layer', 10000, 10000), this.ZINDEX_ROOM_LAYER);
 
         // all we need to handle the rooms
-        this.roomLayer.addSystem(new RoomSystem());
+        this.roomLayer.addSystem(new BasicRoomSystem());
         this.roomSheet = new pc.SpriteSheet({ image: pc.device.loader.get('room').resource, useRotation: false });
 
         //-----------------------------------------------------------------------------
@@ -58,7 +58,7 @@ GameScene = pc.Scene.extend('GameScene',
         this.tileMap = new pc.TileMap(new pc.TileSet(this.roomSheet), this.nb_room, this.nb_room, 200, 200);
         this.tileMap.generate(0);
 
-        this.tileLayer = this.addLayer(new pc.TileLayer('tileLayer', true, this.tileMap), this.ZINDEX_META_LAYER);
+        this.tileLayer = this.addLayer(new CubeTileLayer('tileLayer', true, this.tileMap), this.ZINDEX_META_LAYER);
         this.onResize(pc.device.canvasWidth, pc.device.canvasHeight);
 
         //-----------------------------------------------------------------------------
@@ -106,7 +106,7 @@ GameScene = pc.Scene.extend('GameScene',
         if (actionName === 'menu')
             pc.device.game.activateMenu();
         if (actionName === 'clicAction') {
-
+            var roomCoordinates = this.tileLayer.screenToTilePos(pos);
 
             this.createActionIcons(room);
         }
@@ -245,7 +245,8 @@ GameScene = pc.Scene.extend('GameScene',
         }          
 
         this.tileLayer.setOrigin(center_x, center_y);
-
+        this.tileLayer.px_room = px_room;
+        this.tileLayer.nb_room = this.nb_room;
         this.tileLayer.prerender();
     }
 

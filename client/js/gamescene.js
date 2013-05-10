@@ -14,35 +14,38 @@ GameScene = pc.Scene.extend('GameScene',
         ROOM_SPAWN: 8, // spawn de depart
         ROOM_EXIT: 9, //salle de sortie
 
-        //Layer's zIndex
-        ZINDEX_ROOM_LAYER: 1,
-        ZINDEX_PLAYER_LAYER: 2,
-        ZINDEX_META_LAYER: 3
-    },
-    {
-        roomLayer: null,
-        playerLayer: null,
-        metaLayer: null,
-        boxes: null,
-        roomSheet: null,
-        isInit: false,
-        player: null,
-        lookAction: null,
-        enterAction: null,
+    //Layer's zIndex
+    ZINDEX_ROOM_LAYER: 10,
+    ZINDEX_PLAYER_LAYER: 20,
+    ZINDEX_META_LAYER: 30
+}, 
+{
+    roomLayer: null,
+    playerLayer: null,
+    metaLayer: null,
+    boxes: null,
+    roomSheet: null,
+    isInit: false,
+    player: null,
+    lookAction: null,
+    enterAction: null,
 
         init: function () {
             this._super();
 
             this.nb_room = 3;
 
-            //-----------------------------------------------------------------------------
-            // room layer
-            //-----------------------------------------------------------------------------
-            this.roomLayer = this.addLayer(new pc.EntityLayer('room layer', 10000, 10000), this.ZINDEX_ROOM_LAYER);
+        //-----------------------------------------------------------------------------
+        // room layer
+        //-----------------------------------------------------------------------------
+        this.roomLayer = this.addLayer(new pc.EntityLayer('room layer', 10000, 10000), this.ZINDEX_META_LAYER);
 
-            // all we need to handle the rooms
-            this.roomLayer.addSystem(new BasicRoomSystem());
-            this.roomSheet = new pc.SpriteSheet({ image: pc.device.loader.get('room').resource, useRotation: false });
+        // all we need to handle the rooms
+        this.roomLayer.addSystem(new BasicRoomSystem());
+        this.roomLayer.addSystem(new pc.systems.Render());
+
+        this.roomSheet = new pc.SpriteSheet({ image: pc.device.loader.get('room').resource, useRotation: false });
+        this.roomSheet.alpha = 0.5;
 
             //-----------------------------------------------------------------------------
             // player layer
@@ -56,36 +59,37 @@ GameScene = pc.Scene.extend('GameScene',
             this.tileMap = new pc.TileMap(new pc.TileSet(this.roomSheet), this.nb_room, this.nb_room, 200, 200);
             this.tileMap.generate(0);
 
-            this.tileLayer = this.addLayer(new CubeTileLayer('tileLayer', true, this.tileMap), this.ZINDEX_META_LAYER);
-            this.onResize(pc.device.canvasWidth, pc.device.canvasHeight);
+        this.tileLayer = this.addLayer(new CubeTileLayer('tileLayer', true, this.tileMap), this.ZINDEX_ROOM_LAYER);
+        this.onResize(pc.device.canvasWidth, pc.device.canvasHeight);
 
-            //-----------------------------------------------------------------------------
-            // meta layer
-            //-----------------------------------------------------------------------------
-            this.uiLayer = this.addLayer(new pc.EntityLayer('uiLayer', 50, 50), this.ZINDEX_META_LAYER);
-            this.uiLayer.addSystem(new pc.systems.Render());
-            this.buildUI();
-            // bind some keys/clicks/touches to access the menu
+        //-----------------------------------------------------------------------------
+        // meta layer
+        //-----------------------------------------------------------------------------
+        this.uiLayer = this.addLayer(new pc.EntityLayer('uiLayer', 50, 50), this.ZINDEX_META_LAYER);
+        this.uiLayer.addSystem(new pc.systems.Layout());
+        this.uiLayer.addSystem(new pc.systems.Render());
+        this.buildUI();
+        // bind some keys/clicks/touches to access the menu
 
             pc.device.input.bindAction(this, 'menu', 'ESC');
             pc.device.input.bindAction(this, 'clicAction', 'MOUSE_BUTTON_LEFT_DOWN');
 
         },
 
-        buildUI: function () {
-            // fps counter
-            this.ui_fpsCounter = pc.Entity.create(this.uiLayer);
-            this.ui_fpsCounter.addComponent(pc.components.Spatial.create({ w: 200, h: 50 }));
-            this.ui_fpsCounter.addComponent(pc.components.Text.create({ fontHeight: 20, lineWidth: 1, strokeColor: '#ffffff', color: '#222288', text: ['NIL'] }));
-            this.ui_fpsCounter.addComponent(pc.components.Layout.create({ vertical: 'top', horizontal: 'left', margin: { left: 40, bottom: 70 }}));
-            this.ui_fpsCounter.addComponent(FPSCounterComponent.create());
+    buildUI: function() {
+        // fps counter
+        this.ui_fpsCounter = pc.Entity.create(this.uiLayer);
+        this.ui_fpsCounter.addComponent(pc.components.Spatial.create({ w: 200, h: 50 }));
+        this.ui_fpsCounter.addComponent(pc.components.Text.create({ fontHeight: 15, lineWidth: 1, strokeColor: '#ffffff', color: '##222288', text: ['NIL'] }));
+        this.ui_fpsCounter.addComponent(pc.components.Layout.create({ vertical: 'top', horizontal: 'left', margin: { left: 40, bottom: 70 }}));
+        this.ui_fpsCounter.addComponent(FPSCounterComponent.create());
 
-            // shuffle timer
-            this.ui_shuffleTimer = pc.Entity.create(this.uiLayer);
-            this.ui_shuffleTimer.addComponent(pc.components.Spatial.create({ w: 400, h: 100 }));
-            this.ui_shuffleTimer.addComponent(pc.components.Text.create({ fontHeight: 20, lineWidth: 1, strokeColor: '#ffffff', color: '#222288', text: ['NIL'] }));
-            this.ui_shuffleTimer.addComponent(pc.components.Layout.create({ vertical: 'middle', horizontal: 'right', margin: { left: 240, bottom: 70 }}));
-            this.ui_shuffleTimer.addComponent(TimerComponent.create(0, 0));
+        // shuffle timer
+        this.ui_shuffleTimer = pc.Entity.create(this.uiLayer);
+        this.ui_shuffleTimer.addComponent(pc.components.Spatial.create({ w: 200, h: 50 }));
+        this.ui_shuffleTimer.addComponent(pc.components.Text.create({ fontHeight: 15, lineWidth: 1, strokeColor: '#ffffff', color: '#222288', text: ['NIL'] }));
+        this.ui_shuffleTimer.addComponent(pc.components.Layout.create({ vertical: 'top', horizontal: 'left', margin: { left: 40, bottom: 70 }}));
+        this.ui_shuffleTimer.addComponent(TimerComponent.create(0, 0));
 
             this.uiLayer.addSystem(new TimerSystem());
             this.uiLayer.addSystem(new FPSCounterSystem());

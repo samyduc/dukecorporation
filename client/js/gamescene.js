@@ -154,7 +154,7 @@ GameScene = pc.Scene.extend('GameScene',
             while (node) {
                 var room_component = node.object().getComponent('basicroom');
 
-                if(Math.abs(room_component.x - player_room_component.x) > this.nb_room || Math.abs(room_component.y - player_room_component.y) > this.nb_room) {
+                if(Math.abs(room_component.x - player_room_component.x) >= this.nb_room || Math.abs(room_component.y - player_room_component.y) >= this.nb_room) {
                     node.object().remove();
                 }
 
@@ -210,7 +210,7 @@ GameScene = pc.Scene.extend('GameScene',
             var room = pc.Entity.create(this.roomLayer);
             room.addComponent(BasicRoom.create(network_room.id, network_room.players, network_room.dead_nb, network_room.x, network_room.y));
             room.addComponent(pc.components.Spatial.create({ w: 200, h: 50 }));
-            room.addComponent(pc.components.Text.create({ fontHeight: 25, text: [''], offset: { x: 0, y: 0 } }));
+            room.addComponent(pc.components.Text.create({ fontHeight: 15, text: [''], offset: { x: 0, y: 0 } }));
             switch (network_room.type) {
                 case this.ROOM_RANDOM_DEATH:
                     room.addComponent(RandomDeathRoom.create({killRate: Math.floor((Math.random() * 100)) }));
@@ -292,6 +292,8 @@ GameScene = pc.Scene.extend('GameScene',
             this.tileLayer.px_room = px_room;
             this.tileLayer.nb_room = this.nb_room;
             this.tileLayer.prerender();
+
+            this.flagAllRooms(true);
         },
 
         getRoomById: function (id) {
@@ -312,6 +314,17 @@ GameScene = pc.Scene.extend('GameScene',
             }
 
             return room;
+        },
+
+        flagAllRooms: function(dirty) {
+            var list_entities = this.roomLayer.entityManager.entities;
+            var node = list_entities.first;
+            while (node) {
+                var room_component = node.object().getComponent('basicroom');
+                room_component.dirty = dirty;
+
+                node = node.next();
+            }            
         },
 
         tileToWorldRoom: function (tilePos, player) {

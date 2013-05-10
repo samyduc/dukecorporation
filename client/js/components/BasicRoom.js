@@ -18,6 +18,7 @@ BasicRoom = pc.components.Component('BasicRoom' ,
         x:0,
         y:0,
         visible:false,
+        dirty:false,
 
         init:function (id, playerList, nbDeadBodies, x, y)
         {
@@ -32,6 +33,16 @@ BasicRoom = pc.components.Component('BasicRoom' ,
             this.nbDeadBodies = nbDeadBodies;
             this.x = x;
             this.y = y;
+        },
+
+        onNetwork: function(playerList, nb_dead, x, y) {
+            // not reusing config
+            this.playerList = playerList;
+            this.nbDeadBodies = nb_dead;
+            this.x = x;
+            this.y = y;
+
+            this.dirty = true;
         },
 
         createActionIcons: function () {

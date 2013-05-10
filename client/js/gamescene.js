@@ -15,9 +15,9 @@ GameScene = pc.Scene.extend('GameScene',
     ROOM_EXIT: 9, //salle de sortie
 
     //Layer's zIndex
-    ZINDEX_ROOM_LAYER: 30,
+    ZINDEX_ROOM_LAYER: 10,
     ZINDEX_PLAYER_LAYER: 20,
-    ZINDEX_META_LAYER: 10
+    ZINDEX_META_LAYER: 30
 }, 
 {
     roomLayer: null,
@@ -45,6 +45,7 @@ GameScene = pc.Scene.extend('GameScene',
         this.roomLayer.addSystem(new pc.systems.Render());
 
         this.roomSheet = new pc.SpriteSheet({ image: pc.device.loader.get('room').resource, useRotation: false });
+        this.roomSheet.alpha = 0.5;
 
         //-----------------------------------------------------------------------------
         // player layer
@@ -65,6 +66,7 @@ GameScene = pc.Scene.extend('GameScene',
         // meta layer
         //-----------------------------------------------------------------------------
         this.uiLayer = this.addLayer(new pc.EntityLayer('uiLayer', 50, 50), this.ZINDEX_META_LAYER);
+        this.uiLayer.addSystem(new pc.systems.Layout());
         this.uiLayer.addSystem(new pc.systems.Render());
         this.buildUI();
         // bind some keys/clicks/touches to access the menu
@@ -78,15 +80,15 @@ GameScene = pc.Scene.extend('GameScene',
         // fps counter
         this.ui_fpsCounter = pc.Entity.create(this.uiLayer);
         this.ui_fpsCounter.addComponent(pc.components.Spatial.create({ w: 200, h: 50 }));
-        this.ui_fpsCounter.addComponent(pc.components.Text.create({ fontHeight: 20, lineWidth: 1, strokeColor: '#ffffff', color: '##222288', text: ['NIL'] }));
+        this.ui_fpsCounter.addComponent(pc.components.Text.create({ fontHeight: 15, lineWidth: 1, strokeColor: '#ffffff', color: '##222288', text: ['NIL'] }));
         this.ui_fpsCounter.addComponent(pc.components.Layout.create({ vertical: 'top', horizontal: 'left', margin: { left: 40, bottom: 70 }}));
         this.ui_fpsCounter.addComponent(FPSCounterComponent.create());
 
         // shuffle timer
         this.ui_shuffleTimer = pc.Entity.create(this.uiLayer);
-        this.ui_shuffleTimer.addComponent(pc.components.Spatial.create({ w: 400, h: 100 }));
-        this.ui_shuffleTimer.addComponent(pc.components.Text.create({ fontHeight: 20, lineWidth: 1, strokeColor: '#ffffff', color: '#222288', text: ['NIL'] }));
-        this.ui_shuffleTimer.addComponent(pc.components.Layout.create({ vertical: 'middle', horizontal: 'right', margin: { left: 240, bottom: 70 }}));
+        this.ui_shuffleTimer.addComponent(pc.components.Spatial.create({ w: 200, h: 50 }));
+        this.ui_shuffleTimer.addComponent(pc.components.Text.create({ fontHeight: 15, lineWidth: 1, strokeColor: '#ffffff', color: '#222288', text: ['NIL'] }));
+        this.ui_shuffleTimer.addComponent(pc.components.Layout.create({ vertical: 'top', horizontal: 'left', margin: { left: 40, bottom: 70 }}));
         this.ui_shuffleTimer.addComponent(TimerComponent.create(0, 0));
 
         this.uiLayer.addSystem(new TimerSystem());

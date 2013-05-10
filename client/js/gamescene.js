@@ -126,7 +126,7 @@ GameScene = pc.Scene.extend('GameScene',
     },
     initPlayerFromJSON:function (reponse) {
         this.player = pc.Entity.create(this.playerLayer);
-        this.player.addComponent(Player.create(reponse.id,reponse.username,reponse.room));
+        this.player.addComponent(Player.create(reponse.id,reponse.username, reponse.action, reponse.room));
     },
 
     update: function (rooms) {
@@ -138,8 +138,13 @@ GameScene = pc.Scene.extend('GameScene',
         }
     },
 
-    onNetworkRoomUpdate: function(network_rooms) {
+    onNetworkPlayerUpdate: function(network_update) {
         var player_component = this.player.getComponent('player');
+
+        player_component.onNetwork(player_component.room, player_component.action);
+    },
+
+    onNetworkRoomUpdate: function(network_rooms) {
         var roomList = network_rooms;
 
         for (var i = 0; i < roomList.length; i++) {
@@ -163,6 +168,7 @@ GameScene = pc.Scene.extend('GameScene',
 
         if(input_network.event == 'update'){
             // sync local data with new
+            this.onNetworkPlayerUpdate(input_network);
             this.onNetworkRoomUpdate(input_network.rooms);
         }
     },

@@ -16,21 +16,27 @@ Player = pc.components.Component('Player' ,
         username:null,
         //The room the player is in
         roomId:null,
-        //The rooms the player can see
-        rooms:null,
+        action:null,
+        dirty:false,
 
-        init:function (id, username, roomId)
+        init:function (id, username, action, roomId)
         {
             this._super(this.Class.shortName);
-            this.config(id, username, roomId);
+            this.config(id, username, action, roomId);
         },
 
-        config:function (id, username, roomId)
+        config:function (id, username, action, roomId)
         {
             this.id = id;
             this.username = username;
             this.roomId = roomId;
-            this.rooms = [];
+            this.action = action;
+        },
+
+        onNetwork: function(roomId, action){
+            this.roomId = roomId;
+            this.action = action;
+            this.dirty = true;
         }
 
     });

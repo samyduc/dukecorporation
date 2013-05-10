@@ -15,7 +15,7 @@ TimerSystem = pc.systems.EntitySystem.extend('TimerSystem',
             var timer_component = entity.getComponent('timercomponent');
 
             var text_component = entity.getComponent('text');
-            text_component.text = [timer_component.getTimeLeft().toString()];
+            text_component.text = [Math.ceil(timer_component.getTimeLeft()).toString()];
         }
 
     });

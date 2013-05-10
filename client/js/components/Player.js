@@ -4,10 +4,10 @@
 
 Player = pc.components.Component('Player' ,
     {
-        create:function (id, username, roomId)
+        create:function (id, username, action, roomId)
         {
             var n = this._super();
-            n.config(id, username, roomId);
+            n.config(id, username, action, roomId);
             return n;
         }
     },
@@ -33,7 +33,7 @@ Player = pc.components.Component('Player' ,
             this.action = action;
         },
 
-        onNetwork: function(roomId, action){
+        onNetwork: function(action, roomId){
             this.roomId = roomId;
             this.action = action;
             this.dirty = true;

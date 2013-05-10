@@ -8,12 +8,12 @@ PlayerSystem = pc.systems.EntitySystem.extend('PlayerSystem',
 
         init:function ()
         {
-            this._super([ 'PlayerSystem' ]);
+            this._super([ 'player' ]);
         },
 
         process:function (entity)
         {
-            var basicRoomComponent = entity.getComponent('Player');
+            var basicRoomComponent = entity.getComponent('player');
 
         }
 

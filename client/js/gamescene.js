@@ -35,6 +35,8 @@ GameScene = pc.Scene.extend('GameScene',
 
             this.boxes = [];
 
+            this.nb_room = 3;
+
             //-----------------------------------------------------------------------------
             // room layer
             //-----------------------------------------------------------------------------
@@ -44,7 +46,7 @@ GameScene = pc.Scene.extend('GameScene',
             this.roomLayer.addSystem(new BasicRoomSystem());
             this.roomLayer.addSystem(new RandomDeathRoomSystem());
             this.roomLayer.addSystem(new pc.systems.Render());
-             this.roomLayer.addSystem(new pc.systems.Effects());
+            this.roomLayer.addSystem(new pc.systems.Effects());
 
             //-----------------------------------------------------------------------------
             // player layer
@@ -54,6 +56,13 @@ GameScene = pc.Scene.extend('GameScene',
             // all we need to handle the players
             this.playerLayer.addSystem(new PlayerSystem());
             this.roomSheet = new pc.SpriteSheet({ image: pc.device.loader.get('room').resource, useRotation: false });
+
+            // background
+            this.tileMap = new pc.TileMap(new pc.TileSet(this.roomSheet), this.nb_room+1, this.nb_room+1, 200, 200);
+            this.tileMap.generate(0);
+
+            this.tileLayer = this.addLayer(new pc.TileLayer('tileLayer', false, this.tileMap), this.ZINDEX_META_LAYER);
+            this.onResize(pc.device.canvasWidth, pc.device.canvasHeight);
 
             //-----------------------------------------------------------------------------
             // meta layer
@@ -158,8 +167,8 @@ GameScene = pc.Scene.extend('GameScene',
         createRoom: function (jsonRoom,basePoint) {
             var room = pc.Entity.create(this.roomLayer);
             room.addComponent(BasicRoom.create({ id: jsonRoom.id, playerList: jsonRoom.players, deadBodies: jsonRoom.dead_nb, x: jsonRoom.x, y: jsonRoom.y}));
-            var roomSprite = pc.components.Sprite.create({ spriteSheet: this.roomSheet});
-            room.addComponent(roomSprite);
+            //var roomSprite = pc.components.Sprite.create({ spriteSheet: this.roomSheet});
+            //room.addComponent(roomSprite);
  // room.addComponent( pc.components.Scale.create( { x: 0.5, y: 0.5} ));
            var posx = 100+(jsonRoom.x-basePoint.x)*this.roomSheet.frameWidth;
            var posy = 100+(jsonRoom.y-basePoint.y)*this.roomSheet.frameHeight;
@@ -193,6 +202,40 @@ GameScene = pc.Scene.extend('GameScene',
             this.enterAction.addComponent(pc.components.Text.create({ fontHeight: 25, text: ['|\'|'], offset: { x:15, y:-10 } }));
             pc.device.input.bindAction(this, 'enter', 'MOUSE_BUTTON_LEFT_DOWN', this.enterAction.getComponent("spatial"));
             //  }
+        },
+
+        onResize: function(width, height) {
+            
+            var px_room = 0;
+            var ratio = 0;
+            var center_x = 0;
+            var center_y = 0;
+            // compute better ratio
+            if(width > height) {
+                ratio = height;
+            }
+            else {
+                ratio = height;
+            }
+
+            px_room = Math.floor(ratio / this.nb_room);
+
+            var scale = px_room / this.roomSheet.frameWidth;
+
+            this.roomSheet.setScale(scale, scale);
+
+            this.tileMap.tileWidth = px_room;
+            this.tileMap.tileHeight = px_room;
+
+            if(width > height) {
+                center_x = -1*(width/2 - px_room*this.nb_room/2);
+            }
+            else {
+                center_y = -1*(height/2 - px_room*this.nb_room/2);
+            }          
+
+            this.tileLayer.setOrigin(center_x, center_y);
+
         }
 
     });

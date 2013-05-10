@@ -143,6 +143,26 @@ GameScene = pc.Scene.extend('GameScene',
             }
         },
 
+        removeRoomsNotAroundPlayer: function(player) {
+            var room = null;
+            var player_component = player.getComponent('player');
+            var player_room_component = player_component.getLinkedRoom().getComponent('basicroom');
+
+            var list_entities = this.roomLayer.entityManager.entities;
+            var node = list_entities.first;
+
+            while (node) {
+                var room_component = node.object().getComponent('basicroom');
+
+                if(Math.abs(room_component.x - player_room_component.x) > this.nb_room || Math.abs(room_component.y - player_room_component.y) > this.nb_room) {
+                    node.object().remove();
+                }
+
+                node = node.next();
+            }
+
+        },
+
         onNetworkPlayerUpdate: function (network_update) {
 
             var player_component = this.player.getComponent('player');
@@ -166,6 +186,8 @@ GameScene = pc.Scene.extend('GameScene',
                     this.createRoom(network_room);
                 }
             }
+
+            this.removeRoomsNotAroundPlayer(this.player);
         },
 
         onNetwork: function (input_network) {

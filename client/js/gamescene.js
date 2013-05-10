@@ -76,6 +76,8 @@ GameScene = pc.Scene.extend('GameScene',
             // bind some keys/clicks/touches to access the menu
 
             pc.device.input.bindAction(this, 'menu', 'ESC');
+            pc.device.input.bindAction(this, 'clicAction', 'MOUSE_BUTTON_LEFT_DOWN');
+
 
         },
 
@@ -91,15 +93,10 @@ GameScene = pc.Scene.extend('GameScene',
             }
             if (actionName === 'menu')
                 pc.device.game.activateMenu();
-            if (actionName === 'displayPossibleActions') {
+            if (actionName === 'clicAction') {
                 this.createActionIcons(room);
             }
-            if (actionName === 'look') {
-                this.player.getComponent('player').rooms[this.player.rooms.length] = room.id;
-            }
-            if (actionName === 'enter') {
-                this.player.getComponent('player').roomId = room.id;
-            }
+
 
             return false; // eat the event (so it wont pass through to the newly activated menuscene
         },

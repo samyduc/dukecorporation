@@ -33,8 +33,6 @@ GameScene = pc.Scene.extend('GameScene',
         init: function () {
             this._super();
 
-            this.rooms = new pc.Hashmap();
-
             this.nb_room = 3;
 
             //-----------------------------------------------------------------------------
@@ -144,21 +142,15 @@ GameScene = pc.Scene.extend('GameScene',
             player_component.onNetwork(network_update.action, network_update.room);
         },
 
-        onNetworkRoomUpdate: function (network_rooms) {
-            var roomList = network_rooms;
+        for (var i = 0; i < roomList.length; i++) {
+            var network_room = roomList[i];
+            
+            var temp_room = this.getRoomById(network_room.id);
 
-            for (var i = 0; i < roomList.length; i++) {
-                var network_room = roomList[i];
-
-                if (this.rooms.hasKey(network_room.id.toString())) {
-                    // update
-                    room = this.rooms.get(network_room.id.toString());
-                    basic_component = room.getComponent('basicroom');
-                    basic_component.onNetwork(network_room.players, network_room.dead_nb, network_room.x, network_room.y)
-                }
-                else {
-                    this.createRoom(network_room);
-                }
+            if(temp_room != null) {
+                // update
+                basic_component = temp_room.getComponent('basicroom');
+                basic_component.onNetwork(network_room.players, network_room.dead_nb, network_room.x, network_room.y)
             }
         },
 
@@ -260,16 +252,37 @@ GameScene = pc.Scene.extend('GameScene',
                 return room;
             }
 
-            var room_center_component = this.rooms.get(player_component.roomId.toString()).getComponent('basicroom');
+    getRoomById: function(id){
+        var room = null;
 
-            while (node) {
-                room_component = node.object().getComponent('basicroom');
-                tiled_pos = room_component.getTilePosition(room_center_component);
+        var list_entities = this.roomLayer.entityManager.entities;
+        var node = list_entities.first;
 
-                if (tiled_pos.x == tilePos.x && tiled_pos.y == tilePos.y) {
-                    room = room_component.getEntity();
-                    break;
-                }
+        while(node) {
+            room_component = node.object().getComponent('basicroom');
+
+            if(room_component.id == id){
+                room = node.object();
+            }
+
+            node = node.next();
+        }
+
+        return room;
+    },
+
+    tileToWorldRoom: function(tilePos, player){
+        var list_entities = this.roomLayer.entityManager.entities;
+        var pos = pc.Point.create(-1, -1);
+        var node = list_entities.first;
+        var player_component = player.getComponent('player');
+
+        var room_temp = this.getRoomById(player_component.roomId);
+        if(room_temp == null) {
+            return pos;
+        }
+
+        var room_center_component = room_temp.getComponent('basicroom');
 
                 node = node.next();
             }

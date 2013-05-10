@@ -48,7 +48,13 @@ CubeTileLayer = pc.TileLayer.extend('CubeTileLayer',
 
             return null;
 
+        },
+
+
+        tileToScreenTile: function (tilePos) {
+            var x = tilePos.x  * this.px_room + (this.origin.x * -1);
+            var y = tilePos.y  * this.px_room + this.origin.y;
+
+            return pc.Point.create(x,y);
         }
-
-
     });

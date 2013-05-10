@@ -45,8 +45,6 @@ GameScene = pc.Scene.extend('GameScene',
         // all we need to handle the rooms
         this.roomLayer.addSystem(new BasicRoomSystem());
         this.roomLayer.addSystem(new RandomDeathRoomSystem());
-        this.roomLayer.addSystem(new pc.systems.Render());
-        this.roomLayer.addSystem(new pc.systems.Effects());
 
         //-----------------------------------------------------------------------------
         // player layer
@@ -57,7 +55,7 @@ GameScene = pc.Scene.extend('GameScene',
         this.playerLayer.addSystem(new PlayerSystem());
         this.roomSheet = new pc.SpriteSheet({ image: pc.device.loader.get('room').resource, useRotation: false });
 
-        // background
+        // background (build default then resize)
         this.tileMap = new pc.TileMap(new pc.TileSet(this.roomSheet), this.nb_room, this.nb_room, 200, 200);
         this.tileMap.generate(0);
 
@@ -77,7 +75,22 @@ GameScene = pc.Scene.extend('GameScene',
     },
 
     buildUI: function() {
+        // fps counter
+        this.ui_fpsCounter = pc.Entity.create(this.uiLayer);
+        this.ui_fpsCounter.addComponent(pc.components.Spatial.create({ w: 200, h: 50 }));
+        this.ui_fpsCounter.addComponent(pc.components.Text.create({ fontHeight: 20, lineWidth: 1, strokeColor: '#ffffff', color: '#222288', text: ['NIL'] }));
+        this.ui_fpsCounter.addComponent(pc.components.Layout.create({ vertical: 'top', horizontal: 'left', margin: { left: 40, bottom: 70 }}));
+        this.ui_fpsCounter.addComponent(FPSCounterComponent.create());
 
+        // shuffle timer
+        this.ui_shuffleTimer = pc.Entity.create(this.uiLayer);
+        this.ui_shuffleTimer.addComponent(pc.components.Spatial.create({ w: 400, h: 100 }));
+        this.ui_shuffleTimer.addComponent(pc.components.Text.create({ fontHeight: 20, lineWidth: 1, strokeColor: '#ffffff', color: '#222288', text: ['NIL'] }));
+        this.ui_shuffleTimer.addComponent(pc.components.Layout.create({ vertical: 'middle', horizontal: 'right', margin: { left: 240, bottom: 70 }}));
+        this.ui_shuffleTimer.addComponent(TimerComponent.create(0, 0));
+
+        this.uiLayer.addSystem(new TimerSystem());
+        this.uiLayer.addSystem(new FPSCounterSystem());
     },
 
     // handle menu actions
@@ -106,15 +119,13 @@ GameScene = pc.Scene.extend('GameScene',
     },
 
     process: function () {
+
+        //if (!pc.device.loader.finished) return;
         // clear the background
         pc.device.ctx.clearRect(0, 0, pc.device.canvasWidth, pc.device.canvasHeight);
 
         // always call the super
         this._super();
-
-        //
-        // ... do extra processing in here
-        //
     },
     initPlayerFromJSON:function (reponse) {
         var playerEntity = pc.Entity.create(this.playerLayer);
@@ -168,13 +179,7 @@ GameScene = pc.Scene.extend('GameScene',
     createRoom: function (jsonRoom,basePoint) {
         var room = pc.Entity.create(this.roomLayer);
         room.addComponent(BasicRoom.create({ id: jsonRoom.id, playerList: jsonRoom.players, deadBodies: jsonRoom.dead_nb, x: jsonRoom.x, y: jsonRoom.y}));
-        //var roomSprite = pc.components.Sprite.create({ spriteSheet: this.roomSheet});
-        //room.addComponent(roomSprite);
-// room.addComponent( pc.components.Scale.create( { x: 0.5, y: 0.5} ));
-       var posx = 100+(jsonRoom.x-basePoint.x)*this.roomSheet.frameWidth;
-       var posy = 100+(jsonRoom.y-basePoint.y)*this.roomSheet.frameHeight;
-        room.addComponent(pc.components.Spatial.create({x:posx, y:posy, dir:0,
-                    w:this.roomSheet.frameWidth, h:this.roomSheet.frameHeight}));            switch (jsonRoom.type) {
+        switch (jsonRoom.type) {
             case this.ROOM_RANDOM_DEATH:
                 room.addComponent(RandomDeathRoom.create({killRate: jsonRoom.killRate}));
                 break;

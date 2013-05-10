@@ -142,126 +142,135 @@ GameScene = pc.Scene.extend('GameScene',
             player_component.onNetwork(network_update.action, network_update.room);
         },
 
-        for (var i = 0; i < roomList.length; i++) {
-            var network_room = roomList[i];
-            
-            var temp_room = this.getRoomById(network_room.id);
+        for (var i = 0;
+i < roomList.length;
+i++
+)
+{
+    var network_room = roomList[i];
 
-            if(temp_room != null) {
-                // update
-                basic_component = temp_room.getComponent('basicroom');
-                basic_component.onNetwork(network_room.players, network_room.dead_nb, network_room.x, network_room.y)
-            }
-        },
+    var temp_room = this.getRoomById(network_room.id);
 
-        onNetwork: function (input_network) {
+    if (temp_room != null) {
+        // update
+        basic_component = temp_room.getComponent('basicroom');
+        basic_component.onNetwork(network_room.players, network_room.dead_nb, network_room.x, network_room.y)
+    }
+}
+,
 
-            if (this.player == null) {
-                return;
-            }
+onNetwork: function (input_network) {
 
-            var timer_component = this.ui_shuffleTimer.getComponent("timercomponent");
-            timer_component.config(input_network.shuffle_start, input_network.shuffle_duration);
+    if (this.player == null) {
+        return;
+    }
 
-            if (input_network.event == 'update') {
-                // sync local data with new
-                this.onNetworkPlayerUpdate(input_network);
-                this.onNetworkRoomUpdate(input_network.rooms);
-            }
-        },
+    var timer_component = this.ui_shuffleTimer.getComponent("timercomponent");
+    timer_component.config(input_network.shuffle_start, input_network.shuffle_duration);
 
-        createRoom: function (network_room) {
-            var room = pc.Entity.create(this.roomLayer);
-            room.addComponent(BasicRoom.create({ id: network_room.id, playerList: network_room.players, deadBodies: network_room.dead_nb, x: network_room.x, y: network_room.y}));
-            switch (network_room.type) {
-                case this.ROOM_RANDOM_DEATH:
-                    room.addComponent(RandomDeathRoom.create({killRate: Math.floor((Math.random() * 100)) }));
-                    break;
-                case this.ROOM_DEATH:
-                    room.addComponent(RandomDeathRoom.create({killRate: 100}));
-                    break;
-                default:
-                    break;
-            }
+    if (input_network.event == 'update') {
+        // sync local data with new
+        this.onNetworkPlayerUpdate(input_network);
+        this.onNetworkRoomUpdate(input_network.rooms);
+    }
+}
+,
 
-            this.rooms.put(network_room.id.toString(), room);
-        },
+createRoom: function (network_room) {
+    var room = pc.Entity.create(this.roomLayer);
+    room.addComponent(BasicRoom.create({ id: network_room.id, playerList: network_room.players, deadBodies: network_room.dead_nb, x: network_room.x, y: network_room.y}));
+    switch (network_room.type) {
+        case this.ROOM_RANDOM_DEATH:
+            room.addComponent(RandomDeathRoom.create({killRate: Math.floor((Math.random() * 100)) }));
+            break;
+        case this.ROOM_DEATH:
+            room.addComponent(RandomDeathRoom.create({killRate: 100}));
+            break;
+        default:
+            break;
+    }
 
-        createActionIcons: function (room) {
-            var room_component = room.getComponent('basicroom');
-            var player = this.player.getComponent('player');
-            if (!room.visible) {
-                this.lookAction = pc.Entity.create(this.uiLayer);
-                this.lookAction.addComponent(pc.components.Spatial.create({ x: 3*this.tileLayer.px_room/5+(this.tileLayer.origin.x*-1), y:  3*this.tileLayer.px_room/5+this.tileLayer.origin.y, w: this.tileLayer.px_room/5, h: this.tileLayer.px_room/5 }));
-                this.lookAction.addComponent(pc.components.Rect.create({ color: [ pc.Math.rand(0, 255), pc.Math.rand(0, 255), pc.Math.rand(0, 255) ] }));
-                this.lookAction.addComponent(pc.components.Text.create({ fontHeight: 25, text: ['<=>'], offset: { x: 15, y: -10 } }));
-                pc.device.input.bindAction(this, 'look', 'MOUSE_BUTTON_LEFT_DOWN', this.lookAction.getComponent("spatial"));
-            }
-            if (player.room != room.id) {
-                this.enterAction = pc.Entity.create(this.uiLayer);
-                this.enterAction.addComponent(pc.components.Spatial.create({ x: 500, y: 200, w: 75, h: 75 }));
-                this.enterAction.addComponent(pc.components.Rect.create({ color: [ pc.Math.rand(0, 255), pc.Math.rand(0, 255), pc.Math.rand(0, 255) ] }));
-                this.enterAction.addComponent(pc.components.Text.create({ fontHeight: 25, text: ['|\'|'], offset: { x: 15, y: -10 } }));
-                pc.device.input.bindAction(this, 'enter', 'MOUSE_BUTTON_LEFT_DOWN', this.enterAction.getComponent("spatial"));
-            }
-        },
+    this.rooms.put(network_room.id.toString(), room);
+}
+,
 
-        onResize: function (width, height) {
+createActionIcons: function (room) {
+    var room_component = room.getComponent('basicroom');
+    var player = this.player.getComponent('player');
+    if (!room.visible) {
+        this.lookAction = pc.Entity.create(this.uiLayer);
+        this.lookAction.addComponent(pc.components.Spatial.create({ x: 3 * this.tileLayer.px_room / 5 + (this.tileLayer.origin.x * -1), y: 3 * this.tileLayer.px_room / 5 + this.tileLayer.origin.y, w: this.tileLayer.px_room / 5, h: this.tileLayer.px_room / 5 }));
+        this.lookAction.addComponent(pc.components.Rect.create({ color: [ pc.Math.rand(0, 255), pc.Math.rand(0, 255), pc.Math.rand(0, 255) ] }));
+        this.lookAction.addComponent(pc.components.Text.create({ fontHeight: 25, text: ['<=>'], offset: { x: 15, y: -10 } }));
+        pc.device.input.bindAction(this, 'look', 'MOUSE_BUTTON_LEFT_DOWN', this.lookAction.getComponent("spatial"));
+    }
+    if (player.room != room.id) {
+        this.enterAction = pc.Entity.create(this.uiLayer);
+        this.enterAction.addComponent(pc.components.Spatial.create({ x: 500, y: 200, w: 75, h: 75 }));
+        this.enterAction.addComponent(pc.components.Rect.create({ color: [ pc.Math.rand(0, 255), pc.Math.rand(0, 255), pc.Math.rand(0, 255) ] }));
+        this.enterAction.addComponent(pc.components.Text.create({ fontHeight: 25, text: ['|\'|'], offset: { x: 15, y: -10 } }));
+        pc.device.input.bindAction(this, 'enter', 'MOUSE_BUTTON_LEFT_DOWN', this.enterAction.getComponent("spatial"));
+    }
+}
+,
 
-            var px_room = 0;
-            var ratio = 0;
-            var center_x = 0;
-            var center_y = 0;
-            // compute better ratio
-            if (width > height) {
-                ratio = height;
-            }
-            else {
-                ratio = height;
-            }
+onResize: function (width, height) {
 
-            px_room = Math.floor(ratio / this.nb_room);
+    var px_room = 0;
+    var ratio = 0;
+    var center_x = 0;
+    var center_y = 0;
+    // compute better ratio
+    if (width > height) {
+        ratio = height;
+    }
+    else {
+        ratio = height;
+    }
 
-            var scale = px_room / this.roomSheet.frameWidth;
+    px_room = Math.floor(ratio / this.nb_room);
 
-            this.roomSheet.setScale(scale, scale);
+    var scale = px_room / this.roomSheet.frameWidth;
 
-            this.tileMap.tileWidth = px_room;
-            this.tileMap.tileHeight = px_room;
+    this.roomSheet.setScale(scale, scale);
 
-            if (width > height) {
-                center_x = -1 * (width / 2 - px_room * this.nb_room / 2);
-            }
-            else {
-                center_y = -1 * (height / 2 - px_room * this.nb_room / 2);
-            }
+    this.tileMap.tileWidth = px_room;
+    this.tileMap.tileHeight = px_room;
 
-            this.tileLayer.setOrigin(center_x, center_y);
-            this.tileLayer.px_room = px_room;
-            this.tileLayer.nb_room = this.nb_room;
-            this.tileLayer.prerender();
-        },
+    if (width > height) {
+        center_x = -1 * (width / 2 - px_room * this.nb_room / 2);
+    }
+    else {
+        center_y = -1 * (height / 2 - px_room * this.nb_room / 2);
+    }
 
-        tileToWorldRoom: function (tilePos, player) {
-            var list_entities = this.roomLayer.entityManager.entities;
-            var room = null;
-            var node = list_entities.first;
-            var player_component = player.getComponent('player');
+    this.tileLayer.setOrigin(center_x, center_y);
+    this.tileLayer.px_room = px_room;
+    this.tileLayer.nb_room = this.nb_room;
+    this.tileLayer.prerender();
+}
+,
 
-            if (!this.rooms.hasKey(player_component.roomId.toString())) {
-                return room;
-            }
+tileToWorldRoom: function (tilePos, player) {
+    var list_entities = this.roomLayer.entityManager.entities;
+    var room = null;
+    var node = list_entities.first;
+    var player_component = player.getComponent('player');
 
-    getRoomById: function(id){
+    if (!this.rooms.hasKey(player_component.roomId.toString())) {
+        return room;
+    }
+
+    getRoomById: function (id) {
         var room = null;
 
         var list_entities = this.roomLayer.entityManager.entities;
         var node = list_entities.first;
 
-        while(node) {
+        while (node) {
             room_component = node.object().getComponent('basicroom');
 
-            if(room_component.id == id){
+            if (room_component.id == id) {
                 room = node.object();
             }
 
@@ -271,23 +280,36 @@ GameScene = pc.Scene.extend('GameScene',
         return room;
     },
 
-    tileToWorldRoom: function(tilePos, player){
+
+    tileToWorldRoom: function (tilePos, player) {
         var list_entities = this.roomLayer.entityManager.entities;
         var pos = pc.Point.create(-1, -1);
         var node = list_entities.first;
         var player_component = player.getComponent('player');
 
         var room_temp = this.getRoomById(player_component.roomId);
-        if(room_temp == null) {
+        if (room_temp == null) {
             return pos;
         }
 
         var room_center_component = room_temp.getComponent('basicroom');
 
-                node = node.next();
+        while (node) {
+            room_component = node.object().getComponent('basicroom');
+            tiled_pos = room_component.getTilePosition(room_center_component);
+
+            if (tiled_pos.x == tilePos.x && tiled_pos.y == tilePos.y) {
+                pos.x = room_component.x;
+                pos.y = room_component.y;
+                break;
             }
 
-            return room;
+            node = node.next();
         }
 
-    });
+        return pos;
+    }
+
+}
+)
+;

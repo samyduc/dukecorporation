@@ -185,6 +185,16 @@ GameScene = pc.Scene.extend('GameScene',
 
         },
 
+        removeAllRooms: function () {
+            var list_entities = this.roomLayer.entityManager.entities;
+            var node = list_entities.first;
+
+            while (node) {
+                node.object().remove();
+                node = node.next();
+            }            
+        },
+
         onNetworkVoteDead: function (network_update) {
 
         },
@@ -229,6 +239,11 @@ GameScene = pc.Scene.extend('GameScene',
             if (input_network.event == 'update') {
                 // sync local data with new
                 this.onNetworkPlayerUpdate(input_network);
+
+                if (input_network.shuffle != undefined) {
+                       this.removeAllRooms();
+                }
+
                 this.onNetworkRoomUpdate(input_network.rooms);
             }
         },

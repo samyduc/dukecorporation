@@ -123,7 +123,7 @@ GameScene = pc.Scene.extend('GameScene',
                 if (this.isEnterAction(pos)) {
                     this.performEnterAction(room);
                 } else if (this.isLookAction(pos)) {
-                    this.perfomLookAction(room);
+                    this.performLookAction(room);
                 } else {
                     this.createActionIcons(room, roomCoordinates);
                 }
@@ -133,9 +133,13 @@ GameScene = pc.Scene.extend('GameScene',
             return false; // eat the event (so it wont pass through to the newly activated menuscene
         },
 
-        perfomLookAction: function (room) {
+        performLookAction: function (room) {
             this.removeActionIcons();
             room.getComponent('basicroom').visible = true;
+            var room_center = this.getRoomById(this.player.getComponent('player').roomId);
+            var tiled_pos = room.getComponent('basicroom').getTilePosition(room_center.getComponent('basicroom'));
+            this.tileMap.setTile(tiled_pos.x,tiled_pos.y, GameScene.ROOM_SHEET_BASIC);
+            this.tileLayer.prerender();
         },
 
         performEnterAction: function (room) {

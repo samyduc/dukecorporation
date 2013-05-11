@@ -175,10 +175,11 @@ GameScene = pc.Scene.extend('GameScene',
             while (node) {
                 var room_component = node.object().getComponent('basicroom');
 
-                if (Math.abs(room_component.x - player_room_component.x) >= this.nb_room || Math.abs(room_component.y - player_room_component.y) >= this.nb_room) {
+                if (!room_component.visible (Math.abs(room_component.x - player_room_component.x) >= this.nb_room || Math.abs(room_component.y - player_room_component.y) >= this.nb_room)) {
                     node.object().remove();
                 }
 
+                room_component.dirty = true;
                 node = node.next();
             }
 

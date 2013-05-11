@@ -16,6 +16,9 @@ class World:
 		self.rooms = {}
 		self.board = []
 
+		self.pending_vote = []
+		self.pending_vote_duration = 2
+
 		self.size_x = size_x
 		self.size_y = size_y
 
@@ -44,7 +47,34 @@ class World:
 				self.GenerateWorld()
 			else:
 				self.Shuffle()
-		pass
+		
+		self.CheckVoteDead()
+
+	def CheckVoteDead(self):
+
+		# vote to delete
+		expired_vote = []
+
+		for room_id in self.pending_vote:
+			room = self.rooms[room_id]
+
+			if (time.time() - room.vote_dead_start) >= self.self.pending_vote_duration:
+				# ready to kill someone or not
+				expired_vote.append(room_id)
+				players_killed = room.CheckVoteDead()
+
+				for player in players_killed:
+					room.RemovePlayer(player)
+					player.Send_VoteDead({})
+
+				if len(room.players) > 0:
+					# if remaining players, update theim
+					self.OnUpdatePlayer(room.players.itervalues().next())
+
+		try:
+			self.pending_vote.remove(expired_vote)
+		except ValueError:
+			pass
 
 	def CheckWinners(self):
 		"""
@@ -173,6 +203,16 @@ class World:
 
 		self.OnUpdatePlayer(player)
 
+	def VoteDead(self, player_vote, username_dead, room_id):
+
+		room = self.rooms[room_id]
+		if room_id not in self.pending_vote:
+			self.pending_vote.append(room_id)
+
+		player_dead = self.players[username_dead]
+
+		room.VoteDead(player_vote, player_dead)
+
 	def OnShuffle(self, player):
 		"""
 		Update one player on shuffle
@@ -201,9 +241,6 @@ class World:
 
 		current_room = self.rooms[player.linked_room]
 		rooms = self.GetRoomFromCenter(current_room)
-
-		print "debug sendback"
-		print rooms
 		
 		data_json = self.Serialize()
 		for room in rooms:
@@ -211,5 +248,4 @@ class World:
 
 		for current_room in rooms:
 			for key, player in current_room.players.iteritems():
-				print "sending back222 %s" % player
 				player.Send_Update(data_json)

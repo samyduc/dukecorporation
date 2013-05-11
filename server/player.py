@@ -70,4 +70,8 @@ class Player:
 		#gevent.spawn(self.Send_Data, response)
 		self.Send_Data(response)
 
+	def Send_VoteDead(self, data_json):
 
+		response = {'event': 'vote_dead'}
+		response.update(data_json)
+		response.update(self.Serialize())

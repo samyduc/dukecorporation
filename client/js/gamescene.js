@@ -182,6 +182,10 @@ GameScene = pc.Scene.extend('GameScene',
 
         },
 
+        onNetworkVoteDead :function(network_update) {
+            
+        },
+
         onNetworkPlayerUpdate: function (network_update) {
 
             var player_component = this.player.getComponent('player');

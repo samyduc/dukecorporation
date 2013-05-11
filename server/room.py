@@ -1,4 +1,5 @@
 
+import time
 
 class RoomType:
 
@@ -25,6 +26,11 @@ class Room:
 		self.players = {}
 		self.dead_nb = 0
 
+		self.vote_dead_start = 0
+		self.vote_dead = {}
+		# percentage
+		self.vote_dead_needed = 0.5
+
 		self.id = id
 		self.type = type_room
 
@@ -50,6 +56,37 @@ class Room:
 		print("Add player %s in room %s" % (player, self))
 		self.players[player.username] = player
 		player.linked_room = self.id
+
+	def VoteDead(self, player_vote, player_dead):
+
+		if player.username not in self.player:
+			print("WARNING: player:%s not in a room %s" % (player, self))
+
+		if len(self.vote_dead) == 0:
+			self.vote_dead_start = time.time()
+
+		list_vote = self.vote_dead[player_dead.username]
+
+		# cannot vote twice honey
+		if player_vote.username not in list_vote:
+			list_vote.append(player_vote.username)
+
+	def CheckVoteDead(self):
+
+		players_killed = []
+
+		for player_dead_username, player_vote_list in self.vote_dead.iteritems():
+
+			if len(player_vote_list) / len(self.players) > self.vote_dead_needed:
+				# killed
+				players_killed.append(self.players[player_dead_username])
+				self.dead_nb += 1
+			else:
+				print("WARNING: vote dead rejected :%s in a room %s" % (player_dead_username, self))
+
+		self.vote_dead.clear()
+
+		return players_killed
 
 	def Serialize(self):
 		return {'id':self.id, 

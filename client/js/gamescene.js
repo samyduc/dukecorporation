@@ -14,39 +14,39 @@ GameScene = pc.Scene.extend('GameScene',
         ROOM_SPAWN: 8, // spawn de depart
         ROOM_EXIT: 9, //salle de sortie
 
-    //Layer's zIndex
-    ZINDEX_ROOM_LAYER: 10,
-    ZINDEX_PLAYER_LAYER: 20,
-    ZINDEX_META_LAYER: 30
-}, 
-{
-    roomLayer: null,
-    playerLayer: null,
-    metaLayer: null,
-    boxes: null,
-    roomSheet: null,
-    isInit: false,
-    player: null,
-    lookAction: null,
-    enterAction: null,
-    socket:null,
+        //Layer's zIndex
+        ZINDEX_ROOM_LAYER: 10,
+        ZINDEX_PLAYER_LAYER: 20,
+        ZINDEX_META_LAYER: 30
+    },
+    {
+        roomLayer: null,
+        playerLayer: null,
+        metaLayer: null,
+        boxes: null,
+        roomSheet: null,
+        isInit: false,
+        player: null,
+        lookAction: null,
+        enterAction: null,
+        socket: null,
 
         init: function () {
             this._super();
 
             this.nb_room = 3;
 
-        //-----------------------------------------------------------------------------
-        // room layer
-        //-----------------------------------------------------------------------------
-        this.roomLayer = this.addLayer(new pc.EntityLayer('room layer', 10000, 10000), this.ZINDEX_META_LAYER);
+            //-----------------------------------------------------------------------------
+            // room layer
+            //-----------------------------------------------------------------------------
+            this.roomLayer = this.addLayer(new pc.EntityLayer('room layer', 10000, 10000), this.ZINDEX_META_LAYER);
 
-        // all we need to handle the rooms
-        this.roomLayer.addSystem(new BasicRoomSystem());
-        this.roomLayer.addSystem(new pc.systems.Render());
+            // all we need to handle the rooms
+            this.roomLayer.addSystem(new BasicRoomSystem());
+            this.roomLayer.addSystem(new pc.systems.Render());
 
-        this.roomSheet = new pc.SpriteSheet({ image: pc.device.loader.get('room').resource, useRotation: false });
-        this.roomSheet.alpha = 0.5;
+            this.roomSheet = new pc.SpriteSheet({ image: pc.device.loader.get('room').resource, useRotation: false });
+            this.roomSheet.alpha = 0.5;
 
             //-----------------------------------------------------------------------------
             // player layer
@@ -60,37 +60,37 @@ GameScene = pc.Scene.extend('GameScene',
             this.tileMap = new pc.TileMap(new pc.TileSet(this.roomSheet), this.nb_room, this.nb_room, 200, 200);
             this.tileMap.generate(0);
 
-        this.tileLayer = this.addLayer(new CubeTileLayer('tileLayer', true, this.tileMap), this.ZINDEX_ROOM_LAYER);
-        this.onResize(pc.device.canvasWidth, pc.device.canvasHeight);
+            this.tileLayer = this.addLayer(new CubeTileLayer('tileLayer', true, this.tileMap), this.ZINDEX_ROOM_LAYER);
+            this.onResize(pc.device.canvasWidth, pc.device.canvasHeight);
 
-        //-----------------------------------------------------------------------------
-        // meta layer
-        //-----------------------------------------------------------------------------
-        this.uiLayer = this.addLayer(new pc.EntityLayer('uiLayer', 50, 50), this.ZINDEX_META_LAYER);
-        this.uiLayer.addSystem(new pc.systems.Layout());
-        this.uiLayer.addSystem(new pc.systems.Render());
-        this.buildUI();
-        // bind some keys/clicks/touches to access the menu
+            //-----------------------------------------------------------------------------
+            // meta layer
+            //-----------------------------------------------------------------------------
+            this.uiLayer = this.addLayer(new pc.EntityLayer('uiLayer', 50, 50), this.ZINDEX_META_LAYER);
+            this.uiLayer.addSystem(new pc.systems.Layout());
+            this.uiLayer.addSystem(new pc.systems.Render());
+            this.buildUI();
+            // bind some keys/clicks/touches to access the menu
 
             pc.device.input.bindAction(this, 'menu', 'ESC');
             pc.device.input.bindAction(this, 'clicAction', 'MOUSE_BUTTON_LEFT_DOWN');
 
         },
 
-    buildUI: function() {
-        // fps counter
-        this.ui_fpsCounter = pc.Entity.create(this.uiLayer);
-        this.ui_fpsCounter.addComponent(pc.components.Spatial.create({ w: 200, h: 50 }));
-        this.ui_fpsCounter.addComponent(pc.components.Text.create({ fontHeight: 15, lineWidth: 1, strokeColor: '#ffffff', color: '##222288', text: ['NIL'] }));
-        this.ui_fpsCounter.addComponent(pc.components.Layout.create({ vertical: 'top', horizontal: 'left', margin: { left: 40, bottom: 70 }}));
-        this.ui_fpsCounter.addComponent(FPSCounterComponent.create());
+        buildUI: function () {
+            // fps counter
+            this.ui_fpsCounter = pc.Entity.create(this.uiLayer);
+            this.ui_fpsCounter.addComponent(pc.components.Spatial.create({ w: 200, h: 50 }));
+            this.ui_fpsCounter.addComponent(pc.components.Text.create({ fontHeight: 15, lineWidth: 1, strokeColor: '#ffffff', color: '##222288', text: ['NIL'] }));
+            this.ui_fpsCounter.addComponent(pc.components.Layout.create({ vertical: 'top', horizontal: 'left', margin: { left: 40, bottom: 70 }}));
+            this.ui_fpsCounter.addComponent(FPSCounterComponent.create());
 
-        // shuffle timer
-        this.ui_shuffleTimer = pc.Entity.create(this.uiLayer);
-        this.ui_shuffleTimer.addComponent(pc.components.Spatial.create({ w: 200, h: 50 }));
-        this.ui_shuffleTimer.addComponent(pc.components.Text.create({ fontHeight: 15, lineWidth: 1, strokeColor: '#ffffff', color: '#222288', text: ['NIL'] }));
-        this.ui_shuffleTimer.addComponent(pc.components.Layout.create({ vertical: 'top', horizontal: 'left', margin: { left: 40, bottom: 70 }}));
-        this.ui_shuffleTimer.addComponent(TimerComponent.create(0, 0));
+            // shuffle timer
+            this.ui_shuffleTimer = pc.Entity.create(this.uiLayer);
+            this.ui_shuffleTimer.addComponent(pc.components.Spatial.create({ w: 200, h: 50 }));
+            this.ui_shuffleTimer.addComponent(pc.components.Text.create({ fontHeight: 15, lineWidth: 1, strokeColor: '#ffffff', color: '#222288', text: ['NIL'] }));
+            this.ui_shuffleTimer.addComponent(pc.components.Layout.create({ vertical: 'top', horizontal: 'left', margin: { left: 40, bottom: 70 }}));
+            this.ui_shuffleTimer.addComponent(TimerComponent.create(0, 0));
 
             this.uiLayer.addSystem(new TimerSystem());
             this.uiLayer.addSystem(new FPSCounterSystem());
@@ -106,15 +106,19 @@ GameScene = pc.Scene.extend('GameScene',
             if (roomCoordinates != null) {
                 room = this.tileToWorldRoom(roomCoordinates, this.player);
             }
-            if (uiTarget != null) {
-                var roomEntity = uiTarget.getEntity();
-                room = roomEntity.getComponent('basicroom');
-            }
+
+
             if (actionName === 'menu')
                 pc.device.game.activateMenu();
             if (actionName === 'clicAction') {
-                var roomCoordinates = this.tileLayer.screenToTilePos(pos);
-                this.createActionIcons(room);
+
+                if (this.isEnterAction(pos)) {
+                    this.player.getComponent('player').roomId = room.getComponent('basicroom').id;
+                } else if (this.isLookAction(pos)) {
+                    room.getComponent('basicroom').visible = true;
+                } else {
+                    this.createActionIcons(room, roomCoordinates);
+                }
             }
 
 
@@ -135,7 +139,7 @@ GameScene = pc.Scene.extend('GameScene',
             this.player.addComponent(Player.create(reponse.id, reponse.username, reponse.action, reponse.room));
         },
 
-        sendUpdate: function(player) {
+        sendUpdate: function (player) {
             var player_component = player.getComponent('player');
             this.socket.emit('message', { event:'update', room: player_component.roomId, action:player_component.action});
         },
@@ -145,7 +149,7 @@ GameScene = pc.Scene.extend('GameScene',
             this.socket.emit('message', { event:'vote_dead', room: player_component.roomId, username:player_component.username});           
         },
 
-        removeRoomsNotAroundPlayer: function(player) {
+        removeRoomsNotAroundPlayer: function (player) {
             var room = null;
             var player_component = player.getComponent('player');
             var player_room_component = player_component.getLinkedRoom().getComponent('basicroom');
@@ -156,7 +160,7 @@ GameScene = pc.Scene.extend('GameScene',
             while (node) {
                 var room_component = node.object().getComponent('basicroom');
 
-                if(Math.abs(room_component.x - player_room_component.x) >= this.nb_room || Math.abs(room_component.y - player_room_component.y) >= this.nb_room) {
+                if (Math.abs(room_component.x - player_room_component.x) >= this.nb_room || Math.abs(room_component.y - player_room_component.y) >= this.nb_room) {
                     node.object().remove();
                 }
 
@@ -225,7 +229,10 @@ GameScene = pc.Scene.extend('GameScene',
             }
         },
 
-        createActionIcons: function (room) {
+        createActionIcons: function (room, roomCoordinates) {
+
+
+            this.removeActionIcons();
 
             var player_component = this.player.getComponent('player');
             var room_temp = this.getRoomById(player_component.roomId);
@@ -235,30 +242,54 @@ GameScene = pc.Scene.extend('GameScene',
             var screenPos = this.tileLayer.tileToScreenTile(tilePos);
             var px_room = this.tileLayer.px_room;
 
-            var lookActionX =   1 * px_room / 5 + screenPos.x;
-            var actionsY =  2 * px_room / 5 + screenPos.y;
+            var lookActionX = 1 * px_room / 5 + screenPos.x;
+            var actionsY = 2 * px_room / 5 + screenPos.y;
             var width = px_room / 5;
 
-            if (this.lookAction != null) {
-                this.lookAction.remove();
-            }
-           // if(!room_component.visible) {
+
+            if (this.canLookAt(room_component, roomCoordinates, player_component)) {
                 this.lookAction = pc.Entity.create(this.uiLayer);
-                this.lookAction.addComponent(pc.components.Spatial.create({ x:lookActionX , y:actionsY , w:width , h:width }));
+                this.lookAction.addComponent(pc.components.Spatial.create({ x: lookActionX, y: actionsY, w: width, h: width }));
                 this.lookAction.addComponent(pc.components.Rect.create({ color: [ pc.Math.rand(0, 255), pc.Math.rand(0, 255), pc.Math.rand(0, 255) ] }));
                 this.lookAction.addComponent(pc.components.Text.create({ fontHeight: px_room / 10, text: ['<=>'], offset: { x: px_room / 17, y: -px_room / 17 } }));
-           // }
-            if (this.enterAction != null) {
-                this.enterAction.remove();
             }
-            //if(player_component.roomId != room_component.id){
 
+            if (this.canEnter(room_component, roomCoordinates, player_component)) {
                 this.enterAction = pc.Entity.create(this.uiLayer);
                 this.enterAction.addComponent(pc.components.Spatial.create({ x: 3 * px_room / 5 + screenPos.x, y: 2 * px_room / 5 + screenPos.y, w: px_room / 5, h: px_room / 5 }));
                 this.enterAction.addComponent(pc.components.Rect.create({ color: [ pc.Math.rand(0, 255), pc.Math.rand(0, 255), pc.Math.rand(0, 255) ] }));
                 this.enterAction.addComponent(pc.components.Text.create({ fontHeight: px_room / 10, text: ['|\'|'], offset: { x: px_room / 17, y: -px_room / 15 } }));
-            //}
+            }
         },
+
+        removeActionIcons: function () {
+            if (this.lookAction != null) {
+                this.lookAction.remove();
+            }
+            if (this.enterAction != null) {
+                this.enterAction.remove();
+            }
+        },
+
+        canLookAt: function (room_component, roomCoordinates, playerComponent) {
+            return this.canPerformAction(room_component, roomCoordinates, playerComponent, false) && !room_component.visible;
+        },
+        canEnter: function (room_component, roomCoordinates, playerComponent) {
+            return this.canPerformAction(room_component, roomCoordinates, playerComponent, false);
+        },
+
+        canPerformAction: function (room_component, roomCoordinates, playerComponent, allowSelfAction) {
+            //can't perform action on your own room
+            if (!allowSelfAction && room_component.id == playerComponent.roomId) {
+                return false;
+            }
+            //Can't perform action on the angles
+            if ((roomCoordinates.x == 0 || roomCoordinates.x == 2) && (roomCoordinates.y == 0 || roomCoordinates.y == 2)) {
+                return false;
+            }
+            return true;
+        },
+
 
         onResize: function (width, height) {
 
@@ -318,7 +349,7 @@ GameScene = pc.Scene.extend('GameScene',
             return room;
         },
 
-        flagAllRooms: function(dirty) {
+        flagAllRooms: function (dirty) {
             var list_entities = this.roomLayer.entityManager.entities;
             var node = list_entities.first;
             while (node) {
@@ -326,7 +357,7 @@ GameScene = pc.Scene.extend('GameScene',
                 room_component.dirty = dirty;
 
                 node = node.next();
-            }            
+            }
         },
 
         tileToWorldRoom: function (tilePos, player) {
@@ -355,6 +386,31 @@ GameScene = pc.Scene.extend('GameScene',
             }
 
             return room;
+        },
+
+        isLookAction: function (screenPos) {
+            if (this.lookAction != null) {
+                var spatial = this.lookAction.getComponent('spatial');
+                return this.isPosInSpatial(screenPos, spatial);
+            } else {
+                return false;
+            }
+        },
+
+        isEnterAction: function (screenPos) {
+            if (this.enterAction != null) {
+                var spatial = this.enterAction.getComponent('spatial');
+                return this.isPosInSpatial(screenPos, spatial);
+            } else {
+                return false;
+            }
+        },
+
+        isPosInSpatial: function (screenPos, spatial) {
+            return screenPos.x > spatial.pos.x && screenPos.x < spatial.pos.x + spatial.dim.x && screenPos.y > spatial.pos.y && screenPos.y < spatial.pos.y + spatial.dim.y;
+
         }
+
+
 
     });

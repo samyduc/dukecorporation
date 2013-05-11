@@ -75,3 +75,5 @@ class Player:
 		response = {'event': 'vote_dead'}
 		response.update(data_json)
 		response.update(self.Serialize())
+
+		self.Send_Data(response)

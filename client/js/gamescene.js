@@ -138,7 +138,7 @@ GameScene = pc.Scene.extend('GameScene',
         sendUpdate: function(player) {
             var player_component = player.getComponent('player');
 
-            socket.emit('message', { id: this.socket.id, room: player_component.roomId, action:player_component.action});
+            socket.emit('message', { room: player_component.roomId, action:player_component.action});
         },
         
 

@@ -8,27 +8,45 @@ RandomDeathRoomSystem = pc.systems.EntitySystem.extend('RandomDeathRoomSystem',
 
         init:function ()
         {
-            this._super([ 'RandomDeathRoomSystem' ]);
+            this._super([ 'RandomDeathRoom' ]);
         },
 
         process:function (entity)
         {
-            var randomDeathComponent = entity.getComponent('RandomDeathRoom');
-            var basicRoomComponent = entity.getComponent('BasicRoom');
-
+            var randomDeathComponent = entity.getComponent('randomdeathroom');
+            var basicRoomComponent = entity.getComponent('basicroom');
+            basicRoomComponent.updateSurvivorsList();
             var random = Math.floor(Math.random()*100);
-            if(random <= randomDeathComponent.killRate){
-                for (var i=0,len=basicRoomComponent.playerList.length; i<len; i++)
+            var tempPlayerList = [];
+                for (var i=0,len=basicRoomComponent.players.length; i<len; i++)
                 {
-                  this.sendVoteDead(basicRoomComponent.playerList[i]);
+                  var isSurvivor = false;
+                  for(var j=0; j < basicRoomComponent.survivors.length; j++ ){
+                      if( basicRoomComponent.players[i] == basicRoomComponent.survivors[j]){
+                             isSurvivor = true;
+                             break;
+                      }
+                  }
+                  if(!isSurvivor){
+                      if(random <= randomDeathComponent.killRate){
+                        this.sendVoteDead(basicRoomComponent.players[i].username, basicRoomComponent);
+                      }else{
+                          tempPlayerList[tempPlayerList.length] = basicRoomComponent.players[i];
+                          basicRoomComponent.survivors[basicRoomComponent.survivors.length] = basicRoomComponent.players[i];
+                      }
+                  }else{
+                      tempPlayerList[tempPlayerList.length] = basicRoomComponent.players[i];
+                  }
                 }
-            }
-
+                basicRoomComponent.players = tempPlayerList;
         },
 
         sendVoteDead: function (playerName, room_component) {
             var socket = pc.device.game.socket;
-            socket.emit('message', { event: 'vote_dead', room: room_component.id, username: playerName});
+            var message =  { event: 'vote_dead', room: room_component.id, username: playerName};
+            socket.emit('message', message );
+            console.log("send message:");
+            console.log(message);
         }
 
     });

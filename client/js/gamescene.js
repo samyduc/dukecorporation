@@ -127,14 +127,16 @@ GameScene = pc.Scene.extend('GameScene',
             return false; // eat the event (so it wont pass through to the newly activated menuscene
         },
 
-        perfomLookAction:function(room){
-               this.removeActionIcons();
-               room.getComponent('basicroom').visible = true;
+        perfomLookAction: function (room) {
+            this.removeActionIcons();
+            room.getComponent('basicroom').visible = true;
         },
 
-        performEnterAction:function(room){
+        performEnterAction: function (room) {
+            this.flagAllRooms(true);
             this.removeActionIcons();
             this.player.getComponent('player').roomId = room.getComponent('basicroom').id;
+            room.getComponent('basicroom').visible = true;
             this.sendUpdate(this.player);
         },
 
@@ -154,12 +156,14 @@ GameScene = pc.Scene.extend('GameScene',
 
         sendUpdate: function (player) {
             var player_component = player.getComponent('player');
-            this.socket.emit('message', { event:'update', room: player_component.roomId, action:player_component.action});
+            var socket = pc.device.game.socket;
+            socket.emit('message', { event: 'update', room: player_component.roomId, action: player_component.action});
         },
 
-        sendVoteDead: function(player) {
+        sendVoteDead: function (player) {
             var player_component = player.getComponent('player');
-            this.socket.emit('message', { event:'vote_dead', room: player_component.roomId, username:player_component.username});           
+            var socket = pc.device.game.socket;
+            socket.emit('message', { event: 'vote_dead', room: player_component.roomId, username: player_component.username});
         },
 
         removeRoomsNotAroundPlayer: function (player) {
@@ -173,12 +177,17 @@ GameScene = pc.Scene.extend('GameScene',
             while (node) {
                 var room_component = node.object().getComponent('basicroom');
 
-                if (Math.abs(room_component.x - player_room_component.x) >= this.nb_room || Math.abs(room_component.y - player_room_component.y) >= this.nb_room) {
+                if (!room_component.visible (Math.abs(room_component.x - player_room_component.x) >= this.nb_room || Math.abs(room_component.y - player_room_component.y) >= this.nb_room)) {
                     node.object().remove();
                 }
 
+                room_component.dirty = true;
                 node = node.next();
             }
+
+        },
+
+        onNetworkVoteDead: function (network_update) {
 
         },
 
@@ -202,6 +211,7 @@ GameScene = pc.Scene.extend('GameScene',
                     basic_component.onNetwork(network_room.players, network_room.dead_nb, network_room.x, network_room.y)
                 }
                 else {
+
                     this.createRoom(network_room);
                 }
             }
@@ -248,41 +258,44 @@ GameScene = pc.Scene.extend('GameScene',
 
 
             this.removeActionIcons();
+            if (room != null) {
+                var player_component = this.player.getComponent('player');
+                var room_temp = this.getRoomById(player_component.roomId);
+                var room_center_component = room_temp.getComponent('basicroom');
+                var room_component = room.getComponent('basicroom');
+                var tilePos = room_component.getTilePosition(room_center_component);
+                var screenPos = this.tileLayer.tileToScreenTile(tilePos);
+                var px_room = this.tileLayer.px_room;
 
-            var player_component = this.player.getComponent('player');
-            var room_temp = this.getRoomById(player_component.roomId);
-            var room_center_component = room_temp.getComponent('basicroom');
-            var room_component = room.getComponent('basicroom');
-            var tilePos = room_component.getTilePosition(room_center_component);
-            var screenPos = this.tileLayer.tileToScreenTile(tilePos);
-            var px_room = this.tileLayer.px_room;
-
-            var lookActionX = 1 * px_room / 5 + screenPos.x;
-            var actionsY = 2 * px_room / 5 + screenPos.y;
-            var width = px_room / 5;
+                var lookActionX = 1 * px_room / 5 + screenPos.x;
+                var actionsY = 2 * px_room / 5 + screenPos.y;
+                var width = px_room / 5;
 
 
-            if (this.canLookAt(room_component, roomCoordinates, player_component)) {
-                this.lookAction = pc.Entity.create(this.uiLayer);
-                this.lookAction.addComponent(pc.components.Spatial.create({ x: lookActionX, y: actionsY, w: width, h: width }));
-                this.lookAction.addComponent(pc.components.Rect.create({ color: [ pc.Math.rand(0, 255), pc.Math.rand(0, 255), pc.Math.rand(0, 255) ] }));
-                this.lookAction.addComponent(pc.components.Text.create({ fontHeight: px_room / 10, text: ['<=>'], offset: { x: px_room / 17, y: -px_room / 17 } }));
-            }
+                if (this.canLookAt(room_component, roomCoordinates, player_component)) {
+                    this.lookAction = pc.Entity.create(this.uiLayer);
+                    this.lookAction.addComponent(pc.components.Spatial.create({ x: lookActionX, y: actionsY, w: width, h: width }));
+                    this.lookAction.addComponent(pc.components.Rect.create({ color: [ pc.Math.rand(0, 255), pc.Math.rand(0, 255), pc.Math.rand(0, 255) ] }));
+                    this.lookAction.addComponent(pc.components.Text.create({ fontHeight: px_room / 10, text: ['<=>'], offset: { x: px_room / 17, y: -px_room / 17 } }));
+                }
 
-            if (this.canEnter(room_component, roomCoordinates, player_component)) {
-                this.enterAction = pc.Entity.create(this.uiLayer);
-                this.enterAction.addComponent(pc.components.Spatial.create({ x: 3 * px_room / 5 + screenPos.x, y: 2 * px_room / 5 + screenPos.y, w: px_room / 5, h: px_room / 5 }));
-                this.enterAction.addComponent(pc.components.Rect.create({ color: [ pc.Math.rand(0, 255), pc.Math.rand(0, 255), pc.Math.rand(0, 255) ] }));
-                this.enterAction.addComponent(pc.components.Text.create({ fontHeight: px_room / 10, text: ['|\'|'], offset: { x: px_room / 17, y: -px_room / 15 } }));
+                if (this.canEnter(room_component, roomCoordinates, player_component)) {
+                    this.enterAction = pc.Entity.create(this.uiLayer);
+                    this.enterAction.addComponent(pc.components.Spatial.create({ x: 3 * px_room / 5 + screenPos.x, y: 2 * px_room / 5 + screenPos.y, w: px_room / 5, h: px_room / 5 }));
+                    this.enterAction.addComponent(pc.components.Rect.create({ color: [ pc.Math.rand(0, 255), pc.Math.rand(0, 255), pc.Math.rand(0, 255) ] }));
+                    this.enterAction.addComponent(pc.components.Text.create({ fontHeight: px_room / 10, text: ['|\'|'], offset: { x: px_room / 17, y: -px_room / 15 } }));
+                }
             }
         },
 
         removeActionIcons: function () {
             if (this.lookAction != null) {
                 this.lookAction.remove();
+                this.lookAction = null;
             }
             if (this.enterAction != null) {
                 this.enterAction.remove();
+                this.enterAction = null;
             }
         },
 

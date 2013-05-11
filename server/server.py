@@ -42,16 +42,21 @@ class Server:
 		self.globalWorld.OnUpdatePlayer(player)
 
 	def OnUpdate(self, json_data):
+		print('receive update from %s' % (json_data['id']))
 		player = self.globalWorld.GetPlayerByID(json_data['id'])
 
 		if player:
 			self.globalWorld.UpdatePlayer(player, json_data['action'], json_data['room'])
+		else:
+			print("Warning: player not found %s" % (json_data['id']))
 
 	def OnVoteDead(self, json_data):
 		player = self.globalWorld.GetPlayerByID(json_data['id'])
 
 		if player:
 			self.globalWorld.VoteDead(player, json_data['username'], json_data['room'])
+		else:
+			print("Warning: player not found %s" % (json_data['id']))
 
 	def MainLoop(self):
 
@@ -77,8 +82,6 @@ class Server:
 
 		for item in self.ps.listen():
 			if item['type'] == 'message':
-				print item['channel']
-				print item['data']
 				json_data = json.loads(item['data'])
 
 				# filter events
@@ -93,7 +96,7 @@ class Server:
 					elif event == 'vote_dead':
 						self.OnVoteDead(json_data)
 					else:
-						print("unknown event")
+						print("Warning: unknown event")
 
 			#gevent.sleep()
 

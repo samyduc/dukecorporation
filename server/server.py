@@ -96,7 +96,7 @@ class Server:
 					elif event == 'vote_dead':
 						self.OnVoteDead(json_data)
 					else:
-						print("unknown event")
+						print("Warning: unknown event")
 
 			#gevent.sleep()
 

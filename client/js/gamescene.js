@@ -154,12 +154,14 @@ GameScene = pc.Scene.extend('GameScene',
 
         sendUpdate: function (player) {
             var player_component = player.getComponent('player');
-            this.socket.emit('message', { event:'update', room: player_component.roomId, action:player_component.action});
+            var socket = pc.device.game.socket;
+            socket.emit('message', { event:'update', room: player_component.roomId, action:player_component.action});
         },
 
         sendVoteDead: function(player) {
             var player_component = player.getComponent('player');
-            this.socket.emit('message', { event:'vote_dead', room: player_component.roomId, username:player_component.username});           
+            var socket = pc.device.game.socket;
+            socket.emit('message', { event:'vote_dead', room: player_component.roomId, username:player_component.username});
         },
 
         removeRoomsNotAroundPlayer: function (player) {
@@ -282,9 +284,11 @@ GameScene = pc.Scene.extend('GameScene',
         removeActionIcons: function () {
             if (this.lookAction != null) {
                 this.lookAction.remove();
+                this.lookAction = null;
             }
             if (this.enterAction != null) {
                 this.enterAction.remove();
+                this.enterAction = null;
             }
         },
 

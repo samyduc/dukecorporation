@@ -29,6 +29,7 @@ GameScene = pc.Scene.extend('GameScene',
     player: null,
     lookAction: null,
     enterAction: null,
+    socket:null,
 
         init: function () {
             this._super();
@@ -133,6 +134,13 @@ GameScene = pc.Scene.extend('GameScene',
             this.player = pc.Entity.create(this.playerLayer);
             this.player.addComponent(Player.create(reponse.id, reponse.username, reponse.action, reponse.room));
         },
+
+        sendUpdate: function(player) {
+            var player_component = player.getComponent('player');
+
+            socket.emit('message', { id: this.socket.id, room: player_component.roomId, action:player_component.action});
+        },
+        
 
         update: function (rooms) {
             if (this.isInit) {

@@ -47,6 +47,7 @@ TheGame = pc.Game.extend('TheGame',
                     if(response.status){
                         that.deactivateMenu();
                         that.initGameScene(response);
+                        that.gameScene.socket = this.socket;
                     }
                     break;
                     case "update":

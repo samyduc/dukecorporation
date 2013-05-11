@@ -131,8 +131,10 @@ GameScene = pc.Scene.extend('GameScene',
         },
 
         performEnterAction:function(room){
+            this.flagAllRooms(true);
             this.removeActionIcons();
             this.player.getComponent('player').roomId = room.getComponent('basicroom').id;
+            room.getComponent('basicroom').visible = true;
             this.sendUpdate(this.player);
         },
 

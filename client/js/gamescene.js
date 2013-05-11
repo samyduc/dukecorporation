@@ -152,8 +152,12 @@ GameScene = pc.Scene.extend('GameScene',
 
         sendUpdate: function (player) {
             var player_component = player.getComponent('player');
+            this.socket.emit('message', { event:'update', room: player_component.roomId, action:player_component.action});
+        },
 
-            this.socket.emit('message', { room: player_component.roomId, action: player_component.action});
+        sendVoteDead: function(player) {
+            var player_component = player.getComponent('player');
+            this.socket.emit('message', { event:'vote_dead', room: player_component.roomId, username:player_component.username});           
         },
 
         removeRoomsNotAroundPlayer: function (player) {

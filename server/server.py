@@ -16,7 +16,7 @@ class Server:
 
 
 	def __init__(self):
-		self.globalWorld = World(50 , 50)
+		self.globalWorld = World(5 , 5)
 		self.globalWorld.GenerateWorld()
 
 		pool1 = redis.ConnectionPool()

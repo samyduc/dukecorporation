@@ -248,5 +248,4 @@ class World:
 
 		for current_room in rooms:
 			for key, player in current_room.players.iteritems():
-				print "sending back222 %s" % player
 				player.Send_Update(data_json)

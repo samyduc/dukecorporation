@@ -53,6 +53,10 @@ TheGame = pc.Game.extend('TheGame',
                     case "update":
                         that.updateGameScene(response);
                     break;
+
+                    case "vote_dead":
+                        that.gameScene.onNetworkVoteDead(response);
+
                     default:
                     console.log("unkonow event");
                     

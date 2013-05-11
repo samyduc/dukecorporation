@@ -38,7 +38,17 @@ class Room:
 		self.y = y
 
 	def __repr__(self):
-		return str(self.Serialize())
+		output_str = ""
+		for key, item in self.Serialize().iteritems():
+			if key == 'x' or key == 'y':
+				output_str += '\n'
+			output_str += "%s:%s" % (key, item)
+
+			if key == 'x' or key == 'y':
+				output_str += '\n'
+
+		return output_str
+
 
 	def RemovePlayer(self, player):
 		if player.username in self.players:
@@ -59,17 +69,19 @@ class Room:
 
 	def VoteDead(self, player_vote, player_dead):
 
-		if player.username not in self.player:
-			print("WARNING: player:%s not in a room %s" % (player, self))
+		if player_dead.username not in self.players:
+			print("WARNING: player:%s not in a room %s" % (player_dead, self))
+		else:
+			if len(self.vote_dead) == 0:
+				self.vote_dead_start = time.time()
 
-		if len(self.vote_dead) == 0:
-			self.vote_dead_start = time.time()
+			if player_dead.username not in self.vote_dead:
+				self.vote_dead[player_dead.username] = []
+			list_vote = self.vote_dead[player_dead.username]
 
-		list_vote = self.vote_dead[player_dead.username]
-
-		# cannot vote twice honey
-		if player_vote.username not in list_vote:
-			list_vote.append(player_vote.username)
+			# cannot vote twice honey
+			if player_vote.username not in list_vote:
+				list_vote.append(player_vote.username)
 
 	def CheckVoteDead(self):
 

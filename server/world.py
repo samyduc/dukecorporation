@@ -58,7 +58,7 @@ class World:
 		for room_id in self.pending_vote:
 			room = self.rooms[room_id]
 
-			if (time.time() - room.vote_dead_start) >= self.self.pending_vote_duration:
+			if (time.time() - room.vote_dead_start) >= self.pending_vote_duration:
 				# ready to kill someone or not
 				expired_vote.append(room_id)
 				players_killed = room.CheckVoteDead()
@@ -121,7 +121,8 @@ class World:
 			for j in range(self.size_y):
 
 				# get more complexe rules
-				roomType = random.randint(1, room.RoomType.enum_last)
+				#roomType = random.randint(1, room.RoomType.enum_last)
+				roomType = random.choice([3,4,5])
 				new_room = room.Room(self.id_generator, roomType, i, j)
 				self.rooms[self.id_generator] = new_room
 				line.append(new_room)
@@ -228,6 +229,7 @@ class World:
 		data_json = self.Serialize()
 		for room in rooms:
 			data_json['rooms'].append(room.Serialize())
+			data_json['shuffle'] = true
 
 		player.Send_Update(data_json)
 

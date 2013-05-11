@@ -46,7 +46,13 @@ BasicRoom = pc.components.Component('BasicRoom' ,
         },
 
         getTilePosition: function(room_center){
-            return({x: Math.abs(room_center.x - this.x - 1), y: Math.abs(room_center.y - this.y - 1)});
+
+            var pos = {x:0, y:0};
+
+            pos.x = -1*(room_center.x - this.x - 1);
+            pos.y = -1*(room_center.y - this.y - 1);
+
+            return(pos);
         }
 
 

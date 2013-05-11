@@ -17,7 +17,7 @@ TheGame = pc.Game.extend('TheGame',
             //    pc.device.loader.setDisableCache();
 
             // no resources are loaded in this template, so this is all commented out
-            pc.device.loader.add(new pc.Image('room', 'images/room.png'));
+            pc.device.loader.add(new pc.Image('roomSheet', 'images/roomSheet.png'));
 
             //if (pc.device.soundEnabled)
             //pc.device.loader.add(new pc.Sound('fire', 'sounds/fire', ['ogg', 'mp3'], 15));

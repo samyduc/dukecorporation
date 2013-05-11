@@ -14,6 +14,10 @@ GameScene = pc.Scene.extend('GameScene',
         ROOM_SPAWN: 8, // spawn de depart
         ROOM_EXIT: 9, //salle de sortie
 
+        ROOM_SHEET_HIDDEN:0,
+        ROOM_SHEET_BASIC:1,
+        ROOM_SHEET_WALL:2,
+
         //Layer's zIndex
         ZINDEX_ROOM_LAYER: 10,
         ZINDEX_PLAYER_LAYER: 20,
@@ -39,19 +43,20 @@ GameScene = pc.Scene.extend('GameScene',
             //-----------------------------------------------------------------------------
             // room layer
             //-----------------------------------------------------------------------------
-            this.roomLayer = this.addLayer(new pc.EntityLayer('room layer', 10000, 10000), this.ZINDEX_META_LAYER);
+            this.roomLayer = this.addLayer(new pc.EntityLayer('room layer', 10000, 10000), GameScene.ZINDEX_META_LAYER);
 
             // all we need to handle the rooms
             this.roomLayer.addSystem(new BasicRoomSystem());
             this.roomLayer.addSystem(new pc.systems.Render());
 
-            this.roomSheet = new pc.SpriteSheet({ image: pc.device.loader.get('room').resource, useRotation: false });
+            this.roomSheet = new pc.SpriteSheet(
+                { image: pc.device.loader.get('roomSheet').resource,frameWidth:533, frameHeight:533, useRotation: false });
             this.roomSheet.alpha = 0.5;
 
             //-----------------------------------------------------------------------------
             // player layer
             //-----------------------------------------------------------------------------
-            this.playerLayer = this.addLayer(new pc.EntityLayer('player layer', 50, 50), this.ZINDEX_PLAYER_LAYER);
+            this.playerLayer = this.addLayer(new pc.EntityLayer('player layer', 50, 50), GameScene.ZINDEX_PLAYER_LAYER);
 
             // all we need to handle the players
             this.playerLayer.addSystem(new PlayerSystem());
@@ -59,14 +64,15 @@ GameScene = pc.Scene.extend('GameScene',
             // background (build default then resize)
             this.tileMap = new pc.TileMap(new pc.TileSet(this.roomSheet), this.nb_room, this.nb_room, 200, 200);
             this.tileMap.generate(0);
+            this.tileMap.setTile(1,1,1);
 
-            this.tileLayer = this.addLayer(new CubeTileLayer('tileLayer', true, this.tileMap), this.ZINDEX_ROOM_LAYER);
+            this.tileLayer = this.addLayer(new CubeTileLayer('tileLayer', true, this.tileMap), GameScene.ZINDEX_ROOM_LAYER);
             this.onResize(pc.device.canvasWidth, pc.device.canvasHeight);
 
             //-----------------------------------------------------------------------------
             // meta layer
             //-----------------------------------------------------------------------------
-            this.uiLayer = this.addLayer(new pc.EntityLayer('uiLayer', 50, 50), this.ZINDEX_META_LAYER);
+            this.uiLayer = this.addLayer(new pc.EntityLayer('uiLayer', 50, 50), GameScene.ZINDEX_META_LAYER);
             this.uiLayer.addSystem(new pc.systems.Layout());
             this.uiLayer.addSystem(new pc.systems.Render());
             this.buildUI();
@@ -158,12 +164,6 @@ GameScene = pc.Scene.extend('GameScene',
             socket.emit('message', { event: 'update', room: player_component.roomId, action: player_component.action});
         },
 
-        sendVoteDead: function (player) {
-            var player_component = player.getComponent('player');
-            var socket = pc.device.game.socket;
-            socket.emit('message', { event: 'vote_dead', room: player_component.roomId, username: player_component.username});
-        },
-
         removeRoomsNotAroundPlayer: function (player) {
             var room = null;
             var player_component = player.getComponent('player');
@@ -175,7 +175,9 @@ GameScene = pc.Scene.extend('GameScene',
             while (node) {
                 var room_component = node.object().getComponent('basicroom');
 
+
                 if (room_component.visible == false && (Math.abs(room_component.x - player_room_component.x) >= this.nb_room || Math.abs(room_component.y - player_room_component.y) >= this.nb_room)) {
+
                     node.object().remove();
                 }
 
@@ -223,8 +225,10 @@ GameScene = pc.Scene.extend('GameScene',
                     this.createRoom(network_room);
                 }
             }
-
+            var player_component = this.player.getComponent('player');
+            player_component.getLinkedRoom().getComponent('basicroom').visible=true;
             this.removeRoomsNotAroundPlayer(this.player);
+            this.updateRoomsTileMapFromEntities();
         },
 
         onNetwork: function (input_network) {
@@ -254,10 +258,10 @@ GameScene = pc.Scene.extend('GameScene',
             room.addComponent(pc.components.Spatial.create({ w: 200, h: 50 }));
             room.addComponent(pc.components.Text.create({ fontHeight: 15, text: [''], offset: { x: 0, y: 0 } }));
             switch (network_room.type) {
-                case this.ROOM_RANDOM_DEATH:
+                case GameScene.ROOM_RANDOM_DEATH:
                     room.addComponent(RandomDeathRoom.create({killRate: Math.floor((Math.random() * 100)) }));
                     break;
-                case this.ROOM_DEATH:
+                case GameScene.ROOM_DEATH:
                     room.addComponent(RandomDeathRoom.create({killRate: 100}));
                     break;
                 default:
@@ -447,6 +451,38 @@ GameScene = pc.Scene.extend('GameScene',
 
         isPosInSpatial: function (screenPos, spatial) {
             return screenPos.x > spatial.pos.x && screenPos.x < spatial.pos.x + spatial.dim.x && screenPos.y > spatial.pos.y && screenPos.y < spatial.pos.y + spatial.dim.y;
+
+        },
+
+
+
+        updateRoomsTileMapFromEntities: function() {
+            var list_entities = this.roomLayer.entityManager.entities;
+            var room = null;
+            var node = list_entities.first;
+            var player_component = this.player.getComponent('player');
+
+            var room_temp = this.getRoomById(player_component.roomId);
+            
+
+            var room_center_component = room_temp.getComponent('basicroom');
+            this.tileMap.generate(GameScene.ROOM_SHEET_WALL);
+            while (node) {
+                var room_component = node.object().getComponent('basicroom');
+                if (!(Math.abs(room_component.x - room_center_component.x) >= this.nb_room || Math.abs(room_component.y - room_center_component.y) >= this.nb_room)) {
+                    var tiled_pos = room_component.getTilePosition(room_center_component);
+                    if(tiled_pos.x<this.nb_room&&tiled_pos.y<this.nb_room){
+                        var tileType = GameScene.ROOM_SHEET_HIDDEN;
+                        if(room_component.visible)
+                            tileType=GameScene.ROOM_SHEET_BASIC;
+
+                        this.tileMap.setTile(tiled_pos.x,tiled_pos.y,tileType);
+                    }
+              
+                }
+                node = node.next();
+            }
+            this.tileLayer.prerender();
 
         }
 

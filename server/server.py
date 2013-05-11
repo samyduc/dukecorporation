@@ -47,6 +47,12 @@ class Server:
 		if player:
 			self.globalWorld.UpdatePlayer(player, json_data['action'], json_data['room'])
 
+	def OnVoteDead(self, json_data):
+		player = self.globalWorld.GetPlayerByID(json_data['id'])
+
+		if player:
+			self.globalWorld.VoteDead(player, json_data['username'], json_data['room'])
+
 	def MainLoop(self):
 
 		thread_logic = threading.Thread(None, self.MainLoopLogic, "MainLoopLogic")
@@ -83,7 +89,9 @@ class Server:
 					if event == 'connection':
 						self.OnAuthentification( json_data)
 					elif event == 'update':
-						self.OnUpdate( json_data)
+						self.OnUpdate(json_data)
+					elif event == 'vote_dead':
+						self.OnVoteDead(json_data)
 					else:
 						print("unknown event")
 

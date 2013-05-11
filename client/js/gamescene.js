@@ -140,16 +140,6 @@ GameScene = pc.Scene.extend('GameScene',
 
             socket.emit('message', { room: player_component.roomId, action:player_component.action});
         },
-        
-
-        update: function (rooms) {
-            if (this.isInit) {
-
-            } else {
-                this.initMap(rooms);
-                this.isInit = true;
-            }
-        },
 
         removeRoomsNotAroundPlayer: function(player) {
             var room = null;

@@ -37,9 +37,27 @@ class World:
 	def Update(self):
 
 		if time.time() - self.shuffle_time > self.shuffle_duration:
+
 			self.shuffle_time = time.time()
-			self.Shuffle()
+			# before shuffling check for winners
+			if self.CheckWinners():
+				self.GenerateWorld()
+			else:
+				self.Shuffle()
 		pass
+
+	def CheckWinners(self):
+		"""
+		At the end of shuffle, check if a player(s) escaped
+
+		"""
+
+		winners = []
+
+		for key, player in self.exit_room.players.iteritems():
+			winners.append(player)
+
+		return len(winners) > 0
 
 	def Shuffle(self):
 		
@@ -86,6 +104,11 @@ class World:
 		# put an exit
 		self.exit_room = self.rooms[0]
 		self.exit_room.type = room.RoomType.exit
+
+		# put back existing players into the spawn room
+		for key, player in self.players.iteritems():
+			player.linked_room = None
+			self.spawn_room.AddPlayer(player)
 
 	def GetRoomFromCenter(self, center_room):
 

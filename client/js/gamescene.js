@@ -47,6 +47,8 @@ GameScene = pc.Scene.extend('GameScene',
 
             // all we need to handle the rooms
             this.roomLayer.addSystem(new BasicRoomSystem());
+            this.roomLayer.addSystem(new RandomDeathRoomSystem());
+
             this.roomLayer.addSystem(new pc.systems.Render());
 
             this.roomSheet = new pc.SpriteSheet(
@@ -198,7 +200,7 @@ GameScene = pc.Scene.extend('GameScene',
         },
 
         onNetworkVoteDead: function (network_update) {
-
+            pc.device.game.activateMenu();
         },
 
         onNetworkPlayerUpdate: function (network_update) {
@@ -259,10 +261,10 @@ GameScene = pc.Scene.extend('GameScene',
             room.addComponent(pc.components.Text.create({ fontHeight: 15, text: [''], offset: { x: 0, y: 0 } }));
             switch (network_room.type) {
                 case GameScene.ROOM_RANDOM_DEATH:
-                    room.addComponent(RandomDeathRoom.create({killRate: Math.floor((Math.random() * 100)) }));
+                    room.addComponent(RandomDeathRoom.create(Math.floor(Math.random() * 100) ));
                     break;
                 case GameScene.ROOM_DEATH:
-                    room.addComponent(RandomDeathRoom.create({killRate: 100}));
+                    room.addComponent(RandomDeathRoom.create(100));
                     break;
                 default:
                     break;

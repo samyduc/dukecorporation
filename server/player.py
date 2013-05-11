@@ -30,6 +30,7 @@ class Player:
 		return str(self.Serialize())
 
 	def ChangeID(self, id):
+		self.id = id
 		self.pub_key = "node:%s" % id
 
 	def Serialize(self):

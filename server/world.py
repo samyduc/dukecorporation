@@ -28,7 +28,7 @@ class World:
 		self.exit_room = None
 
 		self.shuffle_time = time.time()
-		self.shuffle_duration = 6000000
+		self.shuffle_duration = 60
 
 		self.g_lock = threading.Lock()
 
@@ -231,7 +231,7 @@ class World:
 		data_json = self.Serialize()
 		for room in rooms:
 			data_json['rooms'].append(room.Serialize())
-			data_json['shuffle'] = true
+			data_json['shuffle'] = True
 
 		player.Send_Update(data_json)
 

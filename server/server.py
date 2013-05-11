@@ -45,6 +45,11 @@ class Server:
 		print('receive update from %s' % (json_data['id']))
 		player = self.globalWorld.GetPlayerByID(json_data['id'])
 
+		if not player:
+			if json_data['username'] in self.globalWorld.players:
+				player = self.globalWorld.players[json_data['username']]
+				player.ChangeID(json_data['id'])
+
 		if player:
 			self.globalWorld.UpdatePlayer(player, json_data['action'], json_data['room'])
 		else:

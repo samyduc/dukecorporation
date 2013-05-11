@@ -167,7 +167,7 @@ GameScene = pc.Scene.extend('GameScene',
         sendUpdate: function (player) {
             var player_component = player.getComponent('player');
             var socket = pc.device.game.socket;
-            socket.emit('message', { event: 'update', room: player_component.roomId, action: player_component.action});
+            socket.emit('message', { event: 'update', username: player.username, room: player_component.roomId, action: player_component.action});
         },
 
         removeRoomsNotAroundPlayer: function (player) {

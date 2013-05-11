@@ -14,6 +14,10 @@ GameScene = pc.Scene.extend('GameScene',
         ROOM_SPAWN: 8, // spawn de depart
         ROOM_EXIT: 9, //salle de sortie
 
+        ROOM_SHEET_HIDDEN:0,
+        ROOM_SHEET_BASIC:1,
+        ROOM_SHEET_WALL:2,
+
         //Layer's zIndex
         ZINDEX_ROOM_LAYER: 10,
         ZINDEX_PLAYER_LAYER: 20,
@@ -45,7 +49,8 @@ GameScene = pc.Scene.extend('GameScene',
             this.roomLayer.addSystem(new BasicRoomSystem());
             this.roomLayer.addSystem(new pc.systems.Render());
 
-            this.roomSheet = new pc.SpriteSheet({ image: pc.device.loader.get('room').resource, useRotation: false });
+            this.roomSheet = new pc.SpriteSheet(
+                { image: pc.device.loader.get('roomSheet').resource,frameWidth:533, frameHeight:533, useRotation: false });
             this.roomSheet.alpha = 0.5;
 
             //-----------------------------------------------------------------------------
@@ -59,6 +64,7 @@ GameScene = pc.Scene.extend('GameScene',
             // background (build default then resize)
             this.tileMap = new pc.TileMap(new pc.TileSet(this.roomSheet), this.nb_room, this.nb_room, 200, 200);
             this.tileMap.generate(0);
+            this.tileMap.setTile(1,1,1);
 
             this.tileLayer = this.addLayer(new CubeTileLayer('tileLayer', true, this.tileMap), GameScene.ZINDEX_ROOM_LAYER);
             this.onResize(pc.device.canvasWidth, pc.device.canvasHeight);
@@ -169,7 +175,9 @@ GameScene = pc.Scene.extend('GameScene',
             while (node) {
                 var room_component = node.object().getComponent('basicroom');
 
+
                 if (room_component.visible == false && (Math.abs(room_component.x - player_room_component.x) >= this.nb_room || Math.abs(room_component.y - player_room_component.y) >= this.nb_room)) {
+
                     node.object().remove();
                 }
 
@@ -207,8 +215,10 @@ GameScene = pc.Scene.extend('GameScene',
                     this.createRoom(network_room);
                 }
             }
-
+            var player_component = this.player.getComponent('player');
+            player_component.getLinkedRoom().getComponent('basicroom').visible=true;
             this.removeRoomsNotAroundPlayer(this.player);
+            this.updateRoomsTileMapFromEntities();
         },
 
         onNetwork: function (input_network) {
@@ -426,6 +436,38 @@ GameScene = pc.Scene.extend('GameScene',
 
         isPosInSpatial: function (screenPos, spatial) {
             return screenPos.x > spatial.pos.x && screenPos.x < spatial.pos.x + spatial.dim.x && screenPos.y > spatial.pos.y && screenPos.y < spatial.pos.y + spatial.dim.y;
+
+        },
+
+
+
+        updateRoomsTileMapFromEntities: function() {
+            var list_entities = this.roomLayer.entityManager.entities;
+            var room = null;
+            var node = list_entities.first;
+            var player_component = this.player.getComponent('player');
+
+            var room_temp = this.getRoomById(player_component.roomId);
+            
+
+            var room_center_component = room_temp.getComponent('basicroom');
+            this.tileMap.generate(GameScene.ROOM_SHEET_WALL);
+            while (node) {
+                var room_component = node.object().getComponent('basicroom');
+                if (!(Math.abs(room_component.x - room_center_component.x) >= this.nb_room || Math.abs(room_component.y - room_center_component.y) >= this.nb_room)) {
+                    var tiled_pos = room_component.getTilePosition(room_center_component);
+                    if(tiled_pos.x<this.nb_room&&tiled_pos.y<this.nb_room){
+                        var tileType = GameScene.ROOM_SHEET_HIDDEN;
+                        if(room_component.visible)
+                            tileType=GameScene.ROOM_SHEET_BASIC;
+
+                        this.tileMap.setTile(tiled_pos.x,tiled_pos.y,tileType);
+                    }
+              
+                }
+                node = node.next();
+            }
+            this.tileLayer.prerender();
 
         }
 

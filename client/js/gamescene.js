@@ -39,7 +39,7 @@ GameScene = pc.Scene.extend('GameScene',
             //-----------------------------------------------------------------------------
             // room layer
             //-----------------------------------------------------------------------------
-            this.roomLayer = this.addLayer(new pc.EntityLayer('room layer', 10000, 10000), this.ZINDEX_META_LAYER);
+            this.roomLayer = this.addLayer(new pc.EntityLayer('room layer', 10000, 10000), GameScene.ZINDEX_META_LAYER);
 
             // all we need to handle the rooms
             this.roomLayer.addSystem(new BasicRoomSystem());
@@ -51,7 +51,7 @@ GameScene = pc.Scene.extend('GameScene',
             //-----------------------------------------------------------------------------
             // player layer
             //-----------------------------------------------------------------------------
-            this.playerLayer = this.addLayer(new pc.EntityLayer('player layer', 50, 50), this.ZINDEX_PLAYER_LAYER);
+            this.playerLayer = this.addLayer(new pc.EntityLayer('player layer', 50, 50), GameScene.ZINDEX_PLAYER_LAYER);
 
             // all we need to handle the players
             this.playerLayer.addSystem(new PlayerSystem());
@@ -60,13 +60,13 @@ GameScene = pc.Scene.extend('GameScene',
             this.tileMap = new pc.TileMap(new pc.TileSet(this.roomSheet), this.nb_room, this.nb_room, 200, 200);
             this.tileMap.generate(0);
 
-            this.tileLayer = this.addLayer(new CubeTileLayer('tileLayer', true, this.tileMap), this.ZINDEX_ROOM_LAYER);
+            this.tileLayer = this.addLayer(new CubeTileLayer('tileLayer', true, this.tileMap), GameScene.ZINDEX_ROOM_LAYER);
             this.onResize(pc.device.canvasWidth, pc.device.canvasHeight);
 
             //-----------------------------------------------------------------------------
             // meta layer
             //-----------------------------------------------------------------------------
-            this.uiLayer = this.addLayer(new pc.EntityLayer('uiLayer', 50, 50), this.ZINDEX_META_LAYER);
+            this.uiLayer = this.addLayer(new pc.EntityLayer('uiLayer', 50, 50), GameScene.ZINDEX_META_LAYER);
             this.uiLayer.addSystem(new pc.systems.Layout());
             this.uiLayer.addSystem(new pc.systems.Render());
             this.buildUI();
@@ -158,12 +158,6 @@ GameScene = pc.Scene.extend('GameScene',
             socket.emit('message', { event: 'update', room: player_component.roomId, action: player_component.action});
         },
 
-        sendVoteDead: function (player) {
-            var player_component = player.getComponent('player');
-            var socket = pc.device.game.socket;
-            socket.emit('message', { event: 'vote_dead', room: player_component.roomId, username: player_component.username});
-        },
-
         removeRoomsNotAroundPlayer: function (player) {
             var room = null;
             var player_component = player.getComponent('player');
@@ -175,7 +169,7 @@ GameScene = pc.Scene.extend('GameScene',
             while (node) {
                 var room_component = node.object().getComponent('basicroom');
 
-                if (!room_component.visible (Math.abs(room_component.x - player_room_component.x) >= this.nb_room || Math.abs(room_component.y - player_room_component.y) >= this.nb_room)) {
+                if (!room_component.visible && (Math.abs(room_component.x - player_room_component.x) >= this.nb_room || Math.abs(room_component.y - player_room_component.y) >= this.nb_room)) {
                     node.object().remove();
                 }
 
@@ -239,10 +233,10 @@ GameScene = pc.Scene.extend('GameScene',
             room.addComponent(pc.components.Spatial.create({ w: 200, h: 50 }));
             room.addComponent(pc.components.Text.create({ fontHeight: 15, text: [''], offset: { x: 0, y: 0 } }));
             switch (network_room.type) {
-                case this.ROOM_RANDOM_DEATH:
+                case GameScene.ROOM_RANDOM_DEATH:
                     room.addComponent(RandomDeathRoom.create({killRate: Math.floor((Math.random() * 100)) }));
                     break;
-                case this.ROOM_DEATH:
+                case GameScene.ROOM_DEATH:
                     room.addComponent(RandomDeathRoom.create({killRate: 100}));
                     break;
                 default:

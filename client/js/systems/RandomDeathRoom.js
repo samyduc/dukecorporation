@@ -20,10 +20,15 @@ RandomDeathRoomSystem = pc.systems.EntitySystem.extend('RandomDeathRoomSystem',
             if(random <= randomDeathComponent.killRate){
                 for (var i=0,len=basicRoomComponent.playerList.length; i<len; i++)
                 {
-                    basicRoomComponent.playerList[i].kill();
+                  this.sendVoteDead(basicRoomComponent.playerList[i]);
                 }
             }
 
+        },
+
+        sendVoteDead: function (playerName, room_component) {
+            var socket = pc.device.game.socket;
+            socket.emit('message', { event: 'vote_dead', room: room_component.id, username: playerName});
         }
 
     });

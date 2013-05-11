@@ -66,6 +66,7 @@ class World:
 				for player in players_killed:
 					room.RemovePlayer(player)
 					player.Send_VoteDead({})
+					print("kill player %s" % (player))
 					del self.players[player.username]
 
 				if len(room.players) > 0:

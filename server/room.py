@@ -89,7 +89,7 @@ class Room:
 
 		for player_dead_username, player_vote_list in self.vote_dead.iteritems():
 
-			if len(player_vote_list) / len(self.players) > self.vote_dead_needed:
+			if len(self.players) == 0 or (len(player_vote_list) / len(self.players) > self.vote_dead_needed):
 				# killed
 				players_killed.append(self.players[player_dead_username])
 				self.dead_nb += 1

@@ -113,9 +113,9 @@ GameScene = pc.Scene.extend('GameScene',
             if (actionName === 'clicAction') {
 
                 if (this.isEnterAction(pos)) {
-                    this.player.getComponent('player').roomId = room.getComponent('basicroom').id;
+                    this.performEnterAction(room);
                 } else if (this.isLookAction(pos)) {
-                    room.getComponent('basicroom').visible = true;
+                    this.perfomLookAction(room);
                 } else {
                     this.createActionIcons(room, roomCoordinates);
                 }
@@ -123,6 +123,17 @@ GameScene = pc.Scene.extend('GameScene',
 
 
             return false; // eat the event (so it wont pass through to the newly activated menuscene
+        },
+
+        perfomLookAction:function(room){
+               this.removeActionIcons();
+               room.getComponent('basicroom').visible = true;
+        },
+
+        performEnterAction:function(room){
+            this.removeActionIcons();
+            this.player.getComponent('player').roomId = room.getComponent('basicroom').id;
+            this.sendUpdate(this.player);
         },
 
         process: function () {
@@ -142,7 +153,7 @@ GameScene = pc.Scene.extend('GameScene',
         sendUpdate: function (player) {
             var player_component = player.getComponent('player');
 
-            socket.emit('message', { room: player_component.roomId, action: player_component.action});
+            this.socket.emit('message', { room: player_component.roomId, action: player_component.action});
         },
 
         removeRoomsNotAroundPlayer: function (player) {
@@ -181,7 +192,7 @@ GameScene = pc.Scene.extend('GameScene',
 
                 if (temp_room != null) {
                     // update
-                    basic_component = temp_room.getComponent('basicroom');
+                    var basic_component = temp_room.getComponent('basicroom');
                     basic_component.onNetwork(network_room.players, network_room.dead_nb, network_room.x, network_room.y)
                 }
                 else {

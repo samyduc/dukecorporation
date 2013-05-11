@@ -19,7 +19,7 @@ BasicRoomSystem = pc.systems.EntitySystem.extend('BasicRoomSystem',
                 room_component.dirty = false;
 
                 var player = entity.layer.scene.player;
-                player_component = player.getComponent('player');
+                var player_component = player.getComponent('player');
                 var room_player = player_component.getLinkedRoom();
 
                 if(room_player != null) {
@@ -34,7 +34,7 @@ BasicRoomSystem = pc.systems.EntitySystem.extend('BasicRoomSystem',
                     spatial_component.pos.y = posPx.y;
 
                     var text_component = entity.getComponent('text');
-                    text_component.text = ['id:'.concat(room_component.id.toString()), 'players:'.concat(room_component.players.length.toString()), 'dead:'.concat(room_component.nb_dead.toString())];
+                    text_component.text = ['id:'.concat(room_component.id.toString()), 'players:'.concat(room_component.players.length.toString()), 'dead:'.concat(room_component.nb_dead.toString()), 'visible:'.concat(room_component.visible.toString())];
                 }
             }
 

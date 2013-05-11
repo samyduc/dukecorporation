@@ -12,7 +12,7 @@ class RoomType:
 	prison = 7 # bloque pendant un certain cooldown
 	spawn = 8 # spawn de depart
 	exit = 9 # salle de sortie
-
+	enum_last = 10
 
 
 class Room:

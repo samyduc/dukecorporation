@@ -28,7 +28,7 @@ class World:
 		self.exit_room = None
 
 		self.shuffle_time = time.time()
-		self.shuffle_duration = 60
+		self.shuffle_duration = 6000000
 
 		self.g_lock = threading.Lock()
 
@@ -119,7 +119,10 @@ class World:
 		for i in range(self.size_x):
 			line = []
 			for j in range(self.size_y):
-				new_room = room.Room(self.id_generator, room.RoomType.safe, i, j)
+
+				# get more complexe rules
+				roomType = random.randint(1, room.RoomType.enum_last)
+				new_room = room.Room(self.id_generator, roomType, i, j)
 				self.rooms[self.id_generator] = new_room
 				line.append(new_room)
 

@@ -39,16 +39,19 @@ class World:
 
 	def Update(self):
 
+		self.CheckVoteDead()
+
 		if time.time() - self.shuffle_time > self.shuffle_duration:
 
 			self.shuffle_time = time.time()
 			# before shuffling check for winners
 			if self.CheckWinners():
+				print("winner")
 				self.GenerateWorld()
 			else:
 				self.Shuffle()
 		
-		self.CheckVoteDead()
+		
 
 	def CheckVoteDead(self):
 
@@ -145,6 +148,7 @@ class World:
 		for key, player in self.players.iteritems():
 			player.linked_room = None
 			self.spawn_room.AddPlayer(player)
+			self.OnUpdatePlayer(player)
 
 	def GetRoomFromCenter(self, center_room):
 

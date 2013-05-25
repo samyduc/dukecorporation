@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "nativeclient", "nativeclient.vcxproj", "{5C24E233-96F3-43CB-8F3C-1510D8436EBA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Emscripten = Debug|Emscripten
+		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
+		Release|Emscripten = Release|Emscripten
+		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5C24E233-96F3-43CB-8F3C-1510D8436EBA}.Debug|Emscripten.ActiveCfg = Debug|Emscripten
+		{5C24E233-96F3-43CB-8F3C-1510D8436EBA}.Debug|Emscripten.Build.0 = Debug|Emscripten
+		{5C24E233-96F3-43CB-8F3C-1510D8436EBA}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5C24E233-96F3-43CB-8F3C-1510D8436EBA}.Debug|Win32.Build.0 = Debug|Win32
+		{5C24E233-96F3-43CB-8F3C-1510D8436EBA}.Debug|x64.ActiveCfg = Debug|x64
+		{5C24E233-96F3-43CB-8F3C-1510D8436EBA}.Debug|x64.Build.0 = Debug|x64
+		{5C24E233-96F3-43CB-8F3C-1510D8436EBA}.Release|Emscripten.ActiveCfg = Release|Emscripten
+		{5C24E233-96F3-43CB-8F3C-1510D8436EBA}.Release|Emscripten.Build.0 = Release|Emscripten
+		{5C24E233-96F3-43CB-8F3C-1510D8436EBA}.Release|Win32.ActiveCfg = Release|Win32
+		{5C24E233-96F3-43CB-8F3C-1510D8436EBA}.Release|Win32.Build.0 = Release|Win32
+		{5C24E233-96F3-43CB-8F3C-1510D8436EBA}.Release|x64.ActiveCfg = Release|x64
+		{5C24E233-96F3-43CB-8F3C-1510D8436EBA}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

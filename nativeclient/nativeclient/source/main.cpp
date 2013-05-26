@@ -3,6 +3,13 @@
 #include <emscripten/emscripten.h>
 #endif
 
+#if !defined(_WIN32)
+	#include <unistd.h>
+	#define Sleep sleep
+#else
+	#include <windows.h>
+#endif
+
 #include "base/kernel.h"
 
 Natorium::Kernel *kernel;
@@ -27,6 +34,7 @@ int main(int argc, char *argv[])
 	while(true)
 	{
 		one_iter();
+		Sleep(1);
 	}
 #endif
  

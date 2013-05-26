@@ -51,8 +51,6 @@ void Kernel::AddEntity(Entity* _entity, Entity* _parent)
 {
 	assert(_entity);
 
-	_entity->_Init(*this);
-
 	if(_parent != nullptr)
 	{
 		_entity->SetParent(_parent);
@@ -60,6 +58,11 @@ void Kernel::AddEntity(Entity* _entity, Entity* _parent)
 	else
 	{
 		_entity->SetParent(&m_rootEntity);
+	}
+
+	if(_entity->GetParent()->IsInit())
+	{
+		_entity->_Init(*this);
 	}
 }
 

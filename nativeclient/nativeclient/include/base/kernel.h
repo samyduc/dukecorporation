@@ -15,23 +15,25 @@ class Kernel
 {
 public:
 
-			Kernel();
-			~Kernel();
+					Kernel();
+					~Kernel();
 
-	void	Init();
-	void	Tick();
-	void	DeInit();
+	void			Init();
+	void			Tick();
+	void			DeInit();
 
-	void	AddEntity(Entity* _entity, Entity* _parent=nullptr);
-	void	RemoveEntity(Entity* _entity);
+	void			AddEntity(Entity* _entity, Entity* _parent=nullptr);
+	void			RemoveEntity(Entity* _entity);
 
-	natU64	GetUniqueId();
+	Entity*			GetRootEntity() { return &m_rootEntity; }
+
+	natU64			GetUniqueId();
 
 private:
-	Root	m_rootEntity;
-	timer_t m_currentTime;
+	Root			m_rootEntity;
+	timer_t			m_currentTime;
 
-	natU64	m_currentId;
+	natU64			m_currentId;
 
 
 };

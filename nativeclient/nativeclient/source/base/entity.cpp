@@ -12,6 +12,7 @@ Entity::Entity()
 	: m_kernel(nullptr)
 	, m_parent(nullptr)
 	, m_id(0L)
+	, m_isInit(false)
 {
 
 }
@@ -22,7 +23,7 @@ Entity::~Entity()
 
 	for(components_t::iterator it = m_components.begin(); it != m_components.end(); ++it)
 	{
-		Component* component = it->second;
+		Component* component = (*it).m_component;
 		delete component;
 	}
 	m_components.clear();
@@ -88,6 +89,8 @@ void Entity::RemoveChild(Entity* _entity)
 
 void Entity::_Init(Kernel& _kernel)
 {
+	assert(!m_isInit);
+
 	m_kernel = &_kernel;
 	m_id = _kernel.GetUniqueId();
 
@@ -95,7 +98,7 @@ void Entity::_Init(Kernel& _kernel)
 
 	for(components_t::iterator it = m_components.begin(); it != m_components.end(); ++it)
 	{
-		Component* component = it->second;
+		Component* component = (*it).m_component;
 		component->_Init(*this);
 	}
 
@@ -104,13 +107,15 @@ void Entity::_Init(Kernel& _kernel)
 		Entity* child = (*it);
 		child->_Init(_kernel);
 	}
+
+	m_isInit = true;
 }
 
 void Entity::_Tick(natU64 _dt)
 {
 	for(components_t::iterator it = m_components.begin(); it != m_components.end(); ++it)
 	{
-		Component* component = it->second;
+		Component* component = (*it).m_component;
 		component->_Tick(_dt);
 	}
 
@@ -127,7 +132,7 @@ void Entity::_DeInit()
 {
 	for(components_t::iterator it = m_components.begin(); it != m_components.end(); ++it)
 	{
-		Component* component = it->second;
+		Component* component = (*it).m_component;
 		component->_DeInit();
 	}
 
@@ -140,6 +145,7 @@ void Entity::_DeInit()
 	OnDeInit();
 
 	m_kernel = nullptr;
+	m_isInit = false;
 }
 
 }

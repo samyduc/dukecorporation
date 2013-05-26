@@ -4,6 +4,7 @@
 #include "base/entity.h"
 
 #include "component/sdlmanager.h"
+#include "component/scenemanager.h"
 
 namespace Natorium
 {
@@ -15,6 +16,7 @@ public:
 		: Entity()
 	{
 		AddComponent<SDLManager>();
+		AddComponent<SceneManager>();
 	}
 
 

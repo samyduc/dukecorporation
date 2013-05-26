@@ -1,8 +1,8 @@
 #pragma once
 
 #include "base/natdef.h"
+#include "base/component.h"
 
-#include <map>
 #include <list>
 
 namespace Natorium
@@ -11,9 +11,19 @@ namespace Natorium
 class Component;
 class Entity;
 class Kernel;
+struct PackComponent;
 
-typedef std::map<natU32, Component*>	components_t;
+typedef std::list<PackComponent>		components_t;
 typedef std::list<Entity*>				childs_t;
+
+struct PackComponent
+{
+	PackComponent(natU32 _id, Component* _component) : m_id(_id), m_component(_component)
+	{}
+
+	natU32 m_id;
+	Component* m_component;
+};
 
 class Entity
 {
@@ -32,23 +42,41 @@ public:
 	virtual void		OnTick(natU64 _dt);
 	virtual void		OnDeInit();
 
+	natBool				IsInit() { return m_isInit; }
+
 	Kernel*				GetKernel() const;
 
-protected:
 	template<class T>
 	void AddComponent()
 	{
-		m_components[T::GetType()] = new T();
+		T* component = new T();
+		if(m_isInit)
+		{
+			// already running : hot init
+			component->_Init(*this);
+		}
+		PackComponent pack_component(T::GetType(), component);
+		m_components.push_back(pack_component);
 	}
 
 	template<class T>
 	void RemoveComponent()
 	{
-		components_t::iterator it = m_components.find(T::GetType());
-
-		if(it != m_components.end())
+		for(components_t::iterator it = m_components.begin(); it != m_components.end(); ++it)
 		{
-			m_components.erase(it);
+			PackComponent& pack_component = (*it);
+
+			if(pack_component.m_id == T::GetType())
+			{
+				Component* component = pack_component.m_component;
+				if(component->IsInit())
+				{
+					component->_DeInit();
+				}
+				m_components.erase(it);
+				delete component;
+				break;
+			}
 		}
 	}
 
@@ -56,13 +84,16 @@ protected:
 	T* GetComponent()
 	{
 		T* ret = nullptr;
-		components_t::iterator it = m_components.find(T::GetType());
-
-		if(it != m_components.end())
+		for(components_t::iterator it = m_components.begin(); it != m_components.end(); ++it)
 		{
-			ret = it->second;
-		}
+			PackComponent& pack_component = (*it);
 
+			if(pack_component.m_id == T::GetType())
+			{
+				ret = static_cast<T*>(pack_component.m_component);
+				break;
+			}
+		}
 		return ret;
 	}
 
@@ -86,6 +117,7 @@ private:
 	Entity*				m_parent;
 
 	natU64				m_id;
+	natBool				m_isInit;
 
 };
 

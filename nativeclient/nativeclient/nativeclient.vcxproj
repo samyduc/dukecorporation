@@ -30,7 +30,10 @@
     <ClCompile Include="source\base\component.cpp" />
     <ClCompile Include="source\base\entity.cpp" />
     <ClCompile Include="source\base\kernel.cpp" />
+    <ClCompile Include="source\component\scenemanager.cpp" />
     <ClCompile Include="source\component\sdlmanager.cpp" />
+    <ClCompile Include="source\component\sdlrender.cpp" />
+    <ClCompile Include="source\component\transform.cpp" />
     <ClCompile Include="source\linux\linux_timeplatform.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
@@ -44,10 +47,15 @@
   <ItemGroup>
     <ClInclude Include="include\base\component.h" />
     <ClInclude Include="include\base\entity.h" />
+    <ClInclude Include="include\base\hash.h" />
     <ClInclude Include="include\base\kernel.h" />
     <ClInclude Include="include\base\natdef.h" />
     <ClInclude Include="include\base\timeplatform.h" />
+    <ClInclude Include="include\component\scenemanager.h" />
     <ClInclude Include="include\component\sdlmanager.h" />
+    <ClInclude Include="include\component\sdlrender.h" />
+    <ClInclude Include="include\component\transform.h" />
+    <ClInclude Include="include\entity\player.h" />
     <ClInclude Include="include\entity\root.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

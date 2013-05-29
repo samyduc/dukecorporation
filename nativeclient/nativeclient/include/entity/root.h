@@ -15,8 +15,8 @@ public:
 	Root()
 		: Entity()
 	{
-		AddComponent<SDLManager>();
-		AddComponent<SceneManager>();
+		//AddComponent<SDLManager>();
+		//AddComponent<SceneManager>();
 	}
 
 

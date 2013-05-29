@@ -1,6 +1,6 @@
 #include "component/sdlrender.h"
 #include "base/entity.h"
-#include "base/kernel.h"
+#include "base/layer.h"
 
 #include "component/transform.h"
 
@@ -20,7 +20,7 @@ SDLRender::~SDLRender()
 
 void SDLRender::OnInit()
 {
-	SDLManager* sdlmanager = GetEntity()->GetKernel()->GetRootEntity()->GetComponent<SDLManager>();
+	SDLManager* sdlmanager = GetEntity()->GetLayer()->GetRootEntity()->GetComponent<SDLManager>();
 
 	m_surface = SDL_CreateRGBSurface(SDL_HWSURFACE, 50, 50, 32, 0, 0, 0, 0);
 
@@ -29,7 +29,7 @@ void SDLRender::OnInit()
 
 void SDLRender::OnTick(natU64 _dt)
 {
-	SDLManager* sdlmanager = GetEntity()->GetKernel()->GetRootEntity()->GetComponent<SDLManager>();
+	SDLManager* sdlmanager = GetEntity()->GetLayer()->GetRootEntity()->GetComponent<SDLManager>();
 	Transform* transform = GetEntity()->GetComponent<Transform>();
 
 	SDL_Rect position;

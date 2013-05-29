@@ -10,12 +10,23 @@ Kernel::Kernel()
 	: m_currentTime(0L)
 	, m_currentId(0L)
 {
+	m_layers.reserve(Layer::Layer_Max);
 
+	for(size_t i = Layer::Layer_0; i < Layer::Layer_Max; ++i)
+	{
+		Layer* layer = new Layer();
+		m_layers[i] = layer;
+	}
 }
 
 Kernel::~Kernel()
 {
-
+	for(layers_t::iterator it = m_layers.begin(); it != m_layers.end(); ++it)
+	{
+		Layer* layer = (*it);
+		delete layer;
+	}
+	m_layers.clear();
 }
 
 void Kernel::Init()
@@ -23,7 +34,11 @@ void Kernel::Init()
 	m_currentId = 0;
 	m_currentTime = Time::GetMsTime();
 
-	m_rootEntity._Init(*this);
+	for(size_t i = Layer::Layer_0; i < Layer::Layer_Max; ++i)
+	{
+		Layer* layer = m_layers[i];
+		layer->Init(*this, static_cast<Layer::eLayer>(i));
+	}
 }
 
 void Kernel::Tick()
@@ -32,13 +47,18 @@ void Kernel::Tick()
 	natU64 dt = now - m_currentTime;
 	m_currentTime = now;
 
-	m_rootEntity._Tick(dt);
+
 }
 
 void Kernel::DeInit()
 {
 	m_currentId = 0;
-	m_rootEntity._DeInit();
+
+	for(layers_t::iterator it = m_layers.begin(); it != m_layers.end(); ++it)
+	{
+		Layer* layer = (*it);
+		layer->DeInit();
+	}
 }
 
 natU64 Kernel::GetUniqueId()
@@ -47,34 +67,16 @@ natU64 Kernel::GetUniqueId()
 	return m_currentId;
 }
 
-void Kernel::AddEntity(Entity* _entity, Entity* _parent)
+void Kernel::AddEntity(Layer::eLayer _layer, Entity* _entity, Entity* _parent)
 {
-	assert(_entity);
-
-	if(_parent != nullptr)
-	{
-		_entity->SetParent(_parent);
-	}
-	else
-	{
-		_entity->SetParent(&m_rootEntity);
-	}
-
-	if(_entity->GetParent()->IsInit())
-	{
-		_entity->_Init(*this);
-	}
+	Layer* layer = m_layers[_layer];
+	layer->AddEntity(_entity, _parent);
 }
 
 void Kernel::RemoveEntity(Entity* _entity)
 {
-	assert(_entity);
-
-	_entity->SetParent(nullptr);
-	_entity->_DeInit();
-
-	delete _entity;
+	Layer* layer = _entity->GetLayer();
+	layer->RemoveEntity(_entity);
 }
-
 
 }

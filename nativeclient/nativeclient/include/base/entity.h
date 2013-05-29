@@ -11,6 +11,7 @@ namespace Natorium
 class Component;
 class Entity;
 class Kernel;
+class Layer;
 struct PackComponent;
 
 typedef std::list<PackComponent>		components_t;
@@ -29,7 +30,7 @@ class Entity
 {
 public:
 
-	friend class Kernel;
+	friend class Layer;
 
 						Entity();
 	virtual				~Entity();
@@ -44,6 +45,7 @@ public:
 
 	natBool				IsInit() { return m_isInit; }
 
+	Layer*				GetLayer() const;
 	Kernel*				GetKernel() const;
 
 	template<class T>
@@ -108,12 +110,13 @@ protected:
 
 private:
 
-	void				_Init(Kernel& _kernel);
+	void				_Init(Kernel& _kernel, Layer& _layer);
 	void				_Tick(natU64 _dt);
 	void				_DeInit();
 
 private:
 	Kernel*				m_kernel;
+	Layer*				m_layer;
 	Entity*				m_parent;
 
 	natU64				m_id;

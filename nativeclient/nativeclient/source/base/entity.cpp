@@ -1,4 +1,5 @@
 #include "base/entity.h"
+#include "base/layer.h"
 #include "base/kernel.h"
 #include "base/component.h"
 
@@ -10,6 +11,7 @@ namespace Natorium
 
 Entity::Entity()
 	: m_kernel(nullptr)
+	, m_layer(nullptr)
 	, m_parent(nullptr)
 	, m_id(0L)
 	, m_isInit(false)
@@ -38,6 +40,11 @@ Entity::~Entity()
 Kernel* Entity::GetKernel() const
 {
 	return m_kernel; 
+}
+
+Layer* Entity::GetLayer() const
+{
+	return m_layer; 
 }
 
 void Entity::OnInit()
@@ -87,12 +94,13 @@ void Entity::RemoveChild(Entity* _entity)
 	}
 }
 
-void Entity::_Init(Kernel& _kernel)
+void Entity::_Init(Kernel& _kernel, Layer& _layer)
 {
 	assert(!m_isInit);
 
 	m_kernel = &_kernel;
-	m_id = _kernel.GetUniqueId();
+	m_layer = &_layer;
+	m_id = GetKernel()->GetUniqueId();
 
 	OnInit();
 
@@ -105,7 +113,7 @@ void Entity::_Init(Kernel& _kernel)
 	for(childs_t::iterator it = m_childs.begin(); it != m_childs.end(); ++it)
 	{
 		Entity* child = (*it);
-		child->_Init(_kernel);
+		child->_Init(_kernel, _layer);
 	}
 
 	m_isInit = true;
@@ -145,6 +153,7 @@ void Entity::_DeInit()
 	OnDeInit();
 
 	m_kernel = nullptr;
+	m_layer = nullptr;
 	m_isInit = false;
 }
 

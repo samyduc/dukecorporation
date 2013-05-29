@@ -43,7 +43,7 @@ void SDLManager::OnTick(natU64 _dt)
 	SDL_FillRect(m_screen, NULL, SDL_MapRGB( m_screen->format, 0x00, 0xB2, 0xEE ) );
 	SDL_UpdateRect(m_screen, 0, 0, m_screen->clip_rect.w, m_screen->clip_rect.h); 
 
-	SDL_Flip(m_screen);
+	//SDL_Flip(m_screen);
 }
 
 void SDLManager::OnDeInit()

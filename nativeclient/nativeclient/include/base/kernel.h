@@ -3,13 +3,16 @@
 #include "base/natdef.h"
 #include "base/timeplatform.h"
 #include "base/entity.h"
+#include "base/layer.h"
 
 #include "entity/root.h"
 
-#include <map>
+#include <vector>
 
 namespace Natorium
 {
+
+typedef std::vector<Layer*> layers_t;
 
 class Kernel
 {
@@ -22,17 +25,16 @@ public:
 	void			Tick();
 	void			DeInit();
 
-	void			AddEntity(Entity* _entity, Entity* _parent=nullptr);
-	void			RemoveEntity(Entity* _entity);
-
-	Entity*			GetRootEntity() { return &m_rootEntity; }
-
 	natU64			GetUniqueId();
 
-private:
-	Root			m_rootEntity;
-	timer_t			m_currentTime;
+	void			AddEntity(Layer::eLayer _layer, Entity* _entity, Entity* _parent=nullptr);
+	void			RemoveEntity(Entity* _entity);
 
+private:
+	
+	layers_t		m_layers;
+
+	timer_t			m_currentTime;
 	natU64			m_currentId;
 
 

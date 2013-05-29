@@ -30,7 +30,10 @@
     <ClCompile Include="source\base\component.cpp" />
     <ClCompile Include="source\base\entity.cpp" />
     <ClCompile Include="source\base\kernel.cpp" />
+    <ClCompile Include="source\base\layer.cpp" />
+    <ClCompile Include="source\component\charactercontroller.cpp" />
     <ClCompile Include="source\component\scenemanager.cpp" />
+    <ClCompile Include="source\component\sdlinput.cpp" />
     <ClCompile Include="source\component\sdlmanager.cpp" />
     <ClCompile Include="source\component\sdlrender.cpp" />
     <ClCompile Include="source\component\transform.cpp" />
@@ -49,9 +52,13 @@
     <ClInclude Include="include\base\entity.h" />
     <ClInclude Include="include\base\hash.h" />
     <ClInclude Include="include\base\kernel.h" />
+    <ClInclude Include="include\base\layer.h" />
     <ClInclude Include="include\base\natdef.h" />
     <ClInclude Include="include\base\timeplatform.h" />
+    <ClInclude Include="include\component\charactercontroller.h" />
+    <ClInclude Include="include\component\input.h" />
     <ClInclude Include="include\component\scenemanager.h" />
+    <ClInclude Include="include\component\sdlinput.h" />
     <ClInclude Include="include\component\sdlmanager.h" />
     <ClInclude Include="include\component\sdlrender.h" />
     <ClInclude Include="include\component\transform.h" />

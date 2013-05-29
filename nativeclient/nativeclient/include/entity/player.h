@@ -5,6 +5,8 @@
 
 #include "component/transform.h"
 #include "component/sdlrender.h"
+#include "component/sdlinput.h"
+#include "component/charactercontroller.h"
 
 namespace Natorium
 {
@@ -17,6 +19,10 @@ public:
 	{
 		AddComponent<Transform>();
 		AddComponent<SDLRender>();
+		AddComponent<SDLInput>();
+		AddComponent<CharacterController>();
+
+		SDLInput* input = GetComponent<SDLInput>();
 	}
 
 

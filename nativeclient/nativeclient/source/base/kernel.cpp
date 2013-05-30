@@ -15,7 +15,7 @@ Kernel::Kernel()
 	for(size_t i = Layer::Layer_0; i < Layer::Layer_Max; ++i)
 	{
 		Layer* layer = new Layer();
-		m_layers[i] = layer;
+		m_layers.push_back(layer);
 	}
 }
 
@@ -34,11 +34,19 @@ void Kernel::Init()
 	m_currentId = 0;
 	m_currentTime = Time::GetMsTime();
 
+	// add manager on layer 0
+	Layer* layer = m_layers[0];
+	Entity* entity = layer->GetRootEntity();
+
+	entity->AddComponent<SDLManager>();
+	entity->AddComponent<SceneManager>();
+
 	for(size_t i = Layer::Layer_0; i < Layer::Layer_Max; ++i)
 	{
 		Layer* layer = m_layers[i];
 		layer->Init(*this, static_cast<Layer::eLayer>(i));
 	}
+
 }
 
 void Kernel::Tick()
@@ -47,7 +55,11 @@ void Kernel::Tick()
 	natU64 dt = now - m_currentTime;
 	m_currentTime = now;
 
-
+	for(layers_t::iterator it = m_layers.begin(); it != m_layers.end(); ++it)
+	{
+		Layer* layer = (*it);
+		layer->Tick(dt);
+	}
 }
 
 void Kernel::DeInit()

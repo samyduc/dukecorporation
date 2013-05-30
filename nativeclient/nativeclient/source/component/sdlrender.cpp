@@ -1,6 +1,7 @@
 #include "component/sdlrender.h"
 #include "base/entity.h"
 #include "base/layer.h"
+#include "base/kernel.h"
 
 #include "component/transform.h"
 
@@ -29,7 +30,7 @@ void SDLRender::OnInit()
 
 void SDLRender::OnTick(natU64 _dt)
 {
-	SDLManager* sdlmanager = GetEntity()->GetLayer()->GetRootEntity()->GetComponent<SDLManager>();
+	SDLManager* sdlmanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<SDLManager>();
 	Transform* transform = GetEntity()->GetComponent<Transform>();
 
 	SDL_Rect position;
@@ -43,6 +44,7 @@ void SDLRender::OnTick(natU64 _dt)
 
 	SDL_FillRect(m_surface, NULL, SDL_MapRGB(sdlmanager->GetScreen()->format, 50, 50, 50));
 	SDL_BlitSurface(m_surface, NULL, sdlmanager->GetScreen(), &position);
+	//SDL_UpdateRect(m_surface, 0, 0, m_surface->clip_rect.w, m_surface->clip_rect.h); 
 }
 
 void SDLRender::OnDeInit()

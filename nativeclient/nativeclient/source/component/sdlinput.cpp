@@ -17,7 +17,7 @@ SDLInput::~SDLInput()
 void SDLInput::OnInit()
 {
 	assert(m_keystates == nullptr);
-	m_keystates = SDL_GetKeyState(NULL);
+	/*m_keystates = SDL_GetKeyState(NULL);
 
 	// default init
 	SetAction(Input::forward, SDLK_UP);
@@ -25,7 +25,7 @@ void SDLInput::OnInit()
 	SetAction(Input::left, SDLK_LEFT);
 	SetAction(Input::right, SDLK_RIGHT);
 	SetAction(Input::jump, SDLK_SPACE);
-	SetAction(Input::shoot1, SDLK_RETURN);
+	SetAction(Input::shoot1, SDLK_RETURN);*/
 }
 
 void SDLInput::OnTick(natU64 _dt)

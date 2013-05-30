@@ -30,6 +30,8 @@ public:
 	void			AddEntity(Layer::eLayer _layer, Entity* _entity, Entity* _parent=nullptr);
 	void			RemoveEntity(Entity* _entity);
 
+	Layer*			GetLayer(Layer::eLayer _layer) { return m_layers[_layer]; }
+
 private:
 	
 	layers_t		m_layers;

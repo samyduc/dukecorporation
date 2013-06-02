@@ -34,8 +34,8 @@ void SDLRender::OnTick(natU64 _dt)
 	Transform* transform = GetEntity()->GetComponent<Transform>();
 
 	SDL_Rect position;
-	position.x = static_cast<Sint16>(transform->m_pos_x);
-	position.y = static_cast<Sint16>(transform->m_pos_y);
+	position.x = static_cast<Sint16>(transform->m_pos.x);
+	position.y = static_cast<Sint16>(transform->m_pos.y);
 	position.w = m_surface->clip_rect.w;
 	position.h = m_surface->clip_rect.h;
 
@@ -44,7 +44,7 @@ void SDLRender::OnTick(natU64 _dt)
 
 	SDL_FillRect(m_surface, NULL, SDL_MapRGB(sdlmanager->GetScreen()->format, 50, 50, 50));
 	SDL_BlitSurface(m_surface, NULL, sdlmanager->GetScreen(), &position);
-	//SDL_UpdateRect(m_surface, 0, 0, m_surface->clip_rect.w, m_surface->clip_rect.h); 
+	//SDL_UpdateRect(m_surface, 0, 0, 0, 0); 
 }
 
 void SDLRender::OnDeInit()

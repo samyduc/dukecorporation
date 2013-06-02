@@ -24,6 +24,9 @@ public:
 
 	static natU32	GetType() { return s_SDLManager; }
 
+
+	void			PreRender();
+	void			PostRender();
 	SDL_Surface*	GetScreen() { return m_screen; }
 
 private:

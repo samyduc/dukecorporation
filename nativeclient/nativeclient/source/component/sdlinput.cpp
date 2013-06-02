@@ -62,4 +62,13 @@ void SDLInput::SetAction(Input::eAction _action, SDLKey _key)
 	m_inputs[_action] = _key;
 }
 
+void SDLInput::GetMousePosition(glm::vec2& _pos)
+{
+	int x, y;
+	SDL_GetMouseState(&x, &y);
+
+	_pos.x = static_cast<natF32>(x);
+	_pos.y = static_cast<natF32>(y);
+}
+
 }

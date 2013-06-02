@@ -6,32 +6,27 @@ namespace Natorium
 
 
 Transform::Transform()
+	: m_scale(1.0f)
 {
+
 }
 
 Transform::~Transform()
 {
 }
 
-void	Transform::OnInit()
+void Transform::OnInit()
 {
-	m_pos_x = 0.f;
-	m_pos_y = 0.f;
-	m_pos_z = 0.f;
 
-	m_rad_x = 0.f;
-	m_rad_y = 0.f;
-	m_rad_z = 0.f;
 }
 
-void	Transform::OnTick(natU64 _dt)
+void Transform::OnTick(natU64 _dt)
 {
 }
 
-void	Transform::OnDeInit()
+void Transform::OnDeInit()
 {
 }
-
 
 
 

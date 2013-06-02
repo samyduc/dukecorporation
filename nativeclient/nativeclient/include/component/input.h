@@ -2,6 +2,8 @@
 #include "base/natdef.h"
 #include "base/component.h"
 
+#include <glm/glm.hpp>
+
 namespace Natorium
 {
 
@@ -24,6 +26,7 @@ public:
 	};
 
 	virtual natBool IsAction(eAction _action) = 0;
+	virtual void GetMousePosition(glm::vec2& _pos) = 0;
 
 	
 };

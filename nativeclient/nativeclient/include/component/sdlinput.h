@@ -32,7 +32,7 @@ public:
 
 	// Input
 	natBool			IsAction(Input::eAction _action);
-	
+	void			GetMousePosition(glm::vec2& _pos);
 
 private:
 	Uint8*			m_keystates;

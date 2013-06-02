@@ -4,11 +4,15 @@
 #include "base/component.h"
 #include "base/hash.h"
 
+#include <glm/glm.hpp>
+
 namespace Natorium
 {
 
 
 static natU32 s_Transform = Hash::Compute("s_Transform");
+
+static const natF32 s_PI = 3.14159265358979f; 
 
 class Transform : public Component
 {
@@ -24,13 +28,20 @@ public:
 
 public:
 
-	natF32			m_pos_x;
-	natF32			m_pos_y;
-	natF32			m_pos_z;
+	glm::vec3		m_pos;
+	glm::vec3		m_rad;
+	glm::vec3		m_scale;
 
-	natF32			m_rad_x;
-	natF32			m_rad_y;
-	natF32			m_rad_z;
+public:
+
+	glm::vec3		GetDeg() { return glm::degrees(m_rad); }
+
+
+
+
+protected:
+	natF32			RadToDeg(natF32 _rad);
+
 };
 
 

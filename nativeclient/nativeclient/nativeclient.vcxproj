@@ -32,6 +32,7 @@
     <ClCompile Include="source\base\kernel.cpp" />
     <ClCompile Include="source\base\layer.cpp" />
     <ClCompile Include="source\component\charactercontroller.cpp" />
+    <ClCompile Include="source\component\glrender.cpp" />
     <ClCompile Include="source\component\scenemanager.cpp" />
     <ClCompile Include="source\component\sdlinput.cpp" />
     <ClCompile Include="source\component\sdlmanager.cpp" />
@@ -56,6 +57,7 @@
     <ClInclude Include="include\base\natdef.h" />
     <ClInclude Include="include\base\timeplatform.h" />
     <ClInclude Include="include\component\charactercontroller.h" />
+    <ClInclude Include="include\component\glrender.h" />
     <ClInclude Include="include\component\input.h" />
     <ClInclude Include="include\component\scenemanager.h" />
     <ClInclude Include="include\component\sdlinput.h" />
@@ -159,14 +161,14 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>./include;../extern/SDL-1.2.15/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./include;../extern/SDL-1.2.15/include;../extern/</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WINDOWS_TARGET;WIN32_LEAN_AND_MEAN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL.lib;SDLmain.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\extern\sdl-1.3\lib\x64\debug;..\extern\sdl-1.2.15\lib\x64</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL.lib;SDLmain.lib;OpenGL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\extern\sdl-1.2.15\lib\x64\debug;</AdditionalLibraryDirectories>
       <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
@@ -192,7 +194,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>EMSCRIPTEN_TARGET</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>./include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./include;../extern/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandardMode>LanguageStandardC++11</LanguageStandardMode>
     </ClCompile>
     <Link>
@@ -200,6 +202,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <LinkerOptimizationLevel>O2</LinkerOptimizationLevel>
+      <RunClosureCompiler>false</RunClosureCompiler>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -209,7 +212,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>./include;../extern/SDL-1.2.15/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./include;../extern/SDL-1.2.15/include;../extern/</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WINDOWS_TARGET;WIN32_LEAN_AND_MEAN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>

@@ -4,6 +4,7 @@
 #include "base/entity.h"
 
 #include "component/transform.h"
+#include "component/glrender.h"
 #include "component/sdlrender.h"
 #include "component/sdlinput.h"
 #include "component/charactercontroller.h"
@@ -18,11 +19,12 @@ public:
 		: Entity()
 	{
 		AddComponent<Transform>();
-		AddComponent<SDLRender>();
+		AddComponent<GLRender>();
+		//AddComponent<SDLRender>();
 		AddComponent<SDLInput>();
 		AddComponent<CharacterController>();
 
-		SDLInput* input = GetComponent<SDLInput>();
+		//SDLInput* input = GetComponent<SDLInput>();
 	}
 
 

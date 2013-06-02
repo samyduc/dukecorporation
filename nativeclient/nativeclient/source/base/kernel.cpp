@@ -1,5 +1,7 @@
 #include "base/kernel.h"
 
+#include "component/sdlmanager.h"
+
 #include <assert.h>
 
 namespace Natorium
@@ -55,11 +57,18 @@ void Kernel::Tick()
 	natU64 dt = now - m_currentTime;
 	m_currentTime = now;
 
+	Layer* layer = m_layers[0];
+	Entity* entity = layer->GetRootEntity();
+	SDLManager* sdlmanager = entity->GetComponent<SDLManager>();
+	sdlmanager->PreRender();
+
 	for(layers_t::iterator it = m_layers.begin(); it != m_layers.end(); ++it)
 	{
 		Layer* layer = (*it);
 		layer->Tick(dt);
 	}
+
+	sdlmanager->PostRender();
 }
 
 void Kernel::DeInit()

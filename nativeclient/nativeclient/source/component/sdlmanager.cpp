@@ -5,10 +5,14 @@
 #include <iostream>
 
 #if defined(WINDOWS_TARGET)
-#include <Windows.h>
+//#include <Windows.h>
+//#include <gl\GL.h>
+#include <GL\glew.h>
 #endif
 
-#include <gl\GL.h>
+#if defined(EMSCRIPTEN_TARGET)
+#include <GLES2/gl2.h>
+#endif
 
 namespace Natorium
 {
@@ -32,13 +36,6 @@ void SDLManager::OnInit()
 	//SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 32);
 
 	m_screen = SDL_SetVideoMode(640, 480, 32, SDL_OPENGL);
-	glClearColor(0x00, 0xB1, 0xEE, 1.0);
-
-	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
-	glOrtho(0, 640, 480, 0, 0.0f, 512.0f);
-	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
 
 	assert(m_screen);
 }

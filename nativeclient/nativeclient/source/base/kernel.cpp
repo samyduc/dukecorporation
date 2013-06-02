@@ -1,6 +1,7 @@
 #include "base/kernel.h"
 
 #include "component/sdlmanager.h"
+#include "component/glmanager.h"
 
 #include <assert.h>
 
@@ -41,6 +42,7 @@ void Kernel::Init()
 	Entity* entity = layer->GetRootEntity();
 
 	entity->AddComponent<SDLManager>();
+	entity->AddComponent<GLManager>();
 	entity->AddComponent<SceneManager>();
 
 	for(size_t i = Layer::Layer_0; i < Layer::Layer_Max; ++i)

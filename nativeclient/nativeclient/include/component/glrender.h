@@ -5,10 +5,14 @@
 #include "base/hash.h"
 
 #if defined(WINDOWS_TARGET)
-#include <windows.h>
+//#include <windows.h>
+//#include <gl\GL.h>
+#include <GL\glew.h>
 #endif
 
-#include <GL/GL.h>
+#if defined(EMSCRIPTEN_TARGET)
+#include <GLES2/gl2.h>
+#endif
 
 
 namespace Natorium

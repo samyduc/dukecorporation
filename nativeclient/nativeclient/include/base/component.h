@@ -2,8 +2,6 @@
 
 #include "base/natdef.h"
 
-#include <map>
-
 namespace Natorium
 {
 

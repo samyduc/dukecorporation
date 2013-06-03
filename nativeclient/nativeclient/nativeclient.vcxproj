@@ -68,6 +68,7 @@
     <ClInclude Include="include\component\transform.h" />
     <ClInclude Include="include\entity\player.h" />
     <ClInclude Include="include\entity\root.h" />
+    <ClInclude Include="include\shader\position.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{5C24E233-96F3-43CB-8F3C-1510D8436EBA}</ProjectGuid>

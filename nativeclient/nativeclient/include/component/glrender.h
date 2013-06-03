@@ -4,6 +4,8 @@
 #include "base/component.h"
 #include "base/hash.h"
 
+#include <glm/glm.hpp>
+
 #if defined(WINDOWS_TARGET)
 //#include <windows.h>
 //#include <gl\GL.h>
@@ -33,6 +35,15 @@ public:
 	static natU32	GetType() { return s_GLRender; }
 
 private:
+	GLuint		m_shaderProgram;
+	GLuint		m_bufferObject;
+	GLuint		m_offsetPosition;
+
+	glm::mat4	m_modelToWorldMatrix;
+	GLuint		m_modelToWorldUnif;
+
+	GLuint		m_globalUnifBlockIndex;
+
 
 };
 

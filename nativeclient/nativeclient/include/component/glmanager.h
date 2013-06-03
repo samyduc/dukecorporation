@@ -13,10 +13,11 @@
 
 #if defined(EMSCRIPTEN_TARGET)
 #include <GLES2/gl2.h>
+#include <GLES2/gl2ext.h>
 #endif
 
 #include <vector>
-
+#include <glm/glm.hpp>
 
 
 namespace Natorium
@@ -39,8 +40,12 @@ public:
 	static natU32	GetType() { return s_GLManager; }
 
 	GLuint			GetShaderProgram() { return m_shaderProgram; }
+	const int		GetGlobalBindingIndex() { return m_globalBindingIndex; }
 
 private:
+	void			OnInitShaders();
+	void			OnInitCamera();
+
 	GLuint			CreateShader(GLenum eShaderType, const std::string &strShaderData);
 	GLuint			CreateShaderProgram(const shaders_t &shaderList);
 
@@ -48,7 +53,11 @@ private:
 	shaders_t		m_shaders;
 	GLuint			m_shaderProgram;
 
+	glm::vec3 m_cameraPosition;
+	glm::mat4 m_cameraToClipMatrix;
 
+	GLuint m_globalUnif;
+	const int m_globalBindingIndex;
 };
 
 

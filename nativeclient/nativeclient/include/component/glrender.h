@@ -29,7 +29,7 @@ public:
 	virtual			~GLRender();
 
 	virtual void	OnInit();
-	virtual void	OnTick(natU64 _dt);
+	virtual void	OnTick(const natU64 _dt);
 	virtual void	OnDeInit();
 
 	static natU32	GetType() { return s_GLRender; }
@@ -39,8 +39,8 @@ private:
 	GLuint		m_bufferObject;
 	GLuint		m_offsetPosition;
 
-	glm::mat4	m_modelToWorldMatrix;
-	GLuint		m_modelToWorldUnif;
+	glm::mat4	m_modelMatrix;
+	GLuint		m_modelUnif;
 
 	GLuint		m_globalUnifBlockIndex;
 

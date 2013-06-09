@@ -31,36 +31,36 @@ namespace Natorium
 );*/
 
 const std::string strPositionVertex(
-	"#version 330\n"
+	"#version 100\n"
 	"\n"
 	"\n"
 	"uniform mat4 projection;\n"
 	"uniform mat4 view;\n"
 	"uniform mat4 model;\n"
 	"\n"
-	"layout(location = 0) in vec4 position;\n"
-	"layout(location = 1) in vec4 color;\n"
+	"attribute vec4 position;\n"
+	"attribute vec4 color;\n"
 	"\n"
-	"smooth out vec4 fragmentColor;\n"
+	"varying vec4 fragmentColor;\n"
 	"\n"
 	"void main()\n"
 	"{\n"
-	"	gl_Position = projection * view * model * position;\n"
+	"	//gl_Position = projection * view * model * position;\n"
+	"	gl_Position = vec4(0.5);\n"
 	"	fragmentColor = color;\n"
 	"}\n"
 );
 
 
 const std::string strPositionFragment(
-	"#version 330\n"
+	"#version 100\n"
 	"\n"
-	"\n"
-	"smooth in vec4 fragmentColor;\n"
-	"out vec4 outputColor;\n"
+	"precision mediump float;\n"
+	"varying vec4 fragmentColor;\n"
 	"\n"
 	"void main()\n"
 	"{\n"
-	"	outputColor = fragmentColor;\n"
+	"	gl_FragColor = fragmentColor;\n"
 	"}\n"
 );
 

@@ -28,9 +28,16 @@ void SDLInput::OnInit()
 	SetAction(Input::shoot1, SDLK_RETURN);*/
 }
 
-void SDLInput::OnTick(natU64 _dt)
+void SDLInput::OnTick(const natU64 _dt)
 {
-	//SDL_PumpEvents();
+	SDL_Event event;
+
+	while ( SDL_PollEvent(&event) ) {
+		switch (event.type) {
+			case SDL_QUIT:
+				exit(0);
+		}
+	}
 }
 
 void SDLInput::OnDeInit()

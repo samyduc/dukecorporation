@@ -51,7 +51,7 @@ void Entity::OnInit()
 {
 }
 
-void Entity::OnTick(natU64 _dt)
+void Entity::OnTick(const natU64 _dt)
 {
 }
 

@@ -19,7 +19,7 @@ public:
 	virtual			~SDLManager();
 
 	virtual void	OnInit();
-	virtual void	OnTick(natU64 _dt);
+	virtual void	OnTick(const natU64 _dt);
 	virtual void	OnDeInit();
 
 	static natU32	GetType() { return s_SDLManager; }

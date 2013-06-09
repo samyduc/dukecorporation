@@ -21,22 +21,22 @@ public:
 	virtual			~Transform();
 
 	virtual void	OnInit();
-	virtual void	OnTick(natU64 _dt);
+	virtual void	OnTick(const natU64 _dt);
 	virtual void	OnDeInit();
 
 	static natU32	GetType() { return s_Transform; }
 
 public:
-
 	glm::vec3		m_pos;
 	glm::vec3		m_rad;
 	glm::vec3		m_scale;
-
 public:
 
-	glm::vec3		GetDeg() { return glm::degrees(m_rad); }
+	glm::vec3		GetPos();
+	glm::vec3		GetRad();
+	glm::vec3		GetScale() { return m_scale; }
 
-
+	glm::vec3		GetDeg() { return glm::degrees(GetRad()); }
 
 
 protected:

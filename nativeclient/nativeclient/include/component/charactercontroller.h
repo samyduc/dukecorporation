@@ -18,13 +18,12 @@ public:
 	virtual			~CharacterController();
 
 	virtual void	OnInit();
-	virtual void	OnTick(natU64 _dt);
+	virtual void	OnTick(const natU64 _dt);
 	virtual void	OnDeInit();
 
 	static natU32	GetType() { return s_CharacterController; }
 
-	virtual void	LookAtScreen(glm::vec2& _look);
-	virtual void	LookAtWorld(natF32 _x, natF32 _y, natF32 _z);
+	virtual void	LookAtScreen(glm::vec3& _look);
 
 private:
 

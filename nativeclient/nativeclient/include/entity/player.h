@@ -7,7 +7,9 @@
 #include "component/glrender.h"
 #include "component/sdlrender.h"
 #include "component/sdlinput.h"
+#include "component/camera.h"
 #include "component/charactercontroller.h"
+#include "component/glmanager.h"
 
 namespace Natorium
 {
@@ -20,11 +22,9 @@ public:
 	{
 		AddComponent<Transform>();
 		AddComponent<GLRender>();
-		//AddComponent<SDLRender>();
-		AddComponent<SDLInput>();
+		AddComponent<Camera>();
 		AddComponent<CharacterController>();
 
-		//SDLInput* input = GetComponent<SDLInput>();
 	}
 
 

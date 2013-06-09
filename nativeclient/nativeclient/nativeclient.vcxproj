@@ -31,6 +31,7 @@
     <ClCompile Include="source\base\entity.cpp" />
     <ClCompile Include="source\base\kernel.cpp" />
     <ClCompile Include="source\base\layer.cpp" />
+    <ClCompile Include="source\component\camera.cpp" />
     <ClCompile Include="source\component\charactercontroller.cpp" />
     <ClCompile Include="source\component\glmanager.cpp" />
     <ClCompile Include="source\component\glrender.cpp" />
@@ -57,6 +58,7 @@
     <ClInclude Include="include\base\layer.h" />
     <ClInclude Include="include\base\natdef.h" />
     <ClInclude Include="include\base\timeplatform.h" />
+    <ClInclude Include="include\component\camera.h" />
     <ClInclude Include="include\component\charactercontroller.h" />
     <ClInclude Include="include\component\glmanager.h" />
     <ClInclude Include="include\component\glrender.h" />
@@ -69,6 +71,7 @@
     <ClInclude Include="include\entity\player.h" />
     <ClInclude Include="include\entity\root.h" />
     <ClInclude Include="include\shader\position.h" />
+    <ClInclude Include="include\shader\position_es.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{5C24E233-96F3-43CB-8F3C-1510D8436EBA}</ProjectGuid>
@@ -196,9 +199,10 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>EMSCRIPTEN_TARGET</PreprocessorDefinitions>
+      <PreprocessorDefinitions>EMSCRIPTEN_TARGET; </PreprocessorDefinitions>
       <AdditionalIncludeDirectories>./include;../extern/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandardMode>LanguageStandardC++11</LanguageStandardMode>
+      <AdditionalOptions>-s FULL_ES2=1 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -206,6 +210,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <LinkerOptimizationLevel>O2</LinkerOptimizationLevel>
       <RunClosureCompiler>false</RunClosureCompiler>
+      <AdditionalOptions>-s FULL_ES2=1 %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

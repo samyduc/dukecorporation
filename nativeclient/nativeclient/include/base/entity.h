@@ -40,7 +40,7 @@ public:
 			childs_t&	GetChilds() { return m_childs; }
 
 	virtual void		OnInit();
-	virtual void		OnTick(natU64 _dt);
+	virtual void		OnTick(const natU64 _dt);
 	virtual void		OnDeInit();
 
 	natBool				IsInit() { return m_isInit; }

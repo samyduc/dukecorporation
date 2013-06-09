@@ -2,6 +2,7 @@
 
 #include "component/sdlmanager.h"
 #include "component/glmanager.h"
+#include "component/sdlinput.h"
 
 #include <assert.h>
 
@@ -42,6 +43,7 @@ void Kernel::Init()
 	Entity* entity = layer->GetRootEntity();
 
 	entity->AddComponent<SDLManager>();
+	entity->AddComponent<SDLInput>();
 	entity->AddComponent<GLManager>();
 	entity->AddComponent<SceneManager>();
 

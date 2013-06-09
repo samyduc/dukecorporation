@@ -7,7 +7,7 @@
 namespace Natorium
 {
 
-static natU32 s_SceneManager = Hash::Compute("s_SceneManagerr");
+static natU32 s_SceneManager = Hash::Compute("s_SceneManager");
 
 class SceneManager : public Component
 {
@@ -16,7 +16,7 @@ public:
 	virtual			~SceneManager();
 
 	virtual void	OnInit();
-	virtual void	OnTick(natU64 _dt);
+	virtual void	OnTick(const natU64 _dt);
 	virtual void	OnDeInit();
 
 	static natU32	GetType() { return s_SceneManager; }

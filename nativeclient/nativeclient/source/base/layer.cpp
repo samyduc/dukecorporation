@@ -23,7 +23,7 @@ void Layer::Init(Kernel& _kernel, eLayer _layer)
 	m_rootEntity._Init(_kernel, *this);
 }
 
-void Layer::Tick(natU64 _dt)
+void Layer::Tick(const natU64 _dt)
 {
 	m_rootEntity._Tick(_dt);
 }

@@ -28,7 +28,7 @@ void SDLRender::OnInit()
 	assert(m_surface);
 }
 
-void SDLRender::OnTick(natU64 _dt)
+void SDLRender::OnTick(const natU64 _dt)
 {
 	SDLManager* sdlmanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<SDLManager>();
 	Transform* transform = GetEntity()->GetComponent<Transform>();

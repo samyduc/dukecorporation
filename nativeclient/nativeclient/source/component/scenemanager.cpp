@@ -17,10 +17,24 @@ SceneManager::~SceneManager()
 
 void SceneManager::OnInit()
 {
-	GetEntity()->GetKernel()->AddEntity(Layer::Layer_1, new Player());
+	Entity* player = new Player();
+	GetEntity()->GetKernel()->AddEntity(Layer::Layer_1, player);
+
+	Entity* camera_dummy = new Entity();
+	camera_dummy->AddComponent<Transform>();
+	camera_dummy->AddComponent<Camera>();
+	GetEntity()->GetKernel()->AddEntity(Layer::Layer_1, camera_dummy);
+
+	Camera* camera = player->GetComponent<Camera>();
+	Transform* transform = player->GetComponent<Transform>();
+	GLManager* glmanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<GLManager>();
+
+	//transform->m_pos.x = 400;
+	//transform->m_pos.y = 200;
+	glmanager->SetCamera(camera);
 }
 
-void SceneManager::OnTick(natU64 _dt)
+void SceneManager::OnTick(const natU64 _dt)
 {
 
 }

@@ -17,7 +17,7 @@ public:
 	virtual				~Component();
 
 	virtual void		OnInit();
-	virtual void		OnTick(natU64 _dt);
+	virtual void		OnTick(const natU64 _dt);
 	virtual void		OnDeInit();
 
 			natBool		IsInit() { return m_isInit; }		

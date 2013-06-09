@@ -28,7 +28,7 @@ public:
 	virtual ~Layer();
 
 	void			Init(Kernel& _kernel, eLayer _layer);
-	void			Tick(natU64 _dt);
+	void			Tick(const natU64 _dt);
 	void			DeInit();
 
 	void			AddEntity(Entity* _entity, Entity* _parent=nullptr);

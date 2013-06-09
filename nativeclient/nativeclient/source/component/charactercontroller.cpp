@@ -2,9 +2,12 @@
 #include "base/entity.h"
 #include "component/input.h"
 #include "component/transform.h"
+#include "component/glmanager.h"
+#include "component/camera.h"
+
+#include "base/kernel.h"
 
 #include <iostream>
-#include <cmath>
 
 namespace Natorium
 {
@@ -21,9 +24,9 @@ void CharacterController::OnInit()
 {
 }
 
-void CharacterController::OnTick(natU64 _dt)
+void CharacterController::OnTick(const natU64 _dt)
 {
-	Input* input = GetEntity()->GetComponent<Input>();
+	Input* input = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<Input>();
 
 	if(input->IsAction(Input::forward))
 	{
@@ -37,7 +40,9 @@ void CharacterController::OnTick(natU64 _dt)
 
 	glm::vec2 mouse_pos;
 	input->GetMousePosition(mouse_pos);
-	LookAtScreen(mouse_pos);
+	glm::vec3 mouse_vec3(mouse_pos, 0.f);
+
+	LookAtScreen(mouse_vec3);
 }
 
 void CharacterController::OnDeInit()
@@ -45,19 +50,20 @@ void CharacterController::OnDeInit()
 }
 
 
-void CharacterController::LookAtScreen(glm::vec2& _look)
+void CharacterController::LookAtScreen(glm::vec3& _look)
 {
 	Transform* transform = GetEntity()->GetComponent<Transform>();
+	Camera* camera = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<GLManager>()->GetCamera();
 
-	natF32 vector_x = transform->m_pos.x - _look.x;
-	natF32 vector_y = transform->m_pos.y - _look.y;
+	glm::vec2 screen_pos = camera->GetPosWorldToScreen(transform->GetPos());
 
-	transform->m_rad.z = std::atan2(vector_y, vector_x);
-}
+	camera->GetPosScreenToWorld(glm::vec2(10, 10));
 
-void CharacterController::LookAtWorld(natF32 _x, natF32 _y, natF32 _z)
-{
-	Transform* transform = GetEntity()->GetComponent<Transform>();
+	natF32 vector_x = screen_pos.x - _look.x;
+	natF32 vector_y = screen_pos.y - _look.y;
+
+
+	transform->m_rad.z = glm::atan(vector_y, vector_x);
 }
 
 

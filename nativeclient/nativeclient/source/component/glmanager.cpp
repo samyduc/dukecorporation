@@ -5,7 +5,13 @@
 #include "base/layer.h"
 #include "base/kernel.h"
 
+#if defined(WINDOWS_TARGET)
 #include "shader/position.h"
+#elif defined(EMSCRIPTEN_TARGET)
+#include "shader/position_es.h"
+#else
+#error "no shader for this platform"
+#endif
 
 #include <iostream>
 #include <assert.h>
@@ -18,7 +24,12 @@ namespace Natorium
 
 GLManager::GLManager()
 	: m_globalBindingIndex(0)
-	, m_cameraToClipMatrix(1.0f)
+	, m_projectionUnif(0)
+	, m_viewUnif(0)
+	, m_currentCamera(nullptr)
+	, m_screenResolution(640, 480)
+	, m_projectionMatrixCopy(1.f)
+	, m_viewMatrixCorrected(1.f)
 {
 
 }
@@ -35,22 +46,22 @@ void GLManager::OnInit()
 #endif
 
 	// do not know what for
-	glEnable(GL_CULL_FACE);
-	glCullFace(GL_BACK);
-	glFrontFace(GL_CW);
+	//glEnable(GL_CULL_FACE);
+	//glCullFace(GL_BACK);
+	//glFrontFace(GL_CW);
 
-	glEnable(GL_DEPTH_TEST);
-	glDepthMask(GL_TRUE);
-	glDepthFunc(GL_LEQUAL);
-	glDepthRange(0.0f, 1.0f);
+	//glEnable(GL_DEPTH_TEST);
+	//glDepthMask(GL_TRUE);
+	//glDepthFunc(GL_LEQUAL);
+	//glDepthRange(0.0f, 1.0f);
 
-	glEnable(GL_DEPTH_CLAMP);
+	//glEnable(GL_DEPTH_CLAMP);
 
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-	glEnable (GL_LINE_SMOOTH);
-	glHint(GL_LINE_SMOOTH_HINT, GL_DONT_CARE);
+	//glEnable (GL_LINE_SMOOTH);
+	//glHint(GL_LINE_SMOOTH_HINT, GL_DONT_CARE);
 
 	// load shaders
 	//CreateShaderProgram();
@@ -74,12 +85,15 @@ void GLManager::OnInitShaders()
 	m_shaders.push_back(CreateShader(GL_FRAGMENT_SHADER, strPositionFragment));
 	m_shaderProgram = CreateShaderProgram(m_shaders);
 
-	glGenBuffers(1, &m_globalUnif);
-	glBindBuffer(GL_UNIFORM_BUFFER, m_globalUnif);
-	glBufferData(GL_UNIFORM_BUFFER, sizeof(glm::mat4) * 2, NULL, GL_STREAM_DRAW);
+	//glGenBuffers(1, &m_globalUnif);
+	//glBindBuffer(GL_UNIFORM_BUFFER, m_globalUnif);
+	//glBufferData(GL_UNIFORM_BUFFER, sizeof(glm::mat4) * 2, NULL, GL_STREAM_DRAW);
 	//glBindBuffer(GL_UNIFORM_BUFFER, 0);
 
-	glBindBufferRange(GL_UNIFORM_BUFFER, m_globalBindingIndex, m_globalUnif, 0, sizeof(glm::mat4) * 2);
+	//glBindBufferRange(GL_UNIFORM_BUFFER, m_globalBindingIndex, m_globalUnif, 0, sizeof(glm::mat4) * 2);
+
+	m_viewUnif = glGetUniformLocation(m_shaderProgram, "view");
+	m_projectionUnif = glGetUniformLocation(m_shaderProgram, "projection");
 }
 
 void GLManager::OnInitCamera()
@@ -87,31 +101,57 @@ void GLManager::OnInitCamera()
 	static float g_fzNear = 1.0f;
 	static float g_fzFar = 1000.0f;
 
-	m_cameraToClipMatrix = glm::mat4(1.f);
+	//m_viewMatrix = glm::mat4(1.f);
 
 	//m_cameraToClipMatrix = glm::perspective(0.f, (m_window->GetWidth() / static_cast<float>(m_window->GetHeight())), g_fzNear, g_fzFar);
 	//m_cameraToClipMatrix = glm::mat4(1);
-	m_cameraToClipMatrix = glm::ortho<float>(0.f, static_cast<float>(640), static_cast<float>(480), 0.f, 0.f, 100.f);
+	//m_viewMatrix = glm::ortho<float>(0.f, static_cast<float>(640), static_cast<float>(480), 0.f, 0.f, 100.f);
 	// usual axis : y to right, x to bottom
 	//m_cameraToClipMatrix = glm::rotate<float>(m_cameraToClipMatrix, 90, glm::vec3(0.f, 0.f, 1.f));
 
 	//m_cameraToClipMatrix = glm::mat4(1.f);
 
-	glBindBuffer(GL_UNIFORM_BUFFER, m_globalUnif);
-	glBufferSubData(GL_UNIFORM_BUFFER, 0, sizeof(glm::mat4), glm::value_ptr(m_cameraToClipMatrix));
-	glBindBuffer(GL_UNIFORM_BUFFER, 0);
+	//glBindBuffer(GL_UNIFORM_BUFFER, m_globalUnif);
+	//glBufferSubData(GL_UNIFORM_BUFFER, 0, sizeof(glm::mat4), glm::value_ptr(m_cameraToClipMatrix));
+	//glBindBuffer(GL_UNIFORM_BUFFER, 0);
+
+	// init projection !!!!
+	
+
 }
 
-void GLManager::OnTick(natU64 _dt)
+void GLManager::ComputeCamera()
 {
-	glBindBuffer(GL_UNIFORM_BUFFER, m_globalUnif);
+	m_viewMatrixCorrected = m_currentCamera->GetViewMatrix();
+
+	// correct camera
+	glm::vec3 center(m_screenResolution.x / 2, m_screenResolution.y / 2, 0);
+	m_viewMatrixCorrected = glm::translate(m_viewMatrixCorrected, center);
+	m_projectionMatrixCopy = m_currentCamera->GetProjectionMatrix();
+}
+
+void GLManager::OnTick(const natU64 _dt)
+{
+	/*glBindBuffer(GL_UNIFORM_BUFFER, m_globalUnif);
 	glBufferSubData(GL_UNIFORM_BUFFER, 0, sizeof(glm::mat4), glm::value_ptr(m_cameraToClipMatrix));
 	glBindBuffer(GL_UNIFORM_BUFFER, 0);
 
 	glm::mat4 camera(1.f);
 	glBindBuffer(GL_UNIFORM_BUFFER, m_globalUnif);
 	glBufferSubData(GL_UNIFORM_BUFFER, sizeof(glm::mat4), sizeof(glm::mat4), glm::value_ptr(camera));
-	glBindBuffer(GL_UNIFORM_BUFFER, 0);
+	glBindBuffer(GL_UNIFORM_BUFFER, 0);*/
+
+	if(m_currentCamera)
+	{
+		ComputeCamera();
+	}
+
+	glUseProgram(m_shaderProgram);
+
+	glUniformMatrix4fv(m_viewUnif, 1, GL_FALSE, glm::value_ptr(m_viewMatrixCorrected));
+	glUniformMatrix4fv(m_projectionUnif, 1, GL_FALSE, glm::value_ptr(m_projectionMatrixCopy));
+
+	glUseProgram(0);
 
 
 }

@@ -3,12 +3,8 @@
 #include <emscripten/emscripten.h>
 #endif
 
-#if !defined(_WIN32)
-	#include <unistd.h>
-	#define Sleep sleep
-#else
-	#include <windows.h>
-#endif
+#include <chrono>
+#include <thread>
 
 #include "base/kernel.h"
 
@@ -34,7 +30,7 @@ int main(int argc, char *argv[])
 	while(true)
 	{
 		one_iter();
-		Sleep(1);
+		std::this_thread::sleep_for(std::chrono::milliseconds(1));
 	}
 #endif
  

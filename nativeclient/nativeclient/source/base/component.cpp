@@ -24,7 +24,7 @@ void Component::OnInit()
 {
 }
 
-void Component::OnTick(natU64 _dt)
+void Component::OnTick(const natU64 _dt)
 {
 }
 

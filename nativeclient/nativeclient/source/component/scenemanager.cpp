@@ -3,6 +3,7 @@
 #include "base/layer.h"
 
 #include "entity/player.h"
+#include "entity/civilian.h"
 
 namespace Natorium
 {
@@ -19,6 +20,9 @@ void SceneManager::OnInit()
 {
 	Entity* player = new Player();
 	GetEntity()->GetKernel()->AddEntity(Layer::Layer_1, player);
+
+	Entity* dummy_ai = new Civilian();
+	GetEntity()->GetKernel()->AddEntity(Layer::Layer_1, dummy_ai);
 
 	Entity* camera_dummy = new Entity();
 	camera_dummy->AddComponent<Transform>();

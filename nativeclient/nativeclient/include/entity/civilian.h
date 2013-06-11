@@ -12,22 +12,28 @@
 #include "component/glmanager.h"
 #include "component/squareshape.h"
 
+#include "component/gameplay/civilianai.h"
 
+#include <glm/glm.hpp>
 
 namespace Natorium
 {
 
-class Player : public Entity
+class Civilian : public Entity
 {
 public:
-	Player()
+	Civilian()
 		: Entity()
 	{
 		AddComponent<Transform>();
 		AddComponent<GLRender>();
-		AddComponent<SquareShape>();
+		AddComponent<Camera>();
+		SquareShape *shape = AddComponent<SquareShape>();
 		AddComponent<Camera>();
 		AddComponent<CharacterController>();
+		AddComponent<CivilianAI>();
+
+		shape->SetColor(glm::vec4(0.f, 0.f, 1.f, 1.f));
 	}
 
 

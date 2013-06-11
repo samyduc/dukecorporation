@@ -22,6 +22,8 @@ namespace Natorium
 
 static natU32 s_GLRender = Hash::Compute("s_GLRender");
 
+class Shape;
+
 class GLRender : public Component
 {
 public:
@@ -35,6 +37,8 @@ public:
 	static natU32	GetType() { return s_GLRender; }
 
 private:
+	Shape*		m_shape;
+
 	GLuint		m_shaderProgram;
 	GLuint		m_bufferObject;
 	GLuint		m_offsetPosition;

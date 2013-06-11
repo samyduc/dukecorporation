@@ -85,6 +85,8 @@ void GLManager::OnInitShaders()
 	m_shaders.push_back(CreateShader(GL_FRAGMENT_SHADER, strPositionFragment));
 	m_shaderProgram = CreateShaderProgram(m_shaders);
 
+
+
 	//glGenBuffers(1, &m_globalUnif);
 	//glBindBuffer(GL_UNIFORM_BUFFER, m_globalUnif);
 	//glBufferData(GL_UNIFORM_BUFFER, sizeof(glm::mat4) * 2, NULL, GL_STREAM_DRAW);
@@ -94,6 +96,8 @@ void GLManager::OnInitShaders()
 
 	m_viewUnif = glGetUniformLocation(m_shaderProgram, "view");
 	m_projectionUnif = glGetUniformLocation(m_shaderProgram, "projection");
+
+
 }
 
 void GLManager::OnInitCamera()
@@ -202,6 +206,9 @@ GLuint GLManager::CreateShaderProgram(const shaders_t &shaderList)
 	for(size_t iLoop = 0; iLoop < shaderList.size(); iLoop++)
 		glAttachShader(program, shaderList[iLoop]);
 	
+	//glBindAttribLocation(m_shaderProgram, 0, "position");
+	//glBindAttribLocation(m_shaderProgram, 1, "color");
+
 	glLinkProgram(program);
 	
 	GLint status;

@@ -49,7 +49,7 @@ public:
 	Kernel*				GetKernel() const;
 
 	template<class T>
-	void AddComponent()
+	T* AddComponent()
 	{
 		T* component = new T();
 		if(m_isInit)
@@ -59,6 +59,8 @@ public:
 		}
 		PackComponent pack_component(T::GetType(), component);
 		m_components.push_back(pack_component);
+
+		return component;
 	}
 
 	template<class T>

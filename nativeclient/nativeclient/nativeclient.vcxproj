@@ -33,12 +33,14 @@
     <ClCompile Include="source\base\layer.cpp" />
     <ClCompile Include="source\component\camera.cpp" />
     <ClCompile Include="source\component\charactercontroller.cpp" />
+    <ClCompile Include="source\component\gameplay\civilianai.cpp" />
     <ClCompile Include="source\component\glmanager.cpp" />
     <ClCompile Include="source\component\glrender.cpp" />
     <ClCompile Include="source\component\scenemanager.cpp" />
     <ClCompile Include="source\component\sdlinput.cpp" />
     <ClCompile Include="source\component\sdlmanager.cpp" />
     <ClCompile Include="source\component\sdlrender.cpp" />
+    <ClCompile Include="source\component\squareshape.cpp" />
     <ClCompile Include="source\component\transform.cpp" />
     <ClCompile Include="source\linux\linux_timeplatform.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
@@ -60,6 +62,7 @@
     <ClInclude Include="include\base\timeplatform.h" />
     <ClInclude Include="include\component\camera.h" />
     <ClInclude Include="include\component\charactercontroller.h" />
+    <ClInclude Include="include\component\gameplay\civilianai.h" />
     <ClInclude Include="include\component\glmanager.h" />
     <ClInclude Include="include\component\glrender.h" />
     <ClInclude Include="include\component\input.h" />
@@ -67,7 +70,10 @@
     <ClInclude Include="include\component\sdlinput.h" />
     <ClInclude Include="include\component\sdlmanager.h" />
     <ClInclude Include="include\component\sdlrender.h" />
+    <ClInclude Include="include\component\shape.h" />
+    <ClInclude Include="include\component\squareshape.h" />
     <ClInclude Include="include\component\transform.h" />
+    <ClInclude Include="include\entity\civilian.h" />
     <ClInclude Include="include\entity\player.h" />
     <ClInclude Include="include\entity\root.h" />
     <ClInclude Include="include\shader\position.h" />
@@ -156,7 +162,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>EMSCRIPTEN_TARGET</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>./include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./include;../extern/;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -199,10 +205,10 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>EMSCRIPTEN_TARGET; </PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>./include;../extern/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>EMSCRIPTEN_TARGET</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>./include;../extern/</AdditionalIncludeDirectories>
       <LanguageStandardMode>LanguageStandardC++11</LanguageStandardMode>
-      <AdditionalOptions>-s FULL_ES2=1 %(AdditionalOptions)</AdditionalOptions>
+      <LanguageExtensions>EnableLanguageExtensions</LanguageExtensions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>

@@ -57,7 +57,7 @@ void CharacterController::LookAtScreen(glm::vec3& _look)
 
 	glm::vec2 screen_pos = camera->GetPosWorldToScreen(transform->GetPos());
 
-	camera->GetPosScreenToWorld(glm::vec2(10, 10));
+	//camera->GetPosScreenToWorld(glm::vec2(10, 10));
 
 	natF32 vector_x = screen_pos.x - _look.x;
 	natF32 vector_y = screen_pos.y - _look.y;

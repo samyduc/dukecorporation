@@ -36,7 +36,7 @@ void Camera::OnTick(const natU64 _dt)
 	m_viewMatrix = glm::mat4(1.f);
 
 	glm::vec3 pos = GetPos();
-	//pos *= -1;
+	pos *= -1;
 	m_viewMatrix = glm::translate(m_viewMatrix, pos);
 
 	//glm::vec3 center(m_resolution.x / 2, m_resolution.y / 2, 0);
@@ -64,26 +64,40 @@ glm::vec3 Camera::GetDeg()
 glm::vec2 Camera::GetPosWorldToScreen(const glm::vec3& _world)
 {
 	glm::vec2 screen(0.f);
-	glm::vec4 temp(0.f);
+	//glm::vec4 temp(0.f);
 
-	glm::mat4 projectionViewMatrix = m_projectionMatrix * m_viewMatrix;
+	/*glm::mat4 projectionViewMatrix = m_projectionMatrix * m_viewMatrix;
 	temp = projectionViewMatrix * glm::vec4(_world, 0.f);
 
 	screen.x = glm::round( ((temp.x + 1) / 2.0f ) * m_resolution.x);
-	screen.y = glm::round( ((1 - temp.y) / 2.0f ) * m_resolution.y);
+	screen.y = glm::round( ((1 - temp.y) / 2.0f ) * m_resolution.y);*/
+
+	// hack ...
+	glm::vec3 pos = GetPos();
+
+	screen.x = -1 * (pos.x - m_resolution.x / 2 - _world.x);
+	screen.y = -1 * (pos.y - m_resolution.y / 2 - _world.y);
 
 	return screen;
 }
 
 glm::vec3 Camera::GetPosScreenToWorld(const glm::vec2& _screen)
 {
-	glm::vec4 temp(0.f);
+	/*glm::vec4 temp(0.f);
 
 	temp.x = 2.f * _screen.x / m_resolution.x - 1;
 	temp.y = -2.f * _screen.y / m_resolution.y + 1;
 
 	glm::mat4 viewProjectionInverseMatrix = glm::inverse(m_projectionMatrix * m_viewMatrix);
-	glm::vec4 world = viewProjectionInverseMatrix * temp;
+	glm::vec4 world = viewProjectionInverseMatrix * temp;*/
+
+	// hack ... (not working)
+	assert(false);
+	glm::vec3 pos = GetPos();
+	glm::vec3 world(0.f);
+
+	world.x = pos.x - m_resolution.x / 2 - _screen.x;
+	world.y = pos.y - m_resolution.y / 2 - _screen.y;
 
 	return glm::vec3(world);
 }

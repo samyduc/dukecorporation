@@ -6,6 +6,8 @@
 #include "component/glmanager.h"
 #include "component/transform.h"
 
+#include "component/shape.h"
+
 #include <assert.h>
 
 #include <glm/gtc/type_ptr.hpp>
@@ -15,6 +17,7 @@ namespace Natorium
 {
 
 GLRender::GLRender()
+	: m_shape(nullptr)
 {
 
 }
@@ -25,6 +28,9 @@ GLRender::~GLRender()
 
 void GLRender::OnInit()
 {
+	m_shape = GetEntity()->GetComponent<Shape>();
+	assert(m_shape);
+
 	GLManager* glmanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<GLManager>();
 	m_shaderProgram = glmanager->GetShaderProgram();
 
@@ -40,8 +46,8 @@ void GLRender::OnTick(const natU64 _dt)
 	Transform* transform = GetEntity()->GetComponent<Transform>();
 	GLManager* glmanager = GetEntity()->GetComponent<GLManager>();
 
-	transform->m_pos.x = 400;
-	transform->m_pos.y = 200;
+	//transform->m_pos.x = 400;
+	//transform->m_pos.y = 200;
 
 	/*glPushMatrix();
 
@@ -65,7 +71,7 @@ void GLRender::OnTick(const natU64 _dt)
 	glPopMatrix();*/
 
 	// store positions
-	GLfloat vertexPositions[] = {
+	/*GLfloat vertexPositions[] = {
 		-100.0f, -100.0f, 0.0f, 1.0f,
 		100.f, -100.f, 0.f, 1.f,
 		-100.f, 100.f, 0.f, 1.f,
@@ -77,7 +83,10 @@ void GLRender::OnTick(const natU64 _dt)
 		1.0f, 0.0f, 0.0f, 1.0f
 	};
 
-	size_t vectorLength = sizeof(vertexPositions);
+	size_t vectorLength = sizeof(vertexPositions);*/
+
+	size_t vectorLength;
+	natF32 *vertexPositions = m_shape->GetVertex(vectorLength);
 
 	glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject);
 	glBufferData(GL_ARRAY_BUFFER, vectorLength, vertexPositions, GL_DYNAMIC_DRAW);
@@ -108,7 +117,7 @@ void GLRender::OnTick(const natU64 _dt)
 	// call to draw
 	//glDrawArrays(GL_QUADS, 0, 4);
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-	//glDrawArrays(GL_POINTS, 0, 4);
+	//glDrawElements(GL_TRIANGLE_STRIP, );
 
 	glDisableVertexAttribArray(0);
 	glDisableVertexAttribArray(1);

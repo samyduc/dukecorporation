@@ -21,6 +21,9 @@ void CivilianAI::OnInit()
 	m_center = transform->GetPos();
 	m_radius = 200.0f;
 	m_t = 0.0f;
+
+	transform->m_pos.x = m_center.x + m_radius*glm::cos(m_t);
+	transform->m_pos.y = m_center.y + m_radius*glm::sin(m_t);
 }
 
 void CivilianAI::OnTick(const natU64 _dt)

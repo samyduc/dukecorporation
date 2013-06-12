@@ -15,7 +15,7 @@ namespace Natorium
 Camera::Camera()
 	: m_viewMatrix(1.0f)
 	, m_projectionMatrix(1.0f)
-	, m_resolution(640, 480)
+	, m_resolution(0, 0)
 {
 
 }
@@ -26,9 +26,8 @@ Camera::~Camera()
 
 void Camera::OnInit()
 {
-	glm::vec2 resolution = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<GLManager>()->GetScreenResolution();
-
-	m_projectionMatrix = glm::ortho<float>(0.f, static_cast<float>(resolution.x), static_cast<float>(resolution.y), 0.f, 0.f, 100.f);
+	m_resolution = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<GLManager>()->GetScreenResolution();
+	m_projectionMatrix = glm::ortho<float>(0.f, static_cast<float>(m_resolution.x), static_cast<float>(m_resolution.y), 0.f, 0.f, 100.f);
 }
 
 void Camera::OnTick(const natU64 _dt)

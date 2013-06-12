@@ -4,6 +4,7 @@
 
 #include "entity/player.h"
 #include "entity/civilian.h"
+#include "entity/spawnercivilian.h"
 
 namespace Natorium
 {
@@ -21,13 +22,10 @@ void SceneManager::OnInit()
 	Entity* player = new Player();
 	GetEntity()->GetKernel()->AddEntity(Layer::Layer_1, player);
 
-	Entity* dummy_ai = new Civilian();
-	GetEntity()->GetKernel()->AddEntity(Layer::Layer_1, dummy_ai);
-
-	Entity* camera_dummy = new Entity();
-	camera_dummy->AddComponent<Transform>();
-	camera_dummy->AddComponent<Camera>();
-	GetEntity()->GetKernel()->AddEntity(Layer::Layer_1, camera_dummy);
+	SpawnerCivilian* spawner_civilian = new SpawnerCivilian();
+	Transform *spawner_transform = spawner_civilian->GetComponent<Transform>();
+	spawner_transform->m_pos = glm::vec3(0.f, 0.f, 0.f);
+	GetEntity()->GetKernel()->AddEntity(Layer::Layer_1, spawner_civilian);
 
 	Camera* camera = player->GetComponent<Camera>();
 	Transform* transform = player->GetComponent<Transform>();

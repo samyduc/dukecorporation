@@ -5,7 +5,7 @@ namespace Natorium
 {
 
 SquareShape::SquareShape()
-	: m_size(100.f, 100.f)
+	: m_size(50.f, 50.f)
 	, m_color(1.f, 0.f, 0.f, 1.f)
 {
 

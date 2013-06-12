@@ -13,10 +13,7 @@ Natorium::Kernel *kernel;
 
 void one_iter()
 {
-	for(int i=0; i<1; ++i)
-	{
-		kernel->Tick();
-	}
+	kernel->Tick();
 }
 
 int main(int argc, char *argv[]) 
@@ -25,7 +22,7 @@ int main(int argc, char *argv[])
 	kernel->Init();
 
 #if defined(EMSCRIPTEN_TARGET)
-	emscripten_set_main_loop(one_iter, 1000000, true);
+	emscripten_set_main_loop(one_iter, 0, true);
 #else
 	while(true)
 	{

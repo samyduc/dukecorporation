@@ -12,6 +12,8 @@
 
 #if defined(EMSCRIPTEN_TARGET)
 #include <GLES2/gl2.h>
+#include <EGL/egl.h>
+#include <EGL/eglext.h>
 #endif
 
 namespace Natorium
@@ -37,7 +39,7 @@ void SDLManager::OnInit()
 
 	SDL_GL_SetAttribute( SDL_GL_DOUBLEBUFFER, 1 );
 
-	m_screen = SDL_SetVideoMode(640, 480, 32, SDL_OPENGL);
+	m_screen = SDL_SetVideoMode(1024, 768, 32, SDL_OPENGL);
 
 	assert(m_screen);
 }

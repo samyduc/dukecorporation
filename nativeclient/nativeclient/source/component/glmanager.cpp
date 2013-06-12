@@ -27,7 +27,7 @@ GLManager::GLManager()
 	, m_projectionUnif(0)
 	, m_viewUnif(0)
 	, m_currentCamera(nullptr)
-	, m_screenResolution(640, 480)
+	, m_screenResolution(0, 0)
 	, m_projectionMatrixCopy(1.f)
 	, m_viewMatrixCorrected(1.f)
 {
@@ -77,6 +77,10 @@ void GLManager::OnInit()
 	//glMatrixMode(GL_MODELVIEW);
 	//glLoadIdentity();
 
+	GLint m_viewport[4];
+	glGetIntegerv(GL_VIEWPORT, m_viewport);
+	m_screenResolution.x = static_cast<natF32>(m_viewport[2]);
+	m_screenResolution.y = static_cast<natF32>(m_viewport[3]);
 }
 
 void GLManager::OnInitShaders()
@@ -206,8 +210,10 @@ GLuint GLManager::CreateShaderProgram(const shaders_t &shaderList)
 	for(size_t iLoop = 0; iLoop < shaderList.size(); iLoop++)
 		glAttachShader(program, shaderList[iLoop]);
 	
-	//glBindAttribLocation(m_shaderProgram, 0, "position");
-	//glBindAttribLocation(m_shaderProgram, 1, "color");
+
+	// TODO move it to something more dynamic
+	glBindAttribLocation(program, 0, "position");
+	glBindAttribLocation(program, 1, "color");
 
 	glLinkProgram(program);
 	

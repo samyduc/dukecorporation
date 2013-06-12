@@ -34,6 +34,7 @@
     <ClCompile Include="source\component\camera.cpp" />
     <ClCompile Include="source\component\charactercontroller.cpp" />
     <ClCompile Include="source\component\gameplay\civilianai.cpp" />
+    <ClCompile Include="source\component\gameplay\spawner.cpp" />
     <ClCompile Include="source\component\glmanager.cpp" />
     <ClCompile Include="source\component\glrender.cpp" />
     <ClCompile Include="source\component\scenemanager.cpp" />
@@ -63,6 +64,7 @@
     <ClInclude Include="include\component\camera.h" />
     <ClInclude Include="include\component\charactercontroller.h" />
     <ClInclude Include="include\component\gameplay\civilianai.h" />
+    <ClInclude Include="include\component\gameplay\spawner.h" />
     <ClInclude Include="include\component\glmanager.h" />
     <ClInclude Include="include\component\glrender.h" />
     <ClInclude Include="include\component\input.h" />
@@ -76,6 +78,7 @@
     <ClInclude Include="include\entity\civilian.h" />
     <ClInclude Include="include\entity\player.h" />
     <ClInclude Include="include\entity\root.h" />
+    <ClInclude Include="include\entity\spawnercivilian.h" />
     <ClInclude Include="include\shader\position.h" />
     <ClInclude Include="include\shader\position_es.h" />
   </ItemGroup>

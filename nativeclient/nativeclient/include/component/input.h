@@ -17,6 +17,7 @@ public:
 
 	enum eAction
 	{
+		none,
 		forward,
 		backward,
 		left,
@@ -25,10 +26,12 @@ public:
 		shoot1
 	};
 
+	virtual eAction	GetAction(natU32 _key) = 0;
 	virtual natBool IsAction(eAction _action) = 0;
 	virtual void GetMousePosition(glm::vec2& _pos) = 0;
 
-	
+protected:
+	virtual void ChangeState(eAction _action, bool _state) = 0;
 };
 
 

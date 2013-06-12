@@ -9,6 +9,8 @@
 
 #include <iostream>
 
+#include <glm/gtx/fast_trigonometry.hpp>
+
 namespace Natorium
 {
 
@@ -27,16 +29,24 @@ void CharacterController::OnInit()
 void CharacterController::OnTick(const natU64 _dt)
 {
 	Input* input = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<Input>();
+	Transform* transform = GetEntity()->GetComponent<Transform>();
 
 	if(input->IsAction(Input::forward))
 	{
-		printf("forward pressed\n");
+		transform->m_pos.y -= 0.1f*_dt;
 	}
 	if(input->IsAction(Input::backward))
 	{
-		printf("backward pressed\n");
+		transform->m_pos.y += 0.1f*_dt;
 	}
-
+	if(input->IsAction(Input::left))
+	{
+		transform->m_pos.x -= 0.1f*_dt;
+	}
+	if(input->IsAction(Input::right))
+	{
+		transform->m_pos.x += 0.1f*_dt;
+	}
 
 	glm::vec2 mouse_pos;
 	input->GetMousePosition(mouse_pos);
@@ -63,7 +73,8 @@ void CharacterController::LookAtScreen(glm::vec3& _look)
 	natF32 vector_y = screen_pos.y - _look.y;
 
 
-	transform->m_rad.z = glm::atan(vector_y, vector_x);
+	//transform->m_rad.z = glm::fastAtan(vector_y, vector_x);
+	transform->m_rad.z = std::atan2(vector_y, vector_x);
 }
 
 

@@ -5,7 +5,6 @@ namespace Natorium
 {
 
 SDLInput::SDLInput()
-	: m_keystates(nullptr)
 {
 }
 
@@ -16,16 +15,13 @@ SDLInput::~SDLInput()
 
 void SDLInput::OnInit()
 {
-	assert(m_keystates == nullptr);
-	/*m_keystates = SDL_GetKeyState(NULL);
-
 	// default init
 	SetAction(Input::forward, SDLK_UP);
 	SetAction(Input::backward, SDLK_DOWN);
 	SetAction(Input::left, SDLK_LEFT);
 	SetAction(Input::right, SDLK_RIGHT);
 	SetAction(Input::jump, SDLK_SPACE);
-	SetAction(Input::shoot1, SDLK_RETURN);*/
+	SetAction(Input::shoot1, SDLK_RETURN);
 }
 
 void SDLInput::OnTick(const natU64 _dt)
@@ -36,37 +32,72 @@ void SDLInput::OnTick(const natU64 _dt)
 		switch (event.type) {
 			case SDL_QUIT:
 				exit(0);
+				break;
+			case SDL_KEYDOWN:
+				{
+					 SDLKey key = event.key.keysym.sym;
+					 Input::eAction action = GetAction(key);
+					 ChangeState(action, true);
+				}
+				break;
+			case SDL_KEYUP:
+				{
+					 SDLKey key = event.key.keysym.sym;
+					 Input::eAction action = GetAction(key);
+					 ChangeState(action, false);
+				}
+				break;
+			default:
+				break;
 		}
 	}
 }
 
 void SDLInput::OnDeInit()
 {
-	delete m_keystates;
-	m_keystates = nullptr;
+
 }
 
 // Input
 natBool SDLInput::IsAction(Input::eAction _action)
 {
 	natBool ret = false;
-	inputs_t::iterator it = m_inputs.find(_action);
+	actions_t::iterator it = m_actions.find(_action);
 
-	if(it != m_inputs.end())
+	if(it != m_actions.end())
 	{
-		Uint8 key = it->second;
-
-		if(m_keystates[key])
-		{
-			ret = true;
-		}
+		ret = it->second;
 	}
 	return ret;
 }
 
-void SDLInput::SetAction(Input::eAction _action, SDLKey _key)
+void SDLInput::SetAction(Input::eAction _action, natU32 _key)
 {
-	m_inputs[_action] = _key;
+	m_inputs[_key] = _action;
+	m_actions[_action] = false;
+}
+
+Input::eAction	SDLInput::GetAction(natU32 _key)
+{
+	eAction action = Input::none;
+	inputs_t::iterator it = m_inputs.find(_key);
+
+	if(it != m_inputs.end())
+	{
+		action = it->second;
+	}
+
+	return action;
+}
+
+void SDLInput::ChangeState(Input::eAction _action, bool _state)
+{
+	actions_t::iterator it = m_actions.find(_action);
+
+	if(it != m_actions.end())
+	{
+		it->second = _state;
+	}
 }
 
 void SDLInput::GetMousePosition(glm::vec2& _pos)

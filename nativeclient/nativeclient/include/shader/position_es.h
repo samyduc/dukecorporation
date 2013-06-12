@@ -45,8 +45,8 @@ const std::string strPositionVertex(
 	"\n"
 	"void main()\n"
 	"{\n"
-	"	//gl_Position = projection * view * model * position;\n"
-	"	gl_Position = vec4(0.5);\n"
+	"	gl_Position = projection * view * model * position;\n"
+	"	//gl_Position = vec4(0.5);\n"
 	"	fragmentColor = color;\n"
 	"}\n"
 );

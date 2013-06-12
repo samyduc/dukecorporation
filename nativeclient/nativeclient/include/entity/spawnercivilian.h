@@ -11,30 +11,21 @@
 #include "component/charactercontroller.h"
 #include "component/glmanager.h"
 #include "component/squareshape.h"
+#include "component/gameplay/spawner.h"
 
-#include "component/gameplay/civilianai.h"
 
-#include <glm/glm.hpp>
 
 namespace Natorium
 {
 
-class Civilian : public Entity
+class SpawnerCivilian : public Entity
 {
 public:
-	Civilian()
+	SpawnerCivilian()
 		: Entity()
 	{
 		AddComponent<Transform>();
-		AddComponent<GLRender>();
-		AddComponent<Camera>();
-		SquareShape *shape = AddComponent<SquareShape>();
-		AddComponent<Camera>();
-		//AddComponent<CharacterController>();
-		AddComponent<CivilianAI>();
-
-		glm::vec4 color(0.f, 0.f, 1.f, 1.f);
-		shape->SetColor(color);
+		Spawner* spawner = AddComponent<Spawner>();
 	}
 
 

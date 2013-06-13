@@ -5,6 +5,7 @@
 #include "base/layer.h"
 #include "component/transform.h"
 #include "component/glmanager.h"
+#include "component/input.h"
 
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -16,6 +17,8 @@ Camera::Camera()
 	: m_viewMatrix(1.0f)
 	, m_projectionMatrix(1.0f)
 	, m_resolution(0, 0)
+	, m_effect_followMouse(false)
+	, m_efect_followMouseSmooth(0.35f)
 {
 
 }
@@ -40,11 +43,18 @@ void Camera::OnTick(const natU64 _dt)
 
 	//glm::vec3 center(m_resolution.x / 2, m_resolution.y / 2, 0);
 	//m_viewMatrix = glm::translate(m_viewMatrix, center);
+
+	// TODO : refactor effect
+	if(m_effect_followMouse)
+	{
+		ApplyEffectFollowMouse();
+	}
 }
 
 void Camera::OnDeInit()
 {
 }
+
 
 glm::vec3 Camera::GetPos()
 {
@@ -100,5 +110,20 @@ glm::vec3 Camera::GetPosScreenToWorld(const glm::vec2& _screen)
 
 	return glm::vec3(world);
 }
+
+
+void Camera::ApplyEffectFollowMouse()
+{
+	Input* input = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<Input>();
+	glm::vec2 mouse;
+	input->GetMousePosition(mouse);
+
+	glm::vec2 screen = GetPosWorldToScreen(GetPos());
+	glm::vec2 diff = m_efect_followMouseSmooth*(screen - mouse);
+	
+	glm::vec3 diff_vec3(diff, 0.f);
+	m_viewMatrix = glm::translate(m_viewMatrix, diff_vec3);
+}
+
 
 }

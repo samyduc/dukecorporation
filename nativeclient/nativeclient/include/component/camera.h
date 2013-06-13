@@ -31,7 +31,12 @@ public:
 	glm::vec2		GetPosWorldToScreen(const glm::vec3& _world);
 	glm::vec3		GetPosScreenToWorld(const glm::vec2& _screen);
 
+	void			ApplyEffectFollowMouse();
+
 public:
+	bool			m_effect_followMouse;
+	natF32			m_efect_followMouseSmooth;
+
 	glm::mat4		m_viewMatrix;
 	glm::mat4		m_projectionMatrix;
 

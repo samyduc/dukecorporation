@@ -28,11 +28,10 @@ void SceneManager::OnInit()
 	GetEntity()->GetKernel()->AddEntity(Layer::Layer_1, spawner_civilian);
 
 	Camera* camera = player->GetComponent<Camera>();
+	camera->m_effect_followMouse = true;
 	Transform* transform = player->GetComponent<Transform>();
 	GLManager* glmanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<GLManager>();
 
-	//transform->m_pos.x = 400;
-	//transform->m_pos.y = 200;
 	glmanager->SetCamera(camera);
 }
 

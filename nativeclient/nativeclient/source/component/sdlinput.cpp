@@ -16,12 +16,12 @@ SDLInput::~SDLInput()
 void SDLInput::OnInit()
 {
 	// default init
-	SetAction(Input::forward, SDLK_UP);
-	SetAction(Input::backward, SDLK_DOWN);
-	SetAction(Input::left, SDLK_LEFT);
-	SetAction(Input::right, SDLK_RIGHT);
-	SetAction(Input::jump, SDLK_SPACE);
-	SetAction(Input::shoot1, SDLK_RETURN);
+	SetAction(Input::forward, static_cast<natU32>(SDLK_UP));
+	SetAction(Input::backward, static_cast<natU32>(SDLK_DOWN));
+	SetAction(Input::left, static_cast<natU32>(SDLK_LEFT));
+	SetAction(Input::right, static_cast<natU32>(SDLK_RIGHT));
+	SetAction(Input::jump, static_cast<natU32>(SDLK_SPACE));
+	SetAction(Input::shoot1, static_cast<natU8>(SDL_BUTTON_LEFT));
 }
 
 void SDLInput::OnTick(const natU64 _dt)
@@ -36,15 +36,29 @@ void SDLInput::OnTick(const natU64 _dt)
 			case SDL_KEYDOWN:
 				{
 					 SDLKey key = event.key.keysym.sym;
-					 Input::eAction action = GetAction(key);
+					 Input::eAction action = GetAction(static_cast<natU32>(key));
 					 ChangeState(action, true);
 				}
 				break;
 			case SDL_KEYUP:
 				{
 					 SDLKey key = event.key.keysym.sym;
-					 Input::eAction action = GetAction(key);
+					 Input::eAction action = GetAction(static_cast<natU32>(key));
 					 ChangeState(action, false);
+				}
+				break;
+			case SDL_MOUSEBUTTONDOWN:
+				{
+					natU8 button = event.button.button;
+					Input::eAction action = GetAction(static_cast<natU8>(button));
+					ChangeState(action, true);
+				}
+				break;
+			case SDL_MOUSEBUTTONUP:
+				{
+					natU8 button = event.button.button;
+					Input::eAction action = GetAction(static_cast<natU8>(button));
+					ChangeState(action, false);
 				}
 				break;
 			default:
@@ -73,16 +87,35 @@ natBool SDLInput::IsAction(Input::eAction _action)
 
 void SDLInput::SetAction(Input::eAction _action, natU32 _key)
 {
-	m_inputs[_key] = _action;
+	m_inputs_key[_key] = _action;
+	m_actions[_action] = false;
+}
+
+void SDLInput::SetAction(Input::eAction _action, natU8 _mouse)
+{
+	m_inputs_mouse[_mouse] = _action;
 	m_actions[_action] = false;
 }
 
 Input::eAction	SDLInput::GetAction(natU32 _key)
 {
 	eAction action = Input::none;
-	inputs_t::iterator it = m_inputs.find(_key);
+	inputs_key_t::iterator it = m_inputs_key.find(_key);
 
-	if(it != m_inputs.end())
+	if(it != m_inputs_key.end())
+	{
+		action = it->second;
+	}
+
+	return action;
+}
+
+Input::eAction	SDLInput::GetAction(natU8 _mouse)
+{
+	eAction action = Input::none;
+	inputs_mouse_t::iterator it = m_inputs_mouse.find(_mouse);
+
+	if(it != m_inputs_mouse.end())
 	{
 		action = it->second;
 	}

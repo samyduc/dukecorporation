@@ -30,6 +30,8 @@ public:
 	glm::vec3		m_pos;
 	glm::vec3		m_rad;
 	glm::vec3		m_scale;
+
+	glm::vec3		m_forward;
 public:
 
 	glm::vec3		GetPos();

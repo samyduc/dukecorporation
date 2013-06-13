@@ -4,12 +4,16 @@
 #include "base/component.h"
 #include "base/hash.h"
 
+
 #include <glm/glm.hpp>
 
 namespace Natorium
 {
 
 static natU32 s_CharacterController = Hash::Compute("s_CharacterController");
+
+
+class IWeapon;
 
 class CharacterController : public Component
 {
@@ -26,6 +30,7 @@ public:
 	virtual void	LookAtScreen(glm::vec3& _look);
 
 private:
+	IWeapon*		m_currentWeapon;
 
 };
 

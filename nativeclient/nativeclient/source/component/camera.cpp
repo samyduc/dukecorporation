@@ -101,12 +101,12 @@ glm::vec3 Camera::GetPosScreenToWorld(const glm::vec2& _screen)
 	glm::vec4 world = viewProjectionInverseMatrix * temp;*/
 
 	// hack ... (not working)
-	assert(false);
+	//assert(false);
 	glm::vec3 pos = GetPos();
 	glm::vec3 world(0.f);
 
-	world.x = pos.x - m_resolution.x / 2 - _screen.x;
-	world.y = pos.y - m_resolution.y / 2 - _screen.y;
+	world.x = pos.x - m_resolution.x / 2 + _screen.x;
+	world.y = pos.y - m_resolution.y / 2 + _screen.y;
 
 	return glm::vec3(world);
 }

@@ -33,6 +33,8 @@
     <ClCompile Include="source\base\layer.cpp" />
     <ClCompile Include="source\component\camera.cpp" />
     <ClCompile Include="source\component\charactercontroller.cpp" />
+    <ClCompile Include="source\component\gameplay\baseweapon.cpp" />
+    <ClCompile Include="source\component\gameplay\bulletcontroller.cpp" />
     <ClCompile Include="source\component\gameplay\civilianai.cpp" />
     <ClCompile Include="source\component\gameplay\spawner.cpp" />
     <ClCompile Include="source\component\glmanager.cpp" />
@@ -63,7 +65,10 @@
     <ClInclude Include="include\base\timeplatform.h" />
     <ClInclude Include="include\component\camera.h" />
     <ClInclude Include="include\component\charactercontroller.h" />
+    <ClInclude Include="include\component\gameplay\baseweapon.h" />
+    <ClInclude Include="include\component\gameplay\bulletcontroller.h" />
     <ClInclude Include="include\component\gameplay\civilianai.h" />
+    <ClInclude Include="include\component\gameplay\iweapon.h" />
     <ClInclude Include="include\component\gameplay\spawner.h" />
     <ClInclude Include="include\component\glmanager.h" />
     <ClInclude Include="include\component\glrender.h" />
@@ -75,6 +80,7 @@
     <ClInclude Include="include\component\shape.h" />
     <ClInclude Include="include\component\squareshape.h" />
     <ClInclude Include="include\component\transform.h" />
+    <ClInclude Include="include\entity\bullet.h" />
     <ClInclude Include="include\entity\civilian.h" />
     <ClInclude Include="include\entity\player.h" />
     <ClInclude Include="include\entity\root.h" />

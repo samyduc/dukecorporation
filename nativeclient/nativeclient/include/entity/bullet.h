@@ -13,26 +13,27 @@
 #include "component/squareshape.h"
 
 #include "component/gameplay/civilianai.h"
+#include "component/gameplay/bulletcontroller.h"
 
 #include <glm/glm.hpp>
 
 namespace Natorium
 {
 
-class Civilian : public Entity
+class Bullet : public Entity
 {
 public:
-	Civilian()
+	Bullet()
 		: Entity()
 	{
 		AddComponent<Transform>();
 		AddComponent<GLRender>();
-		AddComponent<Camera>();
 		SquareShape *shape = AddComponent<SquareShape>();
-		//AddComponent<CharacterController>();
-		AddComponent<CivilianAI>();
+		AddComponent<BulletController>();
 
-		glm::vec4 color(0.f, 0.f, 1.f, 1.f);
+		glm::vec2 size(10.f, 10.f);
+		glm::vec4 color(102.f, 0.f, 51.f, 1.f);
+		shape->SetSize(size);
 		shape->SetColor(color);
 	}
 

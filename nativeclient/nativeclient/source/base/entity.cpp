@@ -15,6 +15,7 @@ Entity::Entity()
 	, m_parent(nullptr)
 	, m_id(0L)
 	, m_isInit(false)
+	, m_enabled(true)
 {
 
 }
@@ -121,19 +122,22 @@ void Entity::_Init(Kernel& _kernel, Layer& _layer)
 
 void Entity::_Tick(natU64 _dt)
 {
-	for(components_t::iterator it = m_components.begin(); it != m_components.end(); ++it)
+	if(m_enabled)
 	{
-		Component* component = (*it).m_component;
-		component->_Tick(_dt);
-	}
+		for(components_t::iterator it = m_components.begin(); it != m_components.end(); ++it)
+		{
+			Component* component = (*it).m_component;
+			component->_Tick(_dt);
+		}
 
-	for(childs_t::iterator it = m_childs.begin(); it != m_childs.end(); ++it)
-	{
-		Entity* child = (*it);
-		child->_Tick(_dt);
-	}
+		for(childs_t::iterator it = m_childs.begin(); it != m_childs.end(); ++it)
+		{
+			Entity* child = (*it);
+			child->_Tick(_dt);
+		}
 
-	OnTick(_dt);
+		OnTick(_dt);
+	}
 }
 
 void Entity::_DeInit()

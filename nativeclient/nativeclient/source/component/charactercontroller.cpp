@@ -1,9 +1,13 @@
 #include "component/charactercontroller.h"
+
 #include "base/entity.h"
+#include "component/glmanager.h"
 #include "component/input.h"
 #include "component/transform.h"
 #include "component/glmanager.h"
 #include "component/camera.h"
+#include "component/gameplay/iweapon.h"
+#include "component/gameplay/baseweapon.h"
 
 #include "base/kernel.h"
 
@@ -15,6 +19,7 @@ namespace Natorium
 {
 
 CharacterController::CharacterController()
+	: m_currentWeapon(nullptr)
 {
 }
 
@@ -24,6 +29,7 @@ CharacterController::~CharacterController()
 
 void CharacterController::OnInit()
 {
+	m_currentWeapon = GetEntity()->GetComponent<BaseWeapon>();
 }
 
 void CharacterController::OnTick(const natU64 _dt)
@@ -46,6 +52,18 @@ void CharacterController::OnTick(const natU64 _dt)
 	if(input->IsAction(Input::right))
 	{
 		transform->m_pos.x += 0.1f*_dt;
+	}
+	if(input->IsAction(Input::shoot1))
+	{
+		glm::vec2 mouse_pos;
+		input->GetMousePosition(mouse_pos);
+		Camera* camera = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<GLManager>()->GetCamera();
+		glm::vec3 world_pos = camera->GetPosScreenToWorld(mouse_pos);
+
+		if(m_currentWeapon)
+		{
+			m_currentWeapon->ShootAt(world_pos);
+		}
 	}
 
 	glm::vec2 mouse_pos;

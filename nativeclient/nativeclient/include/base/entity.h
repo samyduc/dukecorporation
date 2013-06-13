@@ -48,6 +48,8 @@ public:
 	Layer*				GetLayer() const;
 	Kernel*				GetKernel() const;
 
+	void				SetEnabled(natBool _enabled) { m_enabled = _enabled; }
+
 	template<class T>
 	T* AddComponent()
 	{
@@ -123,6 +125,8 @@ private:
 
 	natU64				m_id;
 	natBool				m_isInit;
+
+	natBool				m_enabled;
 
 };
 

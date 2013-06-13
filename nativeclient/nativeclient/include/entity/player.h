@@ -11,7 +11,7 @@
 #include "component/charactercontroller.h"
 #include "component/glmanager.h"
 #include "component/squareshape.h"
-
+#include "component/gameplay/baseweapon.h"
 
 
 namespace Natorium
@@ -28,6 +28,7 @@ public:
 		AddComponent<SquareShape>();
 		AddComponent<Camera>();
 		AddComponent<CharacterController>();
+		AddComponent<BaseWeapon>();
 	}
 
 

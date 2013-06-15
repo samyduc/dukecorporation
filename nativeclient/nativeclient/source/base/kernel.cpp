@@ -15,6 +15,7 @@ namespace Natorium
 Kernel::Kernel()
 	: m_currentTime(0L)
 	, m_currentId(0L)
+	, m_acc(0)
 {
 	m_layers.reserve(Layer::Layer_Max);
 
@@ -23,6 +24,8 @@ Kernel::Kernel()
 		Layer* layer = new Layer();
 		m_layers.push_back(layer);
 	}
+
+	m_rateStep = static_cast<natU64>(1/60.f * 1000);
 }
 
 Kernel::~Kernel()
@@ -65,18 +68,31 @@ void Kernel::Tick()
 	natU64 dt = now - m_currentTime;
 	m_currentTime = now;
 
-	Layer* layer = m_layers[0];
-	Entity* entity = layer->GetRootEntity();
-	SDLManager* sdlmanager = entity->GetComponent<SDLManager>();
-	sdlmanager->PreRender();
+	m_acc += dt;
 
-	for(layers_t::iterator it = m_layers.begin(); it != m_layers.end(); ++it)
+	if(m_acc >= 250)
 	{
-		Layer* layer = (*it);
-		layer->Tick(dt);
+		m_acc = 250;
 	}
 
-	sdlmanager->PostRender();
+	while(m_acc >= m_rateStep)
+	{
+		m_acc -= m_rateStep;
+
+		Layer* layer = m_layers[0];
+		Entity* entity = layer->GetRootEntity();
+		SDLManager* sdlmanager = entity->GetComponent<SDLManager>();
+		sdlmanager->PreRender();
+
+		for(layers_t::iterator it = m_layers.begin(); it != m_layers.end(); ++it)
+		{
+			Layer* layer = (*it);
+			layer->Tick(m_rateStep);
+			//layer->Tick(dt);
+		}
+
+		sdlmanager->PostRender();
+	}
 }
 
 void Kernel::DeInit()

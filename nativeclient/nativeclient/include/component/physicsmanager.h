@@ -36,8 +36,9 @@ public:
 
 private:
 	b2World*		m_b2World;
-	natF32			m_acc;
-	natF32			m_rateStep;
+	natU64			m_acc;
+	natU64			m_rateStep;
+	natF32			m_rateStepFloat;
 	natU32			m_velocityIterations;
 	natU32			m_positionIterations;
 

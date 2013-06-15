@@ -12,8 +12,8 @@ namespace Natorium
 PhysicsManager::PhysicsManager()
 	: m_velocityIterations(6)
 	, m_positionIterations(2)
-	, m_rateStep(1.f/60.f)
-	, m_acc(0.f)
+	, m_rateStepFloat(1/60.f)
+	, m_acc(0)
 	, m_b2World(nullptr)
 {
 }
@@ -27,6 +27,8 @@ void PhysicsManager::OnInit()
 	b2Vec2 gravity(0.f, 0.f);
 	m_b2World = new b2World(gravity);
 	m_b2World->SetContactListener(this);
+
+	m_rateStep = static_cast<natU64>(m_rateStepFloat*1000);
 }
 
 void PhysicsManager::OnTick(const natU64 _dt)
@@ -36,7 +38,7 @@ void PhysicsManager::OnTick(const natU64 _dt)
 	if(m_acc >= m_rateStep)
 	{
 		m_acc -= m_rateStep;
-		m_b2World->Step(m_rateStep, m_velocityIterations, m_positionIterations);
+		m_b2World->Step(m_rateStepFloat, m_velocityIterations, m_positionIterations);
 		m_b2World->ClearForces();
 	}
 }

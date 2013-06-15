@@ -33,6 +33,8 @@ public:
 	Layer*			GetLayer(Layer::eLayer _layer) { return m_layers[_layer]; }
 
 private:
+	natU64			m_acc;
+	natU64			m_rateStep;
 	
 	layers_t		m_layers;
 

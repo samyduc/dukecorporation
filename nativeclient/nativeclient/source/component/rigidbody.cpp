@@ -75,6 +75,8 @@ void RigidBody::OnTick(const natU64 _dt)
 	m_transform->m_pos.x = b2_pos.x * s_B2RatioPos;
 	m_transform->m_pos.y = b2_pos.y * s_B2RatioPos;
 
+	m_transform->m_rad.z = m_b2Body->GetAngle();
+
 }
 
 void RigidBody::OnDeInit()

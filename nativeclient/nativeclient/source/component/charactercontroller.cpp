@@ -106,6 +106,9 @@ void CharacterController::LookAtScreen(glm::vec3& _look)
 
 	//transform->m_rad.z = glm::fastAtan(vector_y, vector_x);
 	transform->m_rad.z = std::atan2(vector_y, vector_x);
+
+	RigidBody* rigidbody = GetEntity()->GetComponent<RigidBody>();
+	rigidbody->SetAngle(transform->m_rad);
 }
 
 

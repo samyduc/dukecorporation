@@ -3,6 +3,8 @@
 #include "base/kernel.h"
 #include "base/component.h"
 
+#include <Box2D/Box2D.h>
+
 #include <assert.h>
 
 namespace Natorium
@@ -118,10 +120,14 @@ void Entity::_Init(Kernel& _kernel, Layer& _layer)
 	}
 
 	m_isInit = true;
+
+	_OnSetEnable(m_enabled);
 }
 
 void Entity::_Tick(natU64 _dt)
 {
+	assert(m_isInit);
+
 	if(m_enabled)
 	{
 		for(components_t::iterator it = m_components.begin(); it != m_components.end(); ++it)
@@ -159,6 +165,69 @@ void Entity::_DeInit()
 	m_kernel = nullptr;
 	m_layer = nullptr;
 	m_isInit = false;
+}
+
+void Entity::OnEnable()
+{
+	for(components_t::iterator it = m_components.begin(); it != m_components.end(); ++it)
+	{
+		Component* component = (*it).m_component;
+		component->OnEnable();
+	}
+}
+
+void Entity::OnDisable()
+{
+	for(components_t::iterator it = m_components.begin(); it != m_components.end(); ++it)
+	{
+		Component* component = (*it).m_component;
+		component->OnDisable();
+	}
+}
+
+void Entity::OnEnterCollide(b2Contact* _contact)
+{
+	assert(m_enabled == true);
+
+	for(components_t::iterator it = m_components.begin(); it != m_components.end(); ++it)
+	{
+		Component* component = (*it).m_component;
+		component->OnEnterCollide(_contact);
+	}
+}
+
+void Entity::OnExitCollide(b2Contact* _contact)
+{
+	assert(m_enabled == true);
+
+	for(components_t::iterator it = m_components.begin(); it != m_components.end(); ++it)
+	{
+		Component* component = (*it).m_component;
+		component->OnExitCollide(_contact);
+	}
+}
+
+void Entity::_OnSetEnable(natBool _enabled)
+{
+	m_enabled = _enabled;
+
+	if(m_isInit)
+	{
+		if(m_enabled)
+		{
+			OnEnable();
+		}
+		else
+		{
+			OnDisable();
+		}
+
+		for(childs_t::iterator it = m_childs.begin(); it != m_childs.end(); ++it)
+		{
+			Entity* child = (*it);
+			child->SetEnabled(_enabled);
+		}
+	}
 }
 
 }

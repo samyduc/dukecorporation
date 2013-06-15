@@ -8,6 +8,7 @@
 #include "component/camera.h"
 #include "component/gameplay/iweapon.h"
 #include "component/gameplay/baseweapon.h"
+#include "entity/player.h"
 
 #include "base/kernel.h"
 
@@ -36,22 +37,28 @@ void CharacterController::OnTick(const natU64 _dt)
 {
 	Input* input = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<Input>();
 	Transform* transform = GetEntity()->GetComponent<Transform>();
+	RigidBody* rigidbody = GetEntity()->GetComponent<RigidBody>();
 
+	glm::vec3 impulse(0.f);
 	if(input->IsAction(Input::forward))
 	{
-		transform->m_pos.y -= 0.1f*_dt;
+		//transform->m_pos.y -= 0.1f*_dt;
+		impulse.y = -2.f * _dt;
 	}
 	if(input->IsAction(Input::backward))
 	{
-		transform->m_pos.y += 0.1f*_dt;
+		//transform->m_pos.y += 0.1f*_dt;
+		impulse.y = 2.f * _dt;
 	}
 	if(input->IsAction(Input::left))
 	{
-		transform->m_pos.x -= 0.1f*_dt;
+		//transform->m_pos.x -= 0.1f*_dt;
+		impulse.x = -2.f * _dt;
 	}
 	if(input->IsAction(Input::right))
 	{
-		transform->m_pos.x += 0.1f*_dt;
+		//transform->m_pos.x += 0.1f*_dt;
+		impulse.x = 2.f * _dt;
 	}
 	if(input->IsAction(Input::shoot1))
 	{
@@ -65,6 +72,12 @@ void CharacterController::OnTick(const natU64 _dt)
 			m_currentWeapon->ShootAt(world_pos);
 		}
 	}
+
+	if(impulse.x != 0.f || impulse.y != 0.f)
+	{
+		rigidbody->ApplyLinearImpulse(impulse);
+	}
+
 
 	glm::vec2 mouse_pos;
 	input->GetMousePosition(mouse_pos);

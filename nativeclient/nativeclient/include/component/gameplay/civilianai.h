@@ -4,6 +4,8 @@
 #include "base/component.h"
 #include "base/hash.h"
 
+#include "component/scenemanager.h"
+
 #include <glm/glm.hpp>
 
 namespace Natorium
@@ -27,10 +29,12 @@ public:
 
 
 private:
-	natF32		m_t;
-	natF32		m_radius;
-	glm::vec3	m_center;
+	natF32			m_t;
+	natF32			m_radius;
+	glm::vec3		m_center;
+	natF32			m_speed;
 
+	SceneManager*	m_sceneManager;
 };
 
 

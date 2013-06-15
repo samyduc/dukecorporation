@@ -4,6 +4,7 @@
 #include "base/component.h"
 #include "base/hash.h"
 
+#include "component/gameplay/iweapon.h"
 
 #include <glm/glm.hpp>
 
@@ -27,8 +28,12 @@ public:
 
 	static natU32	GetType() { return s_BulletController; }
 
-private:
+	void			SetWeapon(IWeapon* _weapon) { m_weapon = _weapon; }
 
+	void			OnEnterCollide(b2Contact* _contact);
+
+protected:
+	IWeapon*		m_weapon;
 
 };
 

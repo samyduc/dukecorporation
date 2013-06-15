@@ -3,6 +3,8 @@
 #include "component/sdlmanager.h"
 #include "component/glmanager.h"
 #include "component/sdlinput.h"
+#include "component/physicsmanager.h"
+#include "component/scenemanager.h"
 
 #include <assert.h>
 
@@ -45,13 +47,15 @@ void Kernel::Init()
 	entity->AddComponent<SDLManager>();
 	entity->AddComponent<SDLInput>();
 	entity->AddComponent<GLManager>();
-	entity->AddComponent<SceneManager>();
+	entity->AddComponent<PhysicsManager>();
 
 	for(size_t i = Layer::Layer_0; i < Layer::Layer_Max; ++i)
 	{
 		Layer* layer = m_layers[i];
 		layer->Init(*this, static_cast<Layer::eLayer>(i));
 	}
+
+	entity->AddComponent<SceneManager>();
 
 }
 

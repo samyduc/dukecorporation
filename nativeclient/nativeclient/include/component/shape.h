@@ -4,6 +4,8 @@
 
 #include "base/hash.h"
 
+#include <glm/glm.hpp>
+
 namespace Natorium
 {
 
@@ -17,7 +19,7 @@ public:
 
 
 	virtual natF32*		GetVertex(size_t &_size) = 0;
-	
+	virtual glm::vec2	GetSize() = 0;
 };
 
 

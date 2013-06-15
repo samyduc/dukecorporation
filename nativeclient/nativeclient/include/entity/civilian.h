@@ -11,6 +11,7 @@
 #include "component/charactercontroller.h"
 #include "component/glmanager.h"
 #include "component/squareshape.h"
+#include "component/rigidbody.h"
 
 #include "component/gameplay/civilianai.h"
 
@@ -31,6 +32,7 @@ public:
 		SquareShape *shape = AddComponent<SquareShape>();
 		//AddComponent<CharacterController>();
 		AddComponent<CivilianAI>();
+		AddComponent<RigidBody>();
 
 		glm::vec4 color(0.f, 0.f, 1.f, 1.f);
 		shape->SetColor(color);

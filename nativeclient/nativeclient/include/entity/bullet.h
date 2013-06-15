@@ -11,6 +11,7 @@
 #include "component/charactercontroller.h"
 #include "component/glmanager.h"
 #include "component/squareshape.h"
+#include "component/rigidbody.h"
 
 #include "component/gameplay/civilianai.h"
 #include "component/gameplay/bulletcontroller.h"
@@ -30,6 +31,7 @@ public:
 		AddComponent<GLRender>();
 		SquareShape *shape = AddComponent<SquareShape>();
 		AddComponent<BulletController>();
+		AddComponent<RigidBody>();
 
 		glm::vec2 size(10.f, 10.f);
 		glm::vec4 color(102.f, 0.f, 51.f, 1.f);

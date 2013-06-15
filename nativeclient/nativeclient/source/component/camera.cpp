@@ -18,7 +18,7 @@ Camera::Camera()
 	, m_projectionMatrix(1.0f)
 	, m_resolution(0, 0)
 	, m_effect_followMouse(false)
-	, m_efect_followMouseSmooth(0.35f)
+	, m_efect_followMouseSmooth(0.15f)
 {
 
 }

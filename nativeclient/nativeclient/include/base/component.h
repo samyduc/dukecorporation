@@ -2,6 +2,8 @@
 
 #include "base/natdef.h"
 
+class b2Contact;
+
 namespace Natorium
 {
 
@@ -19,6 +21,12 @@ public:
 	virtual void		OnInit();
 	virtual void		OnTick(const natU64 _dt);
 	virtual void		OnDeInit();
+
+	virtual void		OnEnable() {}
+	virtual void		OnDisable() {}
+
+	virtual void		OnEnterCollide(b2Contact* _contact) {}
+	virtual void		OnExitCollide(b2Contact* _contact) {}
 
 			natBool		IsInit() { return m_isInit; }		
 			Entity*		GetEntity() const { return m_entity; }

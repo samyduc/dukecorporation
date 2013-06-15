@@ -31,6 +31,163 @@
     <ClCompile Include="source\base\entity.cpp" />
     <ClCompile Include="source\base\kernel.cpp" />
     <ClCompile Include="source\base\layer.cpp" />
+    <ClCompile Include="source\Box2D\Collision\b2BroadPhase.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="source\Box2D\Collision\b2CollideCircle.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="source\Box2D\Collision\b2CollideEdge.cpp" />
+    <ClCompile Include="source\Box2D\Collision\b2CollidePolygon.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="source\Box2D\Collision\b2Collision.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="source\Box2D\Collision\b2Distance.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="source\Box2D\Collision\b2DynamicTree.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="source\Box2D\Collision\b2TimeOfImpact.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="source\Box2D\Collision\Shapes\b2ChainShape.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="source\Box2D\Collision\Shapes\b2CircleShape.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="source\Box2D\Collision\Shapes\b2EdgeShape.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="source\Box2D\Collision\Shapes\b2PolygonShape.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="source\Box2D\Common\b2BlockAllocator.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="source\Box2D\Common\b2Draw.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="source\Box2D\Common\b2Math.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="source\Box2D\Common\b2Settings.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="source\Box2D\Common\b2StackAllocator.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="source\Box2D\Common\b2Timer.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="source\Box2D\Dynamics\b2Body.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="source\Box2D\Dynamics\b2ContactManager.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="source\Box2D\Dynamics\b2Fixture.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="source\Box2D\Dynamics\b2Island.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="source\Box2D\Dynamics\b2World.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="source\Box2D\Dynamics\b2WorldCallbacks.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="source\Box2D\Dynamics\Contacts\b2ChainAndCircleContact.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="source\Box2D\Dynamics\Contacts\b2ChainAndPolygonContact.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="source\Box2D\Dynamics\Contacts\b2CircleContact.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="source\Box2D\Dynamics\Contacts\b2Contact.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="source\Box2D\Dynamics\Contacts\b2ContactSolver.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="source\Box2D\Dynamics\Contacts\b2EdgeAndCircleContact.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="source\Box2D\Dynamics\Contacts\b2EdgeAndPolygonContact.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="source\Box2D\Dynamics\Contacts\b2PolygonAndCircleContact.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="source\Box2D\Dynamics\Contacts\b2PolygonContact.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="source\Box2D\Dynamics\Joints\b2DistanceJoint.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="source\Box2D\Dynamics\Joints\b2FrictionJoint.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="source\Box2D\Dynamics\Joints\b2GearJoint.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="source\Box2D\Dynamics\Joints\b2Joint.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="source\Box2D\Dynamics\Joints\b2MouseJoint.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="source\Box2D\Dynamics\Joints\b2PrismaticJoint.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="source\Box2D\Dynamics\Joints\b2PulleyJoint.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="source\Box2D\Dynamics\Joints\b2RevoluteJoint.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="source\Box2D\Dynamics\Joints\b2RopeJoint.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="source\Box2D\Dynamics\Joints\b2WeldJoint.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="source\Box2D\Dynamics\Joints\b2WheelJoint.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="source\Box2D\Rope\b2Rope.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="source\component\camera.cpp" />
     <ClCompile Include="source\component\charactercontroller.cpp" />
     <ClCompile Include="source\component\gameplay\baseweapon.cpp" />
@@ -39,6 +196,8 @@
     <ClCompile Include="source\component\gameplay\spawner.cpp" />
     <ClCompile Include="source\component\glmanager.cpp" />
     <ClCompile Include="source\component\glrender.cpp" />
+    <ClCompile Include="source\component\physicsmanager.cpp" />
+    <ClCompile Include="source\component\rigidbody.cpp" />
     <ClCompile Include="source\component\scenemanager.cpp" />
     <ClCompile Include="source\component\sdlinput.cpp" />
     <ClCompile Include="source\component\sdlmanager.cpp" />
@@ -73,6 +232,8 @@
     <ClInclude Include="include\component\glmanager.h" />
     <ClInclude Include="include\component\glrender.h" />
     <ClInclude Include="include\component\input.h" />
+    <ClInclude Include="include\component\physicsmanager.h" />
+    <ClInclude Include="include\component\rigidbody.h" />
     <ClInclude Include="include\component\scenemanager.h" />
     <ClInclude Include="include\component\sdlinput.h" />
     <ClInclude Include="include\component\sdlmanager.h" />
@@ -87,6 +248,52 @@
     <ClInclude Include="include\entity\spawnercivilian.h" />
     <ClInclude Include="include\shader\position.h" />
     <ClInclude Include="include\shader\position_es.h" />
+    <ClInclude Include="source\Box2D\Box2D.h" />
+    <ClInclude Include="source\Box2D\Collision\b2BroadPhase.h" />
+    <ClInclude Include="source\Box2D\Collision\b2Collision.h" />
+    <ClInclude Include="source\Box2D\Collision\b2Distance.h" />
+    <ClInclude Include="source\Box2D\Collision\b2DynamicTree.h" />
+    <ClInclude Include="source\Box2D\Collision\b2TimeOfImpact.h" />
+    <ClInclude Include="source\Box2D\Collision\Shapes\b2ChainShape.h" />
+    <ClInclude Include="source\Box2D\Collision\Shapes\b2CircleShape.h" />
+    <ClInclude Include="source\Box2D\Collision\Shapes\b2EdgeShape.h" />
+    <ClInclude Include="source\Box2D\Collision\Shapes\b2PolygonShape.h" />
+    <ClInclude Include="source\Box2D\Collision\Shapes\b2Shape.h" />
+    <ClInclude Include="source\Box2D\Common\b2BlockAllocator.h" />
+    <ClInclude Include="source\Box2D\Common\b2Draw.h" />
+    <ClInclude Include="source\Box2D\Common\b2GrowableStack.h" />
+    <ClInclude Include="source\Box2D\Common\b2Math.h" />
+    <ClInclude Include="source\Box2D\Common\b2Settings.h" />
+    <ClInclude Include="source\Box2D\Common\b2StackAllocator.h" />
+    <ClInclude Include="source\Box2D\Common\b2Timer.h" />
+    <ClInclude Include="source\Box2D\Dynamics\b2Body.h" />
+    <ClInclude Include="source\Box2D\Dynamics\b2ContactManager.h" />
+    <ClInclude Include="source\Box2D\Dynamics\b2Fixture.h" />
+    <ClInclude Include="source\Box2D\Dynamics\b2Island.h" />
+    <ClInclude Include="source\Box2D\Dynamics\b2TimeStep.h" />
+    <ClInclude Include="source\Box2D\Dynamics\b2World.h" />
+    <ClInclude Include="source\Box2D\Dynamics\b2WorldCallbacks.h" />
+    <ClInclude Include="source\Box2D\Dynamics\Contacts\b2ChainAndCircleContact.h" />
+    <ClInclude Include="source\Box2D\Dynamics\Contacts\b2ChainAndPolygonContact.h" />
+    <ClInclude Include="source\Box2D\Dynamics\Contacts\b2CircleContact.h" />
+    <ClInclude Include="source\Box2D\Dynamics\Contacts\b2Contact.h" />
+    <ClInclude Include="source\Box2D\Dynamics\Contacts\b2ContactSolver.h" />
+    <ClInclude Include="source\Box2D\Dynamics\Contacts\b2EdgeAndCircleContact.h" />
+    <ClInclude Include="source\Box2D\Dynamics\Contacts\b2EdgeAndPolygonContact.h" />
+    <ClInclude Include="source\Box2D\Dynamics\Contacts\b2PolygonAndCircleContact.h" />
+    <ClInclude Include="source\Box2D\Dynamics\Contacts\b2PolygonContact.h" />
+    <ClInclude Include="source\Box2D\Dynamics\Joints\b2DistanceJoint.h" />
+    <ClInclude Include="source\Box2D\Dynamics\Joints\b2FrictionJoint.h" />
+    <ClInclude Include="source\Box2D\Dynamics\Joints\b2GearJoint.h" />
+    <ClInclude Include="source\Box2D\Dynamics\Joints\b2Joint.h" />
+    <ClInclude Include="source\Box2D\Dynamics\Joints\b2MouseJoint.h" />
+    <ClInclude Include="source\Box2D\Dynamics\Joints\b2PrismaticJoint.h" />
+    <ClInclude Include="source\Box2D\Dynamics\Joints\b2PulleyJoint.h" />
+    <ClInclude Include="source\Box2D\Dynamics\Joints\b2RevoluteJoint.h" />
+    <ClInclude Include="source\Box2D\Dynamics\Joints\b2RopeJoint.h" />
+    <ClInclude Include="source\Box2D\Dynamics\Joints\b2WeldJoint.h" />
+    <ClInclude Include="source\Box2D\Dynamics\Joints\b2WheelJoint.h" />
+    <ClInclude Include="source\Box2D\Rope\b2Rope.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{5C24E233-96F3-43CB-8F3C-1510D8436EBA}</ProjectGuid>
@@ -171,10 +378,11 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>EMSCRIPTEN_TARGET</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>./include;../extern/;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./include;../extern/;../extern/box2d/Box2D_v2.2.1/</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>../extern/box2d/Box2D_v2.2.1/Build/Box2D/Release</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -182,15 +390,15 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>./include;../extern/SDL-1.2.15/include;../extern/;../extern/glew-1.9.0/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./include;../extern/SDL-1.2.15/include;../extern/;../extern/glew-1.9.0/include;../extern/box2d/Box2D_v2.2.1/</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WINDOWS_TARGET;WIN32_LEAN_AND_MEAN;GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>..\extern\sdl-1.2.15\lib\x64\debug;../extern/glew-1.9.0/lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\extern\sdl-1.2.15\lib\x64\debug;../extern/glew-1.9.0/lib;../extern/box2d/Box2D_v2.2.1/Build/Box2D/Debug</AdditionalLibraryDirectories>
       <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>SDL.lib;SDLmain.lib;glew32s.lib;glew32mxs.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL.lib;SDLmain.lib;glew32s.lib;glew32mxs.lib;opengl32.lib;Box2D.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -215,7 +423,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>EMSCRIPTEN_TARGET</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>./include;../extern/</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./include;../extern/;../extern/box2d/Box2D_v2.2.1/</AdditionalIncludeDirectories>
       <LanguageStandardMode>LanguageStandardC++11</LanguageStandardMode>
       <LanguageExtensions>EnableLanguageExtensions</LanguageExtensions>
     </ClCompile>
@@ -226,6 +434,9 @@
       <LinkerOptimizationLevel>O2</LinkerOptimizationLevel>
       <RunClosureCompiler>false</RunClosureCompiler>
       <AdditionalOptions>-s FULL_ES2=1 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalLibraryDirectories>../extern/box2d/Box2D_v2.2.1/Build/Box2D/Release</AdditionalLibraryDirectories>
+      <PreJsFile>
+      </PreJsFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -235,15 +446,15 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>./include;../extern/SDL-1.2.15/include;../extern/;../extern/glew-1.9.0/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./include;../extern/SDL-1.2.15/include;../extern/;../extern/glew-1.9.0/include;../extern/box2d/Box2D_v2.2.1/</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WINDOWS_TARGET;WIN32_LEAN_AND_MEAN;GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>..\extern\sdl-1.3\lib\x64\release;..\extern\sdl-1.2.15\lib\x64\release;../extern/glew-1.9.0/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL.lib;SDLmain.lib;glew32s.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\extern\sdl-1.3\lib\x64\release;..\extern\sdl-1.2.15\lib\x64\release;../extern/glew-1.9.0/lib;../extern/box2d/Box2D_v2.2.1/Build/Box2D/Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL.lib;SDLmain.lib;glew32s.lib;opengl32.lib;Box2D.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>

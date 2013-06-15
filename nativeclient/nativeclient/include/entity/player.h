@@ -11,6 +11,8 @@
 #include "component/charactercontroller.h"
 #include "component/glmanager.h"
 #include "component/squareshape.h"
+#include "component/rigidbody.h"
+
 #include "component/gameplay/baseweapon.h"
 
 
@@ -24,11 +26,12 @@ public:
 		: Entity()
 	{
 		AddComponent<Transform>();
-		AddComponent<GLRender>();
 		AddComponent<SquareShape>();
-		AddComponent<Camera>();
 		AddComponent<CharacterController>();
 		AddComponent<BaseWeapon>();
+		AddComponent<RigidBody>();
+		AddComponent<Camera>();
+		AddComponent<GLRender>();
 	}
 
 

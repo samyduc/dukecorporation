@@ -5,6 +5,8 @@
 
 #include <list>
 
+class b2Contact;
+
 namespace Natorium
 {
 
@@ -43,12 +45,17 @@ public:
 	virtual void		OnTick(const natU64 _dt);
 	virtual void		OnDeInit();
 
+	void				OnEnable();
+	void				OnDisable();
+	void				OnEnterCollide(b2Contact* _contact);
+	void				OnExitCollide(b2Contact* _contact);
+
 	natBool				IsInit() { return m_isInit; }
 
 	Layer*				GetLayer() const;
 	Kernel*				GetKernel() const;
 
-	void				SetEnabled(natBool _enabled) { m_enabled = _enabled; }
+	void				SetEnabled(natBool _enabled) { _OnSetEnable(_enabled); }
 
 	template<class T>
 	T* AddComponent()
@@ -117,6 +124,8 @@ private:
 	void				_Init(Kernel& _kernel, Layer& _layer);
 	void				_Tick(natU64 _dt);
 	void				_DeInit();
+
+	void				_OnSetEnable(natBool _enabled);
 
 private:
 	Kernel*				m_kernel;

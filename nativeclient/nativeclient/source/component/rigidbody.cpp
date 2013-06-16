@@ -60,7 +60,7 @@ void RigidBody::OnInit()
 		m_b2BodyDef.type = b2_staticBody;
 	}
 	m_b2BodyDef.bullet = m_isBullet;
-
+	size /= 2.f;
 	m_b2Body = m_b2World->CreateBody(&m_b2BodyDef);
 	m_b2Shape.SetAsBox(size.x / s_B2RatioPos, size.y / s_B2RatioPos);
 	m_b2Fixture = m_b2Body->CreateFixture(&m_b2Shape, m_density);
@@ -76,6 +76,10 @@ void RigidBody::OnTick(const natU64 _dt)
 	m_transform->m_pos.y = b2_pos.y * s_B2RatioPos;
 
 	m_transform->m_rad.z = m_b2Body->GetAngle();
+
+	// compute forward vector
+	//m_transform->m_forward.x = glm::cos(m_transform->m_rad.z);
+	//m_transform->m_forward.y = glm::sin(m_transform->m_rad.z);
 
 }
 

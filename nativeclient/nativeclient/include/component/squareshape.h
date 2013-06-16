@@ -25,6 +25,8 @@ public:
 
 	static natU32	GetType() { return s_Shape; }
 
+	void			Clone(Entity* _entity) const;
+
 	natF32*			GetVertex(size_t &_size);
 
 	glm::vec2		GetSize() const { return m_size; }
@@ -34,10 +36,12 @@ public:
 	void			SetColor(glm::vec4& _color);
 	void			SetAlpha(natF32 _alpha);
 
-private:
-	size_t			m_length;
+public:
 	glm::vec2		m_size;
 	glm::vec4		m_color;
+
+private:
+	size_t			m_length;
 	natF32			m_vertex[32];
 
 };

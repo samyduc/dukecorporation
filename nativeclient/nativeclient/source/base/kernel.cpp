@@ -5,6 +5,7 @@
 #include "component/sdlinput.h"
 #include "component/physicsmanager.h"
 #include "component/scenemanager.h"
+#include "component/playersmanager.h"
 
 #include <assert.h>
 
@@ -51,6 +52,7 @@ void Kernel::Init()
 	entity->AddComponent<SDLInput>();
 	entity->AddComponent<GLManager>();
 	entity->AddComponent<PhysicsManager>();
+	entity->AddComponent<PlayersManager>();
 
 	for(size_t i = Layer::Layer_0; i < Layer::Layer_Max; ++i)
 	{

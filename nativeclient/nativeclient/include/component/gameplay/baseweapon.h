@@ -30,11 +30,15 @@ public:
 
 	static natU32	GetType() { return s_BaseWeapon; }
 
+	void			Clone(Entity* _entity) const;
+
 	void			ShootAt(glm::vec3 _pos);
 	void			OnHit(Contact* _contact);
 
-private:
+public:
 	natU64			m_rateShot;
+
+private:
 	natU64			m_acc;
 	size_t			m_cursor;
 

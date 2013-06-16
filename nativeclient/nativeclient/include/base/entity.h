@@ -53,22 +53,32 @@ public:
 
 	natBool				IsInit() { return m_isInit; }
 
+	Entity*				Clone(Entity* _entity=nullptr) const;
+
 	Layer*				GetLayer() const;
 	Kernel*				GetKernel() const;
 
 	void				SetEnabled(natBool _enabled) { _OnSetEnable(_enabled); }
 
+	void				Reset();
+
 	template<class T>
 	T* AddComponent()
 	{
-		T* component = new T();
-		if(m_isInit)
+		T* component = GetComponent<T>();
+
+		if(component == nullptr)
 		{
-			// already running : hot init
-			component->_Init(*this);
+			component = new T();
+
+			if(m_isInit)
+			{
+				// already running : hot init
+				component->_Init(*this);
+			}
+			PackComponent pack_component(T::GetType(), component);
+			m_components.push_back(pack_component);
 		}
-		PackComponent pack_component(T::GetType(), component);
-		m_components.push_back(pack_component);
 
 		return component;
 	}
@@ -120,7 +130,7 @@ protected:
 	components_t		m_components;
 	childs_t			m_childs;
 
-private:
+protected:
 
 	void				_Init(Kernel& _kernel, Layer& _layer);
 	void				_Tick(natU64 _dt);

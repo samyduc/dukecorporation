@@ -26,6 +26,8 @@ public:
 
 	static natU32	GetType() { return s_Transform; }
 
+	void			Clone(Entity* _entity) const;
+
 public:
 	glm::vec3		m_pos;
 	glm::vec3		m_rad;

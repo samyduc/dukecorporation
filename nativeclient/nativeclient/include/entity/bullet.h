@@ -13,7 +13,7 @@
 #include "component/squareshape.h"
 #include "component/rigidbody.h"
 
-#include "component/gameplay/civilianai.h"
+#include "component/gameplay/aicontroller.h"
 #include "component/gameplay/bulletcontroller.h"
 
 #include <glm/glm.hpp>

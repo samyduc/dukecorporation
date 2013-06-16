@@ -27,6 +27,8 @@ public:
 
 	static natU32	GetType() { return s_CharacterController; }
 
+	void			Clone(Entity* _entity) const;
+
 	virtual void	LookAtScreen(glm::vec3& _look);
 
 private:

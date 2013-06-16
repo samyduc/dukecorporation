@@ -59,8 +59,6 @@ void Layer::RemoveEntity(Entity* _entity)
 
 	_entity->SetParent(nullptr);
 	_entity->_DeInit();
-
-	delete _entity;
 }
 
 

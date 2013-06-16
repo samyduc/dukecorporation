@@ -13,6 +13,7 @@
 #include "component/squareshape.h"
 #include "component/rigidbody.h"
 
+#include "component/gameplay/lifecontroller.h"
 #include "component/gameplay/baseweapon.h"
 
 
@@ -28,6 +29,7 @@ public:
 		AddComponent<Transform>();
 		AddComponent<SquareShape>();
 		AddComponent<CharacterController>();
+		AddComponent<LifeController>();
 		AddComponent<BaseWeapon>();
 		AddComponent<RigidBody>();
 		AddComponent<Camera>();

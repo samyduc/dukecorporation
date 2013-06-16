@@ -8,6 +8,7 @@
 
 
 #include "entity/bullet.h"
+#include "component/gameplay/lifecontroller.h"
 
 #include "base/timeplatform.h"
 
@@ -15,6 +16,7 @@ namespace Natorium
 {
 
 BaseWeapon::BaseWeapon()
+	: m_rateShot(200)
 {
 }
 
@@ -25,7 +27,6 @@ BaseWeapon::~BaseWeapon()
 void BaseWeapon::OnInit()
 {
 	m_acc = 0;
-	m_rateShot = 200;
 	m_cursor = 0;
 
 	// preallocatebullet
@@ -35,6 +36,8 @@ void BaseWeapon::OnInit()
 		// TODO : hardcore but must work
 		BulletController* bullet_controller = bullet->GetComponent<BulletController>();
 		bullet_controller->SetWeapon(this);
+		bullet_controller->m_damage = 3;
+
 		RigidBody* bullet_rigidbody = bullet->GetComponent<RigidBody>();
 		bullet_rigidbody->m_isBullet = true;
 		bullet_rigidbody->m_isDynamic = true;
@@ -46,6 +49,13 @@ void BaseWeapon::OnInit()
 		m_bullets.push_back(bullet);
 	}
 }
+
+void BaseWeapon::Clone(Entity* _entity) const
+{
+	BaseWeapon* component = _entity->AddComponent<BaseWeapon>();
+	component->m_rateShot = m_rateShot;
+}
+
 
 void BaseWeapon::OnTick(const natU64 _dt)
 {
@@ -117,12 +127,12 @@ void BaseWeapon::OnHit(Contact* _contact)
 		hit = A;
 	}
 
-	Shape* shape = hit->GetComponent<Shape>();
-	glm::vec4 color = shape->GetColor();
-	color.r += 0.3f;
-	color.g += 0.2f;
-	color.b += 0.1f;
-	shape->SetColor(color);
+	LifeController* life_controller = hit->GetComponent<LifeController>();
+	if(life_controller)
+	{
+		BulletController *bullet_controler = bullet->GetComponent<BulletController>();
+		life_controller->TakeDamage(bullet_controler->m_damage);
+	}
 
 	bullet->SetEnabled(false);
 }

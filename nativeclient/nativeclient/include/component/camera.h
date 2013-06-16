@@ -23,6 +23,8 @@ public:
 
 	static natU32	GetType() { return s_Camera; }
 
+	void			Clone(Entity* _entity) const;
+
 	glm::vec3		GetPos();
 	glm::vec3		GetDeg();
 	glm::mat4		GetViewMatrix() { return m_viewMatrix; }

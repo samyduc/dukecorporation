@@ -24,7 +24,7 @@ Entity::Entity()
 
 Entity::~Entity()
 {
-	_DeInit();
+	//_DeInit();
 
 	for(components_t::iterator it = m_components.begin(); it != m_components.end(); ++it)
 	{
@@ -38,6 +38,7 @@ Entity::~Entity()
 		Entity* child = (*it);
 		delete child;
 	}
+	m_childs.clear();
 }
 
 Kernel* Entity::GetKernel() const
@@ -159,6 +160,7 @@ void Entity::_DeInit()
 		Entity* child = (*it);
 		child->_DeInit();
 	}
+	m_childs.clear();
 
 	OnDeInit();
 
@@ -232,6 +234,70 @@ void Entity::_OnSetEnable(natBool _enabled)
 			child->SetEnabled(_enabled);
 		}
 	}
+}
+
+Entity* Entity::Clone(Entity* _entity) const
+{
+	Entity* ret = _entity;
+	if(_entity == nullptr)
+	{
+		ret = new Entity();
+	}
+
+	for(components_t::const_iterator it = m_components.begin(); it != m_components.end(); ++it)
+	{
+		Component* component = (*it).m_component;
+		component->Clone(ret);
+	}
+
+	if(m_childs.size() == 0)
+	{
+		for(childs_t::const_iterator it = m_childs.begin(); it != m_childs.end(); ++it)
+		{
+			Entity* child = (*it);
+			Entity* new_child = child->Clone();
+			ret->AddChild(new_child);
+		}
+	}
+
+	return ret;
+}
+
+void Entity::Reset()
+{
+	assert(m_isInit);
+
+	for(components_t::iterator it = m_components.begin(); it != m_components.end(); ++it)
+	{
+		Component* component = (*it).m_component;
+		component->_DeInit();
+	}
+
+	for(childs_t::iterator it = m_childs.begin(); it != m_childs.end(); ++it)
+	{
+		Entity* child = (*it);
+		child->_DeInit();
+	}
+
+	m_isInit = false;
+
+	OnInit();
+
+	for(components_t::iterator it = m_components.begin(); it != m_components.end(); ++it)
+	{
+		Component* component = (*it).m_component;
+		component->_Init(*this);
+	}
+
+	for(childs_t::iterator it = m_childs.begin(); it != m_childs.end(); ++it)
+	{
+		Entity* child = (*it);
+		child->Reset();
+	}
+
+	m_isInit = true;
+
+	_OnSetEnable(m_enabled);
 }
 
 }

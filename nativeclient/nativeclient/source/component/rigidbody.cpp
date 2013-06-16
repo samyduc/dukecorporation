@@ -68,6 +68,14 @@ void RigidBody::OnInit()
 	m_b2Body->SetLinearDamping(10.f);
 }
 
+void RigidBody::Clone(Entity* _entity) const
+{
+	RigidBody* component = _entity->AddComponent<RigidBody>();
+	component->m_isBullet = m_isBullet;
+	component->m_isDynamic = m_isDynamic;
+	component->m_maxSpeed = m_maxSpeed;
+}
+
 void RigidBody::OnTick(const natU64 _dt)
 {
 	// warning global coordinates (not local !)
@@ -87,14 +95,14 @@ void RigidBody::OnTick(const natU64 _dt)
 
 void RigidBody::OnDeInit()
 {
-	assert(m_b2World != NULL);
-	assert(m_b2Body != NULL);
+	assert(m_b2World != nullptr);
+	assert(m_b2Body != nullptr);
 	m_b2World->DestroyBody(m_b2Body);
 }
 
 void RigidBody::OnEnable()
 {
-	assert(m_b2Body != NULL);
+	assert(m_b2Body != nullptr);
 
 	if(m_b2Fixture == nullptr)
 	{

@@ -1,5 +1,6 @@
 #include "component/squareshape.h"
 
+#include "base/entity.h"
 
 namespace Natorium
 {
@@ -15,6 +16,13 @@ void SquareShape::OnInit()
 {
 	SetSize(m_size);
 	SetColor(m_color);
+}
+
+void SquareShape::Clone(Entity* _entity) const
+{
+	SquareShape* component = _entity->AddComponent<SquareShape>();
+	component->m_size = m_size;
+	component->m_color = m_color;
 }
 
 void SquareShape::SetSize(glm::vec2& _size)

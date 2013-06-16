@@ -33,13 +33,15 @@ public:
 	b2World*		GetWorld() { return m_b2World; }
 
 	// contact listener
-	void BeginContact(b2Contact* _contact);
-	void EndContact(b2Contact* _contact);
+	void			BeginContact(b2Contact* _contact);
+	void			EndContact(b2Contact* _contact);
 
 protected:
 
-	void _BeginContact(Contact* _contact);
-	void _EndContact(Contact* _contact);
+	void			_BeginContact(Contact* _contact);
+	void			_EndContact(Contact* _contact);
+
+	void			ResolveContact();
 
 private:
 	b2World*		m_b2World;

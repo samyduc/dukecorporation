@@ -25,6 +25,15 @@ void Transform::OnInit()
 
 }
 
+void Transform::Clone(Entity* _entity) const
+{
+	Transform* component = _entity->AddComponent<Transform>();
+	component->m_forward = m_forward;
+	component->m_pos = m_pos;
+	component->m_rad = m_rad;
+	component->m_scale = m_scale;
+}
+
 void Transform::OnTick(const natU64 _dt)
 {
 }

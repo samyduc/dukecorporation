@@ -33,6 +33,20 @@ void PhysicsManager::OnInit()
 
 void PhysicsManager::OnTick(const natU64 _dt)
 {
+	m_acc += _dt;
+
+	while(m_acc >= m_rateStep)
+	{
+		m_acc -= m_rateStep;
+		m_b2World->Step(m_rateStepFloat, m_velocityIterations, m_positionIterations);
+		m_b2World->ClearForces();
+	}
+
+	ResolveContact();
+}
+
+void PhysicsManager::ResolveContact()
+{
 	for(contacts_t::iterator it = m_beginContacts.begin(); it != m_beginContacts.end(); ++it)
 	{
 		Contact* contact = &(*it);
@@ -46,15 +60,6 @@ void PhysicsManager::OnTick(const natU64 _dt)
 		_EndContact(contact);
 	}
 	m_endContacts.clear();
-
-	m_acc += _dt;
-
-	while(m_acc >= m_rateStep)
-	{
-		m_acc -= m_rateStep;
-		m_b2World->Step(m_rateStepFloat, m_velocityIterations, m_positionIterations);
-		m_b2World->ClearForces();
-	}
 }
 
 void PhysicsManager::OnDeInit()

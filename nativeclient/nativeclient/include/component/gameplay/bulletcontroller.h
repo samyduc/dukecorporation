@@ -28,9 +28,14 @@ public:
 
 	static natU32	GetType() { return s_BulletController; }
 
+	virtual void	Clone(Entity* _entity) const;
+
 	void			SetWeapon(IWeapon* _weapon) { m_weapon = _weapon; }
 
 	void			OnEnterCollide(Contact* _contact);
+
+public:
+	natS32			m_damage;
 
 protected:
 	IWeapon*		m_weapon;

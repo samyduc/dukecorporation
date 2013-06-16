@@ -1,0 +1,85 @@
+#include "component/gameplay/aicontroller.h"
+
+#include "base/entity.h"
+#include "base/component.h"
+#include "component/transform.h"
+
+#include "base/kernel.h"
+#include "base/layer.h"
+
+#include <cassert>
+
+namespace Natorium
+{
+
+AiController::AiController()
+	: m_playersManager(nullptr)
+	, m_lifeController(nullptr)
+	, m_spawner(nullptr)
+	, m_speed(0.1f)
+{
+}
+
+AiController::~AiController()
+{
+}
+
+void AiController::OnInit()
+{
+	Transform* transform = GetEntity()->GetComponent<Transform>();
+	m_center = transform->GetPos();
+	m_radius = 200.0f;
+	m_t = 0.0f;
+
+	transform->m_pos.x = m_center.x + m_radius*glm::cos(m_t);
+	transform->m_pos.y = m_center.y + m_radius*glm::sin(m_t);
+
+	m_playersManager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<PlayersManager>();
+	m_lifeController = GetEntity()->GetComponent<LifeController>();
+
+	assert(m_playersManager);
+	assert(m_lifeController);
+}
+
+void AiController::Clone(Entity* _entity) const
+{
+	AiController* component = _entity->AddComponent<AiController>();
+}
+
+void AiController::OnTick(const natU64 _dt)
+{
+	if(!m_lifeController->IsAlive())
+	{
+		// called spawner first
+		m_spawner->OnKilled(GetEntity());
+	}
+	else
+	{
+		// move toward player
+		Entity* player = m_playersManager->GetLocalPlayer();
+		Transform* transform_player = player->GetComponent<Transform>();
+		Transform* transform = GetEntity()->GetComponent<Transform>();
+
+		glm::vec3 direction = transform_player->GetPos() - transform->GetPos();
+
+		if(direction != glm::vec3(0.f))
+		{
+			direction = glm::normalize(direction);
+			transform->m_pos += static_cast<natF32>(_dt) * direction * m_speed;
+		}
+	}
+}
+
+void AiController::OnDeInit()
+{
+	m_playersManager = nullptr;
+	m_lifeController = nullptr;
+}
+
+void AiController::OnKilled()
+{
+
+}
+
+
+}

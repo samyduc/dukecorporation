@@ -13,7 +13,8 @@
 #include "component/squareshape.h"
 #include "component/rigidbody.h"
 
-#include "component/gameplay/civilianai.h"
+#include "component/gameplay/lifecontroller.h"
+#include "component/gameplay/aicontroller.h"
 
 #include <glm/glm.hpp>
 
@@ -31,7 +32,8 @@ public:
 		AddComponent<Camera>();
 		SquareShape *shape = AddComponent<SquareShape>();
 		//AddComponent<CharacterController>();
-		AddComponent<CivilianAI>();
+		AddComponent<AiController>();
+		AddComponent<LifeController>();
 		AddComponent<RigidBody>();
 
 		glm::vec4 color(0.f, 0.f, 1.f, 1.f);

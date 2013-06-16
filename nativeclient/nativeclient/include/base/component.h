@@ -3,6 +3,8 @@
 #include "base/natdef.h"
 #include "base/contact.h"
 
+#include <cassert>
+
 namespace Natorium
 {
 
@@ -29,9 +31,11 @@ public:
 	virtual void		OnExitCollide(Contact *_contact) {}
 
 			natBool		IsInit() { return m_isInit; }		
-			Entity*		GetEntity() const { return m_entity; }
+			Entity*		GetEntity() { return m_entity; }
 
 	static	natU32		GetType() { return 0; }
+
+	virtual void		Clone(Entity* _entity) const { assert(false); } // no clonable by default
 
 private:
 

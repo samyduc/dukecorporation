@@ -192,11 +192,13 @@
     <ClCompile Include="source\component\charactercontroller.cpp" />
     <ClCompile Include="source\component\gameplay\baseweapon.cpp" />
     <ClCompile Include="source\component\gameplay\bulletcontroller.cpp" />
-    <ClCompile Include="source\component\gameplay\civilianai.cpp" />
+    <ClCompile Include="source\component\gameplay\aicontroller.cpp" />
+    <ClCompile Include="source\component\gameplay\lifecontroller.cpp" />
     <ClCompile Include="source\component\gameplay\spawner.cpp" />
     <ClCompile Include="source\component\glmanager.cpp" />
     <ClCompile Include="source\component\glrender.cpp" />
     <ClCompile Include="source\component\physicsmanager.cpp" />
+    <ClCompile Include="source\component\playersmanager.cpp" />
     <ClCompile Include="source\component\rigidbody.cpp" />
     <ClCompile Include="source\component\scenemanager.cpp" />
     <ClCompile Include="source\component\sdlinput.cpp" />
@@ -227,13 +229,15 @@
     <ClInclude Include="include\component\charactercontroller.h" />
     <ClInclude Include="include\component\gameplay\baseweapon.h" />
     <ClInclude Include="include\component\gameplay\bulletcontroller.h" />
-    <ClInclude Include="include\component\gameplay\civilianai.h" />
+    <ClInclude Include="include\component\gameplay\aicontroller.h" />
     <ClInclude Include="include\component\gameplay\iweapon.h" />
+    <ClInclude Include="include\component\gameplay\lifecontroller.h" />
     <ClInclude Include="include\component\gameplay\spawner.h" />
     <ClInclude Include="include\component\glmanager.h" />
     <ClInclude Include="include\component\glrender.h" />
     <ClInclude Include="include\component\input.h" />
     <ClInclude Include="include\component\physicsmanager.h" />
+    <ClInclude Include="include\component\playersmanager.h" />
     <ClInclude Include="include\component\rigidbody.h" />
     <ClInclude Include="include\component\scenemanager.h" />
     <ClInclude Include="include\component\sdlinput.h" />
@@ -438,7 +442,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <LinkerOptimizationLevel>O2</LinkerOptimizationLevel>
       <RunClosureCompiler>false</RunClosureCompiler>
-      <AdditionalOptions>-s FULL_ES2=1 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>-s FULL_ES2=1  -s ASM_JS=1 %(AdditionalOptions)</AdditionalOptions>
       <AdditionalLibraryDirectories>../extern/box2d/Box2D_v2.2.1/Build/Box2D/Release</AdditionalLibraryDirectories>
       <PreJsFile>
       </PreJsFile>

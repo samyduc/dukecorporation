@@ -36,6 +36,8 @@ public:
 
 	static natU32	GetType() { return s_GLRender; }
 
+	virtual void	Clone(Entity* _entity) const;
+
 private:
 	Shape*		m_shape;
 

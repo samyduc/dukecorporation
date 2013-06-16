@@ -41,6 +41,11 @@ void GLRender::OnInit()
 	//glUniformBlockBinding(m_shaderProgram, m_globalUnifBlockIndex, glmanager->GetGlobalBindingIndex());
 }
 
+void GLRender::Clone(Entity* _entity) const
+{
+	GLRender* component = _entity->AddComponent<GLRender>();
+}
+
 void GLRender::OnTick(const natU64 _dt)
 {
 	Transform* transform = GetEntity()->GetComponent<Transform>();

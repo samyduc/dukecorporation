@@ -35,6 +35,8 @@ public:
 
 	static natU32	GetType() { return s_RigidBody; }
 
+	void			Clone(Entity* _entity) const;
+
 	void			SetFriction(natF32 _friction) { assert(m_b2Fixture); m_b2Fixture->SetFriction(_friction); }
 
 	void			ApplyLinearImpulse(glm::vec3& _impulse);

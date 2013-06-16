@@ -6,6 +6,8 @@
 
 #include "entity/bullet.h"
 
+#include <assert.h>
+
 namespace Natorium
 {
 
@@ -40,9 +42,11 @@ void BulletController::OnTick(const natU64 _dt)
 	rigidbody->ApplyLinearImpulse(impulse);
 }
 
-void BulletController::OnEnterCollide(b2Contact* _contact)
+void BulletController::OnEnterCollide(Contact* _contact)
 {
+	assert(m_weapon);
 
+	m_weapon->OnHit(_contact);
 }
 
 }

@@ -185,25 +185,29 @@ void Entity::OnDisable()
 	}
 }
 
-void Entity::OnEnterCollide(b2Contact* _contact)
+void Entity::OnEnterCollide(Contact* _contact)
 {
-	assert(m_enabled == true);
-
-	for(components_t::iterator it = m_components.begin(); it != m_components.end(); ++it)
+	// can happen since we are testing after the physics stepping
+	if(m_enabled)
 	{
-		Component* component = (*it).m_component;
-		component->OnEnterCollide(_contact);
+		for(components_t::iterator it = m_components.begin(); it != m_components.end(); ++it)
+		{
+			Component* component = (*it).m_component;
+			component->OnEnterCollide(_contact);
+		}
 	}
 }
 
-void Entity::OnExitCollide(b2Contact* _contact)
+void Entity::OnExitCollide(Contact* _contact)
 {
-	assert(m_enabled == true);
-
-	for(components_t::iterator it = m_components.begin(); it != m_components.end(); ++it)
+	// can happen since we are testing after the physics stepping
+	if(m_enabled)
 	{
-		Component* component = (*it).m_component;
-		component->OnExitCollide(_contact);
+		for(components_t::iterator it = m_components.begin(); it != m_components.end(); ++it)
+		{
+			Component* component = (*it).m_component;
+			component->OnExitCollide(_contact);
+		}
 	}
 }
 

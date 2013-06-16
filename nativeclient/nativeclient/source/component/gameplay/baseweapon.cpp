@@ -98,9 +98,33 @@ void BaseWeapon::ShootAt(glm::vec3 _pos)
 	}
 }
 
-void BaseWeapon::OnHit(b2Contact* _contact)
+void BaseWeapon::OnHit(Contact* _contact)
 {
+	Entity* A = static_cast<Entity*>(_contact->A->GetBody()->GetUserData());
+	Entity* B = static_cast<Entity*>(_contact->B->GetBody()->GetUserData());
 
+	Entity* bullet;
+	Entity* hit;
+
+	if(A->GetComponent<BulletController>())
+	{
+		bullet = A;
+		hit = B;
+	}
+	else
+	{
+		bullet = B;
+		hit = A;
+	}
+
+	Shape* shape = hit->GetComponent<Shape>();
+	glm::vec4 color = shape->GetColor();
+	color.r += 0.3f;
+	color.g += 0.2f;
+	color.b += 0.1f;
+	shape->SetColor(color);
+
+	bullet->SetEnabled(false);
 }
 
 }

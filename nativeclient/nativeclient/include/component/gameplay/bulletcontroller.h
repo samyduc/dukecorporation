@@ -30,7 +30,7 @@ public:
 
 	void			SetWeapon(IWeapon* _weapon) { m_weapon = _weapon; }
 
-	void			OnEnterCollide(b2Contact* _contact);
+	void			OnEnterCollide(Contact* _contact);
 
 protected:
 	IWeapon*		m_weapon;

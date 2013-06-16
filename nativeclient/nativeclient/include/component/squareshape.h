@@ -27,7 +27,8 @@ public:
 
 	natF32*			GetVertex(size_t &_size);
 
-	glm::vec2		GetSize() { return m_size; }
+	glm::vec2		GetSize() const { return m_size; }
+	glm::vec4		GetColor() const { return m_color; }
 
 	void			SetSize(glm::vec2& _size);
 	void			SetColor(glm::vec4& _color);

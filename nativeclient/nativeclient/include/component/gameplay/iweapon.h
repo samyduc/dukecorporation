@@ -20,7 +20,7 @@ public:
 
 	virtual void	ShootAt(glm::vec3 _pos) = 0;
 
-	virtual void	OnHit(b2Contact* _contact) = 0;
+	virtual void	OnHit(Contact* _contact) = 0;
 
 
 

@@ -1,13 +1,13 @@
 #pragma once
 
 #include "base/natdef.h"
-
-class b2Contact;
+#include "base/contact.h"
 
 namespace Natorium
 {
 
 class Entity;
+class Contact;
 
 class Component
 {
@@ -25,8 +25,8 @@ public:
 	virtual void		OnEnable() {}
 	virtual void		OnDisable() {}
 
-	virtual void		OnEnterCollide(b2Contact* _contact) {}
-	virtual void		OnExitCollide(b2Contact* _contact) {}
+	virtual void		OnEnterCollide(Contact *_contact) {}
+	virtual void		OnExitCollide(Contact *_contact) {}
 
 			natBool		IsInit() { return m_isInit; }		
 			Entity*		GetEntity() const { return m_entity; }

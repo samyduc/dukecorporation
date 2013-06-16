@@ -31,7 +31,7 @@ public:
 	static natU32	GetType() { return s_BaseWeapon; }
 
 	void			ShootAt(glm::vec3 _pos);
-	void			OnHit(b2Contact* _contact);
+	void			OnHit(Contact* _contact);
 
 private:
 	natU64			m_rateShot;

@@ -77,6 +77,8 @@ void RigidBody::OnTick(const natU64 _dt)
 
 	m_transform->m_rad.z = m_b2Body->GetAngle();
 
+	//m_b2Body->GetLinearVelocity();
+
 	// compute forward vector
 	//m_transform->m_forward.x = glm::cos(m_transform->m_rad.z);
 	//m_transform->m_forward.y = glm::sin(m_transform->m_rad.z);
@@ -93,6 +95,13 @@ void RigidBody::OnDeInit()
 void RigidBody::OnEnable()
 {
 	assert(m_b2Body != NULL);
+
+	if(m_b2Fixture == nullptr)
+	{
+		m_b2Fixture = m_b2Body->CreateFixture(&m_b2Shape, m_density);
+		m_b2Fixture->SetFriction(0.2f);
+		m_b2Body->SetLinearDamping(10.f);
+	}
 
 	glm::vec3 pos = m_transform->GetPos();
 	m_b2Body->SetTransform(b2Vec2(pos.x/s_B2RatioPos, pos.y/s_B2RatioPos), 0.f);

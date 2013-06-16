@@ -216,6 +216,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\base\component.h" />
+    <ClInclude Include="include\base\contact.h" />
     <ClInclude Include="include\base\entity.h" />
     <ClInclude Include="include\base\hash.h" />
     <ClInclude Include="include\base\kernel.h" />
@@ -393,6 +394,7 @@
       <AdditionalIncludeDirectories>./include;../extern/SDL-1.2.15/include;../extern/;../extern/glew-1.9.0/include;../extern/box2d/Box2D_v2.2.1/</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WINDOWS_TARGET;WIN32_LEAN_AND_MEAN;GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <BrowseInformation>true</BrowseInformation>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -400,6 +402,9 @@
       <SubSystem>Console</SubSystem>
       <AdditionalDependencies>SDL.lib;SDLmain.lib;glew32s.lib;glew32mxs.lib;opengl32.lib;Box2D.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <Bscmake>
+      <PreserveSbr>true</PreserveSbr>
+    </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>

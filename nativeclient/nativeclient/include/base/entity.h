@@ -2,10 +2,11 @@
 
 #include "base/natdef.h"
 #include "base/component.h"
+#include "base/contact.h"
 
 #include <list>
 
-class b2Contact;
+
 
 namespace Natorium
 {
@@ -47,8 +48,8 @@ public:
 
 	void				OnEnable();
 	void				OnDisable();
-	void				OnEnterCollide(b2Contact* _contact);
-	void				OnExitCollide(b2Contact* _contact);
+	void				OnEnterCollide(Contact *_contact);
+	void				OnExitCollide(Contact *_contact);
 
 	natBool				IsInit() { return m_isInit; }
 

@@ -11,7 +11,7 @@
 #include "component/charactercontroller.h"
 #include "component/glmanager.h"
 #include "component/squareshape.h"
-#include "component/gameplay/spawner.h"
+#include "component/gameplay/timespawner.h"
 
 
 
@@ -25,7 +25,7 @@ public:
 		: Entity()
 	{
 		AddComponent<Transform>();
-		Spawner* spawner = AddComponent<Spawner>();
+		TimeSpawner* spawner = AddComponent<TimeSpawner>();
 	}
 
 

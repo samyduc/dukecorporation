@@ -6,6 +6,7 @@
 
 
 #include "component/gameplay/iweapon.h"
+#include "component/gameplay/spawner.h"
 
 #include <glm/glm.hpp>
 
@@ -18,7 +19,7 @@ class Bullet;
 
 static natU32 s_BaseWeapon = Hash::Compute("s_BaseWeapon");
 
-class BaseWeapon : public Component, public IWeapon
+class BaseWeapon : public Spawner, public IWeapon
 {
 public:
 					BaseWeapon();

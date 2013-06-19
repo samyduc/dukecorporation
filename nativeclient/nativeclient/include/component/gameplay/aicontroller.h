@@ -5,7 +5,7 @@
 #include "base/hash.h"
 
 #include "component/gameplay/lifecontroller.h"
-#include "component/gameplay/spawner.h"
+
 #include "component/playersmanager.h"
 
 
@@ -31,10 +31,7 @@ public:
 
 	void			Clone(Entity* _entity) const;
 
-	virtual void	OnKilled();
-
 public:
-	Spawner*		m_spawner;
 
 private:
 	natF32			m_t;

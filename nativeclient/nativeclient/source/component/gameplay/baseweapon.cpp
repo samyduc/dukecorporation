@@ -29,36 +29,35 @@ void BaseWeapon::OnInit()
 	m_acc = 0;
 	m_cursor = 0;
 
-	// preallocatebullet
-	for(size_t i = 0; i < 10; ++i)
-	{
-		Bullet* bullet = new Bullet();
-		// TODO : hardcore but must work
-		BulletController* bullet_controller = bullet->GetComponent<BulletController>();
-		bullet_controller->SetWeapon(this);
-		bullet_controller->m_damage = 3;
+	m_max = 10;
+	// ref
+	m_refEntity = new Bullet();
+	// TODO : hardcore but must work
+	BulletController* bullet_controller = m_refEntity->GetComponent<BulletController>();
+	bullet_controller->m_damage = 3;
 
-		RigidBody* bullet_rigidbody = bullet->GetComponent<RigidBody>();
-		bullet_rigidbody->m_isBullet = true;
-		bullet_rigidbody->m_isDynamic = true;
-		bullet_rigidbody->m_maxSpeed = 100.f;
-		bullet_rigidbody->m_density = 0.f;
+	RigidBody* bullet_rigidbody = m_refEntity->GetComponent<RigidBody>();
+	bullet_rigidbody->m_isBullet = true;
+	bullet_rigidbody->m_isDynamic = true;
+	bullet_rigidbody->m_maxSpeed = 100.f;
+	bullet_rigidbody->m_density = 0.f;
 
-		GetEntity()->GetKernel()->AddEntity(Layer::Layer_4, bullet);
-		bullet->SetEnabled(false);
-		m_bullets.push_back(bullet);
-	}
+	Spawner::OnInit();
 }
 
 void BaseWeapon::Clone(Entity* _entity) const
 {
 	BaseWeapon* component = _entity->AddComponent<BaseWeapon>();
 	component->m_rateShot = m_rateShot;
+	component->m_max = m_max;
+	component->m_refEntity = m_refEntity;
 }
 
 
 void BaseWeapon::OnTick(const natU64 _dt)
 {
+	Spawner::OnTick(_dt);
+
 	if(m_acc && m_acc > _dt)
 	{
 		m_acc -= _dt;
@@ -71,7 +70,7 @@ void BaseWeapon::OnTick(const natU64 _dt)
 
 void BaseWeapon::OnDeInit()
 {
-
+	Spawner::OnDeInit();
 }
 
 void BaseWeapon::ShootAt(glm::vec3 _pos)
@@ -80,7 +79,7 @@ void BaseWeapon::ShootAt(glm::vec3 _pos)
 	{
 		m_acc += m_rateShot;
 
-		Bullet* bullet = m_bullets[m_cursor];
+		Entity* bullet = Spawn();
 
 		Transform* transform = GetEntity()->GetComponent<Transform>();
 		Shape* shape = GetEntity()->GetComponent<Shape>();
@@ -93,18 +92,8 @@ void BaseWeapon::ShootAt(glm::vec3 _pos)
 
 		glm::vec2 size = shape->GetSize();
 		bullet_transform->m_pos += bullet_transform->m_forward * glm::vec3(size, 0.f);
-		
-		bullet->SetEnabled(true);
 
-
-		if(m_cursor + 1 >= m_bullets.size())
-		{
-			m_cursor = 0;
-		}
-		else
-		{
-			++m_cursor;
-		}
+		bullet->Reset();
 	}
 }
 
@@ -134,7 +123,7 @@ void BaseWeapon::OnHit(Contact* _contact)
 		life_controller->TakeDamage(bullet_controler->m_damage);
 	}
 
-	bullet->SetEnabled(false);
+	OnKilled(bullet);
 }
 
 }

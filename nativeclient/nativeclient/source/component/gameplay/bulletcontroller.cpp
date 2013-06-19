@@ -4,6 +4,9 @@
 #include "base/component.h"
 #include "component/transform.h"
 
+#include "component/gameplay/spawned.h"
+#include "component/gameplay/spawner.h"
+
 #include "entity/bullet.h"
 
 #include <assert.h>
@@ -12,8 +15,7 @@ namespace Natorium
 {
 
 BulletController::BulletController()
-	: m_weapon(nullptr)
-	, m_damage(10)
+	: m_damage(10)
 {
 }
 
@@ -51,9 +53,12 @@ void BulletController::OnTick(const natU64 _dt)
 
 void BulletController::OnEnterCollide(Contact* _contact)
 {
-	assert(m_weapon);
+	Spawned* spawned = GetEntity()->GetComponent<Spawned>();
+	assert(spawned);
 
-	m_weapon->OnHit(_contact);
+	// ugly ad the beast
+	IWeapon* weapon = dynamic_cast<IWeapon*>(spawned->GetSpawner());
+	weapon->OnHit(_contact);
 }
 
 }

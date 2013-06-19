@@ -195,6 +195,7 @@
     <ClCompile Include="source\component\gameplay\aicontroller.cpp" />
     <ClCompile Include="source\component\gameplay\lifecontroller.cpp" />
     <ClCompile Include="source\component\gameplay\spawner.cpp" />
+    <ClCompile Include="source\component\gameplay\timespawner.cpp" />
     <ClCompile Include="source\component\glmanager.cpp" />
     <ClCompile Include="source\component\glrender.cpp" />
     <ClCompile Include="source\component\physicsmanager.cpp" />
@@ -232,7 +233,9 @@
     <ClInclude Include="include\component\gameplay\aicontroller.h" />
     <ClInclude Include="include\component\gameplay\iweapon.h" />
     <ClInclude Include="include\component\gameplay\lifecontroller.h" />
+    <ClInclude Include="include\component\gameplay\spawned.h" />
     <ClInclude Include="include\component\gameplay\spawner.h" />
+    <ClInclude Include="include\component\gameplay\timespawner.h" />
     <ClInclude Include="include\component\glmanager.h" />
     <ClInclude Include="include\component\glrender.h" />
     <ClInclude Include="include\component\input.h" />
@@ -299,6 +302,9 @@
     <ClInclude Include="source\Box2D\Dynamics\Joints\b2WeldJoint.h" />
     <ClInclude Include="source\Box2D\Dynamics\Joints\b2WheelJoint.h" />
     <ClInclude Include="source\Box2D\Rope\b2Rope.h" />
+    <ClCompile Include="source\component\gameplay\spawned.cpp">
+      <FileType>CppHeader</FileType>
+    </ClCompile>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{5C24E233-96F3-43CB-8F3C-1510D8436EBA}</ProjectGuid>
@@ -457,6 +463,7 @@
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>./include;../extern/SDL-1.2.15/include;../extern/;../extern/glew-1.9.0/include;../extern/box2d/Box2D_v2.2.1/</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WINDOWS_TARGET;WIN32_LEAN_AND_MEAN;GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>

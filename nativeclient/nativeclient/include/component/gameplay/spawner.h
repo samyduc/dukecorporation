@@ -4,6 +4,8 @@
 #include "base/component.h"
 #include "base/hash.h"
 
+#include "component/gameplay/spawned.h"
+
 #include <glm/glm.hpp>
 
 #include <list>
@@ -17,7 +19,7 @@ class Spawner : public Component
 {
 public:
 
-	friend class AiController;
+	friend class	Spawned;
 
 					Spawner();
 	virtual			~Spawner();
@@ -32,19 +34,14 @@ public:
 
 public:
 	natU32			m_max;
-	natU64			m_interval;
-
 	Entity*			m_refEntity;
 
 protected:
-	void			Spawn();
+	Entity*			Spawn();
 
 	virtual void	OnKilled(Entity* _entity);
 
-private:
-	natU64			m_currentInterval;
-	size_t			m_cursor;
-
+protected:
 	typedef	std::list<Entity*> entities_spawner_t;
 	entities_spawner_t	m_active_entities;
 	entities_spawner_t	m_pool_entities;

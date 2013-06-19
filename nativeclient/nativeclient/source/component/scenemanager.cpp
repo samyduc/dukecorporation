@@ -33,14 +33,14 @@ void SceneManager::OnInit()
 	SpawnerCivilian* spawner_civilian = new SpawnerCivilian();
 	Transform *spawner_transform = spawner_civilian->GetComponent<Transform>();
 	spawner_transform->m_pos = glm::vec3(-100.f, -100.f, 0.f);
-	Spawner* spawner1 = spawner_civilian->GetComponent<Spawner>();
+	TimeSpawner* spawner1 = spawner_civilian->GetComponent<TimeSpawner>();
 	spawner1->m_refEntity = civilian;
 	GetEntity()->GetKernel()->AddEntity(Layer::Layer_1, spawner_civilian);
 
 	SpawnerCivilian* spawner_civilian2 = new SpawnerCivilian();
 	Transform *spawner_transform2 = spawner_civilian2->GetComponent<Transform>();
 	spawner_transform2->m_pos = glm::vec3(1024.f + 100.f, 0.f, 0.f);
-	Spawner* spawner2 = spawner_civilian2->GetComponent<Spawner>();
+	TimeSpawner* spawner2 = spawner_civilian2->GetComponent<TimeSpawner>();
 	spawner2->m_refEntity = civilian;
 	GetEntity()->GetKernel()->AddEntity(Layer::Layer_1, spawner_civilian2);
 

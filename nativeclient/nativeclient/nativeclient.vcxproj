@@ -231,7 +231,6 @@
     <ClInclude Include="include\component\gameplay\baseweapon.h" />
     <ClInclude Include="include\component\gameplay\bulletcontroller.h" />
     <ClInclude Include="include\component\gameplay\aicontroller.h" />
-    <ClInclude Include="include\component\gameplay\iweapon.h" />
     <ClInclude Include="include\component\gameplay\lifecontroller.h" />
     <ClInclude Include="include\component\gameplay\spawned.h" />
     <ClInclude Include="include\component\gameplay\spawner.h" />

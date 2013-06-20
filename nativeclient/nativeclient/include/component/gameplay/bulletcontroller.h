@@ -4,8 +4,6 @@
 #include "base/component.h"
 #include "base/hash.h"
 
-#include "component/gameplay/iweapon.h"
-
 #include <glm/glm.hpp>
 
 
@@ -30,15 +28,15 @@ public:
 
 	virtual void	Clone(Entity* _entity) const;
 
-	void			SetWeapon(IWeapon* _weapon) { m_weapon = _weapon; }
-
 	void			OnEnterCollide(Contact* _contact);
 
 public:
 	natS32			m_damage;
+	natU64			m_lifetime;
 
 protected:
-	IWeapon*		m_weapon;
+	natU64			m_time;
+
 
 };
 

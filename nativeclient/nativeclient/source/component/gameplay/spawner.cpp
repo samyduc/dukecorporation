@@ -72,7 +72,7 @@ Entity* Spawner::Spawn()
 	transform->m_pos = GetEntity()->GetComponent<Transform>()->GetPos();
 
 	Spawned* spawned = entity->AddComponent<Spawned>();
-	spawned->m_spawner = this;
+	spawned->m_spawner = GetEntity();
 
 	entity->Reset();
 	entity->SetEnabled(true);

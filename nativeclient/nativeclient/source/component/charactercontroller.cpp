@@ -6,7 +6,6 @@
 #include "component/transform.h"
 #include "component/glmanager.h"
 #include "component/camera.h"
-#include "component/gameplay/iweapon.h"
 #include "component/gameplay/baseweapon.h"
 #include "entity/player.h"
 

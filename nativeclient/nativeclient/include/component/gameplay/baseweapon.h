@@ -5,7 +5,6 @@
 #include "base/hash.h"
 
 
-#include "component/gameplay/iweapon.h"
 #include "component/gameplay/spawner.h"
 
 #include <glm/glm.hpp>
@@ -17,9 +16,10 @@ namespace Natorium
 
 class Bullet;
 
-static natU32 s_BaseWeapon = Hash::Compute("s_BaseWeapon");
+extern natU32 s_Spawner;
+//static natU32 s_BaseWeapon = Hash::Compute("s_BaseWeapon");
 
-class BaseWeapon : public Spawner, public IWeapon
+class BaseWeapon : public Spawner
 {
 public:
 					BaseWeapon();
@@ -29,7 +29,7 @@ public:
 	virtual void	OnTick(const natU64 _dt);
 	virtual void	OnDeInit();
 
-	static natU32	GetType() { return s_BaseWeapon; }
+	static natU32	GetType() { return s_Spawner; }
 
 	void			Clone(Entity* _entity) const;
 

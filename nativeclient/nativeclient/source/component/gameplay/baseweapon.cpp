@@ -16,7 +16,7 @@ namespace Natorium
 {
 
 BaseWeapon::BaseWeapon()
-	: m_rateShot(200)
+	: m_rateShot(400)
 {
 }
 
@@ -29,7 +29,7 @@ void BaseWeapon::OnInit()
 	m_acc = 0;
 	m_cursor = 0;
 
-	m_max = 10;
+	m_max = 20;
 	// ref
 	m_refEntity = new Bullet();
 	// TODO : hardcore but must work

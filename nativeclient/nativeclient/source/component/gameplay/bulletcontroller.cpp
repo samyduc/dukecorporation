@@ -64,8 +64,7 @@ void BulletController::OnEnterCollide(Contact* _contact)
 	Spawned* spawned = GetEntity()->GetComponent<Spawned>();
 	assert(spawned);
 	
-	// ugly ad the beast
-	BaseWeapon* weapon = spawned->GetSpawner()->GetComponent<BaseWeapon>();
+	BaseWeapon* weapon = static_cast<BaseWeapon*>(spawned->GetSpawner());
 	weapon->OnHit(_contact);
 }
 

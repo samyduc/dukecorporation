@@ -11,8 +11,7 @@
 namespace Natorium
 {
 
-//static natU32 s_TimeSpawner = Hash::Compute("s_TimeSpawner");
-extern natU32 s_Spawner;
+static natU32 s_TimeSpawner = Hash::Compute("s_TimeSpawner");
 
 class TimeSpawner : public Spawner
 {
@@ -27,7 +26,7 @@ public:
 
 	virtual void	Clone(Entity* _entity) const;
 
-	static natU32	GetType() { return s_Spawner; }
+	static natU32	GetType() { return s_TimeSpawner; }
 
 public:
 	natU64			m_interval;

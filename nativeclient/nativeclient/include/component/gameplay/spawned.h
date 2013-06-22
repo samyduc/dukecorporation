@@ -27,10 +27,10 @@ public:
 	static natU32	GetType() { return s_Spawned; }
 
 	void			Kill();
-	Entity*			GetSpawner() { return m_spawner; }
+	Spawner*		GetSpawner() { return m_spawner; }
 
 public:
-	Entity*			m_spawner;
+	Spawner*		m_spawner;
 
 
 };

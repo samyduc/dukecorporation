@@ -42,9 +42,7 @@ void Spawned::Clone(Entity* _entity) const
 void Spawned::Kill()
 {
 	assert(m_spawner);
-	Spawner* spawner = m_spawner->GetComponent<Spawner>();
-	assert(spawner);
-	spawner->OnKilled(GetEntity());
+	m_spawner->OnKilled(GetEntity());
 }
 
 }

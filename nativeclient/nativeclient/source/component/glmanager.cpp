@@ -10,6 +10,7 @@
 #include "shader/monotexture.h"
 #elif defined(EMSCRIPTEN_TARGET)
 #include "shader/position_es.h"
+#include "shader/monotexture_es.h"
 #else
 #error "no shader for this platform"
 #endif

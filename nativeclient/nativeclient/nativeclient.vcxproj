@@ -452,6 +452,7 @@
     <ClInclude Include="include\entity\root.h" />
     <ClInclude Include="include\entity\spawnercivilian.h" />
     <ClInclude Include="include\shader\monotexture.h" />
+    <ClInclude Include="include\shader\monotexture_es.h" />
     <ClInclude Include="include\shader\position.h" />
     <ClInclude Include="include\shader\position_es.h" />
     <ClInclude Include="source\Box2D\Box2D.h" />

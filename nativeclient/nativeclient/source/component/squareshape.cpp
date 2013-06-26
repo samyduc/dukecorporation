@@ -87,16 +87,16 @@ void SquareShape::SetAlpha(natF32 _alpha)
 
 void SquareShape::SetTextureCoordinate()
 {
-	m_vertex[32] = 1.f;
-	m_vertex[33] = 1.f;
+	m_vertex[32] = 0.f;
+	m_vertex[33] = 0.f;
 
 	m_vertex[34] = 1.f;
 	m_vertex[35] = 0.f;
 
 	m_vertex[36] = 0.f;
-	m_vertex[37] = 0.f;
+	m_vertex[37] = 1.f;
 
-	m_vertex[38] = 0.f;
+	m_vertex[38] = 1.f;
 	m_vertex[39] = 1.f;
 }
 
@@ -105,8 +105,6 @@ natF32* SquareShape::GetVertex(size_t &_size)
 	_size = sizeof(m_vertex);
 	return m_vertex;
 }
-
-
 
 
 

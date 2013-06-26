@@ -6,6 +6,8 @@
 #include "component/physicsmanager.h"
 #include "component/scenemanager.h"
 #include "component/playersmanager.h"
+#include "component/filemanager.h"
+#include "component/texturemanager.h"
 
 #include <assert.h>
 
@@ -48,11 +50,13 @@ void Kernel::Init()
 	Layer* layer = m_layers[0];
 	Entity* entity = layer->GetRootEntity();
 
+	entity->AddComponent<FileManager>();
 	entity->AddComponent<SDLManager>();
 	entity->AddComponent<SDLInput>();
 	entity->AddComponent<GLManager>();
 	entity->AddComponent<PhysicsManager>();
 	entity->AddComponent<PlayersManager>();
+	entity->AddComponent<TextureManager>();
 
 	for(size_t i = Layer::Layer_0; i < Layer::Layer_Max; ++i)
 	{

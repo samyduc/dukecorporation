@@ -6,11 +6,7 @@
 #include "component/transform.h"
 #include "entity/bullet.h"
 
-
-#include "entity/bullet.h"
 #include "component/gameplay/lifecontroller.h"
-
-#include "base/timeplatform.h"
 
 namespace Natorium
 {
@@ -27,20 +23,22 @@ BaseWeapon::~BaseWeapon()
 void BaseWeapon::OnInit()
 {
 	m_acc = 0;
-	m_cursor = 0;
 
-	m_max = 20;
-	// ref
-	m_refEntity = new Bullet();
-	// TODO : hardcore but must work
-	BulletController* bullet_controller = m_refEntity->GetComponent<BulletController>();
-	bullet_controller->m_damage = 3;
+	if(m_refEntity == nullptr)
+	{
+		// default bullet
+		m_refEntity = new Bullet();
 
-	RigidBody* bullet_rigidbody = m_refEntity->GetComponent<RigidBody>();
-	bullet_rigidbody->m_isBullet = true;
-	bullet_rigidbody->m_isDynamic = true;
-	bullet_rigidbody->m_maxSpeed = 100.f;
-	bullet_rigidbody->m_density = 0.f;
+		// TODO : this must be done as a public parameter
+		BulletController* bullet_controller = m_refEntity->GetComponent<BulletController>();
+		bullet_controller->m_damage = 3;
+
+		RigidBody* bullet_rigidbody = m_refEntity->GetComponent<RigidBody>();
+		bullet_rigidbody->m_isBullet = true;
+		bullet_rigidbody->m_isDynamic = true;
+		bullet_rigidbody->m_maxSpeed = 100.f;
+		bullet_rigidbody->m_density = 0.f;
+	}
 
 	Spawner::OnInit();
 }

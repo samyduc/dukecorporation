@@ -33,7 +33,7 @@ public:
 	static natU32	GetType() { return s_Spawner; }
 
 public:
-	natU32			m_max;
+	natU64			m_max;
 	Entity*			m_refEntity;
 
 protected:

@@ -10,6 +10,10 @@
 
 Natorium::Kernel *kernel;
 
+namespace Natorium
+{
+	char* s_exePath;
+}
 
 void one_iter()
 {
@@ -18,11 +22,13 @@ void one_iter()
 
 int main(int argc, char *argv[]) 
 {
+	Natorium::s_exePath = argv[0];
+
 	kernel = new Natorium::Kernel();
 	kernel->Init();
 
 #if defined(EMSCRIPTEN_TARGET)
-	emscripten_set_main_loop(one_iter, 0, true);
+	emscripten_set_main_loop(one_iter, 60, true);
 #else
 	while(true)
 	{

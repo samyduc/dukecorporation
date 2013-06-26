@@ -7,6 +7,8 @@
 #include "component/glmanager.h"
 #include "component/camera.h"
 #include "component/gameplay/baseweapon.h"
+#include "component/gameplay/shotgunweapon.h"
+
 #include "entity/player.h"
 
 #include "base/kernel.h"
@@ -29,7 +31,8 @@ CharacterController::~CharacterController()
 
 void CharacterController::OnInit()
 {
-	m_currentWeapon = GetEntity()->GetComponent<BaseWeapon>();
+	//m_currentWeapon = GetEntity()->GetComponent<BaseWeapon>();
+	m_currentWeapon = GetEntity()->GetComponent<ShotgunWeapon>();
 }
 
 void CharacterController::Clone(Entity* _entity) const

@@ -16,6 +16,7 @@
 #include "component/gameplay/lifecontroller.h"
 #include "component/gameplay/aicontroller.h"
 
+
 #include <glm/glm.hpp>
 
 namespace Natorium

@@ -1,0 +1,5 @@
+D:/dev/DukeCorporation/nativeclient/extern/physfs-2.0.3/build/CMakeFiles/ALL_BUILD.dir
+D:/dev/DukeCorporation/nativeclient/extern/physfs-2.0.3/build/CMakeFiles/ZERO_CHECK.dir
+D:/dev/DukeCorporation/nativeclient/extern/physfs-2.0.3/build/CMakeFiles/physfs.dir
+D:/dev/DukeCorporation/nativeclient/extern/physfs-2.0.3/build/CMakeFiles/physfs-static.dir
+D:/dev/DukeCorporation/nativeclient/extern/physfs-2.0.3/build/CMakeFiles/test_physfs.dir

@@ -65,6 +65,7 @@ void Spawner::OnDeInit()
 
 Entity* Spawner::Spawn()
 {
+	assert(m_pool_entities.size() != 0);
 	Entity* entity = m_pool_entities.back();
 	m_pool_entities.pop_back();
 

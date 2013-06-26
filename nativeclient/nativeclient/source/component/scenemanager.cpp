@@ -7,6 +7,8 @@
 #include "entity/spawnercivilian.h"
 #include "component/playersmanager.h"
 
+#include "component/texturemanager.h"
+
 namespace Natorium
 {
 
@@ -20,6 +22,12 @@ SceneManager::~SceneManager()
 
 void SceneManager::OnInit()
 {
+	TextureManager* texturemanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<TextureManager>();
+	texturemanager->Load("/data/idle-0.png");
+
+	natU32 hash = Hash::Compute("/data/idle-0.png");
+	GLuint textureId = texturemanager->Get(hash);
+
 	PlayersManager *playersManager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<PlayersManager>();
 
 	Entity* player = new Player();

@@ -31,12 +31,14 @@ public:
 		AddComponent<GLRender>();
 		SquareShape *shape = AddComponent<SquareShape>();
 		AddComponent<BulletController>();
-		AddComponent<RigidBody>();
+		RigidBody* rigidbody = AddComponent<RigidBody>();
 
-		glm::vec2 size(10.f, 10.f);
+		glm::vec2 size(5.f, 5.f);
 		glm::vec4 color(102.f, 0.f, 51.f, 1.f);
 		shape->SetSize(size);
 		shape->SetColor(color);
+
+		rigidbody->m_density = 3.f;
 	}
 
 

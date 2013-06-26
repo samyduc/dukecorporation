@@ -38,6 +38,8 @@ public:
 
 	virtual void	Clone(Entity* _entity) const;
 
+	void			SetTexture(GLuint _texture) { m_texture = _texture; } 
+
 private:
 	Shape*		m_shape;
 
@@ -49,6 +51,8 @@ private:
 	GLuint		m_modelUnif;
 
 	GLuint		m_globalUnifBlockIndex;
+
+	GLuint		m_texture;
 
 
 };

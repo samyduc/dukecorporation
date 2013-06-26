@@ -15,7 +15,7 @@
 
 #include "component/gameplay/lifecontroller.h"
 #include "component/gameplay/baseweapon.h"
-
+#include "component/gameplay/shotgunweapon.h"
 
 namespace Natorium
 {
@@ -30,7 +30,8 @@ public:
 		AddComponent<SquareShape>();
 		AddComponent<CharacterController>();
 		AddComponent<LifeController>();
-		AddComponent<BaseWeapon>();
+		//AddComponent<BaseWeapon>();
+		AddComponent<ShotgunWeapon>();
 		AddComponent<RigidBody>();
 		AddComponent<Camera>();
 		AddComponent<GLRender>();

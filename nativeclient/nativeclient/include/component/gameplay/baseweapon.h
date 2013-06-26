@@ -32,15 +32,14 @@ public:
 
 	void			Clone(Entity* _entity) const;
 
-	void			ShootAt(glm::vec3 _pos);
+	virtual void	ShootAt(glm::vec3 _pos);
 	void			OnHit(Contact* _contact);
 
 public:
 	natU64			m_rateShot;
 
-private:
+protected:
 	natU64			m_acc;
-	size_t			m_cursor;
 
 	typedef std::vector<Bullet*> bullets_t;
 	bullets_t m_bullets;

@@ -35,6 +35,7 @@ public:
 	void			SetSize(glm::vec2& _size);
 	void			SetColor(glm::vec4& _color);
 	void			SetAlpha(natF32 _alpha);
+	void			SetTextureCoordinate();
 
 public:
 	glm::vec2		m_size;
@@ -42,7 +43,7 @@ public:
 
 private:
 	size_t			m_length;
-	natF32			m_vertex[32];
+	natF32			m_vertex[40];
 
 };
 

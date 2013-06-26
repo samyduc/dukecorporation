@@ -6,7 +6,7 @@
 #include "entity/civilian.h"
 #include "entity/spawnercivilian.h"
 #include "component/playersmanager.h"
-
+#include "component/glrender.h"
 #include "component/texturemanager.h"
 
 namespace Natorium
@@ -33,6 +33,9 @@ void SceneManager::OnInit()
 	Entity* player = new Player();
 	Transform* player_transform = player->GetComponent<Transform>();
 	player_transform->m_pos = glm::vec3(612.f, 384.f, 0.f);
+	GLRender* player_glrender = player->GetComponent<GLRender>();
+	player_glrender->SetTexture(textureId);
+
 	GetEntity()->GetKernel()->AddEntity(Layer::Layer_2, player);
 	playersManager->AddPlayer(player);
 

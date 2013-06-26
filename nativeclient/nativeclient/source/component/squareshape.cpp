@@ -16,6 +16,7 @@ void SquareShape::OnInit()
 {
 	SetSize(m_size);
 	SetColor(m_color);
+	SetTextureCoordinate();
 }
 
 void SquareShape::Clone(Entity* _entity) const
@@ -82,6 +83,21 @@ void SquareShape::SetAlpha(natF32 _alpha)
 	m_vertex[23] = _alpha;
 	m_vertex[27] = _alpha;
 	m_vertex[21] = _alpha;
+}
+
+void SquareShape::SetTextureCoordinate()
+{
+	m_vertex[32] = 1.f;
+	m_vertex[33] = 1.f;
+
+	m_vertex[34] = 1.f;
+	m_vertex[35] = 0.f;
+
+	m_vertex[36] = 0.f;
+	m_vertex[37] = 0.f;
+
+	m_vertex[38] = 0.f;
+	m_vertex[39] = 1.f;
 }
 
 natF32* SquareShape::GetVertex(size_t &_size)

@@ -113,19 +113,28 @@ void GLRender::OnTick(const natU64 _dt)
 	glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject);
 	glEnableVertexAttribArray(0);
 	glEnableVertexAttribArray(1);
+	glEnableVertexAttribArray(2);
 
 
 	glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, 0);
 	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, (void*)(sizeof(float)*16));
+	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, (void*)(sizeof(float)*32));
 	////////
+
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D , m_texture);
 
 	// call to draw
 	//glDrawArrays(GL_QUADS, 0, 4);
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 	//glDrawElements(GL_TRIANGLE_STRIP, );
 
+	glBindTexture(GL_TEXTURE_2D , 0);
+
 	glDisableVertexAttribArray(0);
 	glDisableVertexAttribArray(1);
+	glDisableVertexAttribArray(3);
+
 	glUseProgram(0);
 
 }

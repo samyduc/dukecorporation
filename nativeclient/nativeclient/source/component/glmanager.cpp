@@ -7,6 +7,7 @@
 
 #if defined(WINDOWS_TARGET)
 #include "shader/position.h"
+#include "shader/monotexture.h"
 #elif defined(EMSCRIPTEN_TARGET)
 #include "shader/position_es.h"
 #else
@@ -85,8 +86,13 @@ void GLManager::OnInit()
 
 void GLManager::OnInitShaders()
 {
-	m_shaders.push_back(CreateShader(GL_VERTEX_SHADER, strPositionVertex));
-	m_shaders.push_back(CreateShader(GL_FRAGMENT_SHADER, strPositionFragment));
+	//m_shaders.push_back(CreateShader(GL_VERTEX_SHADER, strPositionVertex));
+	//m_shaders.push_back(CreateShader(GL_FRAGMENT_SHADER, strPositionFragment));
+
+	m_shaders.push_back(CreateShader(GL_VERTEX_SHADER, strMonoTextureVertex));
+	m_shaders.push_back(CreateShader(GL_FRAGMENT_SHADER, strMonoTextureFragment));
+
+
 	m_shaderProgram = CreateShaderProgram(m_shaders);
 
 
@@ -214,6 +220,8 @@ GLuint GLManager::CreateShaderProgram(const shaders_t &shaderList)
 	// TODO move it to something more dynamic
 	glBindAttribLocation(program, 0, "position");
 	glBindAttribLocation(program, 1, "color");
+	glBindAttribLocation(program, 2, "textureCoord");
+	glBindAttribLocation(program, 3, "baseTexture");
 
 	glLinkProgram(program);
 	

@@ -33,9 +33,6 @@ void AiController::OnInit()
 	m_radius = 200.0f;
 	m_t = 0.0f;
 
-	transform->m_pos.x = m_center.x + m_radius*glm::cos(m_t);
-	transform->m_pos.y = m_center.y + m_radius*glm::sin(m_t);
-
 	m_playersManager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<PlayersManager>();
 	m_lifeController = GetEntity()->GetComponent<LifeController>();
 

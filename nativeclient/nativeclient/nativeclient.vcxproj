@@ -448,6 +448,7 @@
     <ClInclude Include="include\component\transform.h" />
     <ClInclude Include="include\entity\bullet.h" />
     <ClInclude Include="include\entity\civilian.h" />
+    <ClInclude Include="include\entity\floor.h" />
     <ClInclude Include="include\entity\player.h" />
     <ClInclude Include="include\entity\root.h" />
     <ClInclude Include="include\entity\spawnercivilian.h" />

@@ -13,8 +13,6 @@
 
 #include "base/kernel.h"
 
-#include <iostream>
-
 #include <glm/gtx/fast_trigonometry.hpp>
 
 namespace Natorium
@@ -50,22 +48,22 @@ void CharacterController::OnTick(const natU64 _dt)
 	if(input->IsAction(Input::forward))
 	{
 		//transform->m_pos.y -= 0.1f*_dt;
-		impulse.y = -2.f * _dt;
+		impulse.y = -1.f * _dt;
 	}
 	if(input->IsAction(Input::backward))
 	{
 		//transform->m_pos.y += 0.1f*_dt;
-		impulse.y = 2.f * _dt;
+		impulse.y = 1.f * _dt;
 	}
 	if(input->IsAction(Input::left))
 	{
 		//transform->m_pos.x -= 0.1f*_dt;
-		impulse.x = -2.f * _dt;
+		impulse.x = -1.f * _dt;
 	}
 	if(input->IsAction(Input::right))
 	{
 		//transform->m_pos.x += 0.1f*_dt;
-		impulse.x = 2.f * _dt;
+		impulse.x = 1.f * _dt;
 	}
 	if(input->IsAction(Input::shoot1))
 	{

@@ -45,12 +45,7 @@ void GLRender::OnInit()
 	//glUniformBlockBinding(m_shaderProgram, m_globalUnifBlockIndex, glmanager->GetGlobalBindingIndex());
 
 	GLuint program = glmanager->GetProgram(m_type);
-
-	size_t vectorLength;
-	natF32 *vertexPositions = m_shape->GetVertex(vectorLength);
-
-	glUseProgram(program);
-	glUseProgram(0);
+	m_modelUnif = glGetUniformLocation(program, "model");
 }
 
 void GLRender::Clone(Entity* _entity) const
@@ -61,38 +56,30 @@ void GLRender::Clone(Entity* _entity) const
 
 void GLRender::OnTick(const natU64 _dt)
 {
-
 	m_renderList->push_back(this);
+
+	Transform* transform = GetEntity()->GetComponent<Transform>();
+
+	glm::vec3 position = transform->GetPos();
+	glm::mat4 transMat(1.f);
+	transMat = glm::translate(transMat, position);
+
+	glm::vec3 angle = transform->GetDeg();
+	m_transMat = glm::rotate(transMat, angle.z, glm::vec3(0, 0, 1));
 }
 
 void GLRender::Render(GLuint _program)
 {
-	Transform* transform = GetEntity()->GetComponent<Transform>();
-
-	m_modelUnif = glGetUniformLocation(_program, "model");
-
-	size_t vectorLength;
-
 	if(m_shape->IsAndRemoveDirty())
 	{
+		size_t vectorLength;
 		natF32 *vertexPositions = m_shape->GetVertex(vectorLength);
 		glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject);
 		glBufferData(GL_ARRAY_BUFFER, vectorLength, vertexPositions, GL_DYNAMIC_DRAW);
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 	}
 
-	// draw
-	//glUseProgram(_program);
-
-	// to refactor translation
-	glm::vec3 position = transform->GetPos();
-	glm::mat4 transMat(1.f);
-	transMat = glm::translate(transMat, position);
-
-	glm::vec3 angle = transform->GetDeg();
-	transMat = glm::rotate(transMat, angle.z, glm::vec3(0, 0, 1));
-
-	glUniformMatrix4fv(m_modelUnif, 1, GL_FALSE, glm::value_ptr(transMat));
+	glUniformMatrix4fv(m_modelUnif, 1, GL_FALSE, glm::value_ptr(m_transMat));
 	
 	glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject);
 	glEnableVertexAttribArray(0);
@@ -118,8 +105,6 @@ void GLRender::Render(GLuint _program)
 	glDisableVertexAttribArray(0);
 	glDisableVertexAttribArray(1);
 	glDisableVertexAttribArray(3);
-
-	//glUseProgram(0);
 }
 
 void GLRender::OnDeInit()

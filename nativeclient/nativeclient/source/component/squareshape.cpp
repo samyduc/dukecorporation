@@ -8,6 +8,7 @@ namespace Natorium
 SquareShape::SquareShape()
 	: m_size(50.f, 50.f)
 	, m_color(1.f, 1.f, 1.f, 1.f)
+	, m_repeat(1.f)
 	, m_isDirty(true)
 {
 
@@ -17,7 +18,7 @@ void SquareShape::OnInit()
 {
 	SetSize(m_size);
 	SetColor(m_color);
-	SetTextureCoordinate();
+	SetTextureCoordinate(m_repeat);
 
 	m_isDirty = true;
 }
@@ -94,19 +95,19 @@ void SquareShape::SetAlpha(natF32 _alpha)
 	m_isDirty = true;
 }
 
-void SquareShape::SetTextureCoordinate()
+void SquareShape::SetTextureCoordinate(natF32 _repeat)
 {
 	m_vertex[32] = 0.f;
 	m_vertex[33] = 0.f;
 
-	m_vertex[34] = 1.f;
+	m_vertex[34] = _repeat;
 	m_vertex[35] = 0.f;
 
 	m_vertex[36] = 0.f;
-	m_vertex[37] = 1.f;
+	m_vertex[37] = _repeat;
 
-	m_vertex[38] = 1.f;
-	m_vertex[39] = 1.f;
+	m_vertex[38] = _repeat;
+	m_vertex[39] = _repeat;
 
 	m_isDirty= true;
 }

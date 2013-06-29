@@ -55,6 +55,8 @@ private:
 	GLuint		m_bufferObject;
 	GLuint		m_offsetPosition;
 
+	glm::mat4	m_transMat;
+
 	glm::mat4	m_modelMatrix;
 	GLuint		m_modelUnif;
 

@@ -5,6 +5,7 @@
 #include "entity/player.h"
 #include "entity/civilian.h"
 #include "entity/spawnercivilian.h"
+#include "entity/floor.h"
 #include "component/playersmanager.h"
 #include "component/glrender.h"
 #include "component/texturemanager.h"
@@ -24,9 +25,17 @@ void SceneManager::OnInit()
 {
 	TextureManager* texturemanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<TextureManager>();
 	texturemanager->Load("/data/idle-0.png");
+	texturemanager->Load("/data/grass-texture-2.jpg");
 
 	natU32 hash = Hash::Compute("/data/idle-0.png");
 	GLuint textureId = texturemanager->Get(hash);
+	natU32 hash_floor = Hash::Compute("/data/grass-texture-2.jpg");
+	GLuint textureId_floor = texturemanager->Get(hash_floor);
+
+	Floor* floor = new Floor();
+	GLRender* floor_glrender = floor->GetComponent<GLRender>();
+	floor_glrender->SetTexture(textureId_floor);
+	GetEntity()->GetKernel()->AddEntity(Layer::Layer_1, floor);
 
 	PlayersManager *playersManager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<PlayersManager>();
 

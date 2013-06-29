@@ -37,7 +37,6 @@ void SDLManager::OnInit()
 
 	//SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 	//SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 32);
-
 	SDL_GL_SetAttribute( SDL_GL_DOUBLEBUFFER, 1 );
 
 	m_screen = SDL_SetVideoMode(1024, 768, 32, SDL_OPENGL);
@@ -68,7 +67,7 @@ void SDLManager::PostRender()
 	GLManager* glmanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<GLManager>();
 	glmanager->Render();
 
-	glFinish();
+	//glFinish();
 	SDL_GL_SwapBuffers();
 }
 

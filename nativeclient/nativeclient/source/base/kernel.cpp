@@ -28,7 +28,7 @@ Kernel::Kernel()
 		m_layers.push_back(layer);
 	}
 
-	m_rateStep = static_cast<natU64>(1/60.f * 1000);
+	m_rateStep = static_cast<natU64>(1/60.f * 1000.f);
 }
 
 Kernel::~Kernel()
@@ -74,7 +74,7 @@ void Kernel::Tick()
 	natU64 dt = now - m_currentTime;
 	m_currentTime = now;
 
-	m_acc += dt;
+	/*m_acc += dt;
 
 	if(m_acc >= 250)
 	{
@@ -83,7 +83,7 @@ void Kernel::Tick()
 
 	while(m_acc >= m_rateStep)
 	{
-		m_acc -= m_rateStep;
+		m_acc -= m_rateStep;*/
 
 		Layer* layer = m_layers[0];
 		Entity* entity = layer->GetRootEntity();
@@ -93,12 +93,12 @@ void Kernel::Tick()
 		for(layers_t::iterator it = m_layers.begin(); it != m_layers.end(); ++it)
 		{
 			Layer* layer = (*it);
-			layer->Tick(m_rateStep);
-			//layer->Tick(dt);
+			//layer->Tick(m_rateStep);
+			layer->Tick(dt);
 		}
 
 		sdlmanager->PostRender();
-	}
+	//}
 }
 
 void Kernel::DeInit()

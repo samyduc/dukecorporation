@@ -35,13 +35,14 @@ public:
 	void			SetSize(glm::vec2& _size);
 	void			SetColor(glm::vec4& _color);
 	void			SetAlpha(natF32 _alpha);
-	void			SetTextureCoordinate();
+	void			SetTextureCoordinate(natF32 _repeat);
 
 	natBool			IsAndRemoveDirty() {natBool ret = m_isDirty; m_isDirty = false; return ret; };
 
 public:
 	glm::vec2		m_size;
 	glm::vec4		m_color;
+	natF32			m_repeat;
 
 private:
 	natBool			m_isDirty;

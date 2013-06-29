@@ -23,6 +23,8 @@ public:
 	virtual glm::vec4	GetColor() const = 0;
 	virtual void		SetColor(glm::vec4& _color) = 0;
 	virtual void		SetAlpha(natF32 _alpha) = 0;
+
+	virtual natBool		IsAndRemoveDirty() = 0;
 };
 
 

@@ -31,13 +31,13 @@ TextureManager::~TextureManager()
 
 void TextureManager::OnInit()
 {
-	GLManager* glmanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<GLManager>();
+	/*GLManager* glmanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<GLManager>();
 
 	GLuint shader = glmanager->GetShaderProgram();
 
 	glUseProgram(shader);
 
-	glUseProgram(0);
+	glUseProgram(0);*/
 }
 
 void TextureManager::Clone(Entity* _entity) const

@@ -6,8 +6,7 @@
 
 #include <physfs.h>
 
-
-
+#include <stdio.h>
 
 namespace Natorium
 {
@@ -26,8 +25,13 @@ FileManager::~FileManager()
 
 void FileManager::OnInit()
 {
-	PHYSFS_init(s_exePath);
-	assert( PHYSFS_isInit() > 0);
+#if defined(WINDOWS_TARGET)
+	int ret = PHYSFS_init(s_exePath);
+#elif defined(EMSCRIPTEN_TARGET)
+	int ret = PHYSFS_init("/");
+#endif
+
+	assert(ret);
 
 #if defined(WINDOWS_TARGET)
 	if(PHYSFS_mount(".\\data\\", "/data", 0) == 0)
@@ -35,7 +39,11 @@ void FileManager::OnInit()
 		assert(false);
 	}
 #elif defined(EMSCRIPTEN_TARGET)
-	PHYSFS_mount(".\\data\\data.zip", "data", 0);
+	if(PHYSFS_mount("data/data.zip", "/data", 0) == 0)
+	{
+		printf("%s\n", PHYSFS_getLastError());
+		assert(false);
+	}
 #else
 
 #endif
@@ -60,6 +68,7 @@ void FileManager::OnDeInit()
 natU8* FileManager::Read(const natChar* _filename, size_t* _size)
 {
 	PHYSFS_file* file = PHYSFS_openRead(_filename);
+	printf("%s\n", PHYSFS_getLastError());
 	assert(file);
 
 	*_size = PHYSFS_fileLength(file);

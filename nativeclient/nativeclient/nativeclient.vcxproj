@@ -619,6 +619,7 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>../extern/box2d/Box2D_v2.2.1/Build/Box2D/Release</AdditionalLibraryDirectories>
+      <EmbedFile>data/data.zip</EmbedFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -679,7 +680,9 @@
       </AdditionalLibraryDirectories>
       <PreJsFile>
       </PreJsFile>
-      <EmbedFile>./data/data.zip;%(EmbedFile)</EmbedFile>
+      <EmbedFile>data/data.zip</EmbedFile>
+      <PreloadFile>
+      </PreloadFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

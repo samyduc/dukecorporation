@@ -59,8 +59,6 @@ private:
 	typedef std::map<GLuint, struct TextureSimple> textures_buf_t;
 	textures_buf_t	m_buffers;
 
-	GLuint			m_baseSampler;
-	GLuint			m_baseSamplerUnif;
 };
 
 

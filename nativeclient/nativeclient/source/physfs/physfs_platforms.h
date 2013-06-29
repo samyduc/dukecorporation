@@ -21,7 +21,7 @@
 #  define PHYSFS_PLATFORM_POSIX
 #elif (defined _WIN32_WCE) || (defined _WIN64_WCE)
 #  define PHYSFS_PLATFORM_POCKETPC
-#elif (((defined _WIN32) || (defined _WIN64)) && (!defined __CYGWIN__))
+#elif (((defined _WIN32) || (defined _WIN64)) && (!defined __CYGWIN__) && defined WINDOWS_TARGET)
 #  define PHYSFS_PLATFORM_WINDOWS
 #elif (defined OS2)
 #  define PHYSFS_PLATFORM_OS2
@@ -38,7 +38,7 @@
 #  endif
 #elif defined(macintosh)
 #  error Classic Mac OS support was dropped from PhysicsFS 2.0. Move to OS X.
-#elif defined(unix) || defined(__unix__)
+#elif defined(unix) || defined(__unix__) || defined EMSCRIPTEN_TARGET
 #  define PHYSFS_PLATFORM_UNIX
 #  define PHYSFS_PLATFORM_POSIX
 #else

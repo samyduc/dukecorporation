@@ -5,6 +5,8 @@
 #include "base/layer.h"
 #include "base/kernel.h"
 
+#include "component/glrender.h"
+
 #if defined(WINDOWS_TARGET)
 #include "shader/position.h"
 #include "shader/monotexture.h"
@@ -87,14 +89,11 @@ void GLManager::OnInit()
 
 void GLManager::OnInitShaders()
 {
-	//m_shaders.push_back(CreateShader(GL_VERTEX_SHADER, strPositionVertex));
-	//m_shaders.push_back(CreateShader(GL_FRAGMENT_SHADER, strPositionFragment));
+	// load position
+	RegisterProgram("position", strPositionVertex, strPositionFragment);
+	RegisterProgram("monotexture", strMonoTextureVertex, strMonoTextureFragment);
 
-	m_shaders.push_back(CreateShader(GL_VERTEX_SHADER, strMonoTextureVertex));
-	m_shaders.push_back(CreateShader(GL_FRAGMENT_SHADER, strMonoTextureFragment));
-
-
-	m_shaderProgram = CreateShaderProgram(m_shaders);
+	//m_shaderProgram = CreateShaderProgram(m_shaders);
 
 
 
@@ -105,8 +104,8 @@ void GLManager::OnInitShaders()
 
 	//glBindBufferRange(GL_UNIFORM_BUFFER, m_globalBindingIndex, m_globalUnif, 0, sizeof(glm::mat4) * 2);
 
-	m_viewUnif = glGetUniformLocation(m_shaderProgram, "view");
-	m_projectionUnif = glGetUniformLocation(m_shaderProgram, "projection");
+	//m_viewUnif = glGetUniformLocation(m_shaderProgram, "view");
+	//m_projectionUnif = glGetUniformLocation(m_shaderProgram, "projection");
 
 
 }
@@ -161,19 +160,106 @@ void GLManager::OnTick(const natU64 _dt)
 		ComputeCamera();
 	}
 
-	glUseProgram(m_shaderProgram);
+	/*glUseProgram(m_shaderProgram);
 
 	glUniformMatrix4fv(m_viewUnif, 1, GL_FALSE, glm::value_ptr(m_viewMatrixCorrected));
 	glUniformMatrix4fv(m_projectionUnif, 1, GL_FALSE, glm::value_ptr(m_projectionMatrixCopy));
 
-	glUseProgram(0);
+	glUseProgram(0);*/
 
+	//Render();
+}
 
+void GLManager::Render()
+{
+	for(render_map_t::iterator it = m_renderMap.begin(); it != m_renderMap.end(); ++it)
+	{
+		natU32 type = it->first;
+		render_list_t& renderList = it->second;
+		GLuint program = m_shaderPrograms[type];
+
+		// start using program
+		glUseProgram(program);
+
+		// globals
+		m_viewUnif = glGetUniformLocation(program, "view");
+		m_projectionUnif = glGetUniformLocation(program, "projection");
+		glUniformMatrix4fv(m_viewUnif, 1, GL_FALSE, glm::value_ptr(m_viewMatrixCorrected));
+		glUniformMatrix4fv(m_projectionUnif, 1, GL_FALSE, glm::value_ptr(m_projectionMatrixCopy));
+
+		//glUseProgram(0);
+
+		render_list_t::iterator it_render = renderList.begin();
+		while( it_render != renderList.end() )
+		{
+			GLRender* render = *it_render;
+			render->Render(program);
+
+			++it_render;
+		}
+		renderList.clear();
+
+		// stop
+		glUseProgram(0);
+	}
 }
 
 void GLManager::OnDeInit()
 {
+	m_shaderPrograms.clear();
+}
 
+GLuint GLManager::GetProgram(natU32 _type)
+{
+	GLuint ret = 0;
+
+	shaders_t::iterator it = m_shaderPrograms.find(_type);
+	if(it != m_shaderPrograms.end())
+	{
+		ret = it->second;
+	}
+
+	return ret;
+}
+
+render_list_t* GLManager::GetRenderList(natU32 _type)
+{
+	render_list_t* ret = nullptr;
+	render_map_t::iterator it = m_renderMap.find(_type);
+
+	if(it != m_renderMap.end())
+	{
+		ret = &(it->second);
+	}
+	else
+	{
+		assert(false);
+	}
+
+	return ret;
+}
+
+void GLManager::RegisterProgram(const natChar *_name, const std::string &_strVertex, const std::string &_strFragment)
+{
+	shaders_list_t shaders;
+	shaders.push_back(CreateShader(GL_VERTEX_SHADER, _strVertex));
+	shaders.push_back(CreateShader(GL_FRAGMENT_SHADER, _strFragment));
+
+	GLuint program = CreateShaderProgram(shaders);
+
+
+	natU32 type = Hash::Compute(_name);
+
+	shaders_t::iterator it = m_shaderPrograms.find(type);
+	if(it == m_shaderPrograms.end())
+	{
+		m_shaderPrograms[type] = program;
+		m_renderMap[type];
+	}
+	else
+	{
+		assert(false);
+	}
 }
 
 GLuint GLManager::CreateShader(GLenum eShaderType, const std::string &strShaderData)
@@ -210,12 +296,14 @@ GLuint GLManager::CreateShader(GLenum eShaderType, const std::string &strShaderD
 	return shader;
 }
 
-GLuint GLManager::CreateShaderProgram(const shaders_t &shaderList)
+GLuint GLManager::CreateShaderProgram(const shaders_list_t &shaderList)
 {
 	GLuint program = glCreateProgram();
 	
 	for(size_t iLoop = 0; iLoop < shaderList.size(); iLoop++)
+	{
 		glAttachShader(program, shaderList[iLoop]);
+	}
 	
 
 	// TODO move it to something more dynamic

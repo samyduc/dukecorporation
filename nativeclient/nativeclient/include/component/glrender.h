@@ -4,6 +4,8 @@
 #include "base/component.h"
 #include "base/hash.h"
 
+#include "component/glmanager.h"
+
 #include <glm/glm.hpp>
 
 #if defined(WINDOWS_TARGET)
@@ -40,10 +42,16 @@ public:
 
 	void			SetTexture(GLuint _texture) { m_texture = _texture; } 
 
+	void			Render(GLuint _program);
+
+public:
+	natU32		m_type;
+
 private:
 	Shape*		m_shape;
 
-	GLuint		m_shaderProgram;
+	//GLuint		m_shaderProgram;
+	render_list_t* m_renderList;
 	GLuint		m_bufferObject;
 	GLuint		m_offsetPosition;
 

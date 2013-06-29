@@ -2,7 +2,8 @@
 
 #include "base/kernel.h"
 #include <assert.h>
-#include <iostream>
+
+#include "component/glmanager.h"
 
 #if defined(WINDOWS_TARGET)
 //#include <Windows.h>
@@ -64,6 +65,9 @@ void SDLManager::PreRender()
 
 void SDLManager::PostRender()
 {
+	GLManager* glmanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<GLManager>();
+	glmanager->Render();
+
 	glFinish();
 	SDL_GL_SwapBuffers();
 }

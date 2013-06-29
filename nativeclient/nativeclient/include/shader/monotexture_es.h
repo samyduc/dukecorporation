@@ -41,7 +41,7 @@ const std::string strMonoTextureFragment(
 	"void main()\n"
 	"{\n"
 	"\n"
-	"	gl_FragColor = fragmentColor * texture(baseTexture, baseTexCoord);\n"
+	"	gl_FragColor = fragmentColor * texture2D(baseTexture, baseTexCoord);\n"
 	"}\n"
 );
 

@@ -34,7 +34,8 @@ public:
 		AddComponent<ShotgunWeapon>();
 		AddComponent<RigidBody>();
 		AddComponent<Camera>();
-		AddComponent<GLRender>();
+		GLRender* render = AddComponent<GLRender>();
+		render->m_type = Hash::Compute("monotexture");
 	}
 
 

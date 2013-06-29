@@ -6,7 +6,6 @@
 
 #include "component/camera.h"
 
-
 #if defined(WINDOWS_TARGET)
 //#include <Windows.h>
 //#include <gl\GL.h>
@@ -20,6 +19,8 @@
 #endif
 
 #include <vector>
+#include <map>
+#include <list>
 #include <glm/glm.hpp>
 
 
@@ -28,7 +29,12 @@ namespace Natorium
 
 static natU32 s_GLManager = Hash::Compute("s_GLManager");
 
-typedef std::vector<GLuint> shaders_t;
+class GLRender;
+
+typedef std::map<natU32, GLuint> shaders_t;
+typedef std::vector<GLuint> shaders_list_t;
+typedef std::list<GLRender*> render_list_t;
+typedef std::map<natU32, render_list_t> render_map_t;
 
 class GLManager : public Component
 {
@@ -42,26 +48,31 @@ public:
 
 	static natU32	GetType() { return s_GLManager; }
 
-	GLuint			GetShaderProgram() { return m_shaderProgram; }
 	const int		GetGlobalBindingIndex() { return m_globalBindingIndex; }
+
+	GLuint			GetProgram(natU32 _type);
+	render_list_t*	GetRenderList(natU32 _type);
 
 	Camera*			GetCamera() { return m_currentCamera; }
 	void			SetCamera(Camera* _camera) { m_currentCamera = _camera; }
 
 	glm::vec2		GetScreenResolution() { return m_screenResolution; }
 
+	void			Render();
+
 private:
 	void			OnInitShaders();
 	void			OnInitCamera();
 
+	void			RegisterProgram(const natChar *_name, const std::string &_strVertex, const std::string &_strFragment);
 	GLuint			CreateShader(GLenum eShaderType, const std::string &strShaderData);
-	GLuint			CreateShaderProgram(const shaders_t &shaderList);
+	GLuint			CreateShaderProgram(const shaders_list_t &shaderList);
 
 	void			ComputeCamera();
 
 private:
-	shaders_t		m_shaders;
-	GLuint			m_shaderProgram;
+	shaders_t		m_shaderPrograms;
+	render_map_t	m_renderMap;
 
 	Camera*			m_currentCamera;
 

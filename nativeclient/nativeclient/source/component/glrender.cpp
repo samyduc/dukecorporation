@@ -3,7 +3,7 @@
 #include "base/layer.h"
 #include "base/kernel.h"
 
-#include "component/glmanager.h"
+
 #include "component/transform.h"
 
 #include "component/shape.h"
@@ -16,8 +16,11 @@
 namespace Natorium
 {
 
+const natU32 programPosition = Hash::Compute("position");
+
 GLRender::GLRender()
 	: m_shape(nullptr)
+	, m_type(programPosition)
 {
 
 }
@@ -32,73 +35,54 @@ void GLRender::OnInit()
 	assert(m_shape);
 
 	GLManager* glmanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<GLManager>();
-	m_shaderProgram = glmanager->GetShaderProgram();
+	//m_shaderProgram = glmanager->GetShaderProgram();
+	m_renderList = glmanager->GetRenderList(m_type);
 
-	m_modelUnif = glGetUniformLocation(m_shaderProgram, "model");
+	//m_modelUnif = glGetUniformLocation(m_shaderProgram, "model");
 	glGenBuffers(1, &m_bufferObject);
 	//m_globalUnifBlockIndex = glGetUniformBlockIndex(m_shaderProgram, "GlobalMatrices");
 
 	//glUniformBlockBinding(m_shaderProgram, m_globalUnifBlockIndex, glmanager->GetGlobalBindingIndex());
+
+	GLuint program = glmanager->GetProgram(m_type);
+
+	size_t vectorLength;
+	natF32 *vertexPositions = m_shape->GetVertex(vectorLength);
+
+	glUseProgram(program);
+	glUseProgram(0);
 }
 
 void GLRender::Clone(Entity* _entity) const
 {
 	GLRender* component = _entity->AddComponent<GLRender>();
+	component->m_type = m_type;
 }
 
 void GLRender::OnTick(const natU64 _dt)
 {
+
+	m_renderList->push_back(this);
+}
+
+void GLRender::Render(GLuint _program)
+{
 	Transform* transform = GetEntity()->GetComponent<Transform>();
-	GLManager* glmanager = GetEntity()->GetComponent<GLManager>();
 
-	//transform->m_pos.x = 400;
-	//transform->m_pos.y = 200;
-
-	/*glPushMatrix();
-
-	glTranslatef(transform->m_pos.x, transform->m_pos.y, transform->m_pos.z);
-
-	glm::vec3 deg = transform->GetDeg();
-	glRotatef(deg.x, 1, 0, 0);
-	glRotatef(deg.y, 0, 1, 0);
-	glRotatef(deg.z, 0, 0, 1);
-
-	glScalef(transform->m_scale.x, transform->m_scale.y, transform->m_scale.z);
-
-	glBegin(GL_QUADS);
-		glColor4f(1.0, 0.0, 0.0, 1.0);
-		glVertex3f(-100,-100,0);
-		glVertex3f(100,-100,0);
-		glVertex3f(100,100,0);
-		glVertex3f(-100,100,0);
-	glEnd();
-
-	glPopMatrix();*/
-
-	// store positions
-	/*GLfloat vertexPositions[] = {
-		-100.0f, -100.0f, 0.0f, 1.0f,
-		100.f, -100.f, 0.f, 1.f,
-		-100.f, 100.f, 0.f, 1.f,
-		100.f, 100.f, 0.f, 1.f,
-
-		1.0f, 0.0f, 0.0f, 1.0f,
-		1.0f, 0.0f, 0.0f, 1.0f,
-		1.0f, 0.0f, 0.0f, 1.0f,
-		1.0f, 0.0f, 0.0f, 1.0f
-	};
-
-	size_t vectorLength = sizeof(vertexPositions);*/
+	m_modelUnif = glGetUniformLocation(_program, "model");
 
 	size_t vectorLength;
-	natF32 *vertexPositions = m_shape->GetVertex(vectorLength);
 
-	glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject);
-	glBufferData(GL_ARRAY_BUFFER, vectorLength, vertexPositions, GL_DYNAMIC_DRAW);
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	if(m_shape->IsAndRemoveDirty())
+	{
+		natF32 *vertexPositions = m_shape->GetVertex(vectorLength);
+		glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject);
+		glBufferData(GL_ARRAY_BUFFER, vectorLength, vertexPositions, GL_DYNAMIC_DRAW);
+		glBindBuffer(GL_ARRAY_BUFFER, 0);
+	}
 
 	// draw
-	glUseProgram(m_shaderProgram);
+	//glUseProgram(_program);
 
 	// to refactor translation
 	glm::vec3 position = transform->GetPos();
@@ -135,8 +119,7 @@ void GLRender::OnTick(const natU64 _dt)
 	glDisableVertexAttribArray(1);
 	glDisableVertexAttribArray(3);
 
-	glUseProgram(0);
-
+	//glUseProgram(0);
 }
 
 void GLRender::OnDeInit()

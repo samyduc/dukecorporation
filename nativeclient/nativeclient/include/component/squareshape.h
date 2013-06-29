@@ -37,11 +37,14 @@ public:
 	void			SetAlpha(natF32 _alpha);
 	void			SetTextureCoordinate();
 
+	natBool			IsAndRemoveDirty() {natBool ret = m_isDirty; m_isDirty = false; return ret; };
+
 public:
 	glm::vec2		m_size;
 	glm::vec4		m_color;
 
 private:
+	natBool			m_isDirty;
 	size_t			m_length;
 	natF32			m_vertex[40];
 

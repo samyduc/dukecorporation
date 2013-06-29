@@ -7,7 +7,8 @@ namespace Natorium
 
 SquareShape::SquareShape()
 	: m_size(50.f, 50.f)
-	, m_color(1.f, 0.f, 0.f, 1.f)
+	, m_color(1.f, 1.f, 1.f, 1.f)
+	, m_isDirty(true)
 {
 
 }
@@ -17,6 +18,8 @@ void SquareShape::OnInit()
 	SetSize(m_size);
 	SetColor(m_color);
 	SetTextureCoordinate();
+
+	m_isDirty = true;
 }
 
 void SquareShape::Clone(Entity* _entity) const
@@ -50,6 +53,8 @@ void SquareShape::SetSize(glm::vec2& _size)
 	m_vertex[13] = _size.y / 2.0f;
 	m_vertex[14] = 0.0f, 
 	m_vertex[15] = 1.0f;
+
+	m_isDirty = true;
 }
 
 void SquareShape::SetColor(glm::vec4& _color)
@@ -75,6 +80,8 @@ void SquareShape::SetColor(glm::vec4& _color)
 	m_vertex[29] = _color.g;
 	m_vertex[30] = _color.b; 
 	m_vertex[31] = _color.a;
+
+	m_isDirty = true;
 }
 
 void SquareShape::SetAlpha(natF32 _alpha)
@@ -83,6 +90,8 @@ void SquareShape::SetAlpha(natF32 _alpha)
 	m_vertex[23] = _alpha;
 	m_vertex[27] = _alpha;
 	m_vertex[21] = _alpha;
+
+	m_isDirty = true;
 }
 
 void SquareShape::SetTextureCoordinate()
@@ -98,6 +107,8 @@ void SquareShape::SetTextureCoordinate()
 
 	m_vertex[38] = 1.f;
 	m_vertex[39] = 1.f;
+
+	m_isDirty= true;
 }
 
 natF32* SquareShape::GetVertex(size_t &_size)

@@ -75,6 +75,7 @@ void Kernel::Tick()
 	Layer* layer = m_layers[0];
 	Entity* entity = layer->GetRootEntity();
 	SDLManager* sdlmanager = entity->GetComponent<SDLManager>();
+	GLManager* glmanager = entity->GetComponent<GLManager>();
 
 	natU64 now = sdlmanager->GetTick();
 	natU64 dt = now - m_currentTime;
@@ -87,9 +88,11 @@ void Kernel::Tick()
 		m_acc = 250;
 	}
 
+	sdlmanager->PreRender();
+
 	while(m_acc >= m_rateStep)
 	{
-		sdlmanager->PreRender();
+		glmanager->ClearRender();
 		m_acc -= m_rateStep;
 
 		for(layers_t::iterator it = m_layers.begin(); it != m_layers.end(); ++it)
@@ -98,11 +101,9 @@ void Kernel::Tick()
 			//layer->Tick(dt);
 			layer->Tick(m_rateStep);
 		}
-
-		sdlmanager->PostRender();
 	}
+	sdlmanager->PostRender();
 
-	
 }
 
 void Kernel::DeInit()

@@ -196,7 +196,7 @@ void GLManager::Render()
 
 			++it_render;
 		}
-		renderList.clear();
+		//renderList.clear();
 
 		// stop
 		glUseProgram(0);
@@ -205,7 +205,17 @@ void GLManager::Render()
 
 void GLManager::OnDeInit()
 {
+	ClearRender();
 	m_shaderPrograms.clear();
+}
+
+void GLManager::ClearRender()
+{
+	for(render_map_t::iterator it = m_renderMap.begin(); it != m_renderMap.end(); ++it)
+	{
+		render_list_t &renderList = it->second;
+		renderList.clear();
+	}
 }
 
 GLuint GLManager::GetProgram(natU32 _type)

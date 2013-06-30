@@ -59,6 +59,7 @@ public:
 	glm::vec2		GetScreenResolution() { return m_screenResolution; }
 
 	void			Render();
+	void			ClearRender();
 
 private:
 	void			OnInitShaders();

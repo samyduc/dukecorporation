@@ -6,6 +6,8 @@
 #include "entity/civilian.h"
 #include "entity/spawnercivilian.h"
 
+
+
 namespace Natorium
 {
 

@@ -32,7 +32,7 @@ void Spawner::OnInit()
 	for(size_t i = 0; i < m_max; ++i)
 	{
 		Entity* entity = m_refEntity->Clone();
-		GetEntity()->GetKernel()->AddEntity(Layer::Layer_2, entity);
+		GetEntity()->GetKernel()->AddEntity(Layer::Layer_3, entity);
 		entity->SetEnabled(false);
 
 		m_pool_entities.push_back(entity);

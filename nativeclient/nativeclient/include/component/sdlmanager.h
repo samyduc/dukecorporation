@@ -29,6 +29,8 @@ public:
 	void			PostRender();
 	SDL_Surface*	GetScreen() { return m_screen; }
 
+	natU64			GetTick() { return SDL_GetTicks(); }
+
 private:
 	SDL_Surface*	m_screen;
 };

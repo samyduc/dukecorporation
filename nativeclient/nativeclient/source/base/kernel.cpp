@@ -11,6 +11,8 @@
 
 #include <assert.h>
 
+#include <iostream>
+
 namespace Natorium
 {
 
@@ -44,19 +46,21 @@ Kernel::~Kernel()
 void Kernel::Init()
 {
 	m_currentId = 0;
-	m_currentTime = Time::GetMsTime();
+	m_acc = 0;
 
 	// add manager on layer 0
 	Layer* layer = m_layers[0];
 	Entity* entity = layer->GetRootEntity();
 
 	entity->AddComponent<FileManager>();
-	entity->AddComponent<SDLManager>();
+	SDLManager* sdlmanager = entity->AddComponent<SDLManager>();
 	entity->AddComponent<SDLInput>();
 	entity->AddComponent<GLManager>();
 	entity->AddComponent<PhysicsManager>();
 	entity->AddComponent<PlayersManager>();
 	entity->AddComponent<TextureManager>();
+
+	m_currentTime = sdlmanager->GetTick();
 
 	for(size_t i = Layer::Layer_0; i < Layer::Layer_Max; ++i)
 	{
@@ -70,35 +74,34 @@ void Kernel::Init()
 
 void Kernel::Tick()
 {
-	timer_t now = Time::GetMsTime();
+	Layer* layer = m_layers[0];
+	Entity* entity = layer->GetRootEntity();
+	SDLManager* sdlmanager = entity->GetComponent<SDLManager>();
+
+	natU64 now = sdlmanager->GetTick();
 	natU64 dt = now - m_currentTime;
 	m_currentTime = now;
 
-	/*m_acc += dt;
+	m_acc += dt;
 
-	if(m_acc >= 250)
-	{
-		m_acc = 250;
-	}
+	std::cout << dt << std::endl;
 
 	while(m_acc >= m_rateStep)
 	{
-		m_acc -= m_rateStep;*/
-
-		Layer* layer = m_layers[0];
-		Entity* entity = layer->GetRootEntity();
-		SDLManager* sdlmanager = entity->GetComponent<SDLManager>();
 		sdlmanager->PreRender();
+		m_acc -= m_rateStep;
 
 		for(layers_t::iterator it = m_layers.begin(); it != m_layers.end(); ++it)
 		{
 			Layer* layer = (*it);
-			//layer->Tick(m_rateStep);
-			layer->Tick(dt);
+			//layer->Tick(dt);
+			layer->Tick(m_rateStep);
 		}
 
 		sdlmanager->PostRender();
-	//}
+	}
+
+	
 }
 
 void Kernel::DeInit()

@@ -47,7 +47,7 @@ void BulletController::OnTick(const natU64 _dt)
 	// apply force
 	RigidBody* rigidbody = GetEntity()->GetComponent<RigidBody>();
 	Transform* transform = GetEntity()->GetComponent<Transform>();
-	glm::vec3 impulse = transform->m_forward*400.f;
+	glm::vec3 impulse = transform->m_forward * 100.f * static_cast<natF32>(_dt);
 	rigidbody->ApplyLinearImpulse(impulse);
 
 	m_time += _dt;

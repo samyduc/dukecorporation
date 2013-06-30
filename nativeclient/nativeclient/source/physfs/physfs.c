@@ -739,24 +739,23 @@ int PHYSFS_init(const char *argv0)
 	if (!externalAllocator)
 		setDefaultAllocator();
 
-	printf("1\n");
 	if (allocator.Init != NULL)
 		BAIL_IF_MACRO(!allocator.Init(), NULL, 0);
-	printf("2\n");
+
 	BAIL_IF_MACRO(!__PHYSFS_platformInit(), NULL, 0);
-	printf("3\n");
+
 	BAIL_IF_MACRO(!initializeMutexes(), NULL, 0);
-	printf("4\n");
+
 	baseDir = calculateBaseDir(argv0);
 	BAIL_IF_MACRO(baseDir == NULL, NULL, 0);
-	printf("5\n");
+
 	/* !!! FIXME: only call this if we got this from argv0 (unreliable). */
-	printf("6\n");
+
 	ptr = __PHYSFS_platformRealPath(baseDir);
 	allocator.Free(baseDir);
 	BAIL_IF_MACRO(ptr == NULL, NULL, 0);
 	baseDir = ptr;
-	printf("7\n");
+
 	BAIL_IF_MACRO(!appendDirSep(&baseDir), NULL, 0);
 
 	userDir = calculateUserDir();
@@ -768,7 +767,7 @@ int PHYSFS_init(const char *argv0)
 	} /* if */
 
 	initialized = 1;
-	printf("8\n");
+
 	/* This makes sure that the error subsystem is initialized. */
 	__PHYSFS_setError(PHYSFS_getLastError());
 

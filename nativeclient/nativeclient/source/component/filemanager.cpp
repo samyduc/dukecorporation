@@ -8,6 +8,9 @@
 
 #include <stdio.h>
 
+#include <iostream>
+#include <fstream>
+
 namespace Natorium
 {
 
@@ -39,7 +42,7 @@ void FileManager::OnInit()
 		assert(false);
 	}
 #elif defined(EMSCRIPTEN_TARGET)
-	if(PHYSFS_mount("data/data.zip", "/data", 0) == 0)
+	if(PHYSFS_mount("/data", "/data", 0) == 0)
 	{
 		printf("%s\n", PHYSFS_getLastError());
 		assert(false);
@@ -47,6 +50,9 @@ void FileManager::OnInit()
 #else
 
 #endif
+
+	//FILE* file = fopen("data/idle-0.png", "r");
+	//assert(file);
 
 }
 
@@ -67,8 +73,8 @@ void FileManager::OnDeInit()
 
 natU8* FileManager::Read(const natChar* _filename, size_t* _size)
 {
+//#if defined(WINDOWS_TARGET)
 	PHYSFS_file* file = PHYSFS_openRead(_filename);
-	printf("%s\n", PHYSFS_getLastError());
 	assert(file);
 
 	*_size = PHYSFS_fileLength(file);
@@ -78,6 +84,22 @@ natU8* FileManager::Read(const natChar* _filename, size_t* _size)
 	PHYSFS_read(file, buffer, 1, static_cast<PHYSFS_uint32>(*_size));
 
 	return buffer;
+/*#elif defined(EMSCRIPTEN_TARGET)
+	std::ifstream file(_filename, std::ios::in|std::ios::binary|std::ios::ate);
+	assert(file.is_open());
+
+	*_size = file.tellg();
+	assert(*_size != 0);
+
+	natU8* buffer = new natU8[*_size];
+	file.seekg (0, std::ios::beg);
+	file.read ((char*)buffer, *_size);
+	file.close();
+
+	return buffer;
+#else
+
+#endif*/
 }
 
 

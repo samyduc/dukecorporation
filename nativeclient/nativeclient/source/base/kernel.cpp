@@ -11,8 +11,6 @@
 
 #include <assert.h>
 
-#include <iostream>
-
 namespace Natorium
 {
 
@@ -84,7 +82,10 @@ void Kernel::Tick()
 
 	m_acc += dt;
 
-	std::cout << dt << std::endl;
+	if(m_acc >= 250)
+	{
+		m_acc = 250;
+	}
 
 	while(m_acc >= m_rateStep)
 	{

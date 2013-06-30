@@ -676,14 +676,15 @@
       <OptimizeReferences>true</OptimizeReferences>
       <LinkerOptimizationLevel>O2</LinkerOptimizationLevel>
       <RunClosureCompiler>false</RunClosureCompiler>
-      <AdditionalOptions>-s FULL_ES2=1  -s ASM_JS=1 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>-s FULL_ES2=1  -s ASM_JS=1 -s TOTAL_MEMORY=33554432 %(AdditionalOptions)</AdditionalOptions>
       <AdditionalLibraryDirectories>
       </AdditionalLibraryDirectories>
       <PreJsFile>
       </PreJsFile>
-      <EmbedFile>data/data.zip</EmbedFile>
+      <EmbedFile>data/</EmbedFile>
       <PreloadFile>
       </PreloadFile>
+      <TypedArrays>NotSet</TypedArrays>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

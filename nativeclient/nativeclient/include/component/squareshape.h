@@ -32,6 +32,7 @@ public:
 	glm::vec2		GetSize() const { return m_size; }
 	glm::vec4		GetColor() const { return m_color; }
 
+	void			SetVertex(natF32* _buffer, size_t &_size) { (void)_buffer; (void)_size; assert(false); }
 	void			SetSize(glm::vec2& _size);
 	void			SetColor(glm::vec4& _color);
 	void			SetAlpha(natF32 _alpha);

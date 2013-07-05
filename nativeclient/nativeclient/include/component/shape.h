@@ -17,7 +17,6 @@ public:
 
 	static natU32		GetType() { return s_Shape; }
 
-
 	virtual natF32*		GetVertex(size_t &_size) = 0;
 	virtual glm::vec2	GetSize() const = 0;
 	virtual glm::vec4	GetColor() const = 0;

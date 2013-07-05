@@ -8,6 +8,7 @@
 #include "component/playersmanager.h"
 #include "component/filemanager.h"
 #include "component/texturemanager.h"
+#include "component/fontmanager.h"
 
 #include <assert.h>
 
@@ -57,6 +58,7 @@ void Kernel::Init()
 	entity->AddComponent<PhysicsManager>();
 	entity->AddComponent<PlayersManager>();
 	entity->AddComponent<TextureManager>();
+	entity->AddComponent<FontManager>();
 
 	m_currentTime = sdlmanager->GetTick();
 

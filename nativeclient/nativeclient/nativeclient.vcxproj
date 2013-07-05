@@ -214,6 +214,7 @@
     <ClCompile Include="source\component\camera.cpp" />
     <ClCompile Include="source\component\charactercontroller.cpp" />
     <ClCompile Include="source\component\filemanager.cpp" />
+    <ClCompile Include="source\component\fontmanager.cpp" />
     <ClCompile Include="source\component\gameplay\baseweapon.cpp" />
     <ClCompile Include="source\component\gameplay\bulletcontroller.cpp" />
     <ClCompile Include="source\component\gameplay\aicontroller.cpp" />
@@ -231,6 +232,7 @@
     <ClCompile Include="source\component\sdlmanager.cpp" />
     <ClCompile Include="source\component\sdlrender.cpp" />
     <ClCompile Include="source\component\squareshape.cpp" />
+    <ClCompile Include="source\component\textshape.cpp" />
     <ClCompile Include="source\component\texturemanager.cpp" />
     <ClCompile Include="source\component\transform.cpp" />
     <ClCompile Include="source\linux\linux_timeplatform.cpp">
@@ -424,6 +426,7 @@
     <ClInclude Include="include\component\camera.h" />
     <ClInclude Include="include\component\charactercontroller.h" />
     <ClInclude Include="include\component\filemanager.h" />
+    <ClInclude Include="include\component\fontmanager.h" />
     <ClInclude Include="include\component\gameplay\baseweapon.h" />
     <ClInclude Include="include\component\gameplay\bulletcontroller.h" />
     <ClInclude Include="include\component\gameplay\aicontroller.h" />
@@ -444,6 +447,7 @@
     <ClInclude Include="include\component\sdlrender.h" />
     <ClInclude Include="include\component\shape.h" />
     <ClInclude Include="include\component\squareshape.h" />
+    <ClInclude Include="include\component\textshape.h" />
     <ClInclude Include="include\component\texturemanager.h" />
     <ClInclude Include="include\component\transform.h" />
     <ClInclude Include="include\entity\bullet.h" />
@@ -452,6 +456,7 @@
     <ClInclude Include="include\entity\player.h" />
     <ClInclude Include="include\entity\root.h" />
     <ClInclude Include="include\entity\spawnercivilian.h" />
+    <ClInclude Include="include\entity\text.h" />
     <ClInclude Include="include\shader\monotexture.h" />
     <ClInclude Include="include\shader\monotexture_es.h" />
     <ClInclude Include="include\shader\position.h" />
@@ -628,7 +633,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>./include;../extern/SDL-1.2.15/include;../extern/;../extern/glew-1.9.0/include;../extern/box2d/Box2D_v2.2.1/;../extern/physfs-2.0.3;../extern/SOIL/src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./include;../extern/SDL-1.2.15/include;../extern/;../extern/glew-1.9.0/include;../extern/box2d/Box2D_v2.2.1/;../extern/physfs-2.0.3;../extern/SOIL/src;..\extern\freetype-2.5.0\include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WINDOWS_TARGET;WIN32_LEAN_AND_MEAN;GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <BrowseInformation>true</BrowseInformation>
@@ -636,9 +641,9 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>..\extern\sdl-1.2.15\lib\x64\debug;../extern/glew-1.9.0/lib;../extern/box2d/Box2D_v2.2.1/Build/Box2D/Debug;../extern/physfs-2.0.3/build/Debug;../extern/SOIL/projects/VC9/x64/Debug</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\extern\sdl-1.2.15\lib\x64\debug;../extern/glew-1.9.0/lib;../extern/box2d/Box2D_v2.2.1/Build/Box2D/Debug;../extern/physfs-2.0.3/build/Debug;../extern/SOIL/projects/VC9/x64/Debug;../extern\freetype-2.5.0\objs\win64\vc2010</AdditionalLibraryDirectories>
       <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>SDL.lib;SDLmain.lib;glew32s.lib;glew32mxs.lib;opengl32.lib;Box2D.lib;physfs.lib;SOIL.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL.lib;SDLmain.lib;glew32s.lib;glew32mxs.lib;opengl32.lib;Box2D.lib;physfs.lib;SOIL.lib;freetype250_D.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Bscmake>
       <PreserveSbr>true</PreserveSbr>
@@ -694,7 +699,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>./include;../extern/SDL-1.2.15/include;../extern/;../extern/glew-1.9.0/include;../extern/box2d/Box2D_v2.2.1/;../extern/physfs-2.0.3;../extern/SOIL/src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./include;../extern/SDL-1.2.15/include;../extern/;../extern/glew-1.9.0/include;../extern/box2d/Box2D_v2.2.1/;../extern/physfs-2.0.3;../extern/SOIL/src;..\extern\freetype-2.5.0\include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WINDOWS_TARGET;WIN32_LEAN_AND_MEAN;GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
     </ClCompile>
@@ -702,8 +707,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>..\extern\sdl-1.3\lib\x64\release;..\extern\sdl-1.2.15\lib\x64\release;../extern/glew-1.9.0/lib;../extern/box2d/Box2D_v2.2.1/Build/Box2D/Release;../extern/physfs-2.0.3/build/Release;../extern/SOIL/projects/VC9/x64/Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL.lib;SDLmain.lib;glew32s.lib;opengl32.lib;Box2D.lib;physfs.lib;SOIL.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\extern\sdl-1.3\lib\x64\release;..\extern\sdl-1.2.15\lib\x64\release;../extern/glew-1.9.0/lib;../extern/box2d/Box2D_v2.2.1/Build/Box2D/Release;../extern/physfs-2.0.3/build/Release;../extern/SOIL/projects/VC9/x64/Release;../extern\freetype-2.5.0\objs\win64\vc2010;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL.lib;SDLmain.lib;glew32s.lib;opengl32.lib;Box2D.lib;physfs.lib;SOIL.lib;freetype250.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>

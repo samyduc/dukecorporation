@@ -6,9 +6,11 @@
 #include "entity/civilian.h"
 #include "entity/spawnercivilian.h"
 #include "entity/floor.h"
+#include "entity/text.h"
 #include "component/playersmanager.h"
 #include "component/glrender.h"
 #include "component/texturemanager.h"
+#include "component/fontmanager.h"
 
 namespace Natorium
 {
@@ -27,15 +29,28 @@ void SceneManager::OnInit()
 	texturemanager->Load("/data/idle-0.png");
 	texturemanager->Load("/data/grass-texture-2.jpg");
 
+	FontManager* fontmanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<FontManager>();
+	fontmanager->Load("/data/EBGaramond-Regular.ttf", 24);
+
 	natU32 hash = Hash::Compute("/data/idle-0.png");
 	GLuint textureId = texturemanager->Get(hash);
 	natU32 hash_floor = Hash::Compute("/data/grass-texture-2.jpg");
 	GLuint textureId_floor = texturemanager->Get(hash_floor);
 
-	Floor* floor = new Floor();
+	Text* text = new Text();
+	TextShape* text_shape = text->GetComponent<TextShape>();
+	text_shape->m_font = fontmanager->Get("/data/EBGaramond-Regular.ttf", 24);
+	text_shape->m_text = L"baby talk";
+	text_shape->m_color = glm::vec4(1.f, 0.f, 0.f, 1.f);
+	Transform* text_transform = text->GetComponent<Transform>();
+	text_transform->m_pos = glm::vec3(612.f, 384.f, 0.f);
+
+	GetEntity()->GetKernel()->AddEntity(Layer::Layer_1, text);
+
+	/*Floor* floor = new Floor();
 	GLRender* floor_glrender = floor->GetComponent<GLRender>();
 	floor_glrender->SetTexture(textureId_floor);
-	GetEntity()->GetKernel()->AddEntity(Layer::Layer_1, floor);
+	GetEntity()->GetKernel()->AddEntity(Layer::Layer_1, floor);*/
 
 	PlayersManager *playersManager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<PlayersManager>();
 

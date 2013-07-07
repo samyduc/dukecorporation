@@ -12,6 +12,7 @@ TextShape::TextShape()
 	: m_color(1.f, 1.f, 1.f, 1.f)
 	, m_vertex(nullptr)
 	, m_isDirty(true)
+	, m_vertexNumber(0)
 {
 
 }
@@ -46,10 +47,19 @@ void TextShape::SetText(std::wstring& _text, Font* _font)
 	size_t color_size = text_size * 4 * 4;
 	size_t uv_size = text_size * 4 * 2;
 
-	size_t total = vertex_size + color_size + uv_size;
+	m_colorOffset = vertex_size;
+	m_uvOffset = vertex_size + color_size;
 
-	m_vertex = new natF32[total];
-	memset(m_vertex, 0, total);
+	m_vertexNumber = static_cast<natU32>(text_size * 4);
+	m_length = vertex_size + color_size + uv_size;
+
+	m_vertex = new natF32[m_length];
+	//memset(m_vertex, 0, m_length);
+
+	for(size_t index=0; index < m_length; ++index)
+	{
+		m_vertex[index] = 0.f;
+	}
 
 	natU32 advance = 0;
 	natU32 i = 0;
@@ -58,53 +68,69 @@ void TextShape::SetText(std::wstring& _text, Font* _font)
  
 	Font::char_info_t* ci;
 
-			// Fill vertex data
-			for(; c != tmp_end; ++c)
-			{
-				ci = &m_font->m_info.ch[*c];
+	// Fill vertex data
+	for(; c != tmp_end; ++c)
+	{
+		ci = &m_font->m_info.ch[*c];
  
-				m_vertex[i+0] = ci->left+advance+ci->v[0].x;
-				m_vertex[i+1] = ci->v[0].y + (m_font->m_info.max_height-ci->top);
-				m_vertex[i+4] = ci->left+advance+ci->v[1].x;
-				m_vertex[i+5] = ci->v[1].y + (m_font->m_info.max_height-ci->top);
-				m_vertex[i+8] = ci->left+advance+ci->v[2].x;
-				m_vertex[i+9] = ci->v[2].y + (m_font->m_info.max_height-ci->top);
-				m_vertex[i+12] = ci->left+advance+ci->v[3].x;
-				m_vertex[i+13] = ci->v[3].y + (m_font->m_info.max_height-ci->top);
+		//m_vertex[i+0] = ci->left+advance+ci->v[0].x;
+		//m_vertex[i+1] = ci->v[0].y + (m_font->m_info.max_height-ci->top);
 
-				m_vertex[3] = 1.f;
-				m_vertex[7] = 1.f;
-				m_vertex[11] = 1.f;
-				m_vertex[15] = 1.f;
- 
-				advance += ci->advance;
-				i+=(4*4);
-			}
+		//m_vertex[i+4] = ci->left+advance+ci->v[1].x;
+		//m_vertex[i+5] = ci->v[1].y + (m_font->m_info.max_height-ci->top);
 
-			// Fill UV data
-			natF32* uv = m_vertex + vertex_size + color_size;
-			i = 0;
-			c = m_text.begin();
-			for(; c != tmp_end; ++c)
-			{
-				ci = &m_font->m_info.ch[*c];
- 
-				uv[i+0] = ci->uv[0].x;
-				uv[i+1] = ci->uv[0].y;
-				uv[i+2] = ci->uv[1].x;
-				uv[i+3] = ci->uv[1].y;
-				uv[i+4] = ci->uv[2].x;
-				uv[i+5] = ci->uv[2].y;
-				uv[i+6] = ci->uv[3].x;
-				uv[i+7] = ci->uv[3].y;
- 
-				i+=(4*2);
-			}
+		//m_vertex[i+8] = ci->left+advance+ci->v[2].x;
+		//m_vertex[i+9] = ci->v[2].y + (m_font->m_info.max_height-ci->top);
 
-	// TODO : bad dependency to glrender here, maybe put it somewhere else
-	GLRender* glrender = GetEntity()->GetComponent<GLRender>();
-	assert(glrender != nullptr);
-	glrender->SetTexture(m_font->m_texture);
+		//m_vertex[i+12] = ci->left+advance+ci->v[3].x;
+		//m_vertex[i+13] = ci->v[3].y + (m_font->m_info.max_height-ci->top);
+
+		m_vertex[i+0] = ci->left+advance+ci->v[1].x;
+		m_vertex[i+1] = ci->v[1].y + (m_font->m_info.max_height-ci->top);
+
+		m_vertex[i+4] = ci->left+advance+ci->v[2].x;
+		m_vertex[i+5] = ci->v[2].y + (m_font->m_info.max_height-ci->top);
+
+		m_vertex[i+8] = ci->left+advance+ci->v[0].x;
+		m_vertex[i+9] = ci->v[0].y + (m_font->m_info.max_height-ci->top);
+
+		m_vertex[i+12] = ci->left+advance+ci->v[3].x;
+		m_vertex[i+13] = ci->v[3].y + (m_font->m_info.max_height-ci->top);
+
+		m_vertex[i+3] = 1.f;
+		m_vertex[i+7] = 1.f;
+		m_vertex[i+11] = 1.f;
+		m_vertex[i+15] = 1.f;
+ 
+		advance += ci->advance;
+		i+=(4*4);
+
+		m_size.x += static_cast<natF32>(ci->width);
+		m_size.y = static_cast<natF32>(ci->height);
+	}
+
+	// Fill UV data
+	natF32* uv = m_vertex + vertex_size + color_size;
+	i = 0;
+	c = m_text.begin();
+	for(; c != tmp_end; ++c)
+	{
+		ci = &m_font->m_info.ch[*c];
+
+		uv[i+0] = ci->uv[1].x;
+		uv[i+1] = ci->uv[1].y;
+
+		uv[i+2] = ci->uv[2].x;
+		uv[i+3] = ci->uv[2].y;
+
+		uv[i+4] = ci->uv[0].x;
+		uv[i+5] = ci->uv[0].y;
+
+		uv[i+6] = ci->uv[3].x;
+		uv[i+7] = ci->uv[3].y;
+ 
+		i+=(4*2);
+	}
 
 	m_isDirty = true;
 }
@@ -164,10 +190,16 @@ void TextShape::SetAlpha(natF32 _alpha)
 natF32* TextShape::GetVertex(size_t &_size)
 {
 	assert(m_vertex != nullptr);
-	_size = sizeof(m_vertex);
+	_size = m_length*sizeof(natF32);
 	return m_vertex;
 }
 
+void TextShape::GetOffset(size_t& _vertexNumber, size_t& _color, size_t& _uv)
+{
+	_vertexNumber = m_vertexNumber;
+	_color = m_colorOffset;
+	_uv = m_uvOffset;
 
+}
 
 }

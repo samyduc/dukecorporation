@@ -30,8 +30,9 @@ void SceneManager::OnInit()
 	texturemanager->Load("/data/grass-texture-2.jpg");
 
 	FontManager* fontmanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<FontManager>();
-	fontmanager->Load("/data/EBGaramond-Regular.ttf", 24);
-
+	fontmanager->Load("/data/EBGaramond-Regular.ttf", 50);
+	fontmanager->Load("/data/StalinistOne-Regular.ttf", 50);
+	
 	natU32 hash = Hash::Compute("/data/idle-0.png");
 	GLuint textureId = texturemanager->Get(hash);
 	natU32 hash_floor = Hash::Compute("/data/grass-texture-2.jpg");
@@ -39,24 +40,27 @@ void SceneManager::OnInit()
 
 	Text* text = new Text();
 	TextShape* text_shape = text->GetComponent<TextShape>();
-	text_shape->m_font = fontmanager->Get("/data/EBGaramond-Regular.ttf", 24);
-	text_shape->m_text = L"baby talk";
-	text_shape->m_color = glm::vec4(1.f, 0.f, 0.f, 1.f);
+	text_shape->m_font = fontmanager->Get("/data/StalinistOne-Regular.ttf", 50);
+	text_shape->m_text = L"Je";
+	text_shape->m_color = glm::vec4(1.f, 1.f, 1.f, 1.f);
 	Transform* text_transform = text->GetComponent<Transform>();
-	text_transform->m_pos = glm::vec3(612.f, 384.f, 0.f);
+	text_transform->m_pos = glm::vec3(0.f, 0.f, 0.f);
+	GLRender* text_render = text->GetComponent<GLRender>();
+	text_render->SetTexture(text_shape->m_font->m_texture);
 
-	GetEntity()->GetKernel()->AddEntity(Layer::Layer_1, text);
+	GetEntity()->GetKernel()->AddEntity(Layer::Layer_5, text);
 
-	/*Floor* floor = new Floor();
+	Floor* floor = new Floor();
 	GLRender* floor_glrender = floor->GetComponent<GLRender>();
 	floor_glrender->SetTexture(textureId_floor);
-	GetEntity()->GetKernel()->AddEntity(Layer::Layer_1, floor);*/
+	GetEntity()->GetKernel()->AddEntity(Layer::Layer_1, floor);
 
 	PlayersManager *playersManager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<PlayersManager>();
 
 	Entity* player = new Player();
 	Transform* player_transform = player->GetComponent<Transform>();
-	player_transform->m_pos = glm::vec3(612.f, 384.f, 0.f);
+	//player_transform->m_pos = glm::vec3(612.f, 384.f, 0.f);
+	player_transform->m_pos = glm::vec3(0.f, 0.f, 0.f);
 	GLRender* player_glrender = player->GetComponent<GLRender>();
 	player_glrender->SetTexture(textureId);
 
@@ -65,7 +69,7 @@ void SceneManager::OnInit()
 
 	Entity* civilian = new Civilian();
 
-	SpawnerCivilian* spawner_civilian = new SpawnerCivilian();
+	/*SpawnerCivilian* spawner_civilian = new SpawnerCivilian();
 	Transform *spawner_transform = spawner_civilian->GetComponent<Transform>();
 	spawner_transform->m_pos = glm::vec3(-100.f, -100.f, 0.f);
 	TimeSpawner* spawner1 = spawner_civilian->GetComponent<TimeSpawner>();
@@ -77,7 +81,7 @@ void SceneManager::OnInit()
 	spawner_transform2->m_pos = glm::vec3(1024.f + 100.f, 0.f, 0.f);
 	TimeSpawner* spawner2 = spawner_civilian2->GetComponent<TimeSpawner>();
 	spawner2->m_refEntity = civilian;
-	GetEntity()->GetKernel()->AddEntity(Layer::Layer_1, spawner_civilian2);
+	GetEntity()->GetKernel()->AddEntity(Layer::Layer_1, spawner_civilian2);*/
 
 	Camera* camera = player->GetComponent<Camera>();
 	camera->m_effect_followMouse = true;

@@ -27,8 +27,9 @@ public:
 		: Entity()
 	{
 		AddComponent<Transform>();
-		AddComponent<GLRender>();
 		AddComponent<TextShape>();
+		GLRender* render = AddComponent<GLRender>();
+		render->m_type = Hash::Compute("monotexture");
 	}
 
 

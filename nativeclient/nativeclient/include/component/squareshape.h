@@ -27,10 +27,13 @@ public:
 
 	void			Clone(Entity* _entity) const;
 
+	natU32			GetVertexNumber() { return 4; }
 	natF32*			GetVertex(size_t &_size);
 
 	glm::vec2		GetSize() const { return m_size; }
 	glm::vec4		GetColor() const { return m_color; }
+
+	void			GetOffset(size_t& _vertexNumber, size_t& color, size_t& _uv);
 
 	void			SetVertex(natF32* _buffer, size_t &_size) { (void)_buffer; (void)_size; assert(false); }
 	void			SetSize(glm::vec2& _size);

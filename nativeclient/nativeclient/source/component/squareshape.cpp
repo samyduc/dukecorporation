@@ -118,6 +118,13 @@ natF32* SquareShape::GetVertex(size_t &_size)
 	return m_vertex;
 }
 
+void SquareShape::GetOffset(size_t& _vertexNumber, size_t& _color, size_t& _uv)
+{
+	_vertexNumber = 4;
+	_color = 4*4;
+	_uv = 4*4*2;
+}
+
 
 
 }

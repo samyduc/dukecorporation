@@ -30,7 +30,7 @@ Camera::~Camera()
 void Camera::OnInit()
 {
 	m_resolution = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<GLManager>()->GetScreenResolution();
-	m_projectionMatrix = glm::ortho<float>(0.f, static_cast<float>(m_resolution.x), static_cast<float>(m_resolution.y), 0.f, 0.f, 100.f);
+	m_projectionMatrix = glm::ortho<natF32>(0.f, static_cast<float>(m_resolution.x), static_cast<natF32>(m_resolution.y), 0.f, 0.f, 100.f);
 }
 
 void Camera::Clone(Entity* _entity) const

@@ -11,6 +11,7 @@
 #include "component/charactercontroller.h"
 #include "component/glmanager.h"
 #include "component/squareshape.h"
+#include "component/textshape.h"
 #include "component/rigidbody.h"
 
 #include "component/gameplay/lifecontroller.h"
@@ -30,7 +31,7 @@ public:
 		AddComponent<SquareShape>();
 		AddComponent<CharacterController>();
 		AddComponent<LifeController>();
-		//AddComponent<BaseWeapon>();
+		AddComponent<BaseWeapon>();
 		AddComponent<ShotgunWeapon>();
 		AddComponent<RigidBody>();
 		AddComponent<Camera>();

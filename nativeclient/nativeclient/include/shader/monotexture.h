@@ -23,6 +23,7 @@ const std::string strMonoTextureVertex(
 	"void main()\n"
 	"{\n"
 	"	gl_Position = projection * view * model * position;\n"
+	/*"	gl_Position = position;\n"*/
 	"\n"
 	"	fragmentColor = color;\n"
 	"	baseTexCoord = texCoord;\n"

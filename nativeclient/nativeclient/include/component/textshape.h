@@ -30,10 +30,13 @@ public:
 
 	void			Clone(Entity* _entity) const;
 
+	size_t			GetVertexNumber() { return m_vertexNumber; }
 	natF32*			GetVertex(size_t &_size);
 
-	glm::vec2		GetSize() const { return glm::vec2(0.f); }
+	glm::vec2		GetSize() const { return m_size; }
 	glm::vec4		GetColor() const { return m_color; }
+
+	void			GetOffset(size_t& _vertexNumber, size_t& _color, size_t& _uv);
 
 	void			SetVertex(natF32* _buffer, size_t &_size);
 	void			SetSize(glm::vec2& _size);
@@ -53,6 +56,10 @@ private:
 	natBool			m_isDirty;
 	size_t			m_length;
 	natF32*			m_vertex;
+	size_t			m_vertexNumber;
+	size_t			m_colorOffset;
+	size_t			m_uvOffset;
+	glm::vec2		m_size;
 
 };
 

@@ -21,6 +21,7 @@ const natU32 programPosition = Hash::Compute("position");
 GLRender::GLRender()
 	: m_shape(nullptr)
 	, m_type(programPosition)
+	, m_vertexNumber(0)
 {
 
 }
@@ -66,10 +67,7 @@ void GLRender::OnTick(const natU64 _dt)
 
 	glm::vec3 angle = transform->GetDeg();
 	m_transMat = glm::rotate(transMat, angle.z, glm::vec3(0, 0, 1));
-}
 
-void GLRender::Render(GLuint _program)
-{
 	if(m_shape->IsAndRemoveDirty())
 	{
 		size_t vectorLength;
@@ -77,8 +75,13 @@ void GLRender::Render(GLuint _program)
 		glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject);
 		glBufferData(GL_ARRAY_BUFFER, vectorLength, vertexPositions, GL_DYNAMIC_DRAW);
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
-	}
 
+		m_shape->GetOffset(m_vertexNumber, m_colorOffset, m_uvOffset);
+	}
+}
+
+void GLRender::Render(GLuint _program)
+{
 	glUniformMatrix4fv(m_modelUnif, 1, GL_FALSE, glm::value_ptr(m_transMat));
 	
 	glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject);
@@ -88,16 +91,16 @@ void GLRender::Render(GLuint _program)
 
 
 	glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, 0);
-	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, (void*)(sizeof(float)*16));
-	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, (void*)(sizeof(float)*32));
+	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, (void*)(sizeof(natF32)*m_colorOffset));
+	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, (void*)(sizeof(natF32)*m_uvOffset));
 	////////
 
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D , m_texture);
 
 	// call to draw
-	//glDrawArrays(GL_QUADS, 0, 4);
-	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+	//glDrawArrays(GL_TRIANGLES, 0, static_cast<natU32>(m_vertexNumber));
+	glDrawArrays(GL_TRIANGLE_STRIP, 0, static_cast<natU32>(m_vertexNumber));
 	//glDrawElements(GL_TRIANGLE_STRIP, );
 
 	glBindTexture(GL_TEXTURE_2D , 0);

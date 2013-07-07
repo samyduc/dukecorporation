@@ -64,6 +64,10 @@ private:
 
 	GLuint		m_texture;
 
+	size_t		m_vertexNumber;
+	size_t		m_colorOffset;
+	size_t		m_uvOffset;
+
 
 };
 

@@ -58,7 +58,9 @@ public:
 
 	glm::vec2		GetScreenResolution() { return m_screenResolution; }
 
-	void			Render();
+	natU64			GetLastTick() const { return m_lastRenderTick; }
+
+	void			Render(natU64 _tick);
 	void			ClearRender();
 
 private:
@@ -85,7 +87,9 @@ private:
 	glm::mat4		m_projectionMatrixCopy;
 
 	//GLuint m_globalUnif;
-	const int m_globalBindingIndex;
+	const int		m_globalBindingIndex;
+
+	natU64			m_lastRenderTick;
 };
 
 

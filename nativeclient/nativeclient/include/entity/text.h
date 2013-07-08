@@ -28,6 +28,7 @@ public:
 	{
 		AddComponent<Transform>();
 		AddComponent<TextShape>();
+		AddComponent<Camera>();
 		GLRender* render = AddComponent<GLRender>();
 		render->m_type = Hash::Compute("monotexture");
 	}

@@ -19,6 +19,7 @@ void SquareShape::OnInit()
 	SetSize(m_size);
 	SetColor(m_color);
 	SetTextureCoordinate(m_repeat);
+	SetIndices();
 
 	m_isDirty = true;
 }
@@ -112,15 +113,34 @@ void SquareShape::SetTextureCoordinate(natF32 _repeat)
 	m_isDirty= true;
 }
 
+void SquareShape::SetIndices()
+{
+	m_indices[0] = 0;
+	m_indices[1] = 1;
+	m_indices[2] = 2;
+	m_indices[3] = 2;
+	m_indices[4] = 1;
+	m_indices[5] = 3;
+
+	m_isDirty= true;
+}
+
 natF32* SquareShape::GetVertex(size_t &_size)
 {
 	_size = sizeof(m_vertex);
 	return m_vertex;
 }
 
-void SquareShape::GetOffset(size_t& _vertexNumber, size_t& _color, size_t& _uv)
+natU32* SquareShape::GetIndices(size_t &_size)
+{
+	_size = sizeof(m_indices);
+	return m_indices;
+}
+
+void SquareShape::GetOffset(size_t& _vertexNumber, size_t& _indicesNumber, size_t& _color, size_t& _uv)
 {
 	_vertexNumber = 4;
+	_indicesNumber = 6;
 	_color = 4*4;
 	_uv = 4*4*2;
 }

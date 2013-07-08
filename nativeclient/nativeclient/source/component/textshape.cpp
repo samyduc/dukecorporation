@@ -11,31 +11,56 @@ namespace Natorium
 TextShape::TextShape()
 	: m_color(1.f, 1.f, 1.f, 1.f)
 	, m_vertex(nullptr)
+	, m_indices(nullptr)
 	, m_isDirty(true)
 	, m_vertexNumber(0)
-{
+	, m_bufferAllocated(0){
 
 }
 
 void TextShape::OnInit()
 {
 	SetText(m_text, m_font);
-	SetColor(m_color);
 
 	m_isDirty = true;
+}
+
+void TextShape::OnDeInit()
+{
+	if(m_vertex)
+	{
+		delete [] m_vertex;
+		m_vertex = nullptr;
+	}
+	if(m_indices)
+	{
+		delete [] m_indices;
+		m_indices = nullptr;
+	}
+	m_bufferAllocated = 0;
 }
 
 void TextShape::Clone(Entity* _entity) const
 {
 	TextShape* component = _entity->AddComponent<TextShape>();
 	component->m_color = m_color;
+	component->m_font = m_font;
+	component->m_text = m_text;
 }
 
-void TextShape::SetText(std::wstring& _text, Font* _font)
+void TextShape::SetText(std::string& _text, Font* _font)
 {
-	if(m_vertex)
+	if(_font == nullptr)
 	{
-		delete m_vertex;
+		assert(m_font);
+		_font = m_font;
+	}
+
+	natBool doAllocate = false;
+
+	if(_text.size() > m_bufferAllocated)
+	{
+		doAllocate = true;
 	}
 
 	m_text = _text;
@@ -51,9 +76,34 @@ void TextShape::SetText(std::wstring& _text, Font* _font)
 	m_uvOffset = vertex_size + color_size;
 
 	m_vertexNumber = static_cast<natU32>(text_size * 4);
+	m_indicesNumber = (m_vertexNumber / 4) * 6;
 	m_length = vertex_size + color_size + uv_size;
 
-	m_vertex = new natF32[m_length];
+
+	if(doAllocate)
+	{
+		if(m_vertex)
+		{
+			delete [] m_vertex;
+			m_vertex = nullptr;
+		}
+		if(m_indices)
+		{
+			delete [] m_indices;
+			m_indices = nullptr;
+		}
+
+		assert(m_vertex == nullptr);
+		assert(m_indices == nullptr);
+		m_vertex = new natF32[m_length];
+		m_indices = new natU32[m_indicesNumber];
+
+		m_bufferAllocated = m_text.size();
+	}
+
+	assert(m_vertex);
+	assert(m_indices);
+	
 	//memset(m_vertex, 0, m_length);
 
 	for(size_t index=0; index < m_length; ++index)
@@ -63,8 +113,8 @@ void TextShape::SetText(std::wstring& _text, Font* _font)
 
 	natU32 advance = 0;
 	natU32 i = 0;
-	std::wstring::iterator c = m_text.begin();
-	std::wstring::iterator const tmp_end = m_text.end();
+	std::string::iterator c = m_text.begin();
+	std::string::iterator const tmp_end = m_text.end();
  
 	Font::char_info_t* ci;
 
@@ -72,18 +122,6 @@ void TextShape::SetText(std::wstring& _text, Font* _font)
 	for(; c != tmp_end; ++c)
 	{
 		ci = &m_font->m_info.ch[*c];
- 
-		//m_vertex[i+0] = ci->left+advance+ci->v[0].x;
-		//m_vertex[i+1] = ci->v[0].y + (m_font->m_info.max_height-ci->top);
-
-		//m_vertex[i+4] = ci->left+advance+ci->v[1].x;
-		//m_vertex[i+5] = ci->v[1].y + (m_font->m_info.max_height-ci->top);
-
-		//m_vertex[i+8] = ci->left+advance+ci->v[2].x;
-		//m_vertex[i+9] = ci->v[2].y + (m_font->m_info.max_height-ci->top);
-
-		//m_vertex[i+12] = ci->left+advance+ci->v[3].x;
-		//m_vertex[i+13] = ci->v[3].y + (m_font->m_info.max_height-ci->top);
 
 		m_vertex[i+0] = ci->left+advance+ci->v[1].x;
 		m_vertex[i+1] = ci->v[1].y + (m_font->m_info.max_height-ci->top);
@@ -132,7 +170,28 @@ void TextShape::SetText(std::wstring& _text, Font* _font)
 		i+=(4*2);
 	}
 
+	SetColor(m_color);
+	SetIndices();
+
 	m_isDirty = true;
+}
+
+void TextShape::SetIndices()
+{
+	assert(m_indices);
+
+	natU32 index = 0;
+	for(size_t i = 0; i < m_indicesNumber/6; ++i)
+	{
+		m_indices[i*6 + 0] = index + 0;
+		m_indices[i*6 + 1] = index + 1;
+		m_indices[i*6 + 2] = index + 2;
+		m_indices[i*6 + 3] = index + 2;
+		m_indices[i*6 + 4] = index + 1;
+		m_indices[i*6 + 5] = index + 3;
+
+		index += 4;
+	}
 }
 
 void TextShape::SetSize(glm::vec2& _size)
@@ -155,8 +214,8 @@ void TextShape::SetColor(glm::vec4& _color)
 	natF32* color = m_vertex + vertex_size;
 
 	natU32 i = 0;
-	std::wstring::iterator c = m_text.begin();
-	std::wstring::iterator const tmp_end = m_text.end();
+	std::string::iterator c = m_text.begin();
+	std::string::iterator const tmp_end = m_text.end();
 
 	for(; c != tmp_end; ++c)
 	{
@@ -194,12 +253,19 @@ natF32* TextShape::GetVertex(size_t &_size)
 	return m_vertex;
 }
 
-void TextShape::GetOffset(size_t& _vertexNumber, size_t& _color, size_t& _uv)
+natU32* TextShape::GetIndices(size_t &_size)
+{
+	assert(m_indices != nullptr);
+	_size = m_indicesNumber * sizeof(natU32);
+	return m_indices;
+}
+
+void TextShape::GetOffset(size_t& _vertexNumber, size_t& _indicesNumber, size_t& _color, size_t& _uv)
 {
 	_vertexNumber = m_vertexNumber;
+	_indicesNumber = m_indicesNumber;
 	_color = m_colorOffset;
 	_uv = m_uvOffset;
-
 }
 
 }

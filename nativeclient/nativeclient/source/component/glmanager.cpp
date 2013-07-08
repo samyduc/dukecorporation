@@ -169,8 +169,10 @@ void GLManager::OnTick(const natU64 _dt)
 	//Render();
 }
 
-void GLManager::Render()
+void GLManager::Render(natU64 _tick)
 {
+	m_lastRenderTick = _tick;
+
 	for(render_map_t::iterator it = m_renderMap.begin(); it != m_renderMap.end(); ++it)
 	{
 		natU32 type = it->first;
@@ -192,6 +194,7 @@ void GLManager::Render()
 		while( it_render != renderList.end() )
 		{
 			GLRender* render = *it_render;
+			render->PreRender(_tick);
 			render->Render(program);
 
 			++it_render;

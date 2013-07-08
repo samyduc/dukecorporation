@@ -42,6 +42,7 @@ public:
 
 	void			SetTexture(GLuint _texture) { m_texture = _texture; } 
 
+	void			PreRender(natU64 _tick);
 	void			Render(GLuint _program);
 
 public:
@@ -54,6 +55,7 @@ private:
 	render_list_t* m_renderList;
 	GLuint		m_bufferObject;
 	GLuint		m_offsetPosition;
+	GLuint		m_indicesBuffer;
 
 	glm::mat4	m_transMat;
 
@@ -65,6 +67,7 @@ private:
 	GLuint		m_texture;
 
 	size_t		m_vertexNumber;
+	size_t		m_indicesNumber;
 	size_t		m_colorOffset;
 	size_t		m_uvOffset;
 

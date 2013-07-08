@@ -6,10 +6,7 @@
 
 #include <physfs.h>
 
-#include <stdio.h>
 
-#include <iostream>
-#include <fstream>
 
 namespace Natorium
 {
@@ -44,7 +41,7 @@ void FileManager::OnInit()
 #elif defined(EMSCRIPTEN_TARGET)
 	if(PHYSFS_mount("/data", "/data", 0) == 0)
 	{
-		printf("%s\n", PHYSFS_getLastError());
+		//printf("%s\n", PHYSFS_getLastError());
 		assert(false);
 	}
 #else

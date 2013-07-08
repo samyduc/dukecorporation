@@ -26,7 +26,7 @@ public:
 
 
 	void			PreRender();
-	void			PostRender();
+	void			PostRender(natU64 _tick);
 	SDL_Surface*	GetScreen() { return m_screen; }
 
 	natU64			GetTick() { return SDL_GetTicks(); }

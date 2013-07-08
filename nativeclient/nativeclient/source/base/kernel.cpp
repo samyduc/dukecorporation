@@ -104,7 +104,7 @@ void Kernel::Tick()
 			layer->Tick(m_rateStep);
 		}
 	}
-	sdlmanager->PostRender();
+	sdlmanager->PostRender(dt);
 
 }
 

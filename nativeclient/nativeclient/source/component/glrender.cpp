@@ -60,6 +60,15 @@ void GLRender::OnTick(const natU64 _dt)
 {
 	m_renderList->push_back(this);
 
+	Transform* transform = GetEntity()->GetComponent<Transform>();
+
+	glm::vec3 position = transform->GetPos();
+	glm::mat4 transMat(1.f);
+	transMat = glm::translate(transMat, position);
+
+	glm::vec3 angle = transform->GetDeg();
+	m_transMat = glm::rotate(transMat, angle.z, glm::vec3(0, 0, 1));
+
 	if(m_shape->IsAndRemoveDirty())
 	{
 		size_t vectorLength;
@@ -80,14 +89,7 @@ void GLRender::OnTick(const natU64 _dt)
 
 void GLRender::PreRender(natU64 _tick)
 {
-	Transform* transform = GetEntity()->GetComponent<Transform>();
 
-	glm::vec3 position = transform->GetPos();
-	glm::mat4 transMat(1.f);
-	transMat = glm::translate(transMat, position);
-
-	glm::vec3 angle = transform->GetDeg();
-	m_transMat = glm::rotate(transMat, angle.z, glm::vec3(0, 0, 1));
 }
 
 void GLRender::Render(GLuint _program)

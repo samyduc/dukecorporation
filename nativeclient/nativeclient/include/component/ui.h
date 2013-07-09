@@ -8,7 +8,8 @@
 
 namespace Natorium
 {
-
+class GLManager;
+class Transform;
 
 static natU32 s_Ui = Hash::Compute("s_Ui");
 
@@ -26,18 +27,18 @@ public:
 
 	void			Clone(Entity* _entity) const;
 
+	glm::vec2		GetPos() { return m_pos; }
+	natF32			GetRad() { return m_rad; }
+	glm::vec2		GetScale() { return m_scale; }
+
 public:
 	glm::vec2		m_pos;
 	natF32			m_rad;
 	glm::vec2		m_scale;
 
-public:
-
-	glm::vec2		GetPos() { return m_pos; }
-	natF32			GetRad() { return m_rad; }
-	glm::vec2		GetScale() { return m_scale; }
-
-
+private:
+	Transform*		m_transform;
+	GLManager*		m_glManager;
 
 };
 

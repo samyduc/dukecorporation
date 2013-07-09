@@ -154,10 +154,10 @@ void GLManager::OnTick(const natU64 _dt)
 	glBufferSubData(GL_UNIFORM_BUFFER, sizeof(glm::mat4), sizeof(glm::mat4), glm::value_ptr(camera));
 	glBindBuffer(GL_UNIFORM_BUFFER, 0);*/
 
-	if(m_currentCamera)
+	/*if(m_currentCamera)
 	{
 		ComputeCamera();
-	}
+	}*/
 
 	/*glUseProgram(m_shaderProgram);
 
@@ -172,6 +172,9 @@ void GLManager::OnTick(const natU64 _dt)
 void GLManager::Render(natU64 _tick)
 {
 	m_lastRenderTick = _tick;
+
+	m_currentCamera->ComputeMatrix();
+	ComputeCamera();
 
 	for(render_map_t::iterator it = m_renderMap.begin(); it != m_renderMap.end(); ++it)
 	{

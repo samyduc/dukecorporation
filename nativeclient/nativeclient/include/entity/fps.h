@@ -22,7 +22,8 @@ public:
 		AddComponent<Transform>();
 		AddComponent<TextShape>();
 		AddComponent<FPSCounter>();
-		//AddComponent<UI>();
+		UI* ui = AddComponent<UI>();
+		ui->m_pos = glm::vec2(0.945f, 0.01f);
 		GLRender* render = AddComponent<GLRender>();
 		render->m_type = Hash::Compute("monotexture");
 	}

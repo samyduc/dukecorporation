@@ -33,6 +33,8 @@ public:
 	glm::vec2		GetPosWorldToScreen(const glm::vec3& _world);
 	glm::vec3		GetPosScreenToWorld(const glm::vec2& _screen);
 
+	void			ComputeMatrix();
+
 	void			ApplyEffectFollowMouse();
 
 public:

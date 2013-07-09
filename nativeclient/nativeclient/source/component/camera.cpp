@@ -45,6 +45,11 @@ void Camera::Clone(Entity* _entity) const
 
 void Camera::OnTick(const natU64 _dt)
 {
+
+}
+
+void Camera::ComputeMatrix()
+{
 	m_viewMatrix = glm::mat4(1.f);
 
 	glm::vec3 pos = GetPos();

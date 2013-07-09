@@ -33,6 +33,7 @@ void SceneManager::OnInit()
 	FontManager* fontmanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<FontManager>();
 	fontmanager->Load("/data/EBGaramond-Regular.ttf", 50);
 	fontmanager->Load("/data/StalinistOne-Regular.ttf", 50);
+	fontmanager->Load("/data/StalinistOne-Regular.ttf", 12);
 	
 	natU32 hash = Hash::Compute("/data/idle-0.png");
 	GLuint textureId = texturemanager->Get(hash);
@@ -43,8 +44,8 @@ void SceneManager::OnInit()
 	Text* text = new Text();
 	TextShape* text_shape = text->GetComponent<TextShape>();
 	text_shape->m_font = fontmanager->Get("/data/StalinistOne-Regular.ttf", 50);
-	text_shape->m_text = "Je suis gay";
-	text_shape->m_color = glm::vec4(1.f, 1.f, 1.f, 1.f);
+	text_shape->m_text = "Je suis espagnol";
+	text_shape->m_color = glm::vec4(1.f, 0.f, 1.f, 1.f);
 	Transform* text_transform = text->GetComponent<Transform>();
 	text_transform->m_pos = glm::vec3(0.f, 0.f, 0.f);
 	GLRender* text_render = text->GetComponent<GLRender>();
@@ -55,9 +56,9 @@ void SceneManager::OnInit()
 	//
 	FPS* fps = new FPS();
 	TextShape* fps_shape = fps->GetComponent<TextShape>();
-	fps_shape->m_font = fontmanager->Get("/data/StalinistOne-Regular.ttf", 50);
+	fps_shape->m_font = fontmanager->Get("/data/StalinistOne-Regular.ttf", 12);
 	fps_shape->m_text = "1";
-	fps_shape->m_color = glm::vec4(1.f, 1.f, 1.f, 1.f);
+	fps_shape->m_color = glm::vec4(0.f, 0.f, 0.f, 1.f);
 	Transform* fps_transform = fps->GetComponent<Transform>();
 	fps_transform->m_pos = glm::vec3(100, 100.f, 0.f);
 	GLRender* fps_render = fps->GetComponent<GLRender>();
@@ -89,7 +90,7 @@ void SceneManager::OnInit()
 	Entity* civilian = new Civilian();
 
 	//
-	/*SpawnerCivilian* spawner_civilian = new SpawnerCivilian();
+	SpawnerCivilian* spawner_civilian = new SpawnerCivilian();
 	Transform *spawner_transform = spawner_civilian->GetComponent<Transform>();
 	spawner_transform->m_pos = glm::vec3(-100.f, -100.f, 0.f);
 	TimeSpawner* spawner1 = spawner_civilian->GetComponent<TimeSpawner>();
@@ -102,12 +103,12 @@ void SceneManager::OnInit()
 	spawner_transform2->m_pos = glm::vec3(1024.f + 100.f, 0.f, 0.f);
 	TimeSpawner* spawner2 = spawner_civilian2->GetComponent<TimeSpawner>();
 	spawner2->m_refEntity = civilian;
-	GetEntity()->GetKernel()->AddEntity(Layer::Layer_1, spawner_civilian2);*/
+	GetEntity()->GetKernel()->AddEntity(Layer::Layer_1, spawner_civilian2);
 
 	//
 	Camera* camera = player->GetComponent<Camera>();
 	//Camera* camera = text->GetComponent<Camera>();
-	camera->m_effect_followMouse = true;
+	camera->m_effect_followMouse = false;
 	GLManager* glmanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<GLManager>();
 	glmanager->SetCamera(camera);
 }

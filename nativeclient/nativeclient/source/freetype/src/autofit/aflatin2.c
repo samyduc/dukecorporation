@@ -15,6 +15,9 @@
 /*                                                                         */
 /***************************************************************************/
 
+// modif samy
+#include <ft2build.h>
+#define FT_OPTION_AUTOFIT2
 
 #include FT_ADVANCES_H
 

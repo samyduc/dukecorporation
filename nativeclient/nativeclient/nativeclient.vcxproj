@@ -236,1212 +236,1224 @@
     <ClCompile Include="source\component\texturemanager.cpp" />
     <ClCompile Include="source\component\transform.cpp" />
     <ClCompile Include="source\component\ui.cpp" />
-    <ClCompile Include="source\freetype\builds\unix\ftsystem.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-    </ClCompile>
-    <ClCompile Include="source\freetype\builds\vms\ftsystem.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-    </ClCompile>
-    <ClCompile Include="source\freetype\builds\win32\ftdebug.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-    </ClCompile>
     <ClCompile Include="source\freetype\src\autofit\afangles.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\autofit\afcjk.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\autofit\afdummy.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\autofit\afglobal.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\autofit\afhints.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\autofit\afindic.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\autofit\aflatin.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\autofit\aflatin2.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\autofit\afloader.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\autofit\afmodule.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\autofit\afpic.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\autofit\afwarp.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\autofit\autofit.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\base\basepic.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\base\ftadvanc.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\base\ftapi.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\base\ftbase.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\base\ftbbox.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\base\ftbdf.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\base\ftbitmap.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\base\ftcalc.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\base\ftcid.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\base\ftdbgmem.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\base\ftdebug.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\base\ftfstype.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\base\ftgasp.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\base\ftgloadr.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\base\ftglyph.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\base\ftgxval.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\base\ftinit.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\base\ftlcdfil.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="source\freetype\src\base\ftmac.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\base\ftmm.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\base\ftobjs.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\base\ftotval.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\base\ftoutln.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\base\ftpatent.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\base\ftpfr.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\base\ftpic.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\base\ftrfork.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\base\ftsnames.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\base\ftstream.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\base\ftstroke.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\base\ftsynth.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\base\ftsystem.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\base\fttrigon.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\base\fttype1.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\base\ftutil.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\base\ftwinfnt.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\base\ftxf86.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\base\md5.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\bdf\bdf.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\bdf\bdfdrivr.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\bdf\bdflib.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\bzip2\ftbzip2.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\cache\ftcache.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\cache\ftcbasic.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\cache\ftccache.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\cache\ftccmap.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\cache\ftcglyph.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\cache\ftcimage.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\cache\ftcmanag.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\cache\ftcmru.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\cache\ftcsbits.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\cff\cf2arrst.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\cff\cf2blues.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\cff\cf2error.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\cff\cf2font.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\cff\cf2ft.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\cff\cf2hints.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\cff\cf2intrp.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\cff\cf2read.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\cff\cf2stack.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\cff\cff.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\cff\cffcmap.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\cff\cffdrivr.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\cff\cffgload.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\cff\cffload.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\cff\cffobjs.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\cff\cffparse.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\cff\cffpic.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\cid\cidgload.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\cid\cidload.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\cid\cidobjs.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\cid\cidparse.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\cid\cidriver.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\cid\type1cid.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\gxvalid\gxvalid.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\gxvalid\gxvbsln.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\gxvalid\gxvcommn.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\gxvalid\gxvfeat.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\gxvalid\gxvfgen.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\gxvalid\gxvjust.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\gxvalid\gxvkern.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\gxvalid\gxvlcar.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\gxvalid\gxvmod.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\gxvalid\gxvmort.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\gxvalid\gxvmort0.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\gxvalid\gxvmort1.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\gxvalid\gxvmort2.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\gxvalid\gxvmort4.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\gxvalid\gxvmort5.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\gxvalid\gxvmorx.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\gxvalid\gxvmorx0.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\gxvalid\gxvmorx1.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\gxvalid\gxvmorx2.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\gxvalid\gxvmorx4.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\gxvalid\gxvmorx5.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\gxvalid\gxvopbd.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\gxvalid\gxvprop.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\gxvalid\gxvtrak.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\gzip\adler32.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\gzip\ftgzip.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\gzip\infblock.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\gzip\infcodes.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\gzip\inflate.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\gzip\inftrees.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\gzip\infutil.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\gzip\zutil.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\lzw\ftlzw.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\lzw\ftzopen.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\otvalid\otvalid.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\otvalid\otvbase.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\otvalid\otvcommn.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\otvalid\otvgdef.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\otvalid\otvgpos.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\otvalid\otvgsub.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\otvalid\otvjstf.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\otvalid\otvmath.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\otvalid\otvmod.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\pcf\pcf.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\pcf\pcfdrivr.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\pcf\pcfread.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\pcf\pcfutil.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\pfr\pfr.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\pfr\pfrcmap.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\pfr\pfrdrivr.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\pfr\pfrgload.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\pfr\pfrload.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\pfr\pfrobjs.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\pfr\pfrsbit.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\psaux\afmparse.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\psaux\psaux.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\psaux\psauxmod.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\psaux\psconv.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\psaux\psobjs.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\psaux\t1cmap.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\psaux\t1decode.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\pshinter\pshalgo.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\pshinter\pshglob.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\pshinter\pshinter.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\pshinter\pshmod.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\pshinter\pshpic.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\pshinter\pshrec.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\psnames\psmodule.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\psnames\psnames.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\psnames\pspic.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\raster\ftraster.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\raster\ftrend1.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\raster\raster.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\raster\rastpic.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\sfnt\pngshim.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\sfnt\sfdriver.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\sfnt\sfnt.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\sfnt\sfntpic.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\sfnt\sfobjs.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\sfnt\ttbdf.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\sfnt\ttcmap.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\sfnt\ttkern.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\sfnt\ttload.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\sfnt\ttmtx.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\sfnt\ttpost.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\sfnt\ttsbit.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\smooth\ftgrays.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\smooth\ftsmooth.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\smooth\ftspic.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\smooth\smooth.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\tools\apinames.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\tools\ftrandom\ftrandom.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="source\freetype\src\tools\test_afm.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\tools\test_bbox.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\tools\test_trig.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\truetype\truetype.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\truetype\ttdriver.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\truetype\ttgload.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\truetype\ttgxvar.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\truetype\ttinterp.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\truetype\ttobjs.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\truetype\ttpic.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\truetype\ttpload.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\truetype\ttsubpix.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\type1\t1afm.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\type1\t1driver.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\type1\t1gload.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\type1\t1load.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\type1\t1objs.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\type1\t1parse.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\type1\type1.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\type42\t42drivr.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\type42\t42objs.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\type42\t42parse.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\type42\type42.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\freetype\src\winfonts\winfnt.c">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
-      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
     <ClCompile Include="source\linux\linux_timeplatform.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
@@ -1724,14 +1736,6 @@
     <ClCompile Include="source\component\ui\fpscounter.cpp">
       <FileType>CppHeader</FileType>
     </ClCompile>
-    <ClInclude Include="source\freetype\builds\amiga\include\freetype\config\ftconfig.h" />
-    <ClInclude Include="source\freetype\builds\amiga\include\freetype\config\ftmodule.h" />
-    <ClInclude Include="source\freetype\builds\atari\ATARI.H" />
-    <ClInclude Include="source\freetype\builds\unix\ft2unix.h" />
-    <ClInclude Include="source\freetype\builds\unix\ftconfig.h" />
-    <ClInclude Include="source\freetype\builds\vms\ftconfig.h" />
-    <ClInclude Include="source\freetype\devel\ft2build.h" />
-    <ClInclude Include="source\freetype\devel\ftoption.h" />
     <ClInclude Include="source\freetype\include\freetype\config\ftconfig.h" />
     <ClInclude Include="source\freetype\include\freetype\config\ftheader.h" />
     <ClInclude Include="source\freetype\include\freetype\config\ftmodule.h" />
@@ -1759,6 +1763,7 @@
     <ClInclude Include="source\freetype\include\freetype\ftlcdfil.h" />
     <ClInclude Include="source\freetype\include\freetype\ftlist.h" />
     <ClInclude Include="source\freetype\include\freetype\ftlzw.h" />
+    <ClInclude Include="source\freetype\include\freetype\ftmac.h" />
     <ClInclude Include="source\freetype\include\freetype\ftmm.h" />
     <ClInclude Include="source\freetype\include\freetype\ftmodapi.h" />
     <ClInclude Include="source\freetype\include\freetype\ftmoderr.h" />
@@ -1885,10 +1890,7 @@
     <ClInclude Include="source\freetype\src\gxvalid\gxvmorx.h" />
     <ClInclude Include="source\freetype\src\gzip\infblock.h" />
     <ClInclude Include="source\freetype\src\gzip\infcodes.h" />
-    <ClInclude Include="source\freetype\src\gzip\inffixed.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClInclude>
+    <ClInclude Include="source\freetype\src\gzip\inffixed.h" />
     <ClInclude Include="source\freetype\src\gzip\inftrees.h" />
     <ClInclude Include="source\freetype\src\gzip\infutil.h" />
     <ClInclude Include="source\freetype\src\gzip\zconf.h" />
@@ -2001,6 +2003,7 @@
     <ClInclude Include="source\SOIL\src\stb_image_aug.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="source\freetype\src\Jamfile" />
     <None Include="source\physfs\zlib123\README" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -2136,8 +2139,8 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>EMSCRIPTEN_TARGET</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>./include;../extern/;../extern/box2d/Box2D_v2.2.1/;../extern/physfs-2.0.3/;../extern/SOIL/src;..\extern\freetype-2.5.0\include;source\freetype\builds\unix</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>EMSCRIPTEN_TARGET;FT2_BUILD_LIBRARY</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>./include;../extern/;../extern/box2d/Box2D_v2.2.1/;../extern/physfs-2.0.3/;../extern/SOIL/src;source\freetype\include</AdditionalIncludeDirectories>
       <LanguageStandardMode>LanguageStandardC++11</LanguageStandardMode>
       <LanguageExtensions>EnableLanguageExtensions</LanguageExtensions>
     </ClCompile>

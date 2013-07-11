@@ -294,14 +294,12 @@ FT_BEGIN_HEADER
   /* FT_LONG64 must be defined if a 64-bit type is available */
 #define FT_LONG64
 #define FT_INT64  long
-#define FT_UINT64 unsigned long
 
 #elif defined( _MSC_VER ) && _MSC_VER >= 900  /* Visual C++ (and Intel C++) */
 
   /* this compiler provides the __int64 type */
 #define FT_LONG64
 #define FT_INT64  __int64
-#define FT_UINT64 unsigned __int64
 
 #elif defined( __BORLANDC__ )  /* Borland C++ */
 
@@ -345,8 +343,8 @@ FT_BEGIN_HEADER
   /* Since `#undef' doesn't survive in configuration header files */
   /* we use the postprocessing facility of AC_CONFIG_HEADERS to   */
   /* replace the leading `/' with `#'.                            */
-//undef FT_LONG64
-//undef FT_INT64
+/undef FT_LONG64
+/undef FT_INT64
 
 #endif /* __STDC__ */
 
@@ -354,7 +352,7 @@ FT_BEGIN_HEADER
 
 #ifdef FT_LONG64
   typedef FT_INT64   FT_Int64;
-  //typedef FT_UINT64  FT_UInt64;
+  typedef FT_UINT64  FT_UInt64;
 #endif
 
 

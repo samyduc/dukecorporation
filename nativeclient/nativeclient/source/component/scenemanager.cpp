@@ -32,7 +32,7 @@ void SceneManager::OnInit()
 
 	FontManager* fontmanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<FontManager>();
 	fontmanager->Load("/data/EBGaramond-Regular.ttf", 50);
-	fontmanager->Load("/data/StalinistOne-Regular.ttf", 50);
+	fontmanager->Load("/data/StalinistOne-Regular.ttf", 100);
 	fontmanager->Load("/data/StalinistOne-Regular.ttf", 12);
 	
 	natU32 hash = Hash::Compute("/data/idle-0.png");
@@ -43,7 +43,7 @@ void SceneManager::OnInit()
 	//
 	Text* text = new Text();
 	TextShape* text_shape = text->GetComponent<TextShape>();
-	text_shape->m_font = fontmanager->Get("/data/StalinistOne-Regular.ttf", 50);
+	text_shape->m_font = fontmanager->Get("/data/StalinistOne-Regular.ttf", 100);
 	text_shape->m_text = "Je suis espagnol";
 	text_shape->m_color = glm::vec4(1.f, 0.f, 1.f, 1.f);
 	Transform* text_transform = text->GetComponent<Transform>();

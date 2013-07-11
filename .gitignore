@@ -15,7 +15,6 @@
 *.psess
 *.vsp
 *.suo
-*.lib
 *.bsc
 *.ilk
 *.dblite

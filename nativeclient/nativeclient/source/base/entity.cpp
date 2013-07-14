@@ -247,7 +247,7 @@ Entity* Entity::Clone(Entity* _entity) const
 	for(components_t::const_iterator it = m_components.begin(); it != m_components.end(); ++it)
 	{
 		Component* component = (*it).m_component;
-		component->Clone(ret);
+		component->Clone(ret, 0);
 	}
 
 	if(m_childs.size() == 0)

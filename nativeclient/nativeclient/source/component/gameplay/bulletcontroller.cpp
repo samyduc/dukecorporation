@@ -30,13 +30,6 @@ void BulletController::OnInit()
 	m_time = 0;
 }
 
-void BulletController::Clone(Entity* _entity) const
-{
-	BulletController* component = _entity->AddComponent<BulletController>();
-	component->m_damage = m_damage;
-	component->m_lifetime = m_lifetime;
-}
-
 void BulletController::OnDeInit()
 {
 

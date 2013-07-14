@@ -40,11 +40,6 @@ void TextureManager::OnInit()
 	glUseProgram(0);*/
 }
 
-void TextureManager::Clone(Entity* _entity) const
-{
-	TextureManager* component = _entity->AddComponent<TextureManager>();
-}
-
 void TextureManager::OnTick(const natU64 _dt)
 {
 

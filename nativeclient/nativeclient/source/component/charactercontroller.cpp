@@ -33,11 +33,6 @@ void CharacterController::OnInit()
 	m_currentWeapon = GetEntity()->GetComponent<ShotgunWeapon>();
 }
 
-void CharacterController::Clone(Entity* _entity) const
-{
-	CharacterController* component = _entity->AddComponent<CharacterController>();
-}
-
 void CharacterController::OnTick(const natU64 _dt)
 {
 	Input* input = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<Input>();

@@ -40,11 +40,6 @@ void AiController::OnInit()
 	assert(m_lifeController);
 }
 
-void AiController::Clone(Entity* _entity) const
-{
-	AiController* component = _entity->AddComponent<AiController>();
-}
-
 void AiController::OnTick(const natU64 _dt)
 {
 	if(!m_lifeController->IsAlive())

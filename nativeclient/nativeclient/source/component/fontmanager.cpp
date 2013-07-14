@@ -30,10 +30,6 @@ void FontManager::OnInit()
 	assert(error == 0);
 }
 
-void FontManager::Clone(Entity* _entity) const
-{
-	FontManager* component = _entity->AddComponent<FontManager>();
-}
 
 void FontManager::OnTick(const natU64 _dt)
 {

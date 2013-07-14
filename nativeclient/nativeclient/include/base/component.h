@@ -10,6 +10,7 @@ namespace Natorium
 
 class Entity;
 class Contact;
+class Serializer;
 
 class Component
 {
@@ -35,7 +36,10 @@ public:
 
 	static	natU32		GetType() { return 0; }
 
-	virtual void		Clone(Entity* _entity) const { assert(false); } // no clonable by default
+	// generated code
+	virtual void		Clone(Entity* _entity, natU32 _type) const = 0; 
+	virtual void		WriteData(Serializer& _ser) = 0;
+	virtual void		ReadData(Serializer& _ser) = 0;
 
 private:
 

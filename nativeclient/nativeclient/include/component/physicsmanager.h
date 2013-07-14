@@ -30,6 +30,10 @@ public:
 
 	static natU32	GetType() { return s_PhysicsManager; }
 
+	virtual void	Clone(Entity* _entity, natU32 _type) const;
+	void			WriteData(Serializer& _ser);
+	void			ReadData(Serializer& _ser);
+
 	b2World*		GetWorld() { return m_b2World; }
 
 	// contact listener

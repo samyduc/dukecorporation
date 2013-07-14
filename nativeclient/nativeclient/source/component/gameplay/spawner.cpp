@@ -51,13 +51,6 @@ void Spawner::OnTick(const natU64 _dt)
 	m_kill_entities.clear();
 }
 
-void Spawner::Clone(Entity* _entity) const
-{
-	Spawner* component = _entity->AddComponent<Spawner>();
-	component->m_max = m_max;
-	component->m_refEntity = m_refEntity;
-}
-
 void Spawner::OnDeInit()
 {
 

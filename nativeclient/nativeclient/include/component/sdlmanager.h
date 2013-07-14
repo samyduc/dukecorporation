@@ -24,6 +24,9 @@ public:
 
 	static natU32	GetType() { return s_SDLManager; }
 
+	virtual void	Clone(Entity* _entity, natU32 _type) const;
+	void			WriteData(Serializer& _ser);
+	void			ReadData(Serializer& _ser);
 
 	void			PreRender();
 	void			PostRender(natU64 _tick);

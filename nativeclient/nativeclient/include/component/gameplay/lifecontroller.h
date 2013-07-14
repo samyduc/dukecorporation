@@ -21,7 +21,9 @@ public:
 
 	static natU32	GetType() { return s_LifeController; }
 
-	void			Clone(Entity* _entity) const;
+	virtual void	Clone(Entity* _entity, natU32 _type) const;
+	void			WriteData(Serializer& _ser);
+	void			ReadData(Serializer& _ser);
 
 	natBool			IsAlive() { return m_currentLife > 0; }
 	virtual	void	TakeDamage(natS32 _damage);

@@ -29,16 +29,6 @@ void ShotgunWeapon::OnInit()
 
 }
 
-void ShotgunWeapon::Clone(Entity* _entity) const
-{
-	ShotgunWeapon* component = _entity->AddComponent<ShotgunWeapon>();
-	component->m_rateShot = m_rateShot;
-	component->m_max = m_max;
-	component->m_refEntity = m_refEntity;
-	component->m_bullets = m_bullets;
-	component->m_radius = m_radius;
-}
-
 void ShotgunWeapon::OnTick(const natU64 _dt)
 {
 	BaseWeapon::OnTick(_dt);

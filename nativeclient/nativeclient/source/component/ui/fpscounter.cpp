@@ -32,11 +32,6 @@ void FPSCounter::OnInit()
 	assert(m_glManager);
 }
 
-void FPSCounter::Clone(Entity* _entity) const
-{
-	FPSCounter* component = _entity->AddComponent<FPSCounter>();
-}
-
 void FPSCounter::OnTick(const natU64 _dt)
 {
 	// get info

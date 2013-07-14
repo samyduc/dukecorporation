@@ -29,7 +29,9 @@ public:
 
 	static natU32	GetType() { return s_AiController; }
 
-	void			Clone(Entity* _entity) const;
+	virtual void	Clone(Entity* _entity, natU32 _type) const;
+	void			WriteData(Serializer& _ser);
+	void			ReadData(Serializer& _ser);
 
 public:
 

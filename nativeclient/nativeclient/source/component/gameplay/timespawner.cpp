@@ -47,13 +47,6 @@ void TimeSpawner::OnTick(const natU64 _dt)
 	}
 }
 
-void TimeSpawner::Clone(Entity* _entity) const 
-{
-	TimeSpawner* component = _entity->AddComponent<TimeSpawner>();
-	component->m_max = m_max;
-	component->m_refEntity = m_refEntity;
-}
-
 
 
 }

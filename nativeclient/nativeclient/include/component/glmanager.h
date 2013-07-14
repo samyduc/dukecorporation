@@ -48,6 +48,10 @@ public:
 
 	static natU32	GetType() { return s_GLManager; }
 
+	virtual void	Clone(Entity* _entity, natU32 _type) const;
+	void			WriteData(Serializer& _ser);
+	void			ReadData(Serializer& _ser);
+
 	const int		GetGlobalBindingIndex() { return m_globalBindingIndex; }
 
 	GLuint			GetProgram(natU32 _type);

@@ -30,6 +30,10 @@ public:
 
 	static natU32	GetType() { return s_Input; }
 
+	virtual void	Clone(Entity* _entity, natU32 _type) const;
+	void			WriteData(Serializer& _ser);
+	void			ReadData(Serializer& _ser);
+
 	void			SetAction(Input::eAction _action, natU32 _key);
 	void			SetAction(Input::eAction _action, natU8 _mouse);
 	Input::eAction	GetAction(natU32 _key);

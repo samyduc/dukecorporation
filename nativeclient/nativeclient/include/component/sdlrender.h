@@ -24,6 +24,10 @@ public:
 
 	static natU32	GetType() { return s_SDLRender; }
 
+	virtual void	Clone(Entity* _entity, natU32 _type) const;
+	void			WriteData(Serializer& _ser);
+	void			ReadData(Serializer& _ser);
+
 private:
 	SDL_Surface*	m_surface;
 };

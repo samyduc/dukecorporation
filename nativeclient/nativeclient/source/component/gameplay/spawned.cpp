@@ -33,12 +33,6 @@ void Spawned::OnDeInit()
 {
 }
 
-void Spawned::Clone(Entity* _entity) const
-{
-	Spawned* component = _entity->AddComponent<Spawned>();
-	component->m_spawner = m_spawner;
-}
-
 void Spawned::Kill()
 {
 	assert(m_spawner);

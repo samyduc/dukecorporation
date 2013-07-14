@@ -24,12 +24,6 @@ void LifeController::OnInit()
 	m_currentLife = m_life;
 }
 
-void LifeController::Clone(Entity* _entity) const
-{
-	LifeController* component = _entity->AddComponent<LifeController>();
-	component->m_life = m_life;
-}
-
 void LifeController::OnTick(const natU64 _dt)
 {
 }

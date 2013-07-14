@@ -50,12 +50,6 @@ void GLRender::OnInit()
 	m_modelUnif = glGetUniformLocation(program, "model");
 }
 
-void GLRender::Clone(Entity* _entity) const
-{
-	GLRender* component = _entity->AddComponent<GLRender>();
-	component->m_type = m_type;
-}
-
 void GLRender::OnTick(const natU64 _dt)
 {
 	m_renderList->push_back(this);

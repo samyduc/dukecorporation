@@ -24,7 +24,9 @@ public:
 
 	static natU32	GetType() { return s_FPSCounter; }
 
-	void			Clone(Entity* _entity) const;
+	virtual void	Clone(Entity* _entity, natU32 _type) const;
+	void			WriteData(Serializer& _ser);
+	void			ReadData(Serializer& _ser);
 
 private:
 	natU64			m_fps;

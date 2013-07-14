@@ -68,13 +68,6 @@ void RigidBody::OnInit()
 	m_b2Body->SetLinearDamping(10.f);
 }
 
-void RigidBody::Clone(Entity* _entity) const
-{
-	RigidBody* component = _entity->AddComponent<RigidBody>();
-	component->m_isBullet = m_isBullet;
-	component->m_isDynamic = m_isDynamic;
-	component->m_maxSpeed = m_maxSpeed;
-}
 
 void RigidBody::OnTick(const natU64 _dt)
 {

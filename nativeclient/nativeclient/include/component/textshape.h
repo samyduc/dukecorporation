@@ -28,7 +28,9 @@ public:
 
 	static natU32	GetType() { return s_Shape; }
 
-	void			Clone(Entity* _entity) const;
+	virtual void	Clone(Entity* _entity, natU32 _type) const;
+	void			WriteData(Serializer& _ser);
+	void			ReadData(Serializer& _ser);
 
 	size_t			GetVertexNumber() { return m_vertexNumber; }
 	natF32*			GetVertex(size_t &_size);

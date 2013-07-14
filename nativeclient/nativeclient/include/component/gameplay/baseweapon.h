@@ -30,7 +30,9 @@ public:
 
 	static natU32	GetType() { return s_BaseWeapon; }
 
-	void			Clone(Entity* _entity) const;
+	virtual void	Clone(Entity* _entity, natU32 _type) const;
+	virtual void	WriteData(Serializer& _ser);
+	virtual void	ReadData(Serializer& _ser);
 
 	virtual void	ShootAt(glm::vec3 _pos);
 	void			OnHit(Contact* _contact);

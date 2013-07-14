@@ -28,7 +28,9 @@ public:
 
 	static natU32	GetType() { return s_ShotgunWeapon; }
 
-	virtual void	Clone(Entity* _entity) const;
+	virtual void	Clone(Entity* _entity, natU32 _type) const;
+	void			WriteData(Serializer& _ser);
+	void			ReadData(Serializer& _ser);
 
 	virtual void	ShootAt(glm::vec3 _pos);
 

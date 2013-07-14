@@ -31,6 +31,7 @@
     <ClCompile Include="source\base\entity.cpp" />
     <ClCompile Include="source\base\kernel.cpp" />
     <ClCompile Include="source\base\layer.cpp" />
+    <ClCompile Include="source\base\serializer.cpp" />
     <ClCompile Include="source\Box2D\Collision\b2BroadPhase.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
@@ -213,6 +214,7 @@
     </ClCompile>
     <ClCompile Include="source\component\camera.cpp" />
     <ClCompile Include="source\component\charactercontroller.cpp" />
+    <ClCompile Include="source\component\componentfactory.cpp" />
     <ClCompile Include="source\component\filemanager.cpp" />
     <ClCompile Include="source\component\fontmanager.cpp" />
     <ClCompile Include="source\component\gameplay\baseweapon.cpp" />
@@ -222,6 +224,34 @@
     <ClCompile Include="source\component\gameplay\shotgunweapon.cpp" />
     <ClCompile Include="source\component\gameplay\spawner.cpp" />
     <ClCompile Include="source\component\gameplay\timespawner.cpp" />
+    <ClCompile Include="source\component\generated\gen_aicontroller.cpp" />
+    <ClCompile Include="source\component\generated\gen_baseweapon.cpp" />
+    <ClCompile Include="source\component\generated\gen_bulletcontroller.cpp" />
+    <ClCompile Include="source\component\generated\gen_camera.cpp" />
+    <ClCompile Include="source\component\generated\gen_charactercontroller.cpp" />
+    <ClCompile Include="source\component\generated\gen_componentfactory.cpp" />
+    <ClCompile Include="source\component\generated\gen_filemanager.cpp" />
+    <ClCompile Include="source\component\generated\gen_fontmanager.cpp" />
+    <ClCompile Include="source\component\generated\gen_fpscounter.cpp" />
+    <ClCompile Include="source\component\generated\gen_glmanager.cpp" />
+    <ClCompile Include="source\component\generated\gen_glrender.cpp" />
+    <ClCompile Include="source\component\generated\gen_lifecontroller.cpp" />
+    <ClCompile Include="source\component\generated\gen_physicsmanager.cpp" />
+    <ClCompile Include="source\component\generated\gen_playersmanager.cpp" />
+    <ClCompile Include="source\component\generated\gen_rigidbody.cpp" />
+    <ClCompile Include="source\component\generated\gen_scenemanager.cpp" />
+    <ClCompile Include="source\component\generated\gen_sdlinput.cpp" />
+    <ClCompile Include="source\component\generated\gen_sdlmanager.cpp" />
+    <ClCompile Include="source\component\generated\gen_sdlrender.cpp" />
+    <ClCompile Include="source\component\generated\gen_shotgunweapon.cpp" />
+    <ClCompile Include="source\component\generated\gen_spawned.cpp" />
+    <ClCompile Include="source\component\generated\gen_spawner.cpp" />
+    <ClCompile Include="source\component\generated\gen_squareshape.cpp" />
+    <ClCompile Include="source\component\generated\gen_textshape.cpp" />
+    <ClCompile Include="source\component\generated\gen_texturemanager.cpp" />
+    <ClCompile Include="source\component\generated\gen_timespawner.cpp" />
+    <ClCompile Include="source\component\generated\gen_transform.cpp" />
+    <ClCompile Include="source\component\generated\gen_ui.cpp" />
     <ClCompile Include="source\component\glmanager.cpp" />
     <ClCompile Include="source\component\glrender.cpp" />
     <ClCompile Include="source\component\physicsmanager.cpp" />
@@ -1642,9 +1672,11 @@
     <ClInclude Include="include\base\kernel.h" />
     <ClInclude Include="include\base\layer.h" />
     <ClInclude Include="include\base\natdef.h" />
+    <ClInclude Include="include\base\serializer.h" />
     <ClInclude Include="include\base\timeplatform.h" />
     <ClInclude Include="include\component\camera.h" />
     <ClInclude Include="include\component\charactercontroller.h" />
+    <ClInclude Include="include\component\componentfactory.h" />
     <ClInclude Include="include\component\filemanager.h" />
     <ClInclude Include="include\component\fontmanager.h" />
     <ClInclude Include="include\component\gameplay\baseweapon.h" />

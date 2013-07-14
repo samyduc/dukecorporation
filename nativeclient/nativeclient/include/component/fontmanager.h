@@ -72,7 +72,9 @@ public:
 
 	static natU32	GetType() { return s_FontManager; }
 
-	void			Clone(Entity* _entity) const;
+	virtual void	Clone(Entity* _entity, natU32 _type) const;
+	void			WriteData(Serializer& _ser);
+	void			ReadData(Serializer& _ser);
 
 	void			Load(const natChar* _path, natU32 _fontSize);
 

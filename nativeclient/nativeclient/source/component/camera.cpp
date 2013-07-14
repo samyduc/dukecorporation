@@ -33,16 +33,6 @@ void Camera::OnInit()
 	m_projectionMatrix = glm::ortho<natF32>(0.f, static_cast<float>(m_resolution.x), static_cast<natF32>(m_resolution.y), 0.f, 0.f, 100.f);
 }
 
-void Camera::Clone(Entity* _entity) const
-{
-	Camera* component = _entity->AddComponent<Camera>();
-	component->m_efect_followMouseSmooth = m_efect_followMouseSmooth;
-	component->m_effect_followMouse = m_effect_followMouse;
-	component->m_projectionMatrix = m_projectionMatrix;
-	component->m_resolution = m_resolution;
-	component->m_viewMatrix = m_viewMatrix;
-}
-
 void Camera::OnTick(const natU64 _dt)
 {
 

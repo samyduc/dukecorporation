@@ -40,14 +40,6 @@ void TextShape::OnDeInit()
 	m_bufferAllocated = 0;
 }
 
-void TextShape::Clone(Entity* _entity) const
-{
-	TextShape* component = _entity->AddComponent<TextShape>();
-	component->m_color = m_color;
-	component->m_font = m_font;
-	component->m_text = m_text;
-}
-
 void TextShape::SetText(std::string& _text, Font* _font)
 {
 	if(_font == nullptr)

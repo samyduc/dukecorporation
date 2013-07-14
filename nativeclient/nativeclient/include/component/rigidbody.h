@@ -35,7 +35,9 @@ public:
 
 	static natU32	GetType() { return s_RigidBody; }
 
-	void			Clone(Entity* _entity) const;
+	virtual void	Clone(Entity* _entity, natU32 _type) const;
+	void			WriteData(Serializer& _ser);
+	void			ReadData(Serializer& _ser);
 
 	void			SetFriction(natF32 _friction) { assert(m_b2Fixture); m_b2Fixture->SetFriction(_friction); }
 

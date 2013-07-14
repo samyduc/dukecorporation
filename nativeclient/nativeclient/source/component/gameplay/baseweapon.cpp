@@ -43,13 +43,6 @@ void BaseWeapon::OnInit()
 	Spawner::OnInit();
 }
 
-void BaseWeapon::Clone(Entity* _entity) const
-{
-	BaseWeapon* component = _entity->AddComponent<BaseWeapon>();
-	component->m_rateShot = m_rateShot;
-	component->m_max = m_max;
-	component->m_refEntity = m_refEntity;
-}
 
 
 void BaseWeapon::OnTick(const natU64 _dt)

@@ -121,6 +121,23 @@ public:
 		return ret;
 	}
 
+	Component* GetComponentByType(natU32 _type)
+	{
+		Component* ret = nullptr;
+
+		for(components_t::iterator it = m_components.begin(); it != m_components.end(); ++it)
+		{
+			PackComponent& pack_component = (*it);
+
+			if(pack_component.m_id == _type)
+			{
+				ret = pack_component.m_component;
+				break;
+			}
+		}
+		return ret;
+	}
+
 
 	void				SetParent(Entity* _entity);
 	void				AddChild(Entity* _entity);

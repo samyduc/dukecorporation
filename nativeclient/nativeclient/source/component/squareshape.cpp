@@ -24,13 +24,6 @@ void SquareShape::OnInit()
 	m_isDirty = true;
 }
 
-void SquareShape::Clone(Entity* _entity) const
-{
-	SquareShape* component = _entity->AddComponent<SquareShape>();
-	component->m_size = m_size;
-	component->m_color = m_color;
-}
-
 void SquareShape::SetSize(glm::vec2& _size)
 {
 	m_size = _size;

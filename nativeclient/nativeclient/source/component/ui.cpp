@@ -37,14 +37,6 @@ void UI::OnInit()
 	assert(m_transform);
 }
 
-void UI::Clone(Entity* _entity) const
-{
-	UI* component = _entity->AddComponent<UI>();
-	component->m_pos = m_pos;
-	component->m_rad = m_rad;
-	component->m_scale = m_scale;
-}
-
 void UI::OnTick(const natU64 _dt)
 {
 	// patch transform

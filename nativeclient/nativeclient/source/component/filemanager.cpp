@@ -53,11 +53,6 @@ void FileManager::OnInit()
 
 }
 
-void FileManager::Clone(Entity* _entity) const
-{
-	FileManager* component = _entity->AddComponent<FileManager>();
-}
-
 void FileManager::OnTick(const natU64 _dt)
 {
 

@@ -1,5 +1,6 @@
 #include "component/componentfactory.h"
 
+#include "tinyxml/tinyxml2.h"
 
 namespace Natorium
 {

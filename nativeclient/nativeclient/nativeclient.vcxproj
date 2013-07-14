@@ -1659,6 +1659,7 @@
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">LanguageStandardC89</LanguageStandardMode>
       <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC89</LanguageStandardMode>
     </ClCompile>
+    <ClCompile Include="source\tinyxml\tinyxml2.cpp" />
     <ClCompile Include="source\windows\windows_timeplatform.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Emscripten'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">true</ExcludedFromBuild>
@@ -1716,6 +1717,7 @@
     <ClInclude Include="include\shader\monotexture_es.h" />
     <ClInclude Include="include\shader\position.h" />
     <ClInclude Include="include\shader\position_es.h" />
+    <ClInclude Include="include\tinyxml\tinyxml2.h" />
     <ClInclude Include="source\Box2D\Box2D.h" />
     <ClInclude Include="source\Box2D\Collision\b2BroadPhase.h" />
     <ClInclude Include="source\Box2D\Collision\b2Collision.h" />

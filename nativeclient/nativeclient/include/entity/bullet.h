@@ -28,7 +28,7 @@ public:
 		: Entity()
 	{
 		AddComponent<Transform>();
-		AddComponent<GLRender>();
+		GLRender* glrender = AddComponent<GLRender>();
 		SquareShape *shape = AddComponent<SquareShape>();
 		AddComponent<BulletController>();
 		RigidBody* rigidbody = AddComponent<RigidBody>();
@@ -39,6 +39,9 @@ public:
 		shape->SetColor(color);
 
 		rigidbody->m_density = 3.f;
+
+		glrender->m_shapeType = Hash::Compute("s_SquareShape");
+		rigidbody->m_shapeType = Hash::Compute("s_SquareShape");
 	}
 
 

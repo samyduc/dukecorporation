@@ -4,7 +4,7 @@
 #include "base/kernel.h"
 
 #include "component/shape.h"
-
+#include "component/rigidbody.h"
 
 namespace Natorium
 {
@@ -36,7 +36,7 @@ void LifeController::TakeDamage(natS32 _damage)
 {
 	m_currentLife -= _damage;
 
-	Shape* shape = GetEntity()->GetComponent<Shape>();
+	Shape* shape = GetEntity()->GetComponent<RigidBody>()->GetShape();
 	glm::vec4 color = shape->GetColor();
 	color.r = 1.f / (2 - natF32(m_currentLife) / natF32(m_life));
 	shape->SetColor(color);

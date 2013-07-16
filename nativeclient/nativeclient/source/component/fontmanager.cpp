@@ -38,6 +38,8 @@ void FontManager::OnTick(const natU64 _dt)
 
 void FontManager::OnDeInit()
 {
+	// TODO: free a lot of stuff
+
 	FT_Done_FreeType(m_ft_library);
 }
 

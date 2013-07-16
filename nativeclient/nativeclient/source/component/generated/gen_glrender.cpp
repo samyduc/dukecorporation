@@ -26,18 +26,21 @@ void GLRender::Clone(Entity* _entity, natU32 _type) const
 	}
 
 	component->m_type = m_type;
+	component->m_shapeType = m_shapeType;
 }
 
 
 void GLRender::WriteData(Serializer& _ser)
 {
 	_ser << m_type;
+	_ser << m_shapeType;
 }
 
 
 void GLRender::ReadData(Serializer& _ser)
 {
 	_ser >> m_type;
+	_ser >> m_shapeType;
 }
 
 

@@ -28,15 +28,17 @@ public:
 		: Entity()
 	{
 		AddComponent<Transform>();
-		AddComponent<SquareShape>();
+		SquareShape* shape = AddComponent<SquareShape>();
 		AddComponent<CharacterController>();
 		AddComponent<LifeController>();
 		AddComponent<BaseWeapon>();
 		AddComponent<ShotgunWeapon>();
-		AddComponent<RigidBody>();
+		RigidBody* rigidbody = AddComponent<RigidBody>();
 		AddComponent<Camera>();
 		GLRender* render = AddComponent<GLRender>();
 		render->m_type = Hash::Compute("monotexture");
+		render->m_shapeType = Hash::Compute("s_SquareShape");
+		rigidbody->m_shapeType = Hash::Compute("s_SquareShape");
 	}
 
 

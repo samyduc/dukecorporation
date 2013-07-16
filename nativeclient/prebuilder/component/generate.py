@@ -1,6 +1,6 @@
 import xml.etree.cElementTree as ET
 
-
+# ugly
 CONST_DO_NOT_GENERATE = ['Component', 'Shape', 'Input', 'b2ContactListener']
 
 class Writer:
@@ -22,9 +22,8 @@ class Writer:
 
 	def run(self):
 
-		if self.name not in CONST_DO_NOT_GENERATE:
-			self.write_xml()
-			self.write_cpp()
+		self.write_xml()
+		self.write_cpp()
 
 	def write_xml(self):
 
@@ -92,6 +91,8 @@ class Writer:
 		cpp_file.write('	}\n')
 		cpp_file.write("\n")
 
+
+		from parse import CONST_DO_NOT_GENERATE
 
 		# call mother class
 		for inherit_class in self.src_class['inherits']:

@@ -49,10 +49,9 @@ public:
 
 public:
 	natU32		m_type;
+	natU32		m_shapeType;
 
 private:
-	Shape*		m_shape;
-
 	//GLuint		m_shaderProgram;
 	render_list_t* m_renderList;
 	GLuint		m_bufferObject;
@@ -72,6 +71,8 @@ private:
 	size_t		m_indicesNumber;
 	size_t		m_colorOffset;
 	size_t		m_uvOffset;
+
+	Shape*		m_shape;
 
 
 };

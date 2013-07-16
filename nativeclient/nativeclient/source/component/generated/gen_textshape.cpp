@@ -26,7 +26,7 @@ void TextShape::Clone(Entity* _entity, natU32 _type) const
 	}
 
 	component->m_text = m_text;
-	component->m_font = m_font;
+	component->m_fontType = m_fontType;
 	component->m_color = m_color;
 }
 
@@ -34,7 +34,7 @@ void TextShape::Clone(Entity* _entity, natU32 _type) const
 void TextShape::WriteData(Serializer& _ser)
 {
 	_ser << m_text;
-	_ser << reinterpret_cast<void**>(&m_font);
+	_ser << m_fontType;
 	_ser << m_color;
 }
 
@@ -42,7 +42,7 @@ void TextShape::WriteData(Serializer& _ser)
 void TextShape::ReadData(Serializer& _ser)
 {
 	_ser >> m_text;
-	_ser >> reinterpret_cast<void**>(&m_font);
+	_ser >> m_fontType;
 	_ser >> m_color;
 }
 

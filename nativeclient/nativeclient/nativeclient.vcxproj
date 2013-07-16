@@ -224,6 +224,7 @@
     <ClCompile Include="source\component\gameplay\shotgunweapon.cpp" />
     <ClCompile Include="source\component\gameplay\spawner.cpp" />
     <ClCompile Include="source\component\gameplay\timespawner.cpp" />
+    <ClCompile Include="source\component\generated\factory_componentfactory.cpp" />
     <ClCompile Include="source\component\generated\gen_aicontroller.cpp" />
     <ClCompile Include="source\component\generated\gen_baseweapon.cpp" />
     <ClCompile Include="source\component\generated\gen_bulletcontroller.cpp" />

@@ -10,7 +10,7 @@
 namespace Natorium
 {
 
-extern natU32 s_Shape;
+static natU32 s_SquareShape = Hash::Compute("s_SquareShape");
 
 
 class SquareShape : public Shape
@@ -23,7 +23,7 @@ public:
 	virtual void	OnTick(const natU64 _dt) {}
 	virtual void	OnDeInit() {}
 
-	static natU32	GetType() { return s_Shape; }
+	static natU32	GetType() { return s_SquareShape; }
 
 	virtual void	Clone(Entity* _entity, natU32 _type) const;
 	void			WriteData(Serializer& _ser);

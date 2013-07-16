@@ -12,7 +12,7 @@
 namespace Natorium
 {
 
-extern natU32 s_Shape;
+static natU32 s_TextShape = Hash::Compute("s_TextShape");
 
 class Font;
 
@@ -26,7 +26,7 @@ public:
 	virtual void	OnTick(const natU64 _dt) {}
 	virtual void	OnDeInit();
 
-	static natU32	GetType() { return s_Shape; }
+	static natU32	GetType() { return s_TextShape; }
 
 	virtual void	Clone(Entity* _entity, natU32 _type) const;
 	void			WriteData(Serializer& _ser);
@@ -49,11 +49,11 @@ public:
 
 	natBool			IsAndRemoveDirty() {natBool ret = m_isDirty; m_isDirty = false; return ret; };
 
-	void			SetText(std::string& _text, Font* _font=nullptr);
+	void			SetText(std::string& _text);
 
 public:
-	std::string	m_text;
-	Font*			m_font;
+	std::string		m_text;
+	natU32			m_fontType;
 	glm::vec4		m_color;
 
 private:
@@ -67,7 +67,7 @@ private:
 	size_t			m_uvOffset;
 	glm::vec2		m_size;
 	size_t			m_bufferAllocated;
-
+	Font*			m_font;
 };
 
 

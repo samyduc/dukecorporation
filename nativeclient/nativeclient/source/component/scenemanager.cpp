@@ -34,6 +34,9 @@ void SceneManager::OnInit()
 	fontmanager->Load("/data/EBGaramond-Regular.ttf", 50);
 	fontmanager->Load("/data/StalinistOne-Regular.ttf", 100);
 	fontmanager->Load("/data/StalinistOne-Regular.ttf", 12);
+
+	natU32 hash_text_100 = fontmanager->Compute("/data/StalinistOne-Regular.ttf", 100);
+	natU32 hash_text_12 = fontmanager->Compute("/data/StalinistOne-Regular.ttf", 12);
 	
 	natU32 hash = Hash::Compute("/data/idle-0.png");
 	GLuint textureId = texturemanager->Get(hash);
@@ -43,26 +46,26 @@ void SceneManager::OnInit()
 	//
 	Text* text = new Text();
 	TextShape* text_shape = text->GetComponent<TextShape>();
-	text_shape->m_font = fontmanager->Get("/data/StalinistOne-Regular.ttf", 100);
+	text_shape->m_fontType = fontmanager->Compute("/data/StalinistOne-Regular.ttf", 100);
 	text_shape->m_text = "Je suis espagnol";
 	text_shape->m_color = glm::vec4(1.f, 0.f, 1.f, 1.f);
 	Transform* text_transform = text->GetComponent<Transform>();
 	text_transform->m_pos = glm::vec3(0.f, 0.f, 0.f);
 	GLRender* text_render = text->GetComponent<GLRender>();
-	text_render->SetTexture(text_shape->m_font->m_texture);
+	//text_render->SetTexture(text_shape->m_font->m_texture);
 
 	GetEntity()->GetKernel()->AddEntity(Layer::Layer_5, text);
 
 	//
 	FPS* fps = new FPS();
 	TextShape* fps_shape = fps->GetComponent<TextShape>();
-	fps_shape->m_font = fontmanager->Get("/data/StalinistOne-Regular.ttf", 12);
+	fps_shape->m_fontType = fontmanager->Compute("/data/StalinistOne-Regular.ttf", 12);
 	fps_shape->m_text = "1";
 	fps_shape->m_color = glm::vec4(0.f, 0.f, 0.f, 1.f);
 	Transform* fps_transform = fps->GetComponent<Transform>();
 	fps_transform->m_pos = glm::vec3(100, 100.f, 0.f);
 	GLRender* fps_render = fps->GetComponent<GLRender>();
-	fps_render->SetTexture(fps_shape->m_font->m_texture);
+	//fps_render->SetTexture(fps_shape->m_font->m_texture);
 
 	GetEntity()->GetKernel()->AddEntity(Layer::Layer_5, fps);
 

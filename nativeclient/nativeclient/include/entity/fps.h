@@ -20,12 +20,13 @@ public:
 		: Entity()
 	{
 		AddComponent<Transform>();
-		AddComponent<TextShape>();
+		TextShape* textShape = AddComponent<TextShape>();
 		AddComponent<FPSCounter>();
 		UI* ui = AddComponent<UI>();
 		ui->m_pos = glm::vec2(0.940f, 0.01f);
 		GLRender* render = AddComponent<GLRender>();
 		render->m_type = Hash::Compute("monotexture");
+		render->m_shapeType = Hash::Compute("s_TextShape");
 	}
 
 

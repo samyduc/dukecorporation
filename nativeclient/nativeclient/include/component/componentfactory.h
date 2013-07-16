@@ -4,11 +4,13 @@
 #include "base/component.h"
 #include "base/hash.h"
 
-#include <list>
+#include <map>
 #include <cassert>
 
 namespace Natorium
 {
+
+class Entity;
 
 static natU32 s_ComponentFactory = Hash::Compute("s_ComponentFactory");
 
@@ -28,14 +30,18 @@ public:
 	void			WriteData(Serializer& _ser);
 	void			ReadData(Serializer& _ser);
 
-	Component*		GetComponent(natU32 _type);
+	void			AttachComponent(Entity* _entity, natU32 _type);
 
 public:
 
 
 private:
+	void			PopulateFactory();
+	void			UnPopulateFactory();
 
-
+private:
+	typedef std::map<natU32, Component*> componentFactory_t;
+	componentFactory_t	m_componentFactory;
 };
 
 

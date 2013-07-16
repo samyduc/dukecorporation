@@ -32,7 +32,8 @@ GLRender::~GLRender()
 
 void GLRender::OnInit()
 {
-	m_shape = GetEntity()->GetComponent<Shape>();
+	m_shape = static_cast<Shape*>(GetEntity()->GetComponentByType(m_shapeType));
+
 	assert(m_shape);
 
 	GLManager* glmanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<GLManager>();

@@ -9,6 +9,7 @@
 #include "component/filemanager.h"
 #include "component/texturemanager.h"
 #include "component/fontmanager.h"
+#include "component/componentfactory.h"
 
 #include <assert.h>
 
@@ -51,6 +52,7 @@ void Kernel::Init()
 	Layer* layer = m_layers[0];
 	Entity* entity = layer->GetRootEntity();
 
+	entity->AddComponent<ComponentFactory>();
 	entity->AddComponent<FileManager>();
 	SDLManager* sdlmanager = entity->AddComponent<SDLManager>();
 	entity->AddComponent<SDLInput>();

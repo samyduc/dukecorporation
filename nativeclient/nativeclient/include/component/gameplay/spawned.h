@@ -15,6 +15,9 @@ static natU32 s_Spawned = Hash::Compute("s_Spawned");
 class Spawned : public Component
 {
 public:
+
+	friend class Spawner;
+
 					Spawned();
 	virtual			~Spawned();
 
@@ -32,6 +35,8 @@ public:
 	Spawner*		GetSpawner() { return m_spawner; }
 
 public:
+
+private:
 	Spawner*		m_spawner;
 
 

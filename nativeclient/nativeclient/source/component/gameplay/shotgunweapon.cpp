@@ -24,6 +24,8 @@ ShotgunWeapon::~ShotgunWeapon()
 void ShotgunWeapon::OnInit()
 {
 	m_max = m_bullets*10;
+
+	m_rateShot = 200;
 	
 	BaseWeapon::OnInit();
 
@@ -53,7 +55,7 @@ void ShotgunWeapon::ShootAt(glm::vec3 _pos)
 			Entity* bullet = Spawn();
 
 			Transform* transform = GetEntity()->GetComponent<Transform>();
-			Shape* shape = GetEntity()->GetComponent<Shape>();
+			Shape* shape = GetEntity()->GetComponent<RigidBody>()->GetShape();
 			Transform* bullet_transform = bullet->GetComponent<Transform>();
 			bullet_transform->m_pos = transform->m_pos;
 			bullet_transform->m_rad = transform->m_rad;

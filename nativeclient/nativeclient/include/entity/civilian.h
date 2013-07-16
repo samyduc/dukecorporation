@@ -29,16 +29,18 @@ public:
 		: Entity()
 	{
 		AddComponent<Transform>();
-		AddComponent<GLRender>();
+		GLRender* render = AddComponent<GLRender>();
 		AddComponent<Camera>();
 		SquareShape *shape = AddComponent<SquareShape>();
 		//AddComponent<CharacterController>();
 		AddComponent<AiController>();
 		AddComponent<LifeController>();
-		AddComponent<RigidBody>();
+		RigidBody* rigidbody = AddComponent<RigidBody>();
 
 		glm::vec4 color(0.f, 0.f, 1.f, 1.f);
 		shape->SetColor(color);
+		render->m_shapeType = Hash::Compute("s_SquareShape");
+		rigidbody->m_shapeType = Hash::Compute("s_SquareShape");
 	}
 
 

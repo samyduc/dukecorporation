@@ -35,6 +35,7 @@ public:
 		shape->m_size = size;
 		shape->m_repeat = 50000.f / 1024.f;
 
+		render->m_shapeType = Hash::Compute("s_SquareShape");
 		transform->m_pos = glm::vec3(-1000.f, -1000.f, -1.f);
 	}
 

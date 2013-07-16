@@ -46,11 +46,14 @@ public:
 	void			SetDensity(natF32 _density) { assert(m_b2Fixture); m_density = _density; m_b2Fixture->SetDensity(_density); m_b2Body->ResetMassData(); }
 	void			SetAngle(glm::vec3& _angle) { assert(m_b2Body); m_b2Body->SetTransform(m_b2Body->GetPosition(), _angle.z); }
 
+	Shape*			GetShape() { return m_shape; }
+
 public:
 	natBool			m_isDynamic;
 	natBool			m_isBullet;
 	natF32			m_maxSpeed;
 	natF32			m_density;
+	natU32			m_shapeType;
 
 protected:
 	Transform*		m_transform;

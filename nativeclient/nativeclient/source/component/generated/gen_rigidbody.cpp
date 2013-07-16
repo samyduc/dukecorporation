@@ -29,6 +29,7 @@ void RigidBody::Clone(Entity* _entity, natU32 _type) const
 	component->m_isBullet = m_isBullet;
 	component->m_maxSpeed = m_maxSpeed;
 	component->m_density = m_density;
+	component->m_shapeType = m_shapeType;
 }
 
 
@@ -38,6 +39,7 @@ void RigidBody::WriteData(Serializer& _ser)
 	_ser << m_isBullet;
 	_ser << m_maxSpeed;
 	_ser << m_density;
+	_ser << m_shapeType;
 }
 
 
@@ -47,6 +49,7 @@ void RigidBody::ReadData(Serializer& _ser)
 	_ser >> m_isBullet;
 	_ser >> m_maxSpeed;
 	_ser >> m_density;
+	_ser >> m_shapeType;
 }
 
 

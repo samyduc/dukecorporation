@@ -1,6 +1,8 @@
 #include "component/textshape.h"
 
 #include "base/entity.h"
+#include "base/kernel.h"
+#include "base/layer.h"
 
 #include "component/fontmanager.h"
 #include "component/glrender.h"
@@ -14,19 +16,32 @@ TextShape::TextShape()
 	, m_indices(nullptr)
 	, m_isDirty(true)
 	, m_vertexNumber(0)
-	, m_bufferAllocated(0){
+	, m_bufferAllocated(0)
+	, m_fontType(0)
+{
 
 }
 
 void TextShape::OnInit()
 {
-	SetText(m_text, m_font);
+	FontManager* fontmanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<FontManager>();
+	m_font = fontmanager->Get(m_fontType);
+
+	assert(m_font);
+
+	// bad  :(
+	GLRender* render = GetEntity()->GetComponent<GLRender>();
+	render->SetTexture(m_font->m_texture);
+
+	SetText(m_text);
 
 	m_isDirty = true;
 }
 
 void TextShape::OnDeInit()
 {
+	m_font = nullptr;
+
 	if(m_vertex)
 	{
 		delete [] m_vertex;
@@ -40,13 +55,9 @@ void TextShape::OnDeInit()
 	m_bufferAllocated = 0;
 }
 
-void TextShape::SetText(std::string& _text, Font* _font)
+void TextShape::SetText(std::string& _text)
 {
-	if(_font == nullptr)
-	{
-		assert(m_font);
-		_font = m_font;
-	}
+	Font* _font = m_font;
 
 	natBool doAllocate = false;
 

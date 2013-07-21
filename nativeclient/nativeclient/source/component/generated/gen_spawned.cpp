@@ -16,6 +16,7 @@ namespace Natorium
 void Spawned::Clone(Entity* _entity, natU32 _type) const
 {
 	Spawned* component;
+	natU32 base_type = Spawned::GetType();
 	if(_type == 0)
 	{
 		component = _entity->AddComponent<Spawned>();
@@ -23,6 +24,7 @@ void Spawned::Clone(Entity* _entity, natU32 _type) const
 	else
 	{
 		component = static_cast<Spawned*>(_entity->GetComponentByType(_type));
+		base_type = _type;
 	}
 
 }

@@ -1,1 +1,1 @@
-<component class="BaseWeapon" version="-1699149855"><property name="m_rateShot" type="natU64" value="0" /><property name="m_bulletType" type="ref_t" value="0" /></component>
+<component class="BaseWeapon" version="848799730"><property name="m_max" type="natU64" value="0" /><property name="m_prefabType" type="ref_t" value="0" /><property name="m_rateShot" type="natU64" value="0" /></component>

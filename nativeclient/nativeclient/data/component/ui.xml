@@ -1,1 +1,1 @@
-<component class="UI" version="-759305960"><property name="m_pos" type="glm::vec2" value="0" /><property name="m_rad" type="natF32" value="0" /><property name="m_scale" type="glm::vec2" value="0" /></component>
+<component class="UI" version="2113400166"><property name="m_pos" type="glm::vec2" value="0" /><property name="m_rad" type="natF32" value="0" /><property name="m_scale" type="glm::vec2" value="0" /></component>

@@ -16,6 +16,7 @@ namespace Natorium
 void BaseWeapon::Clone(Entity* _entity, natU32 _type) const
 {
 	BaseWeapon* component;
+	natU32 base_type = BaseWeapon::GetType();
 	if(_type == 0)
 	{
 		component = _entity->AddComponent<BaseWeapon>();
@@ -23,11 +24,11 @@ void BaseWeapon::Clone(Entity* _entity, natU32 _type) const
 	else
 	{
 		component = static_cast<BaseWeapon*>(_entity->GetComponentByType(_type));
+		base_type = _type;
 	}
 
-	Spawner::Clone(_entity, BaseWeapon::GetType());
+	Spawner::Clone(_entity, base_type);
 	component->m_rateShot = m_rateShot;
-	component->m_bulletType = m_bulletType;
 }
 
 
@@ -35,7 +36,6 @@ void BaseWeapon::WriteData(Serializer& _ser)
 {
 	Spawner::WriteData(_ser);
 	_ser << m_rateShot;
-	_ser << m_bulletType;
 }
 
 
@@ -43,7 +43,6 @@ void BaseWeapon::ReadData(Serializer& _ser)
 {
 	Spawner::ReadData(_ser);
 	_ser >> m_rateShot;
-	_ser >> m_bulletType;
 }
 
 

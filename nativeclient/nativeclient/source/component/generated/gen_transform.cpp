@@ -16,6 +16,7 @@ namespace Natorium
 void Transform::Clone(Entity* _entity, natU32 _type) const
 {
 	Transform* component;
+	natU32 base_type = Transform::GetType();
 	if(_type == 0)
 	{
 		component = _entity->AddComponent<Transform>();
@@ -23,6 +24,7 @@ void Transform::Clone(Entity* _entity, natU32 _type) const
 	else
 	{
 		component = static_cast<Transform*>(_entity->GetComponentByType(_type));
+		base_type = _type;
 	}
 
 	component->m_pos = m_pos;

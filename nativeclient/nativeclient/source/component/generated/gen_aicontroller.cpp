@@ -16,6 +16,7 @@ namespace Natorium
 void AiController::Clone(Entity* _entity, natU32 _type) const
 {
 	AiController* component;
+	natU32 base_type = AiController::GetType();
 	if(_type == 0)
 	{
 		component = _entity->AddComponent<AiController>();
@@ -23,6 +24,7 @@ void AiController::Clone(Entity* _entity, natU32 _type) const
 	else
 	{
 		component = static_cast<AiController*>(_entity->GetComponentByType(_type));
+		base_type = _type;
 	}
 
 }

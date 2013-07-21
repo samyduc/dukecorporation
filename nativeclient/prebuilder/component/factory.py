@@ -28,8 +28,8 @@ class Writer:
 		cpp_file.write('#include "base/serializer.h"\n')
 		cpp_file.write("\n")
 
-		for component_name, component_include in self.components:
-			cpp_file.write('#include "%s"\n' % (component_include))
+		for component_name, component_include in self.components.iteritems():
+			cpp_file.write('#include "%s"\n' % (component_include.include_string))
 
 		cpp_file.write("\n")
 		cpp_file.write("\n")
@@ -39,7 +39,7 @@ class Writer:
 		cpp_file.write("void %s::PopulateFactory()\n" % (self.name))
 		cpp_file.write('{\n')
 
-		for component_name, component_include in self.components:
+		for component_name, component_include in self.components.iteritems():
 			cpp_file.write("	m_componentFactory[%s::GetType()] = new %s();\n" % (component_name, component_name))
 
 		cpp_file.write('}\n')

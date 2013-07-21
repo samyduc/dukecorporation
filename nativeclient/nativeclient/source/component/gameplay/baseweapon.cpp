@@ -25,18 +25,18 @@ BaseWeapon::~BaseWeapon()
 
 void BaseWeapon::OnInit()
 {
-	assert(m_bulletType);
+	assert(m_prefabType);
 
 	m_acc = 0;
 
 	if(m_refEntity == nullptr)
 	{
 		// default bullet
-		PrefabManager* prefabmanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<PrefabManager>();
-		m_refEntity = prefabmanager->CreateFromType(m_bulletType);
+		//PrefabManager* prefabmanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<PrefabManager>();
+		//m_refEntity = prefabmanager->CreateFromType(m_prefabType);
 
 		// TODO : this must be done as a public parameter
-		BulletController* bullet_controller = m_refEntity->GetComponent<BulletController>();
+		/*BulletController* bullet_controller = m_refEntity->GetComponent<BulletController>();
 		assert(bullet_controller);
 
 		bullet_controller->m_damage = 3;
@@ -45,7 +45,7 @@ void BaseWeapon::OnInit()
 		bullet_rigidbody->m_isBullet = true;
 		bullet_rigidbody->m_isDynamic = true;
 		bullet_rigidbody->m_maxSpeed = 100.f;
-		bullet_rigidbody->m_density = 0.f;
+		bullet_rigidbody->m_density = 0.f;*/
 	}
 
 	Spawner::OnInit();

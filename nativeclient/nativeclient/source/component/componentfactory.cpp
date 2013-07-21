@@ -119,7 +119,16 @@ void ComponentFactory::ParseType(Serializer& _ser, tinyxml2::XMLElement* _elemen
 	if(type == s_type_ref_t)
 	{
 		const natChar* value = _element->Attribute("value");
-		ref_t ref = Hash::Compute(value);
+		ref_t ref;
+		if(strcmp(value, "") != 0)
+		{
+			ref = Hash::Compute(value);
+		}
+		else
+		{
+			ref = 0;
+		}
+
 		_ser << ref;
 	}
 	else if(type == s_type_natBool)

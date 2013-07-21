@@ -1,0 +1,33 @@
+
+
+<prefab>
+
+<component class="Transform" version="-1904110229">
+	<property name="m_pos" type="glm::vec3" value="0" />
+	<property name="m_rad" type="glm::vec3" value="0" /><property name="m_scale" type="glm::vec3" value="0" />
+	<property name="m_forward" type="glm::vec3" value="0" />
+</component>
+
+<component class="TextShape" version="1416255786">
+	<property name="m_text" type="std::string" value="0" />
+	<property name="m_fontType" type="ref_t" value="/data/font/StalinistOne-Regular.ttf:12" />
+	<property name="m_color" type="glm::vec4" value="0 0 108 1" />
+</component>
+
+<component class="FPSCounter" version="-1791377097" />
+
+<component class="UI" version="-759305960">
+	<property name="m_pos" type="glm::vec2" value="0.940 0.1" />
+	<property name="m_rad" type="natF32" value="0" />
+	<property name="m_scale" type="glm::vec2" value="0" />
+</component>
+
+<component class="GLRender" version="2029438579">
+	<property name="m_type" type="ref_t" value="monotexture" />
+	<property name="m_shapeType" type="ref_t" value="TextShape" />
+</component>
+
+
+
+
+</prefab>

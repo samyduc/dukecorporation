@@ -39,7 +39,6 @@ public:
 
 public:
 	natU64			m_rateShot;
-	ref_t			m_bulletType;
 
 protected:
 	natU64			m_acc;

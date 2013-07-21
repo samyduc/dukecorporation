@@ -16,6 +16,7 @@ namespace Natorium
 void TextureManager::Clone(Entity* _entity, natU32 _type) const
 {
 	TextureManager* component;
+	natU32 base_type = TextureManager::GetType();
 	if(_type == 0)
 	{
 		component = _entity->AddComponent<TextureManager>();
@@ -23,6 +24,7 @@ void TextureManager::Clone(Entity* _entity, natU32 _type) const
 	else
 	{
 		component = static_cast<TextureManager*>(_entity->GetComponentByType(_type));
+		base_type = _type;
 	}
 
 }

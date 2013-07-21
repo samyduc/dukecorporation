@@ -16,6 +16,7 @@ namespace Natorium
 void PhysicsManager::Clone(Entity* _entity, natU32 _type) const
 {
 	PhysicsManager* component;
+	natU32 base_type = PhysicsManager::GetType();
 	if(_type == 0)
 	{
 		component = _entity->AddComponent<PhysicsManager>();
@@ -23,6 +24,7 @@ void PhysicsManager::Clone(Entity* _entity, natU32 _type) const
 	else
 	{
 		component = static_cast<PhysicsManager*>(_entity->GetComponentByType(_type));
+		base_type = _type;
 	}
 
 }

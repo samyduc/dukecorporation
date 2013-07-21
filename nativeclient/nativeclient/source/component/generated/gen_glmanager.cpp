@@ -16,6 +16,7 @@ namespace Natorium
 void GLManager::Clone(Entity* _entity, natU32 _type) const
 {
 	GLManager* component;
+	natU32 base_type = GLManager::GetType();
 	if(_type == 0)
 	{
 		component = _entity->AddComponent<GLManager>();
@@ -23,6 +24,7 @@ void GLManager::Clone(Entity* _entity, natU32 _type) const
 	else
 	{
 		component = static_cast<GLManager*>(_entity->GetComponentByType(_type));
+		base_type = _type;
 	}
 
 }

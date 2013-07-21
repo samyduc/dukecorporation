@@ -1,0 +1,36 @@
+<prefab>
+
+<component class="Transform" version="-1904110229">
+	<property name="m_pos" type="glm::vec3" value="100 100 0" />
+	<property name="m_rad" type="glm::vec3" value="0" />
+	<property name="m_scale" type="glm::vec3" value="0" />
+	<property name="m_forward" type="glm::vec3" value="0" />
+</component>
+
+<component class="SquareShape" version="1970426499">
+	<property name="m_textureRef" type="ref_t" value="" />
+	<property name="m_size" type="glm::vec2" value="5 5" />
+	<property name="m_color" type="glm::vec4" value="102 0 51 1" />
+	<property name="m_repeat" type="natF32" value="1" />
+</component>
+
+<component class="RigidBody" version="763789349">
+	<property name="m_isDynamic" type="natBool" value="true" />
+	<property name="m_isBullet" type="natBool" value="true" />
+	<property name="m_maxSpeed" type="natF32" value="100.0" />
+	<property name="m_density" type="natF32" value="1.0" />
+	<property name="m_shapeType" type="ref_t" value="SquareShape" />
+</component>
+
+<component class="BulletController" version="-738944832">
+	<property name="m_damage" type="natS32" value="3" />
+	<property name="m_lifetime" type="natU64" value="2000" />
+</component>
+
+<component class="GLRender" version="2029438579">
+	<property name="m_type" type="ref_t" value="monotexture" />
+	<property name="m_shapeType" type="ref_t" value="SquareShape" />
+</component>
+
+
+</prefab>

@@ -16,6 +16,7 @@ namespace Natorium
 void BulletController::Clone(Entity* _entity, natU32 _type) const
 {
 	BulletController* component;
+	natU32 base_type = BulletController::GetType();
 	if(_type == 0)
 	{
 		component = _entity->AddComponent<BulletController>();
@@ -23,6 +24,7 @@ void BulletController::Clone(Entity* _entity, natU32 _type) const
 	else
 	{
 		component = static_cast<BulletController*>(_entity->GetComponentByType(_type));
+		base_type = _type;
 	}
 
 	component->m_damage = m_damage;

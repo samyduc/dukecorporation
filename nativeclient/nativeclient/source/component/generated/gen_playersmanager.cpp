@@ -16,6 +16,7 @@ namespace Natorium
 void PlayersManager::Clone(Entity* _entity, natU32 _type) const
 {
 	PlayersManager* component;
+	natU32 base_type = PlayersManager::GetType();
 	if(_type == 0)
 	{
 		component = _entity->AddComponent<PlayersManager>();
@@ -23,6 +24,7 @@ void PlayersManager::Clone(Entity* _entity, natU32 _type) const
 	else
 	{
 		component = static_cast<PlayersManager*>(_entity->GetComponentByType(_type));
+		base_type = _type;
 	}
 
 }

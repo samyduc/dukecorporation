@@ -16,6 +16,7 @@ namespace Natorium
 void GLRender::Clone(Entity* _entity, natU32 _type) const
 {
 	GLRender* component;
+	natU32 base_type = GLRender::GetType();
 	if(_type == 0)
 	{
 		component = _entity->AddComponent<GLRender>();
@@ -23,6 +24,7 @@ void GLRender::Clone(Entity* _entity, natU32 _type) const
 	else
 	{
 		component = static_cast<GLRender*>(_entity->GetComponentByType(_type));
+		base_type = _type;
 	}
 
 	component->m_type = m_type;

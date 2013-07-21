@@ -16,6 +16,7 @@ namespace Natorium
 void RigidBody::Clone(Entity* _entity, natU32 _type) const
 {
 	RigidBody* component;
+	natU32 base_type = RigidBody::GetType();
 	if(_type == 0)
 	{
 		component = _entity->AddComponent<RigidBody>();
@@ -23,6 +24,7 @@ void RigidBody::Clone(Entity* _entity, natU32 _type) const
 	else
 	{
 		component = static_cast<RigidBody*>(_entity->GetComponentByType(_type));
+		base_type = _type;
 	}
 
 	component->m_isDynamic = m_isDynamic;

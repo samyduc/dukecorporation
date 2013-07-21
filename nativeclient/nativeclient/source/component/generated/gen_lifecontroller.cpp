@@ -16,6 +16,7 @@ namespace Natorium
 void LifeController::Clone(Entity* _entity, natU32 _type) const
 {
 	LifeController* component;
+	natU32 base_type = LifeController::GetType();
 	if(_type == 0)
 	{
 		component = _entity->AddComponent<LifeController>();
@@ -23,6 +24,7 @@ void LifeController::Clone(Entity* _entity, natU32 _type) const
 	else
 	{
 		component = static_cast<LifeController*>(_entity->GetComponentByType(_type));
+		base_type = _type;
 	}
 
 	component->m_life = m_life;

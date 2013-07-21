@@ -16,6 +16,7 @@ namespace Natorium
 void FPSCounter::Clone(Entity* _entity, natU32 _type) const
 {
 	FPSCounter* component;
+	natU32 base_type = FPSCounter::GetType();
 	if(_type == 0)
 	{
 		component = _entity->AddComponent<FPSCounter>();
@@ -23,6 +24,7 @@ void FPSCounter::Clone(Entity* _entity, natU32 _type) const
 	else
 	{
 		component = static_cast<FPSCounter*>(_entity->GetComponentByType(_type));
+		base_type = _type;
 	}
 
 }

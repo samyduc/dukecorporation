@@ -16,8 +16,8 @@ CONST_PREFIX_GENERATED = "gen_"
 CONST_FACTORY_GEN_FILE = "factory_componentfactory.cpp"
 CONST_FACTORY_CLASS = "ComponentFactory"
 
-CONST_DO_NOT_GENERATE = ['Component', 'Shape', 'Input', 'b2ContactListener']
 
+CONST_DO_NOT_GENERATE = ['Component', 'Shape', 'Input', 'b2ContactListener']
 
 
 class Generator:
@@ -30,7 +30,7 @@ class Generator:
 		
 		component_path = os.path.join(self.base_path, CONST_COMPONENT_SRC)
 
-		components = []
+		components = {}
 
 		for root, subFolders, files in os.walk(component_path):
 
@@ -43,7 +43,14 @@ class Generator:
 				parser.run()
 
 				if parser.class_name:
-					components.append((parser.class_name, parser.include_string))
+					components[parser.class_name] = parser
+
+		# generate component
+		for class_name, class_parser in components.iteritems():
+			if not class_parser.check_version():
+				class_parser.components = components
+				writer = gWriter(class_parser, components)
+				writer.run()
 
 		# generate factory
 		print("Generate factory")
@@ -80,31 +87,28 @@ class Parser:
 	def run(self):
 
 		if self.fileextension == ".h":
-			src = open(self.path_src, 'rb')
-			data = src.read()
-			src.close()
+			self.classes_properties = self.parse_src()
 
-			crc_src = long(binascii.crc32(data))
+			# take the first one
+			class_name, src_class, class_properties = self.classes_properties[0]
 
-			if True:
-				classes_properties = self.parse_src()
+			if len(self.classes_properties) > 1:
+				print("illegal to have more than one component in a header")
+				exit(-1)
 
-				# take the first one
-				class_name, src_class, class_properties = classes_properties[0]
+			if class_name not in CONST_DO_NOT_GENERATE:
+				self.class_name = class_name
 
-				if len(classes_properties) > 1:
-					print("illegal to have more than one component in a header")
-					exit(-1)
+				#if not self.check_version():
+				#	writer = gWriter(class_name, self.path_src, self.path_desc, self.path_gen, crc_src, src_class, class_properties)
+				#	writer.run()
 
-				if class_name not in CONST_DO_NOT_GENERATE:
-					self.class_name = class_name
+	def check_version(self):
+		src = open(self.path_src, 'rb')
+		data = src.read()
+		src.close()
 
-					if not self.check_version(crc_src):
-						writer = gWriter(class_name, self.path_src, self.path_desc, self.path_gen, crc_src, src_class, class_properties)
-						writer.run()
-
-	def check_version(self, crc_src):
-
+		self.crc_src = long(binascii.crc32(data))
 		crc_desc = 0
 
 		try:
@@ -115,9 +119,9 @@ class Parser:
 		except IOError:
 			print("		Desc file does not exist %s" % (self.path_desc))
 
-		print("		Src version %u | Desc version %u" % (crc_src, crc_desc))
+		print("		Src version %u | Desc version %u" % (self.crc_src, crc_desc))
 
-		return crc_desc == crc_src
+		return crc_desc == self.crc_src
 
 	def parse_src(self):
 

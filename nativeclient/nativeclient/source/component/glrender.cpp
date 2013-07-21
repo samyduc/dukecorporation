@@ -22,6 +22,7 @@ GLRender::GLRender()
 	: m_shape(nullptr)
 	, m_type(programPosition)
 	, m_vertexNumber(0)
+	, m_texture(0)
 {
 
 }

@@ -30,6 +30,7 @@ void SceneManager::OnInit()
 	PrefabManager* prefabmanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<PrefabManager>();
 
 	TextureManager* texturemanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<TextureManager>();
+
 	texturemanager->Load("/data/idle-0.png");
 	texturemanager->Load("/data/grass-texture-2.jpg");
 
@@ -46,70 +47,38 @@ void SceneManager::OnInit()
 	natU32 hash_floor = Hash::Compute("/data/grass-texture-2.jpg");
 	GLuint textureId_floor = texturemanager->Get(hash_floor);
 
-	//
+	// prefabs
 	Entity* text = prefabmanager->CreateFromType("/data/prefab/text.prefab");
-
 	GetEntity()->GetKernel()->AddEntity(Layer::Layer_5, text);
 
-	//
-	FPS* fps = new FPS();
-	TextShape* fps_shape = fps->GetComponent<TextShape>();
-	fps_shape->m_fontType = fontmanager->Compute("/data/font/StalinistOne-Regular.ttf", 12);
-	fps_shape->m_text = "1";
-	fps_shape->m_color = glm::vec4(0.f, 0.f, 0.f, 1.f);
-	Transform* fps_transform = fps->GetComponent<Transform>();
-	fps_transform->m_pos = glm::vec3(100, 100.f, 0.f);
-	GLRender* fps_render = fps->GetComponent<GLRender>();
-	//fps_render->SetTexture(fps_shape->m_font->m_texture);
-
+	Entity* fps = prefabmanager->CreateFromType("/data/prefab/fps.prefab");
 	GetEntity()->GetKernel()->AddEntity(Layer::Layer_5, fps);
 
-	//
-	Floor* floor = new Floor();
-	GLRender* floor_glrender = floor->GetComponent<GLRender>();
-	floor_glrender->SetTexture(textureId_floor);
-	GetEntity()->GetKernel()->AddEntity(Layer::Layer_1, floor);
+	//Entity* floor = prefabmanager->CreateFromType("/data/prefab/floor.prefab");
+	//GetEntity()->GetKernel()->AddEntity(Layer::Layer_1, floor);
 
 	//
-	/*PlayersManager *playersManager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<PlayersManager>();
+	PlayersManager *playersManager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<PlayersManager>();
 
-	//
-	Entity* player = new Player();
-	Transform* player_transform = player->GetComponent<Transform>();
-	//player_transform->m_pos = glm::vec3(612.f, 384.f, 0.f);
-	player_transform->m_pos = glm::vec3(0.f, 0.f, 0.f);
-	GLRender* player_glrender = player->GetComponent<GLRender>();
-	player_glrender->SetTexture(textureId);
-
-	ShotgunWeapon* shotgun = player->GetComponent<ShotgunWeapon>();
-	shotgun->m_rateShot = 200;
-
+	Entity* player = prefabmanager->CreateFromType("/data/prefab/player.prefab");
 	GetEntity()->GetKernel()->AddEntity(Layer::Layer_2, player);
-	playersManager->AddPlayer(player);*/
+	playersManager->AddPlayer(player);
 
 	//
-	//Entity* civilian = new Civilian();
+	Entity* spawner1 = prefabmanager->CreateFromType("/data/prefab/spawnercivilian.prefab");
+	Transform *t_spawner1 = spawner1->GetComponent<Transform>();
+	t_spawner1->m_pos = glm::vec3(1024.f, 0.f, 0.f);
+	GetEntity()->GetKernel()->AddEntity(Layer::Layer_1, spawner1);
+
+	Entity* spawner2 = prefabmanager->CreateFromType("/data/prefab/spawnercivilian.prefab");
+	Transform *t_spawner2 = spawner2->GetComponent<Transform>();
+	t_spawner2->m_pos = glm::vec3(-100.0f, -100.f, 0.f);
+	GetEntity()->GetKernel()->AddEntity(Layer::Layer_1, spawner2);
 
 	//
-	/*SpawnerCivilian* spawner_civilian = new SpawnerCivilian();
-	Transform *spawner_transform = spawner_civilian->GetComponent<Transform>();
-	spawner_transform->m_pos = glm::vec3(-100.f, -100.f, 0.f);
-	TimeSpawner* spawner1 = spawner_civilian->GetComponent<TimeSpawner>();
-	spawner1->m_prefabType = Hash::Compute("data/prefab/civilian.prefab");
-	GetEntity()->GetKernel()->AddEntity(Layer::Layer_1, spawner_civilian);*/
-
-	//
-	/*SpawnerCivilian* spawner_civilian2 = new SpawnerCivilian();
-	Transform *spawner_transform2 = spawner_civilian2->GetComponent<Transform>();
-	spawner_transform2->m_pos = glm::vec3(1024.f + 100.f, 0.f, 0.f);
-	TimeSpawner* spawner2 = spawner_civilian2->GetComponent<TimeSpawner>();
-	spawner2->m_prefabType = Hash::Compute("data/prefab/civilian.prefab");
-	GetEntity()->GetKernel()->AddEntity(Layer::Layer_1, spawner_civilian2);*/
-
-	//
-	//Camera* camera = player->GetComponent<Camera>();
-	Camera* camera = text->GetComponent<Camera>();
-	camera->m_effect_followMouse = false;
+	Camera* camera = player->GetComponent<Camera>();
+	//Camera* camera = text->GetComponent<Camera>();
+	//camera->m_effect_followMouse = false;
 	GLManager* glmanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<GLManager>();
 	glmanager->SetCamera(camera);
 }

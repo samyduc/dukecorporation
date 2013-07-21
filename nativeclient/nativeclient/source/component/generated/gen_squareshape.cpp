@@ -16,6 +16,7 @@ namespace Natorium
 void SquareShape::Clone(Entity* _entity, natU32 _type) const
 {
 	SquareShape* component;
+	natU32 base_type = SquareShape::GetType();
 	if(_type == 0)
 	{
 		component = _entity->AddComponent<SquareShape>();
@@ -23,6 +24,7 @@ void SquareShape::Clone(Entity* _entity, natU32 _type) const
 	else
 	{
 		component = static_cast<SquareShape*>(_entity->GetComponentByType(_type));
+		base_type = _type;
 	}
 
 	component->m_textureRef = m_textureRef;

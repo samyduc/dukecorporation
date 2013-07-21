@@ -53,7 +53,7 @@ public:
 	natBool			m_isBullet;
 	natF32			m_maxSpeed;
 	natF32			m_density;
-	natU32			m_shapeType;
+	ref_t			m_shapeType;
 
 protected:
 	Transform*		m_transform;

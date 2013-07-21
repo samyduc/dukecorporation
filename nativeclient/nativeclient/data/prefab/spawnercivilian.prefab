@@ -1,0 +1,16 @@
+<prefab>
+
+<component class="Transform" version="-1904110229">
+	<property name="m_pos" type="glm::vec3" value="0 0 0" />
+	<property name="m_rad" type="glm::vec3" value="0" />
+	<property name="m_scale" type="glm::vec3" value="0" />
+	<property name="m_forward" type="glm::vec3" value="0" />
+</component>
+
+<component class="TimeSpawner" version="-1618203174">
+	<property name="m_max" type="natU64" value="100" />
+	<property name="m_prefabType" type="ref_t" value="/data/prefab/civilian.prefab" />
+	<property name="m_interval" type="natU64" value="1000" />
+</component>
+
+</prefab>

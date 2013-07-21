@@ -16,6 +16,7 @@ namespace Natorium
 void TimeSpawner::Clone(Entity* _entity, natU32 _type) const
 {
 	TimeSpawner* component;
+	natU32 base_type = TimeSpawner::GetType();
 	if(_type == 0)
 	{
 		component = _entity->AddComponent<TimeSpawner>();
@@ -23,9 +24,10 @@ void TimeSpawner::Clone(Entity* _entity, natU32 _type) const
 	else
 	{
 		component = static_cast<TimeSpawner*>(_entity->GetComponentByType(_type));
+		base_type = _type;
 	}
 
-	Spawner::Clone(_entity, TimeSpawner::GetType());
+	Spawner::Clone(_entity, base_type);
 	component->m_interval = m_interval;
 }
 

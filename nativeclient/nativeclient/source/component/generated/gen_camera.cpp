@@ -16,6 +16,7 @@ namespace Natorium
 void Camera::Clone(Entity* _entity, natU32 _type) const
 {
 	Camera* component;
+	natU32 base_type = Camera::GetType();
 	if(_type == 0)
 	{
 		component = _entity->AddComponent<Camera>();
@@ -23,6 +24,7 @@ void Camera::Clone(Entity* _entity, natU32 _type) const
 	else
 	{
 		component = static_cast<Camera*>(_entity->GetComponentByType(_type));
+		base_type = _type;
 	}
 
 	component->m_effect_followMouse = m_effect_followMouse;

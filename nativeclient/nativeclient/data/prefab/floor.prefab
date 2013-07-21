@@ -3,28 +3,23 @@
 <prefab>
 
 <component class="Transform" version="-1904110229">
-	<property name="m_pos" type="glm::vec3" value="10 10 10" />
-	<property name="m_rad" type="glm::vec3" value="0" /><property name="m_scale" type="glm::vec3" value="0" />
+	<property name="m_pos" type="glm::vec3" value="-1000 -1000 -1" />
+	<property name="m_rad" type="glm::vec3" value="0" />
+	<property name="m_scale" type="glm::vec3" value="0" />
 	<property name="m_forward" type="glm::vec3" value="0" />
 </component>
 
-<component class="TextShape" version="1416255786">
-	<property name="m_text" type="std::string" value="aAbBcCdD 1234567890" />
-	<property name="m_fontType" type="ref_t" value="/data/font/StalinistOne-Regular.ttf:100" />
+<component class="SquareShape" version="1970426499">
+	<property name="m_textureRef" type="ref_t" value="/data/grass-texture-2.jpg" />
+	<property name="m_size" type="glm::vec2" value="50000 50000" />
 	<property name="m_color" type="glm::vec4" value="0 0 0 1" />
+	<property name="m_repeat" type="natF32" value="48" />
 </component>
 
 <component class="GLRender" version="2029438579">
 	<property name="m_type" type="ref_t" value="monotexture" />
-	<property name="m_shapeType" type="ref_t" value="TextShape" />
+	<property name="m_shapeType" type="ref_t" value="SquareShape" />
 </component>
 
-<component class="Camera" version="-1717102549">
-	<property name="m_effect_followMouse" type="natBool" value="0" />
-	<property name="m_efect_followMouseSmooth" type="natF32" value="0" />
-	<property name="m_viewMatrix" type="glm::mat4" value="0" />
-	<property name="m_projectionMatrix" type="glm::mat4" value="0" />
-	<property name="m_resolution" type="glm::vec2" value="0" />
-</component>
 
 </prefab>

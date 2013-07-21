@@ -16,6 +16,7 @@ namespace Natorium
 void TextShape::Clone(Entity* _entity, natU32 _type) const
 {
 	TextShape* component;
+	natU32 base_type = TextShape::GetType();
 	if(_type == 0)
 	{
 		component = _entity->AddComponent<TextShape>();
@@ -23,6 +24,7 @@ void TextShape::Clone(Entity* _entity, natU32 _type) const
 	else
 	{
 		component = static_cast<TextShape*>(_entity->GetComponentByType(_type));
+		base_type = _type;
 	}
 
 	component->m_text = m_text;

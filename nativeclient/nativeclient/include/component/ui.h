@@ -11,7 +11,7 @@ namespace Natorium
 class GLManager;
 class Transform;
 
-static natU32 s_Ui = Hash::Compute("Ui");
+static natU32 s_UI = Hash::Compute("UI");
 
 class UI : public Component
 {
@@ -23,7 +23,7 @@ public:
 	virtual void	OnTick(const natU64 _dt);
 	virtual void	OnDeInit();
 
-	static natU32	GetType() { return s_Ui; }
+	static natU32	GetType() { return s_UI; }
 
 	virtual void	Clone(Entity* _entity, natU32 _type) const;
 	void			WriteData(Serializer& _ser);

@@ -23,7 +23,7 @@ ShotgunWeapon::~ShotgunWeapon()
 
 void ShotgunWeapon::OnInit()
 {
-	m_max = m_bullets*10;
+	//m_max = m_bullets*10;
 	
 	BaseWeapon::OnInit();
 

@@ -16,6 +16,7 @@ namespace Natorium
 void UI::Clone(Entity* _entity, natU32 _type) const
 {
 	UI* component;
+	natU32 base_type = UI::GetType();
 	if(_type == 0)
 	{
 		component = _entity->AddComponent<UI>();
@@ -23,6 +24,7 @@ void UI::Clone(Entity* _entity, natU32 _type) const
 	else
 	{
 		component = static_cast<UI*>(_entity->GetComponentByType(_type));
+		base_type = _type;
 	}
 
 	component->m_pos = m_pos;

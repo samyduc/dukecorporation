@@ -33,7 +33,7 @@ void Spawner::OnInit()
 	PrefabManager* prefabmanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<PrefabManager>();
 	assert(prefabmanager);
 
-	m_refEntity = prefabmanager->Get(m_prefabType);
+	m_refEntity = prefabmanager->CreateFromType(m_prefabType);
 	assert(m_refEntity);
 
 	// spawn a pool of entities

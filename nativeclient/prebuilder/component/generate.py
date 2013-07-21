@@ -5,25 +5,46 @@ CONST_DO_NOT_GENERATE = ['Component', 'Shape', 'Input', 'b2ContactListener']
 
 class Writer:
 
-	def __init__(self, name, header_path, xml_path, cpp_path, version, src_class, properties):
+	def __init__(self, parser, components):
 
-		self.name = name
-		self.xml_path = xml_path
-		self.cpp_path = cpp_path
-		self.version = version
+		self.name = parser.class_name
+		self.xml_path = parser.path_desc
+		self.cpp_path = parser.path_gen
+		self.version = parser.crc_src
 
-		self.properties = properties
-		self.src_class = src_class
+		self.properties = parser.classes_properties[0][2]
+		self.src_class = parser.classes_properties[0][1]
 
 		# find include path
-		index = header_path.find("component")
-		self.include_string = header_path[index:]
+		index = parser.path_src.find("component")
+		self.include_string = parser.path_src[index:]
 		self.include_string = self.include_string.replace('\\', '/')
+
+		self.components = components
+		self.parser = parser
+		self.parser.include_string = self.include_string
 
 	def run(self):
 
 		self.write_xml()
 		self.write_cpp()
+
+	def write_xml_property(self, root, parser, components):
+		"""
+		Recursive hell
+
+		"""
+
+		for inherit_class in parser.classes_properties[0][1]['inherits']:
+			if inherit_class['class'] not in CONST_DO_NOT_GENERATE:
+
+				self.write_xml_property(root, self.components[inherit_class['class']], components)
+
+		for class_property in parser.classes_properties[0][2]:
+			xml_property = ET.SubElement(root, "property")
+			xml_property.set("type", class_property['type'])
+			xml_property.set("name", class_property['name'])
+			xml_property.set("value", str(0))
 
 	def write_xml(self):
 
@@ -31,11 +52,7 @@ class Writer:
 		root.set("class", self.name)
 		root.set("version", str(self.version))
 
-		for class_property in self.properties:
-			xml_property = ET.SubElement(root, "property")
-			xml_property.set("type", class_property['type'])
-			xml_property.set("name", class_property['name'])
-			xml_property.set("value", str(0))
+		self.write_xml_property(root, self.parser, self.components)
 
 		tree = ET.ElementTree(root)
 		tree.write(self.xml_path)
@@ -81,13 +98,15 @@ class Writer:
 		cpp_file.write("void %s::Clone(Entity* _entity, natU32 _type) const\n" % (self.name))
 		cpp_file.write('{\n')
 		cpp_file.write("	%s* component;\n" % (self.name))
+		cpp_file.write("	natU32 base_type = %s::GetType();\n" % (self.name))
 		cpp_file.write('	if(_type == 0)\n')
 		cpp_file.write('	{\n')
 		cpp_file.write("		component = _entity->AddComponent<%s>();\n" % (self.name))
 		cpp_file.write('	}\n')
 		cpp_file.write('	else\n')
 		cpp_file.write('	{\n')
-		cpp_file.write("		component = static_cast<%s*>(_entity->GetComponentByType(_type));\n" % (self.name))		
+		cpp_file.write("		component = static_cast<%s*>(_entity->GetComponentByType(_type));\n" % (self.name))	
+		cpp_file.write('		base_type = _type;\n')
 		cpp_file.write('	}\n')
 		cpp_file.write("\n")
 
@@ -97,7 +116,7 @@ class Writer:
 		# call mother class
 		for inherit_class in self.src_class['inherits']:
 			if inherit_class['class'] not in CONST_DO_NOT_GENERATE:
-				cpp_file.write("	%s::Clone(_entity, %s::GetType());\n" % (inherit_class['class'], self.name))
+				cpp_file.write("	%s::Clone(_entity, base_type);\n" % (inherit_class['class']))
 
 		for class_property in self.properties:
 			cpp_file.write('	component->%s = %s;\n' % (class_property['name'], class_property['name']))

@@ -1,6 +1,12 @@
 #include "component/squareshape.h"
 
+#include "component/texturemanager.h"
+#include "component/glrender.h"
+
 #include "base/entity.h"
+#include "base/kernel.h"
+#include "base/layer.h"
+
 
 namespace Natorium
 {
@@ -10,12 +16,22 @@ SquareShape::SquareShape()
 	, m_color(1.f, 1.f, 1.f, 1.f)
 	, m_repeat(1.f)
 	, m_isDirty(true)
+	, m_textureRef(0)
 {
 
 }
 
 void SquareShape::OnInit()
 {
+	if(m_textureRef)
+	{
+		TextureManager* texturemanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<TextureManager>();
+		GLuint texture_id = texturemanager->Get(m_textureRef);
+
+		GLRender* glrender = GetEntity()->GetComponent<GLRender>();
+		glrender->SetTexture(texture_id);
+	}
+
 	SetSize(m_size);
 	SetColor(m_color);
 	SetTextureCoordinate(m_repeat);

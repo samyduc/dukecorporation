@@ -48,6 +48,7 @@ public:
 	natBool			IsAndRemoveDirty() {natBool ret = m_isDirty; m_isDirty = false; return ret; };
 
 public:
+	ref_t			m_textureRef;
 	glm::vec2		m_size;
 	glm::vec4		m_color;
 	natF32			m_repeat;

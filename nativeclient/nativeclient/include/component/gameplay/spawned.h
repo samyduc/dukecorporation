@@ -10,7 +10,7 @@ namespace Natorium
 
 class Spawner;
 
-static natU32 s_Spawned = Hash::Compute("s_Spawned");
+static natU32 s_Spawned = Hash::Compute("Spawned");
 
 class Spawned : public Component
 {

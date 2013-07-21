@@ -46,7 +46,9 @@ namespace Natorium
 #error "Compiler not defined"
 #endif
 
+	// common type
 
+	typedef			natU32		ref_t;
 
 // platform declaration
 #if defined(_WIN32)

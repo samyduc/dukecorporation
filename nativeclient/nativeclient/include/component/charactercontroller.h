@@ -12,7 +12,7 @@ namespace Natorium
 
 class BaseWeapon;
 
-static natU32 s_CharacterController = Hash::Compute("s_CharacterController");
+static natU32 s_CharacterController = Hash::Compute("CharacterController");
 
 
 class CharacterController : public Component

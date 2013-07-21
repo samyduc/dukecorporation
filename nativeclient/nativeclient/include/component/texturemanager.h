@@ -21,7 +21,7 @@
 namespace Natorium
 {
 
-static natU32 s_TextureManager = Hash::Compute("s_TextureManager");
+static natU32 s_TextureManager = Hash::Compute("TextureManager");
 
 
 struct TextureSimple

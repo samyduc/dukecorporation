@@ -37,8 +37,8 @@ public:
 		AddComponent<Camera>();
 		GLRender* render = AddComponent<GLRender>();
 		render->m_type = Hash::Compute("monotexture");
-		render->m_shapeType = Hash::Compute("s_SquareShape");
-		rigidbody->m_shapeType = Hash::Compute("s_SquareShape");
+		render->m_shapeType = Hash::Compute("SquareShape");
+		rigidbody->m_shapeType = Hash::Compute("SquareShape");
 	}
 
 

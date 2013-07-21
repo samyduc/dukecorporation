@@ -10,7 +10,7 @@
 namespace Natorium
 {
 
-static natU32 s_SDLRender = Hash::Compute("s_SDLRender");
+static natU32 s_SDLRender = Hash::Compute("SDLRender");
 
 class SDLRender : public Component
 {

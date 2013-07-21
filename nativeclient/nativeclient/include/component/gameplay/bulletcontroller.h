@@ -12,7 +12,7 @@ namespace Natorium
 
 class Bullet;
 
-static natU32 s_BulletController = Hash::Compute("s_BulletController");
+static natU32 s_BulletController = Hash::Compute("BulletController");
 
 class BulletController : public Component
 {

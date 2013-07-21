@@ -16,6 +16,7 @@
 #include "component/glrender.h"
 #include "component/physicsmanager.h"
 #include "component/playersmanager.h"
+#include "component/prefabmanager.h"
 #include "component/rigidbody.h"
 #include "component/scenemanager.h"
 #include "component/sdlinput.h"
@@ -51,6 +52,7 @@ void ComponentFactory::PopulateFactory()
 	m_componentFactory[GLRender::GetType()] = new GLRender();
 	m_componentFactory[PhysicsManager::GetType()] = new PhysicsManager();
 	m_componentFactory[PlayersManager::GetType()] = new PlayersManager();
+	m_componentFactory[PrefabManager::GetType()] = new PrefabManager();
 	m_componentFactory[RigidBody::GetType()] = new RigidBody();
 	m_componentFactory[SceneManager::GetType()] = new SceneManager();
 	m_componentFactory[SDLInput::GetType()] = new SDLInput();

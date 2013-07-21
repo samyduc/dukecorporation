@@ -39,8 +39,8 @@ public:
 
 		glm::vec4 color(0.f, 0.f, 1.f, 1.f);
 		shape->SetColor(color);
-		render->m_shapeType = Hash::Compute("s_SquareShape");
-		rigidbody->m_shapeType = Hash::Compute("s_SquareShape");
+		render->m_shapeType = Hash::Compute("SquareShape");
+		rigidbody->m_shapeType = Hash::Compute("SquareShape");
 	}
 
 

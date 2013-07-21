@@ -1,1 +1,1 @@
-<component class="TextShape" version="-943828679"><property name="m_text" type="std::string" value="0" /><property name="m_fontType" type="natU32" value="0" /><property name="m_color" type="glm::vec4" value="0" /></component>
+<component class="TextShape" version="1416255786"><property name="m_text" type="std::string" value="0" /><property name="m_fontType" type="ref_t" value="0" /><property name="m_color" type="glm::vec4" value="0" /></component>

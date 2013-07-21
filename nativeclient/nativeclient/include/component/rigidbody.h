@@ -15,7 +15,7 @@ namespace Natorium
 class Transform;
 class Shape;
 
-static natU32 s_RigidBody = Hash::Compute("s_RigidBody");
+static natU32 s_RigidBody = Hash::Compute("RigidBody");
 
 static natF32 s_B2RatioPos = 10.f;
 

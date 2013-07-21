@@ -16,7 +16,7 @@ namespace Natorium
 
 class Bullet;
 
-static natU32 s_BaseWeapon = Hash::Compute("s_BaseWeapon");
+static natU32 s_BaseWeapon = Hash::Compute("BaseWeapon");
 
 class BaseWeapon : public Spawner
 {
@@ -39,6 +39,7 @@ public:
 
 public:
 	natU64			m_rateShot;
+	ref_t			m_bulletType;
 
 protected:
 	natU64			m_acc;

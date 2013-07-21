@@ -7,12 +7,17 @@
 #include <map>
 #include <cassert>
 
+namespace tinyxml2
+{
+	class XMLElement;
+}
+
 namespace Natorium
 {
 
 class Entity;
 
-static natU32 s_ComponentFactory = Hash::Compute("s_ComponentFactory");
+static natU32 s_ComponentFactory = Hash::Compute("ComponentFactory");
 
 class ComponentFactory : public Component
 {
@@ -31,6 +36,7 @@ public:
 	void			ReadData(Serializer& _ser);
 
 	void			AttachComponent(Entity* _entity, natU32 _type);
+	Component*		ParseComponent(Entity* _entity, tinyxml2::XMLElement* _element);
 
 public:
 
@@ -38,6 +44,8 @@ public:
 private:
 	void			PopulateFactory();
 	void			UnPopulateFactory();
+
+	void			ParseType(Serializer& _ser, tinyxml2::XMLElement* _element);
 
 private:
 	typedef std::map<natU32, Component*> componentFactory_t;

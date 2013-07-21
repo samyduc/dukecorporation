@@ -9,9 +9,9 @@ namespace Natorium
 class Hash
 {
 public:
-	static	natU32 Compute(const natChar* _string)
+	static ref_t Compute(const natChar* _string)
 	{
-		unsigned long hash = 5381;
+		ref_t hash = 5381;
 		int c;
 
 		while((c = *_string++))

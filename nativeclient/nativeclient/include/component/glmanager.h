@@ -27,7 +27,7 @@
 namespace Natorium
 {
 
-static natU32 s_GLManager = Hash::Compute("s_GLManager");
+static natU32 s_GLManager = Hash::Compute("GLManager");
 
 class GLRender;
 

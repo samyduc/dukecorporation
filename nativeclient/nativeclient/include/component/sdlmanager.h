@@ -10,7 +10,7 @@
 namespace Natorium
 {
 
-static natU32 s_SDLManager = Hash::Compute("s_SDLManager");
+static natU32 s_SDLManager = Hash::Compute("SDLManager");
 
 class SDLManager : public Component
 {

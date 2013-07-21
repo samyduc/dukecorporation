@@ -8,6 +8,7 @@
 #include "base/timeplatform.h"
 
 #include "component/gameplay/spawned.h"
+#include "component/prefabmanager.h"
 
 #include <cassert>
 
@@ -17,6 +18,7 @@ namespace Natorium
 Spawner::Spawner()
 	: m_max(40)
 	, m_refEntity(nullptr)
+	, m_prefabType(0)
 {
 }
 
@@ -26,6 +28,12 @@ Spawner::~Spawner()
 
 void Spawner::OnInit()
 {
+	assert(m_prefabType != 0);
+
+	PrefabManager* prefabmanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<PrefabManager>();
+	assert(prefabmanager);
+
+	m_refEntity = prefabmanager->Get(m_prefabType);
 	assert(m_refEntity);
 
 	// spawn a pool of entities

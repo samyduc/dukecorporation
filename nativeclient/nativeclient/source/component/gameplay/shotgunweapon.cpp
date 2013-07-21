@@ -24,8 +24,6 @@ ShotgunWeapon::~ShotgunWeapon()
 void ShotgunWeapon::OnInit()
 {
 	m_max = m_bullets*10;
-
-	m_rateShot = 200;
 	
 	BaseWeapon::OnInit();
 

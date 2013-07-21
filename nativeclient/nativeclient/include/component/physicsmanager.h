@@ -14,7 +14,7 @@
 namespace Natorium
 {
 
-static natU32 s_PhysicsManager = Hash::Compute("s_PhysicsManager");
+static natU32 s_PhysicsManager = Hash::Compute("PhysicsManager");
 
 class Shape;
 

@@ -10,7 +10,7 @@ namespace Natorium
 {
 
 
-static natU32 s_Transform = Hash::Compute("s_Transform");
+static natU32 s_Transform = Hash::Compute("Transform");
 
 static const natF32 s_PI = 3.14159265358979f; 
 

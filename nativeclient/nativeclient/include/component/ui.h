@@ -11,7 +11,7 @@ namespace Natorium
 class GLManager;
 class Transform;
 
-static natU32 s_Ui = Hash::Compute("s_Ui");
+static natU32 s_Ui = Hash::Compute("Ui");
 
 class UI : public Component
 {

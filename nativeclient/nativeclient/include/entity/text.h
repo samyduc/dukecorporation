@@ -31,7 +31,7 @@ public:
 		AddComponent<Camera>();
 		GLRender* render = AddComponent<GLRender>();
 		render->m_type = Hash::Compute("monotexture");
-		render->m_shapeType = Hash::Compute("s_TextShape");
+		render->m_shapeType = Hash::Compute("TextShape");
 	}
 
 

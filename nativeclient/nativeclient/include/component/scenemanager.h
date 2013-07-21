@@ -12,7 +12,7 @@ namespace Natorium
 
 class Entity;
 
-static natU32 s_SceneManager = Hash::Compute("s_SceneManager");
+static natU32 s_SceneManager = Hash::Compute("SceneManager");
 
 class SceneManager : public Component
 {

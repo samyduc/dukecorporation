@@ -12,7 +12,7 @@
 namespace Natorium
 {
 
-static natU32 s_TextShape = Hash::Compute("s_TextShape");
+static natU32 s_TextShape = Hash::Compute("TextShape");
 
 class Font;
 
@@ -53,7 +53,7 @@ public:
 
 public:
 	std::string		m_text;
-	natU32			m_fontType;
+	ref_t			m_fontType;
 	glm::vec4		m_color;
 
 private:

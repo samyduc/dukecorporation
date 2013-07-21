@@ -10,7 +10,7 @@
 namespace Natorium
 {
 
-static natU32 s_SquareShape = Hash::Compute("s_SquareShape");
+static natU32 s_SquareShape = Hash::Compute("SquareShape");
 
 
 class SquareShape : public Shape

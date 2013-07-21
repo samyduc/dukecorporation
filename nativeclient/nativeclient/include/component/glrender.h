@@ -22,7 +22,7 @@
 namespace Natorium
 {
 
-static natU32 s_GLRender = Hash::Compute("s_GLRender");
+static natU32 s_GLRender = Hash::Compute("GLRender");
 
 class Shape;
 
@@ -48,8 +48,8 @@ public:
 	void			Render(GLuint _program);
 
 public:
-	natU32		m_type;
-	natU32		m_shapeType;
+	ref_t		m_type;
+	ref_t		m_shapeType;
 
 private:
 	//GLuint		m_shaderProgram;

@@ -10,6 +10,7 @@
 #include "component/texturemanager.h"
 #include "component/fontmanager.h"
 #include "component/componentfactory.h"
+#include "component/prefabmanager.h"
 
 #include <assert.h>
 
@@ -61,6 +62,7 @@ void Kernel::Init()
 	entity->AddComponent<PlayersManager>();
 	entity->AddComponent<TextureManager>();
 	entity->AddComponent<FontManager>();
+	entity->AddComponent<PrefabManager>();
 
 	m_currentTime = sdlmanager->GetTick();
 

@@ -13,7 +13,7 @@
 namespace Natorium
 {
 
-static natU32 s_Spawner = Hash::Compute("s_Spawner");
+static natU32 s_Spawner = Hash::Compute("Spawner");
 
 class Spawner : public Component
 {
@@ -36,7 +36,7 @@ public:
 
 public:
 	natU64			m_max;
-	Entity*			m_refEntity;
+	ref_t			m_prefabType;
 
 protected:
 	Entity*			Spawn();
@@ -48,6 +48,8 @@ protected:
 	entities_spawner_t	m_active_entities;
 	entities_spawner_t	m_pool_entities;
 	entities_spawner_t	m_kill_entities;
+
+	Entity*				m_refEntity;
 };
 
 

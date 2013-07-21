@@ -26,21 +26,21 @@ void Spawner::Clone(Entity* _entity, natU32 _type) const
 	}
 
 	component->m_max = m_max;
-	component->m_refEntity = m_refEntity;
+	component->m_prefabType = m_prefabType;
 }
 
 
 void Spawner::WriteData(Serializer& _ser)
 {
 	_ser << m_max;
-	_ser << reinterpret_cast<void**>(&m_refEntity);
+	_ser << m_prefabType;
 }
 
 
 void Spawner::ReadData(Serializer& _ser)
 {
 	_ser >> m_max;
-	_ser >> reinterpret_cast<void**>(&m_refEntity);
+	_ser >> m_prefabType;
 }
 
 

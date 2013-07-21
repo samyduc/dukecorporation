@@ -1102,7 +1102,13 @@
       <Filter>Source Files\component\generated</Filter>
     </ClCompile>
     <ClCompile Include="source\component\camera.cpp">
-      <Filter>Source Files\component\ui</Filter>
+      <Filter>Source Files\component</Filter>
+    </ClCompile>
+    <ClCompile Include="source\component\prefabmanager.cpp">
+      <Filter>Source Files\component</Filter>
+    </ClCompile>
+    <ClCompile Include="source\component\generated\gen_prefabmanager.cpp">
+      <Filter>Source Files\component\generated</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2185,6 +2191,9 @@
     </ClInclude>
     <ClInclude Include="include\tinyxml\tinyxml2.h">
       <Filter>tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="include\component\prefabmanager.h">
+      <Filter>Source Files\component</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

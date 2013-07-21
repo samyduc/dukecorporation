@@ -6,7 +6,7 @@
 
 #include <physfs.h>
 
-
+#include <sstream>
 
 namespace Natorium
 {
@@ -94,5 +94,19 @@ natU8* FileManager::Read(const natChar* _filename, size_t* _size)
 #endif*/
 }
 
+void FileManager::EnumerateFiles(const natChar* _path, std::vector<std::string>& _files)
+{
+	natChar **rc = PHYSFS_enumerateFiles(_path);
+	natChar **i;
+
+	for(i = rc; *i != NULL; ++i)
+	{
+		std::ostringstream oss;
+		oss << _path << '/' << *i;
+		_files.push_back(oss.str());
+	}
+
+	PHYSFS_freeList(rc);
+}
 
 }

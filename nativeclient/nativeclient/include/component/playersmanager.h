@@ -10,7 +10,7 @@
 namespace Natorium
 {
 
-static natU32 s_PlayersManager = Hash::Compute("s_PlayersManager");
+static natU32 s_PlayersManager = Hash::Compute("PlayersManager");
 
 class PlayersManager : public Component
 {

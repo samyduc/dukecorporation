@@ -7,7 +7,7 @@
 namespace Natorium
 {
 
-static natU32 s_LifeController = Hash::Compute("s_LifeController");
+static natU32 s_LifeController = Hash::Compute("LifeController");
 
 class LifeController : public Component
 {

@@ -11,7 +11,7 @@
 namespace Natorium
 {
 
-static natU32 s_TimeSpawner = Hash::Compute("s_TimeSpawner");
+static natU32 s_TimeSpawner = Hash::Compute("TimeSpawner");
 
 class TimeSpawner : public Spawner
 {

@@ -239,6 +239,7 @@
     <ClCompile Include="source\component\generated\gen_lifecontroller.cpp" />
     <ClCompile Include="source\component\generated\gen_physicsmanager.cpp" />
     <ClCompile Include="source\component\generated\gen_playersmanager.cpp" />
+    <ClCompile Include="source\component\generated\gen_prefabmanager.cpp" />
     <ClCompile Include="source\component\generated\gen_rigidbody.cpp" />
     <ClCompile Include="source\component\generated\gen_scenemanager.cpp" />
     <ClCompile Include="source\component\generated\gen_sdlinput.cpp" />
@@ -257,6 +258,7 @@
     <ClCompile Include="source\component\glrender.cpp" />
     <ClCompile Include="source\component\physicsmanager.cpp" />
     <ClCompile Include="source\component\playersmanager.cpp" />
+    <ClCompile Include="source\component\prefabmanager.cpp" />
     <ClCompile Include="source\component\rigidbody.cpp" />
     <ClCompile Include="source\component\scenemanager.cpp" />
     <ClCompile Include="source\component\sdlinput.cpp" />
@@ -1694,6 +1696,7 @@
     <ClInclude Include="include\component\input.h" />
     <ClInclude Include="include\component\physicsmanager.h" />
     <ClInclude Include="include\component\playersmanager.h" />
+    <ClInclude Include="include\component\prefabmanager.h" />
     <ClInclude Include="include\component\rigidbody.h" />
     <ClInclude Include="include\component\scenemanager.h" />
     <ClInclude Include="include\component\sdlinput.h" />

@@ -9,7 +9,7 @@
 namespace Natorium
 {
 
-static natU32 s_Shape = Hash::Compute("s_Shape");
+static natU32 s_Shape = Hash::Compute("Shape");
 
 class Shape : public Component
 {

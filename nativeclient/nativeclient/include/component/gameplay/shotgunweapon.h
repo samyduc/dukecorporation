@@ -14,7 +14,7 @@ namespace Natorium
 
 class Bullet;
 
-static natU32 s_ShotgunWeapon = Hash::Compute("s_ShotgunWeapon");
+static natU32 s_ShotgunWeapon = Hash::Compute("ShotgunWeapon");
 
 class ShotgunWeapon : public BaseWeapon
 {

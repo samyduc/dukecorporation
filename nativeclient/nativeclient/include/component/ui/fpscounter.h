@@ -10,7 +10,7 @@ namespace Natorium
 {
 class GLManager;
 
-static natU32 s_FPSCounter = Hash::Compute("s_FPSCounter");
+static natU32 s_FPSCounter = Hash::Compute("FPSCounter");
 
 class FPSCounter : public Component
 {

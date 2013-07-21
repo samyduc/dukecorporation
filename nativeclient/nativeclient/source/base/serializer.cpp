@@ -17,6 +17,7 @@ namespace Natorium
 	#define SWAP_16(x) _byteswap_ushort(x)
 	#define SWAP_32(x) _byteswap_ulong(x)
 	#define SWAP_64(x) _byteswap_uint64(x)
+
 #else
 	#define SWAP_16(x) ((x & 0xFF00) >> 8 | (x & 0x00FF) << 8)
 
@@ -321,20 +322,38 @@ Serializer& Serializer::operator <<(natS64 _val)
 
 Serializer& Serializer::operator <<(natF32 _val)
 {
-	// not implemented
-	assert(false);
+	assert(m_state == E_WRITE);
 
-	(void)_val;
+	if(s_IsBigEndian)
+	{
+		// not implemented
+		assert(false);
+	}
+
+	memcpy(&m_buffer[m_cursor_pos], &_val, sizeof(natF32));
+
+	m_cursor_pos += sizeof(natF32);
+
+	assert(m_cursor_pos <= m_buffer_size);
 
 	return *this;
 }
 
 Serializer& Serializer::operator <<(natF64 _val)
 {
-	// not implemented
-	assert(false);
+	assert(m_state == E_WRITE);
 
-	(void)_val;
+	if(s_IsBigEndian)
+	{
+		// not implemented
+		assert(false);
+	}
+
+	memcpy(&m_buffer[m_cursor_pos], &_val, sizeof(natF64));
+
+	m_cursor_pos += sizeof(natF64);
+
+	assert(m_cursor_pos <= m_buffer_size);
 
 	return *this;
 }
@@ -462,20 +481,30 @@ Serializer& Serializer::operator >>(natS64& _val)
 
 Serializer& Serializer::operator >>(natF32& _val)
 {
-	// not implemented
-	assert(false);
+	assert(m_state == E_READ);
 
-	(void)_val;
+	memcpy(&_val, &m_buffer[m_cursor_pos], sizeof(natF32));
+	m_cursor_pos += sizeof(natF32);
+
+	if(s_IsBigEndian)
+	{
+		assert(false);
+	}
 
 	return *this;
 }
 
 Serializer& Serializer::operator >>(natF64& _val)
 {
-	// not implemented
-	assert(false);
+	assert(m_state == E_READ);
 
-	(void)_val;
+	memcpy(&_val, &m_buffer[m_cursor_pos], sizeof(natF64));
+	m_cursor_pos += sizeof(natF64);
+
+	if(s_IsBigEndian)
+	{
+		assert(false);
+	}
 
 	return *this;
 }
@@ -556,7 +585,7 @@ Serializer& Serializer::operator <<(const glm::vec4& _val)
 
 Serializer& Serializer::operator <<(const glm::mat4& _val)
 {
-	assert(m_state == E_READ);
+	assert(m_state == E_WRITE);
 
 	for(size_t i=0; i < 4; ++i)
 	{
@@ -578,7 +607,8 @@ Serializer& Serializer::operator >>(std::string& _val)
 
 	assert(length < GetBufferSize());
 	
-	natChar *temp = new natChar[length];
+	natChar *temp = new natChar[length+1];
+	temp[length] = '\0';
 
 	memcpy(temp, m_buffer + m_cursor_pos, length);
 	SetCursor(GetCursor() + length);
@@ -604,9 +634,9 @@ Serializer& Serializer::operator >>(glm::vec3& _val)
 {
 	assert(m_state == E_READ);
 
-	*this << _val.x;
-	*this << _val.y;
-	*this << _val.z;
+	*this >> _val.x;
+	*this >> _val.y;
+	*this >> _val.z;
 
 	return *this;
 }

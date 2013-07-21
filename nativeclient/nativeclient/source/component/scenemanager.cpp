@@ -12,6 +12,7 @@
 #include "component/glrender.h"
 #include "component/texturemanager.h"
 #include "component/fontmanager.h"
+#include "component/prefabmanager.h"
 
 namespace Natorium
 {
@@ -26,17 +27,19 @@ SceneManager::~SceneManager()
 
 void SceneManager::OnInit()
 {
+	PrefabManager* prefabmanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<PrefabManager>();
+
 	TextureManager* texturemanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<TextureManager>();
 	texturemanager->Load("/data/idle-0.png");
 	texturemanager->Load("/data/grass-texture-2.jpg");
 
 	FontManager* fontmanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<FontManager>();
-	fontmanager->Load("/data/EBGaramond-Regular.ttf", 50);
-	fontmanager->Load("/data/StalinistOne-Regular.ttf", 100);
-	fontmanager->Load("/data/StalinistOne-Regular.ttf", 12);
+	fontmanager->Load("/data/font/EBGaramond-Regular.ttf", 50);
+	fontmanager->Load("/data/font/StalinistOne-Regular.ttf", 100);
+	fontmanager->Load("/data/font/StalinistOne-Regular.ttf", 12);
 
-	natU32 hash_text_100 = fontmanager->Compute("/data/StalinistOne-Regular.ttf", 100);
-	natU32 hash_text_12 = fontmanager->Compute("/data/StalinistOne-Regular.ttf", 12);
+	natU32 hash_text_100 = fontmanager->Compute("/data/font/StalinistOne-Regular.ttf", 100);
+	natU32 hash_text_12 = fontmanager->Compute("/data/font/StalinistOne-Regular.ttf", 12);
 	
 	natU32 hash = Hash::Compute("/data/idle-0.png");
 	GLuint textureId = texturemanager->Get(hash);
@@ -44,22 +47,14 @@ void SceneManager::OnInit()
 	GLuint textureId_floor = texturemanager->Get(hash_floor);
 
 	//
-	Text* text = new Text();
-	TextShape* text_shape = text->GetComponent<TextShape>();
-	text_shape->m_fontType = fontmanager->Compute("/data/StalinistOne-Regular.ttf", 100);
-	text_shape->m_text = "Je suis espagnol";
-	text_shape->m_color = glm::vec4(1.f, 0.f, 1.f, 1.f);
-	Transform* text_transform = text->GetComponent<Transform>();
-	text_transform->m_pos = glm::vec3(0.f, 0.f, 0.f);
-	GLRender* text_render = text->GetComponent<GLRender>();
-	//text_render->SetTexture(text_shape->m_font->m_texture);
+	Entity* text = prefabmanager->CreateFromType("/data/prefab/text.prefab");
 
 	GetEntity()->GetKernel()->AddEntity(Layer::Layer_5, text);
 
 	//
 	FPS* fps = new FPS();
 	TextShape* fps_shape = fps->GetComponent<TextShape>();
-	fps_shape->m_fontType = fontmanager->Compute("/data/StalinistOne-Regular.ttf", 12);
+	fps_shape->m_fontType = fontmanager->Compute("/data/font/StalinistOne-Regular.ttf", 12);
 	fps_shape->m_text = "1";
 	fps_shape->m_color = glm::vec4(0.f, 0.f, 0.f, 1.f);
 	Transform* fps_transform = fps->GetComponent<Transform>();
@@ -76,7 +71,7 @@ void SceneManager::OnInit()
 	GetEntity()->GetKernel()->AddEntity(Layer::Layer_1, floor);
 
 	//
-	PlayersManager *playersManager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<PlayersManager>();
+	/*PlayersManager *playersManager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<PlayersManager>();
 
 	//
 	Entity* player = new Player();
@@ -86,31 +81,34 @@ void SceneManager::OnInit()
 	GLRender* player_glrender = player->GetComponent<GLRender>();
 	player_glrender->SetTexture(textureId);
 
+	ShotgunWeapon* shotgun = player->GetComponent<ShotgunWeapon>();
+	shotgun->m_rateShot = 200;
+
 	GetEntity()->GetKernel()->AddEntity(Layer::Layer_2, player);
-	playersManager->AddPlayer(player);
+	playersManager->AddPlayer(player);*/
 
 	//
-	Entity* civilian = new Civilian();
+	//Entity* civilian = new Civilian();
 
 	//
-	SpawnerCivilian* spawner_civilian = new SpawnerCivilian();
+	/*SpawnerCivilian* spawner_civilian = new SpawnerCivilian();
 	Transform *spawner_transform = spawner_civilian->GetComponent<Transform>();
 	spawner_transform->m_pos = glm::vec3(-100.f, -100.f, 0.f);
 	TimeSpawner* spawner1 = spawner_civilian->GetComponent<TimeSpawner>();
-	spawner1->m_refEntity = civilian;
-	GetEntity()->GetKernel()->AddEntity(Layer::Layer_1, spawner_civilian);
+	spawner1->m_prefabType = Hash::Compute("data/prefab/civilian.prefab");
+	GetEntity()->GetKernel()->AddEntity(Layer::Layer_1, spawner_civilian);*/
 
 	//
-	SpawnerCivilian* spawner_civilian2 = new SpawnerCivilian();
+	/*SpawnerCivilian* spawner_civilian2 = new SpawnerCivilian();
 	Transform *spawner_transform2 = spawner_civilian2->GetComponent<Transform>();
 	spawner_transform2->m_pos = glm::vec3(1024.f + 100.f, 0.f, 0.f);
 	TimeSpawner* spawner2 = spawner_civilian2->GetComponent<TimeSpawner>();
-	spawner2->m_refEntity = civilian;
-	GetEntity()->GetKernel()->AddEntity(Layer::Layer_1, spawner_civilian2);
+	spawner2->m_prefabType = Hash::Compute("data/prefab/civilian.prefab");
+	GetEntity()->GetKernel()->AddEntity(Layer::Layer_1, spawner_civilian2);*/
 
 	//
-	Camera* camera = player->GetComponent<Camera>();
-	//Camera* camera = text->GetComponent<Camera>();
+	//Camera* camera = player->GetComponent<Camera>();
+	Camera* camera = text->GetComponent<Camera>();
 	camera->m_effect_followMouse = false;
 	GLManager* glmanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<GLManager>();
 	glmanager->SetCamera(camera);

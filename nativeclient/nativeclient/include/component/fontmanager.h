@@ -28,7 +28,7 @@
 namespace Natorium
 {
 
-static natU32 s_FontManager = Hash::Compute("s_FontManager");
+static natU32 s_FontManager = Hash::Compute("FontManager");
 
 
 class Font

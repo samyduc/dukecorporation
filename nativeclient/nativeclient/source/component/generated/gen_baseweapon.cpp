@@ -27,6 +27,7 @@ void BaseWeapon::Clone(Entity* _entity, natU32 _type) const
 
 	Spawner::Clone(_entity, BaseWeapon::GetType());
 	component->m_rateShot = m_rateShot;
+	component->m_bulletType = m_bulletType;
 }
 
 
@@ -34,6 +35,7 @@ void BaseWeapon::WriteData(Serializer& _ser)
 {
 	Spawner::WriteData(_ser);
 	_ser << m_rateShot;
+	_ser << m_bulletType;
 }
 
 
@@ -41,6 +43,7 @@ void BaseWeapon::ReadData(Serializer& _ser)
 {
 	Spawner::ReadData(_ser);
 	_ser >> m_rateShot;
+	_ser >> m_bulletType;
 }
 
 

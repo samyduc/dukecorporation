@@ -40,8 +40,8 @@ public:
 
 		rigidbody->m_density = 3.f;
 
-		glrender->m_shapeType = Hash::Compute("s_SquareShape");
-		rigidbody->m_shapeType = Hash::Compute("s_SquareShape");
+		glrender->m_shapeType = Hash::Compute("SquareShape");
+		rigidbody->m_shapeType = Hash::Compute("SquareShape");
 	}
 
 

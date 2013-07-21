@@ -15,7 +15,7 @@
 namespace Natorium
 {
 
-static natU32 s_AiController = Hash::Compute("s_AiController");
+static natU32 s_AiController = Hash::Compute("AiController");
 
 class AiController : public Component
 {

@@ -6,7 +6,10 @@
 #include "component/transform.h"
 #include "entity/bullet.h"
 
+#include "component/prefabmanager.h"
 #include "component/gameplay/lifecontroller.h"
+
+#include <cassert>
 
 namespace Natorium
 {
@@ -22,15 +25,20 @@ BaseWeapon::~BaseWeapon()
 
 void BaseWeapon::OnInit()
 {
+	assert(m_bulletType);
+
 	m_acc = 0;
 
 	if(m_refEntity == nullptr)
 	{
 		// default bullet
-		m_refEntity = new Bullet();
+		PrefabManager* prefabmanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<PrefabManager>();
+		m_refEntity = prefabmanager->CreateFromType(m_bulletType);
 
 		// TODO : this must be done as a public parameter
 		BulletController* bullet_controller = m_refEntity->GetComponent<BulletController>();
+		assert(bullet_controller);
+
 		bullet_controller->m_damage = 3;
 
 		RigidBody* bullet_rigidbody = m_refEntity->GetComponent<RigidBody>();

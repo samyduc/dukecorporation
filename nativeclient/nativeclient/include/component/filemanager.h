@@ -4,11 +4,13 @@
 #include "base/component.h"
 #include "base/hash.h"
 
+#include <vector>
+#include <string>
 
 namespace Natorium
 {
 
-static natU32 s_FileManager = Hash::Compute("s_FileManager");
+static natU32 s_FileManager = Hash::Compute("FileManager");
 
 
 class FileManager : public Component
@@ -29,6 +31,7 @@ public:
 
 	natU8*			Read(const natChar* _filename, size_t* _size);
 
+	void			EnumerateFiles(const natChar* _path, std::vector<std::string>& _files);
 
 private:
 

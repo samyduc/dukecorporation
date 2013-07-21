@@ -39,6 +39,7 @@ void FontManager::OnTick(const natU64 _dt)
 void FontManager::OnDeInit()
 {
 	// TODO: free a lot of stuff
+	// WARNING : it leaks for the moment
 
 	FT_Done_FreeType(m_ft_library);
 }
@@ -85,6 +86,8 @@ void FontManager::Load(const natChar* _path, natU32 _fontSize)
 
 		font = Load(buffer, size, _fontSize);
 		m_fonts[hash] = font;
+
+		delete buffer;
 	}
 }
 

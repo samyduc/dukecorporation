@@ -17,7 +17,7 @@
 <component class="FPSCounter" version="-1791377097" />
 
 <component class="UI" version="-759305960">
-	<property name="m_pos" type="glm::vec2" value="0.940 0.1" />
+	<property name="m_pos" type="glm::vec2" value="0.940 0" />
 	<property name="m_rad" type="natF32" value="0" />
 	<property name="m_scale" type="glm::vec2" value="0" />
 </component>

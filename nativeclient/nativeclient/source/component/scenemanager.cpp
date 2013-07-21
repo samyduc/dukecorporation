@@ -39,14 +39,6 @@ void SceneManager::OnInit()
 	fontmanager->Load("/data/font/StalinistOne-Regular.ttf", 100);
 	fontmanager->Load("/data/font/StalinistOne-Regular.ttf", 12);
 
-	natU32 hash_text_100 = fontmanager->Compute("/data/font/StalinistOne-Regular.ttf", 100);
-	natU32 hash_text_12 = fontmanager->Compute("/data/font/StalinistOne-Regular.ttf", 12);
-	
-	natU32 hash = Hash::Compute("/data/idle-0.png");
-	GLuint textureId = texturemanager->Get(hash);
-	natU32 hash_floor = Hash::Compute("/data/grass-texture-2.jpg");
-	GLuint textureId_floor = texturemanager->Get(hash_floor);
-
 	// prefabs
 	Entity* text = prefabmanager->CreateFromType("/data/prefab/text.prefab");
 	GetEntity()->GetKernel()->AddEntity(Layer::Layer_5, text);
@@ -54,8 +46,8 @@ void SceneManager::OnInit()
 	Entity* fps = prefabmanager->CreateFromType("/data/prefab/fps.prefab");
 	GetEntity()->GetKernel()->AddEntity(Layer::Layer_5, fps);
 
-	//Entity* floor = prefabmanager->CreateFromType("/data/prefab/floor.prefab");
-	//GetEntity()->GetKernel()->AddEntity(Layer::Layer_1, floor);
+	Entity* floor = prefabmanager->CreateFromType("/data/prefab/floor.prefab");
+	GetEntity()->GetKernel()->AddEntity(Layer::Layer_1, floor);
 
 	//
 	PlayersManager *playersManager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<PlayersManager>();

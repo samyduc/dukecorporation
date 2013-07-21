@@ -40,6 +40,10 @@ void SquareShape::OnInit()
 	m_isDirty = true;
 }
 
+void SquareShape::OnTick(natU64 _tick)
+{
+}
+
 void SquareShape::SetSize(glm::vec2& _size)
 {
 	m_size = _size;

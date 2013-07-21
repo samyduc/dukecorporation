@@ -74,6 +74,7 @@ natU8* FileManager::Read(const natChar* _filename, size_t* _size)
 
 	natU8* buffer = new natU8[*_size];
 	PHYSFS_read(file, buffer, 1, static_cast<PHYSFS_uint32>(*_size));
+	PHYSFS_close(file);
 
 	return buffer;
 /*#elif defined(EMSCRIPTEN_TARGET)

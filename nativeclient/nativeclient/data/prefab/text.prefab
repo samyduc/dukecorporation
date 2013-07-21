@@ -4,7 +4,8 @@
 
 <component class="Transform" version="-1904110229">
 	<property name="m_pos" type="glm::vec3" value="10 10 10" />
-	<property name="m_rad" type="glm::vec3" value="0" /><property name="m_scale" type="glm::vec3" value="0" />
+	<property name="m_rad" type="glm::vec3" value="0" />
+	<property name="m_scale" type="glm::vec3" value="0" />
 	<property name="m_forward" type="glm::vec3" value="0" />
 </component>
 
@@ -14,17 +15,17 @@
 	<property name="m_color" type="glm::vec4" value="0 0 108 1" />
 </component>
 
-<component class="GLRender" version="2029438579">
-	<property name="m_type" type="ref_t" value="monotexture" />
-	<property name="m_shapeType" type="ref_t" value="TextShape" />
-</component>
-
 <component class="Camera" version="-1717102549">
 	<property name="m_effect_followMouse" type="natBool" value="0" />
 	<property name="m_efect_followMouseSmooth" type="natF32" value="0" />
 	<property name="m_viewMatrix" type="glm::mat4" value="0" />
 	<property name="m_projectionMatrix" type="glm::mat4" value="0" />
 	<property name="m_resolution" type="glm::vec2" value="0" />
+</component>
+
+<component class="GLRender" version="2029438579">
+	<property name="m_type" type="ref_t" value="monotexture" />
+	<property name="m_shapeType" type="ref_t" value="TextShape" />
 </component>
 
 </prefab>

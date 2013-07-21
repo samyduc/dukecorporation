@@ -20,7 +20,7 @@ public:
 	virtual			~SquareShape() {}
 
 	virtual void	OnInit();
-	virtual void	OnTick(const natU64 _dt) {}
+	virtual void	OnTick(const natU64 _dt);
 	virtual void	OnDeInit() {}
 
 	static natU32	GetType() { return s_SquareShape; }

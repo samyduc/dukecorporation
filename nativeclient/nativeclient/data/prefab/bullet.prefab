@@ -28,7 +28,7 @@
 </component>
 
 <component class="GLRender" version="2029438579">
-	<property name="m_type" type="ref_t" value="monotexture" />
+	<property name="m_type" type="ref_t" value="position" />
 	<property name="m_shapeType" type="ref_t" value="SquareShape" />
 </component>
 

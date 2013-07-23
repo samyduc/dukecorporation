@@ -38,7 +38,7 @@ void LifeController::TakeDamage(natS32 _damage)
 
 	Shape* shape = GetEntity()->GetComponent<RigidBody>()->GetShape();
 	glm::vec4 color = shape->GetColor();
-	color.r = 1.f / (2 - natF32(m_currentLife) / natF32(m_life));
+	//color.r = 1.f / (2 - natF32(m_currentLife) / natF32(m_life));
 	shape->SetColor(color);
 }
 

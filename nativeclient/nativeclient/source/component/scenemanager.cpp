@@ -40,6 +40,9 @@ void SceneManager::OnInit()
 	texturemanager->Load("/data/idle-0.png");
 	texturemanager->Load("/data/grass-texture-2.jpg");
 	texturemanager->Load("/data/zombie.png");
+	texturemanager->Load("/data/zombie2.png");
+	texturemanager->Load("/data/zombie3.png");
+
 
 	FontManager* fontmanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<FontManager>();
 	fontmanager->Load("/data/font/EBGaramond-Regular.ttf", 50);

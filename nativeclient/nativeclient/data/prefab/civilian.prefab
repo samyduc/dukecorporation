@@ -17,7 +17,9 @@
 <component class="AiController" version="1076720789" />
 
 <component class="LifeController" version="388467471">
-	<property name="m_life" type="natS32" value="10" />
+	<property name="m_life" type="natS32" value="30" />
+	<property name="m_smallDamageTexture" type="ref_t" value="/data/zombie2.png" />
+	<property name="m_BigDamageTexture" type="ref_t" value="/data/zombie3.png" />
 </component>
 
 <component class="RigidBody" version="763789349">

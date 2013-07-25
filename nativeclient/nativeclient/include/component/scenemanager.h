@@ -7,6 +7,11 @@
 #include <assert.h>
 #include <list>
 
+namespace tinyxml2
+{
+	class XMLElement;
+}
+
 namespace Natorium
 {
 
@@ -30,7 +35,10 @@ public:
 	void			WriteData(Serializer& _ser);
 	void			ReadData(Serializer& _ser);
 
+	void			Load(const natChar* _path);
+
 private:
+	void			OverridePrefab(Entity* _entity, tinyxml2::XMLElement* _element);
 
 
 };

@@ -33,7 +33,7 @@ public:
 	Entity*			Get(natU32 _id);
 
 	Entity*			CreateFromType(const natChar* _path);
-	Entity*			CreateFromType(natU32 _id);
+	Entity*			CreateFromType(ref_t _id);
 
 	void			Load(const natChar* _path);
 	
@@ -42,7 +42,7 @@ public:
 
 private:
 
-	typedef std::map<natU32, Entity*> prefabs_t;
+	typedef std::map<ref_t, Entity*> prefabs_t;
 	prefabs_t m_prefabs;
 
 };

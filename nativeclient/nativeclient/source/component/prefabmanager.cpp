@@ -99,11 +99,11 @@ void PrefabManager::Load(const natChar* _path)
 
 Entity* PrefabManager::Get(const natChar* _path)
 {
-	natU32 hash = Hash::Compute(_path);
+	ref_t hash = Hash::Compute(_path);
 	return Get(hash);
 }
 
-Entity*	PrefabManager::Get(natU32 _id)
+Entity*	PrefabManager::Get(ref_t _id)
 {
 	Entity* ret = nullptr;
 	prefabs_t::iterator it = m_prefabs.find(_id);

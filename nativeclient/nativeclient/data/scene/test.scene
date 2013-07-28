@@ -13,7 +13,7 @@
 	</component>
 </entity>
 
-<entity prefab="/data/prefab/spawnercivilian.prefab" layer="0">
+<entity prefab="/data/prefab/spawnercivilian.prefab" layer="4">
 	<component class="Transform" version="-1904110229">
 		<property name="m_pos" type="glm::vec3" value="1024 0 0" />
 		<property name="m_rad" type="glm::vec3" value="0" />
@@ -22,7 +22,7 @@
 	</component>
 </entity>
 
-<entity prefab="/data/prefab/spawnercivilian.prefab" layer="0" >
+<entity prefab="/data/prefab/spawnercivilian.prefab" layer="4" >
 	<component class="Transform" version="-1904110229">
 		<property name="m_pos" type="glm::vec3" value="-100 -100 0" />
 		<property name="m_rad" type="glm::vec3" value="0" />

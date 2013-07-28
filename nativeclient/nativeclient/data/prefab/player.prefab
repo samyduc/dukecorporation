@@ -10,7 +10,7 @@
 <component class="CharacterController" version="1076720789" />
 
 <component class="SquareShape" version="1970426499">
-	<property name="m_textureRef" type="ref_t" value="/data/idle-0.png" />
+	<property name="m_textureRef" type="ref_t" value="/data/texture/idle-0.png" />
 	<property name="m_size" type="glm::vec2" value="50 50" />
 	<property name="m_color" type="glm::vec4" value="1 1 1 1" />
 	<property name="m_repeat" type="natF32" value="1" />

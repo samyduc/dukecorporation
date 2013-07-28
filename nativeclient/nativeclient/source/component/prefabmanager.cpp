@@ -28,19 +28,9 @@ PrefabManager::~PrefabManager()
 
 void PrefabManager::OnInit()
 {
-	FileManager* filemanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<FileManager>();
-	assert(filemanager);
-
-	// load all prefab
-	std::vector<std::string> files;
-	filemanager->EnumerateFiles("/data/prefab", files);
-
-	for(std::vector<std::string>::iterator it = files.begin(); it != files.end(); ++it)
-	{
-		const natChar* path = (*it).c_str();
-		Load(path);
-	}
+	InitFromDirectory("/data/prefab");
 }
+
 
 void PrefabManager::OnTick(const natU64 _dt)
 {
@@ -133,7 +123,21 @@ Entity* PrefabManager::CreateFromType(natU32 _id)
 	return entity;
 }
 
+void PrefabManager::InitFromDirectory(const natChar* _path)
+{
+	FileManager* filemanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<FileManager>();
+	assert(filemanager);
 
+	// load all prefab
+	std::vector<std::string> files;
+	filemanager->EnumerateFiles(_path, files);
+
+	for(std::vector<std::string>::iterator it = files.begin(); it != files.end(); ++it)
+	{
+		const natChar* path = (*it).c_str();
+		Load(path);
+	}
+}
 
 
 

@@ -10,7 +10,7 @@
 </component>
 
 <component class="SquareShape" version="1970426499">
-	<property name="m_textureRef" type="ref_t" value="/data/grass-texture-2.jpg" />
+	<property name="m_textureRef" type="ref_t" value="/data/texture/grass-texture-2.jpg" />
 	<property name="m_size" type="glm::vec2" value="50000 50000" />
 	<property name="m_color" type="glm::vec4" value="1 1 1 1" />
 	<property name="m_repeat" type="natF32" value="48" />

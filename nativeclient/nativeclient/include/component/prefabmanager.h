@@ -29,6 +29,8 @@ public:
 	void			WriteData(Serializer& _ser);
 	void			ReadData(Serializer& _ser);
 
+	void			InitFromDirectory(const natChar* _path);
+
 	Entity*			Get(const natChar* _path);
 	Entity*			Get(natU32 _id);
 

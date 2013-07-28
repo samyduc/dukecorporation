@@ -33,7 +33,7 @@ SceneManager::~SceneManager()
 
 void SceneManager::OnInit()
 {
-	PrefabManager* prefabmanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<PrefabManager>();
+	/*PrefabManager* prefabmanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<PrefabManager>();
 
 	TextureManager* texturemanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<TextureManager>();
 
@@ -41,7 +41,7 @@ void SceneManager::OnInit()
 	texturemanager->Load("/data/grass-texture-2.jpg");
 	texturemanager->Load("/data/zombie.png");
 	texturemanager->Load("/data/zombie2.png");
-	texturemanager->Load("/data/zombie3.png");
+	texturemanager->Load("/data/zombie3.png");*/
 
 
 	FontManager* fontmanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<FontManager>();

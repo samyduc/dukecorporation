@@ -46,6 +46,8 @@ public:
 	void			WriteData(Serializer& _ser);
 	void			ReadData(Serializer& _ser);
 
+	void			InitFromDirectory(const natChar* _path);
+
 	void			Load(const natChar* _path);
 
 	GLuint			Get(const natChar* _path) const;

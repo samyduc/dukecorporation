@@ -10,13 +10,15 @@
 #include "component/gameplay/lifecontroller.h"
 #include "component/gameplay/aicontroller.h"
 #include "component/transform.h"
+#include "component/spriteranimator.h"
 #include "component/camera.h"
 #include "component/glmanager.h"
 #include "component/componentfactory.h"
 #include "component/gameplay/timespawner.h"
-#include "component/physicsmanager.h"
+#include "component/spritermanager.h"
 #include "component/charactercontroller.h"
 #include "component/fontmanager.h"
+#include "component/physicsmanager.h"
 #include "component/texturemanager.h"
 #include "component/sdlinput.h"
 #include "component/ui/fpscounter.h"
@@ -46,13 +48,15 @@ void ComponentFactory::PopulateFactory()
 	m_componentFactory[LifeController::GetType()] = new LifeController();
 	m_componentFactory[AiController::GetType()] = new AiController();
 	m_componentFactory[Transform::GetType()] = new Transform();
+	m_componentFactory[SpriterAnimator::GetType()] = new SpriterAnimator();
 	m_componentFactory[Camera::GetType()] = new Camera();
 	m_componentFactory[GLManager::GetType()] = new GLManager();
 	m_componentFactory[ComponentFactory::GetType()] = new ComponentFactory();
 	m_componentFactory[TimeSpawner::GetType()] = new TimeSpawner();
-	m_componentFactory[PhysicsManager::GetType()] = new PhysicsManager();
+	m_componentFactory[SpriterManager::GetType()] = new SpriterManager();
 	m_componentFactory[CharacterController::GetType()] = new CharacterController();
 	m_componentFactory[FontManager::GetType()] = new FontManager();
+	m_componentFactory[PhysicsManager::GetType()] = new PhysicsManager();
 	m_componentFactory[TextureManager::GetType()] = new TextureManager();
 	m_componentFactory[SDLInput::GetType()] = new SDLInput();
 	m_componentFactory[FPSCounter::GetType()] = new FPSCounter();

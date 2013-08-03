@@ -1110,6 +1110,18 @@
     <ClCompile Include="source\component\generated\gen_prefabmanager.cpp">
       <Filter>Source Files\component\generated</Filter>
     </ClCompile>
+    <ClCompile Include="source\component\spriteranimator.cpp">
+      <Filter>Source Files\component</Filter>
+    </ClCompile>
+    <ClCompile Include="source\component\generated\gen_spriteranimator.cpp">
+      <Filter>Source Files\component\generated</Filter>
+    </ClCompile>
+    <ClCompile Include="source\component\spritermanager.cpp">
+      <Filter>Source Files\component</Filter>
+    </ClCompile>
+    <ClCompile Include="source\component\generated\gen_spritermanager.cpp">
+      <Filter>Source Files\component\generated</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\base\entity.h">
@@ -2193,6 +2205,12 @@
       <Filter>tinyxml</Filter>
     </ClInclude>
     <ClInclude Include="include\component\prefabmanager.h">
+      <Filter>Source Files\component</Filter>
+    </ClInclude>
+    <ClInclude Include="include\component\spriteranimator.h">
+      <Filter>Source Files\component</Filter>
+    </ClInclude>
+    <ClInclude Include="include\component\spritermanager.h">
       <Filter>Source Files\component</Filter>
     </ClInclude>
   </ItemGroup>

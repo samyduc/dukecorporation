@@ -248,6 +248,8 @@
     <ClCompile Include="source\component\generated\gen_shotgunweapon.cpp" />
     <ClCompile Include="source\component\generated\gen_spawned.cpp" />
     <ClCompile Include="source\component\generated\gen_spawner.cpp" />
+    <ClCompile Include="source\component\generated\gen_spriteranimator.cpp" />
+    <ClCompile Include="source\component\generated\gen_spritermanager.cpp" />
     <ClCompile Include="source\component\generated\gen_squareshape.cpp" />
     <ClCompile Include="source\component\generated\gen_textshape.cpp" />
     <ClCompile Include="source\component\generated\gen_texturemanager.cpp" />
@@ -264,6 +266,8 @@
     <ClCompile Include="source\component\sdlinput.cpp" />
     <ClCompile Include="source\component\sdlmanager.cpp" />
     <ClCompile Include="source\component\sdlrender.cpp" />
+    <ClCompile Include="source\component\spriteranimator.cpp" />
+    <ClCompile Include="source\component\spritermanager.cpp" />
     <ClCompile Include="source\component\squareshape.cpp" />
     <ClCompile Include="source\component\textshape.cpp" />
     <ClCompile Include="source\component\texturemanager.cpp" />
@@ -1703,6 +1707,8 @@
     <ClInclude Include="include\component\sdlmanager.h" />
     <ClInclude Include="include\component\sdlrender.h" />
     <ClInclude Include="include\component\shape.h" />
+    <ClInclude Include="include\component\spriteranimator.h" />
+    <ClInclude Include="include\component\spritermanager.h" />
     <ClInclude Include="include\component\squareshape.h" />
     <ClInclude Include="include\component\textshape.h" />
     <ClInclude Include="include\component\texturemanager.h" />

@@ -81,7 +81,7 @@ public:
 	Font*			Get(const natChar* _path, natU32 _fontSize);
 	Font*			Get(natU32 _id);
 
-	natU32			Compute(const natChar* _path, natU32 _fontSize);
+	natU32			Compute(const natChar* _path, natU32 _fontSize) const;
 
 private:
 	Font*			Load(const natU8* _buffer, size_t _size, natU32 _fontSize);

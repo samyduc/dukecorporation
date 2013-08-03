@@ -110,4 +110,33 @@ void FileManager::EnumerateFiles(const natChar* _path, std::vector<std::string>&
 	PHYSFS_freeList(rc);
 }
 
+void FileManager::ConcatenatePath(const natChar* _pathLeft, const natChar* _pathRight, std::string& _path)
+{
+	size_t len = strnlen(_pathLeft, 1000);
+
+	_path = _pathLeft;
+	if(strncmp(_pathLeft+len-1, "/", 2) != 0)
+	{
+		_path += '/';
+	}
+	_path += _pathRight;
+}
+
+void FileManager::GetFileExtension(const natChar* _path, std::string& _extension)
+{
+	std::string path(_path);
+	std::string::size_type idx;
+
+	idx = path.rfind('.');
+
+	if(idx != std::string::npos)
+	{
+		_extension = path.substr(idx+1);
+	}
+	else
+	{
+		_extension = "";
+	}
+}
+
 }

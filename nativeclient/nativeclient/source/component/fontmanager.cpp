@@ -63,7 +63,7 @@ Font* FontManager::Get(natU32 _id)
 	return ret;
 }
 
-natU32 FontManager::Compute(const natChar* _path, natU32 _fontSize)
+natU32 FontManager::Compute(const natChar* _path, natU32 _fontSize) const
 {
 	std::ostringstream oss;
 	oss << _path << ':' << _fontSize;

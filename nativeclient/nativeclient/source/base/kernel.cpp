@@ -11,6 +11,7 @@
 #include "component/fontmanager.h"
 #include "component/componentfactory.h"
 #include "component/prefabmanager.h"
+#include "component/spritermanager.h"
 
 #include <assert.h>
 
@@ -63,6 +64,7 @@ void Kernel::Init()
 	entity->AddComponent<TextureManager>();
 	entity->AddComponent<FontManager>();
 	entity->AddComponent<PrefabManager>();
+	entity->AddComponent<SpriterManager>();
 
 	m_currentTime = sdlmanager->GetTick();
 

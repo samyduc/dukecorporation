@@ -33,6 +33,9 @@ public:
 
 	void			EnumerateFiles(const natChar* _path, std::vector<std::string>& _files);
 
+	void			ConcatenatePath(const natChar* _pathLeft, const natChar* _pathRight, std::string& _path);
+	void			GetFileExtension(const natChar* _path, std::string& _extension);
+
 private:
 
 };

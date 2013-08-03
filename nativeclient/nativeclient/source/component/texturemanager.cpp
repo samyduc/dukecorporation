@@ -92,7 +92,7 @@ GLuint TextureManager::Get(natU32 _id)
 
 GLuint TextureManager::Load(const natChar* _path)
 {
-	// not protected against multiple loading, get should do this
+	// not protected against multiple loading, get should do this, can leak on m_buffers
 	natU32 hash = Hash::Compute(_path);
 
 	GLuint ret;

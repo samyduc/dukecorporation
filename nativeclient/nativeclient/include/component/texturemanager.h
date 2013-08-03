@@ -16,6 +16,7 @@
 
 #endif
 
+#include <string>
 #include <map>
 
 namespace Natorium
@@ -48,17 +49,21 @@ public:
 
 	void			InitFromDirectory(const natChar* _path);
 
-	void			Load(const natChar* _path);
+	void			Preload(const natChar* _path);
+	GLuint			Load(const natChar* _path);
 
-	GLuint			Get(const natChar* _path) const;
-	GLuint			Get(natU32 _id) const;
+	GLuint			Get(const natChar* _path);
+	GLuint			Get(natU32 _id);
 
 protected:
 	GLuint			Load(const natU8* _bytes, size_t _size);
 
 private:
-	typedef std::map<natU32, GLuint> textures_ref_t;
+	typedef std::map<tex_t, GLuint> textures_ref_t;
 	textures_ref_t	m_textures;
+
+	typedef std::map<tex_t, std::string> textures_path_t;
+	textures_path_t m_preloads;
 
 	typedef std::map<GLuint, struct TextureSimple> textures_buf_t;
 	textures_buf_t	m_buffers;

@@ -49,6 +49,7 @@ namespace Natorium
 	// common type
 
 	typedef			natU32		ref_t;
+	typedef			ref_t		tex_t;
 
 // platform declaration
 #if defined(_WIN32)

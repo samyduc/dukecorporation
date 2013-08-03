@@ -31,14 +31,6 @@ TextureManager::~TextureManager()
 
 void TextureManager::OnInit()
 {
-	/*GLManager* glmanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<GLManager>();
-
-	GLuint shader = glmanager->GetShaderProgram();
-
-	glUseProgram(shader);
-
-	glUseProgram(0);*/
-
 	InitFromDirectory("/data/texture");
 }
 
@@ -59,16 +51,23 @@ void TextureManager::OnDeInit()
 	}
 
 	m_buffers.clear();
+	m_preloads.clear();
 	m_textures.clear();
 }
 
-GLuint TextureManager::Get(const natChar* _path) const
+void TextureManager::Preload(const natChar* _path)
 {
-	natU32 hash = Hash::Compute(_path);
+	ref_t hash = Hash::Compute(_path);
+	m_preloads[hash] = _path;
+}
+
+GLuint TextureManager::Get(const natChar* _path)
+{
+	ref_t hash = Hash::Compute(_path);
 	return Get(hash);
 }
 
-GLuint TextureManager::Get(natU32 _id) const
+GLuint TextureManager::Get(natU32 _id)
 {
 	GLuint ret = 0;
 	textures_ref_t::const_iterator it = m_textures.find(_id);
@@ -77,31 +76,41 @@ GLuint TextureManager::Get(natU32 _id) const
 	{
 		ret = it->second;
 	}
+	else
+	{
+		// use preload
+		textures_path_t::const_iterator it_path = m_preloads.find(_id);
+		if(it_path != m_preloads.end())
+		{
+			const natChar* path = (it_path->second).c_str();
+			ret = Load(path);
+		}
+	}
 
 	return ret;
 }
 
-void TextureManager::Load(const natChar* _path)
+GLuint TextureManager::Load(const natChar* _path)
 {
+	// not protected against multiple loading, get should do this
 	natU32 hash = Hash::Compute(_path);
 
-	GLuint ret = Get(hash);
-	
-	if(ret == 0)
-	{
-		FileManager* filemanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<FileManager>();
-		assert(filemanager);
+	GLuint ret;
 
-		size_t size;
-		natU8 *buffer = filemanager->Read(_path, &size);
-		struct TextureSimple texture_simple;
-		texture_simple.m_buffer = buffer;
-		texture_simple.m_size = size;
-		m_buffers[hash] = texture_simple;
+	FileManager* filemanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<FileManager>();
+	assert(filemanager);
 
-		ret = Load(buffer, size);
-		m_textures[hash] = ret;
-	}
+	size_t size;
+	natU8 *buffer = filemanager->Read(_path, &size);
+	struct TextureSimple texture_simple;
+	texture_simple.m_buffer = buffer;
+	texture_simple.m_size = size;
+	m_buffers[hash] = texture_simple;
+
+	ret = Load(buffer, size);
+	m_textures[hash] = ret;
+
+	return ret;
 }
 
 

@@ -30,8 +30,8 @@ public:
 
 public:
 	natS32			m_life;
-	ref_t			m_smallDamageTexture;
-	ref_t			m_BigDamageTexture;
+	tex_t			m_smallDamageTexture;
+	tex_t			m_BigDamageTexture;
 
 private:
 	natS32			m_currentLife;

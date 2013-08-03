@@ -8,7 +8,7 @@
 </component>
 
 <component class="SquareShape" version="1970426499">
-	<property name="m_textureRef" type="ref_t" value="/data/texture/zombie.png" />
+	<property name="m_textureRef" type="tex_t" value="/data/texture/zombie.png" />
 	<property name="m_size" type="glm::vec2" value="50 50" />
 	<property name="m_color" type="glm::vec4" value="1 1 1 1" />
 	<property name="m_repeat" type="natF32" value="1" />
@@ -18,8 +18,8 @@
 
 <component class="LifeController" version="388467471">
 	<property name="m_life" type="natS32" value="30" />
-	<property name="m_smallDamageTexture" type="ref_t" value="/data/texture/zombie2.png" />
-	<property name="m_BigDamageTexture" type="ref_t" value="/data/texture/zombie3.png" />
+	<property name="m_smallDamageTexture" type="tex_t" value="/data/texture/zombie2.png" />
+	<property name="m_BigDamageTexture" type="tex_t" value="/data/texture/zombie3.png" />
 </component>
 
 <component class="RigidBody" version="763789349">

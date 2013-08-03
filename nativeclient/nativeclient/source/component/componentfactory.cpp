@@ -1,7 +1,11 @@
 #include "component/componentfactory.h"
 
 #include "base/entity.h"
+#include "base/layer.h"
+#include "base/kernel.h"
 #include "base/serializer.h"
+
+#include "component/texturemanager.h"
 
 #include <tinyxml/tinyxml2.h>
 
@@ -92,6 +96,7 @@ Component* ComponentFactory::ParseComponent(Entity* _entity, tinyxml2::XMLElemen
 }
 
 const ref_t s_type_ref_t = Hash::Compute("ref_t");
+const ref_t s_type_tex_t = Hash::Compute("tex_t");
 const ref_t s_type_natBool = Hash::Compute("natBool");
 const ref_t s_type_natChar = Hash::Compute("natChar");
 const ref_t s_type_natU8 = Hash::Compute("natU8");
@@ -123,6 +128,25 @@ void ComponentFactory::ParseType(Serializer& _ser, tinyxml2::XMLElement* _elemen
 		if(strcmp(value, "") != 0)
 		{
 			ref = Hash::Compute(value);
+		}
+		else
+		{
+			ref = 0;
+		}
+
+		_ser << ref;
+	}
+	else if(type == s_type_tex_t)
+	{
+		const natChar* value = _element->Attribute("value");
+		ref_t ref;
+		if(strcmp(value, "") != 0)
+		{
+			ref = Hash::Compute(value);
+
+			// add it to preload
+			TextureManager* texturemanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<TextureManager>();
+			texturemanager->Preload(value);
 		}
 		else
 		{

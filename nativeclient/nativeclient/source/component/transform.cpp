@@ -50,7 +50,7 @@ glm::vec3 Transform::GetPos()
 
 glm::vec3 Transform::GetRad()
 {
-	Transform* parent = GetEntity()->GetParent()->GetComponent<Transform>();
+	/*Transform* parent = GetEntity()->GetParent()->GetComponent<Transform>();
 
 	if(parent)
 	{
@@ -59,8 +59,9 @@ glm::vec3 Transform::GetRad()
 	else
 	{
 		return m_rad;
-	}
+	}*/
 
+	return m_rad;
 }
 
 

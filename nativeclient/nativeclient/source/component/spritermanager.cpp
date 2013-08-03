@@ -172,8 +172,8 @@ void SpriterManager::LoadRessources(spriter_ressources_t& _ressources, const nat
 
 			struct ressource_sprite_t ressourceinfo;
 			ressourceinfo.m_ref = Hash::Compute(file_path.c_str());
-			ressourceinfo.m_width = static_cast<natU32>(element_file->IntAttribute("width"));
-			ressourceinfo.m_height = static_cast<natU32>(element_file->IntAttribute("height"));
+			ressourceinfo.m_size.x = static_cast<natF32>(element_file->FloatAttribute("width"));
+			ressourceinfo.m_size.y = static_cast<natF32>(element_file->FloatAttribute("height"));
 
 			_ressources[folder_id][file_id] = ressourceinfo;
 			element_file = element_file->NextSiblingElement("file");

@@ -38,6 +38,11 @@
 	<property name="m_shapeType" type="ref_t" value="SquareShape" />
 </component>
 
+<component class="SpriterAnimator" version="952492699">
+	<property name="m_animatorRef" type="ref_t" value="/data/spriter/monster/Example.scml:0" />
+	<property name="m_defaultAction" type="ref_t" value="Idle" />
+</component>
+
 <component class="Camera" version="-981956596">
 	<property name="m_effect_followMouse" type="natBool" value="0" />
 	<property name="m_efect_followMouseSmooth" type="natF32" value="0" />

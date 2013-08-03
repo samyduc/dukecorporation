@@ -6,10 +6,14 @@
 
 #include <glm/glm.hpp>
 
+#include <vector>
+
 namespace Natorium
 {
 
+class Entity;
 struct scml_sprite_t;
+struct timeline_sprite_t;
 
 static natU32 s_SpriterAnimator = Hash::Compute("SpriterAnimator");
 
@@ -29,14 +33,27 @@ public:
 	void			WriteData(Serializer& _ser);
 	void			ReadData(Serializer& _ser);
 
+	void			Play(const natChar* _name);
+	void			Play(ref_t _hash);
+
 public:
 	ref_t			m_animatorRef;
+	ref_t			m_defaultAction;
 
 public:
 
+protected:
+	void			InitAnimation();
+	void			SetupEntity(Entity* _entity, const timeline_sprite_t& _timeline);
 
 protected:
-	scml_sprite_t*	m_sprite;
+	const struct scml_sprite_t*			m_sprite;
+	natU64								m_time;
+	
+	const struct animation_sprite_t*	m_currentAnimation;
+
+	typedef std::vector<Entity*> entities_t;
+	entities_t							m_managedEntities;
 
 };
 

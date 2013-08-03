@@ -36,6 +36,7 @@ public:
 
 	Entity*			GetRootEntity() { return &m_rootEntity; }
 
+	eLayer			GetEnumLayer() const { return m_id; }
 
 protected:
 	eLayer			m_id;

@@ -28,18 +28,21 @@ void SpriterAnimator::Clone(Entity* _entity, natU32 _type) const
 	}
 
 	component->m_animatorRef = m_animatorRef;
+	component->m_defaultAction = m_defaultAction;
 }
 
 
 void SpriterAnimator::WriteData(Serializer& _ser)
 {
 	_ser << m_animatorRef;
+	_ser << m_defaultAction;
 }
 
 
 void SpriterAnimator::ReadData(Serializer& _ser)
 {
 	_ser >> m_animatorRef;
+	_ser >> m_defaultAction;
 }
 
 

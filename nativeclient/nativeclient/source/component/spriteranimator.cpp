@@ -77,6 +77,7 @@ void SpriterAnimator::OnTick(const natU64 _dt)
 
 			natF32 t = ComputeLerpTime(key, nextKey);
 			Interpolate(m_managedEntities[i], key, nextKey, t);
+			Animate(m_managedEntities[i], key);
 		}
 	}
 }
@@ -109,6 +110,14 @@ natF32 SpriterAnimator::ComputeLerpTime(const struct key_sprite_t& _a,  const st
 	return (m_time - _a.m_time) / natF32(next_time - _a.m_time);
 }
 
+natF32 SpriterAnimator::Lerp(natF32 _a, natF32 _b, natF32 _t) const
+{
+	assert(_t >= 0);
+	assert(_t <= 1);
+
+	return ((_b-_a)*_t) + _a;
+}
+
 glm::vec3 SpriterAnimator::Lerp(const glm::vec3& _a, const glm::vec3& _b, natF32 _t) const
 {
 	assert(_t >= 0);
@@ -117,14 +126,60 @@ glm::vec3 SpriterAnimator::Lerp(const glm::vec3& _a, const glm::vec3& _b, natF32
 	return ((_b-_a)*_t) + _a;
 }
 
+// http://www.brashmonkeygames.com/spriter/ScmlDocs/ScmlReference.html
+glm::vec3 SpriterAnimator::Slerp(const glm::vec3& _a, const glm::vec3& _b, natF32 _t, natS32 _spin) const
+{
+	glm::vec3 b(_b);
+
+	if(_spin == 0)
+	{
+		return _a;
+	}
+	if(_spin > 0)
+	{
+		if((_b.z - _a.z) < 0.0f)
+		{
+			b.z += s_PI*2;
+		}
+	}
+	else if( _spin < 0)
+	{
+		if((_b.z - _a.z) > 0)
+		{    
+			b.z -= s_PI*2;
+		}
+	}
+
+	return Lerp(_a, b, _t);
+}
+
 void SpriterAnimator::Interpolate(Entity* _entity, const struct key_sprite_t& _a,  const struct key_sprite_t& _b, natF32 _t)
 {
 	Transform *transform = _entity->GetComponent<Transform>();
 	SquareShape *squareshape = _entity->GetComponent<SquareShape>();
 
 	transform->m_pos = Lerp(_a.m_position, _b.m_position, _t);
+	//transform->m_rad = Slerp(_a.m_rotation, _b.m_rotation, _t, _b.m_spin);
+	transform->m_scale = Lerp(_a.m_scale, _b.m_scale, _t);
+
+	squareshape->SetAlpha(Lerp(_a.m_alpha, _b.m_alpha, _t));
+
+	// TODO : found a way to do rotation around a pivot
+	glm::vec3 pivot = Lerp(_a.m_pivot, _b.m_pivot, _t);
 }
 
+void SpriterAnimator::Animate(Entity* _entity, const struct key_sprite_t& _a)
+{
+	SquareShape *squareshape = _entity->GetComponent<SquareShape>();
+
+	if(squareshape->m_textureRef != _a.m_ressource.m_ref)
+	{
+		squareshape->m_textureRef = _a.m_ressource.m_ref;
+		squareshape->m_size = _a.m_ressource.m_size;
+
+		squareshape->Reset();
+	}
+}
 
 void SpriterAnimator::Play(const natChar* _name)
 {
@@ -220,7 +275,7 @@ void SpriterAnimator::SetupEntity(Entity* _entity, const timeline_sprite_t& _tim
 	Transform* transform = _entity->AddComponent<Transform>();
 	transform->m_pos = _timeline.m_keys[0].m_position;
 	transform->m_scale = _timeline.m_keys[0].m_scale;
-	transform->m_rad.z = glm::radians(_timeline.m_keys[0].m_rotation);
+	transform->m_rad =_timeline.m_keys[0].m_rotation;
 
 	SquareShape* squareshape = _entity->AddComponent<SquareShape>();
 	squareshape->m_color = glm::vec4(1.f, 1.f, 1.f, _timeline.m_keys[0].m_alpha);

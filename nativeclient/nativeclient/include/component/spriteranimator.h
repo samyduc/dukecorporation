@@ -50,9 +50,12 @@ protected:
 	void			ComputeNextKey();
 
 	natF32			ComputeLerpTime(const struct key_sprite_t& _a,  const struct key_sprite_t& _b) const;
+	natF32			Lerp(natF32 _a, natF32 _b, natF32 _t) const;
 	glm::vec3		Lerp(const glm::vec3& _a, const glm::vec3& _b, natF32 _t) const;
+	glm::vec3		Slerp(const glm::vec3& _a, const glm::vec3& _b, natF32 _t, natS32 _spin) const;
 
 	void			Interpolate(Entity* _entity, const struct key_sprite_t& _a,  const struct key_sprite_t& _b, natF32 _t);
+	void			Animate(Entity* _entity, const struct key_sprite_t& _a);
 
 protected:
 	const struct scml_sprite_t*			m_sprite;

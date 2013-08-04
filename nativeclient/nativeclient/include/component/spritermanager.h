@@ -33,7 +33,8 @@ struct key_sprite_t
 	glm::vec3					m_position;
 	glm::vec3					m_pivot;
 	glm::vec3					m_scale;
-	natF32						m_rotation;
+	glm::vec3					m_rotation;
+	natS32						m_spin;
 	natU32						m_z_index;
 	natF32						m_alpha;
 };

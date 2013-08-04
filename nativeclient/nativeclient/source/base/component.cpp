@@ -56,4 +56,13 @@ void Component::_DeInit()
 	m_isInit = false;
 }
 
+void Component::Reset()
+{
+	// shortcut
+	assert(m_isInit);
+
+	OnDeInit();
+	OnInit();
+}
+
 }

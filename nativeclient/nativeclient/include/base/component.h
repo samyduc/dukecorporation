@@ -41,6 +41,8 @@ public:
 	virtual void		WriteData(Serializer& _ser) = 0;
 	virtual void		ReadData(Serializer& _ser) = 0;
 
+	void				Reset();
+
 private:
 
 	void				_Init(Entity& _entity);

@@ -276,10 +276,13 @@ void SpriterManager::LoadTimelines(struct animation_sprite_t& _animation, sprite
 
 		while(key_element)
 		{
-			natU32 key_id = key_element->IntAttribute("id");
+			natU32 key_id = static_cast<natU32>(key_element->IntAttribute("id"));
+			natS32 key_spin = static_cast<natS32>(key_element->IntAttribute("spin"));
 			tinyxml2::XMLElement* object_element = key_element->FirstChildElement("object");
 
 			struct key_sprite_t& key = timeline.m_keys[key_id];
+			key.m_spin = key_spin;
+
 			key.m_pivot.x = static_cast<natF32>(object_element->FloatAttribute("pivot_x"));
 			key.m_pivot.y = static_cast<natF32>(object_element->FloatAttribute("pivot_y"));
 			key.m_pivot.z = 0.0f;
@@ -292,7 +295,9 @@ void SpriterManager::LoadTimelines(struct animation_sprite_t& _animation, sprite
 			key.m_scale.y = static_cast<natF32>(object_element->FloatAttribute("scale_y"));
 			key.m_scale.z = 0.0f;
 
-			key.m_rotation = static_cast<natF32>(object_element->FloatAttribute("angle"));
+			key.m_rotation.x = 0.0f;
+			key.m_rotation.y = 0.0f;
+			key.m_rotation.z = glm::radians(static_cast<natF32>(object_element->FloatAttribute("angle")));
 
 			const natChar* alpha = object_element->Attribute("a");
 

@@ -14,6 +14,7 @@ namespace Natorium
 class Entity;
 struct scml_sprite_t;
 struct timeline_sprite_t;
+struct key_sprite_t;
 
 static natU32 s_SpriterAnimator = Hash::Compute("SpriterAnimator");
 
@@ -44,11 +45,20 @@ public:
 
 protected:
 	void			InitAnimation();
-	void			SetupEntity(Entity* _entity, const timeline_sprite_t& _timeline);
+	void			SetupEntity(Entity* _entity, const struct timeline_sprite_t& _timeline);
+
+	void			ComputeNextKey();
+
+	natF32			ComputeLerpTime(const struct key_sprite_t& _a,  const struct key_sprite_t& _b) const;
+	glm::vec3		Lerp(const glm::vec3& _a, const glm::vec3& _b, natF32 _t) const;
+
+	void			Interpolate(Entity* _entity, const struct key_sprite_t& _a,  const struct key_sprite_t& _b, natF32 _t);
 
 protected:
 	const struct scml_sprite_t*			m_sprite;
 	natU64								m_time;
+	size_t								m_keyIndex;
+	size_t								m_keyIndexNext;
 	
 	const struct animation_sprite_t*	m_currentAnimation;
 

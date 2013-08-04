@@ -14,12 +14,16 @@
 #include "component/spritermanager.h"
 #include "component/texturemanager.h"
 
+#include <glm/gtc/type_ptr.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+
 namespace Natorium
 {
 
 SpriterAnimator::SpriterAnimator()
 	: m_animatorRef(0)
 	, m_defaultAction(0)
+	, m_keyIndex(0)
 	, m_sprite(nullptr)
 	, m_currentAnimation(nullptr)
 {
@@ -47,11 +51,33 @@ void SpriterAnimator::OnInit()
 
 void SpriterAnimator::OnTick(const natU64 _dt)
 {
-	m_time += _dt;
-
-	for(size_t i = 0; i < m_currentAnimation->m_timelines.size(); ++i)
+	if(m_currentAnimation)
 	{
+		m_time += _dt;
 
+		if(m_time > m_currentAnimation->m_duration)
+		{
+			m_time -= m_currentAnimation->m_duration;
+			m_keyIndex = 0;
+			ComputeNextKey();
+		}
+
+		// while to avoid freeze
+		if((m_keyIndex != m_currentAnimation->m_timelines[0].m_keys.size() -1) && m_currentAnimation->m_timelines[0].m_keys[m_keyIndexNext].m_time < m_time)
+		{
+			++m_keyIndex;
+			ComputeNextKey();
+		}
+
+		for(size_t i = 0; i < m_currentAnimation->m_timelines.size(); ++i)
+		{
+			const struct timeline_sprite_t& timeline = m_currentAnimation->m_timelines[i];
+			const struct key_sprite_t& key = timeline.m_keys[m_keyIndex];
+			const struct key_sprite_t& nextKey = timeline.m_keys[m_keyIndexNext];
+
+			natF32 t = ComputeLerpTime(key, nextKey);
+			Interpolate(m_managedEntities[i], key, nextKey, t);
+		}
 	}
 }
 
@@ -60,9 +86,50 @@ void SpriterAnimator::OnDeInit()
 
 }
 
+void SpriterAnimator::ComputeNextKey()
+{
+	assert(m_currentAnimation);
+
+	m_keyIndexNext = m_keyIndex + 1;
+	if(m_keyIndexNext >= m_currentAnimation->m_timelines[0].m_keys.size())
+	{
+		m_keyIndexNext = 0;
+	}
+}
+
+natF32 SpriterAnimator::ComputeLerpTime(const struct key_sprite_t& _a,  const struct key_sprite_t& _b) const
+{
+	natU64 next_time = _b.m_time;
+
+	if(next_time < _a.m_time)
+	{
+		next_time = m_currentAnimation->m_duration + _b.m_time;
+	}
+
+	return (m_time - _a.m_time) / natF32(next_time - _a.m_time);
+}
+
+glm::vec3 SpriterAnimator::Lerp(const glm::vec3& _a, const glm::vec3& _b, natF32 _t) const
+{
+	assert(_t >= 0);
+	assert(_t <= 1);
+
+	return ((_b-_a)*_t) + _a;
+}
+
+void SpriterAnimator::Interpolate(Entity* _entity, const struct key_sprite_t& _a,  const struct key_sprite_t& _b, natF32 _t)
+{
+	Transform *transform = _entity->GetComponent<Transform>();
+	SquareShape *squareshape = _entity->GetComponent<SquareShape>();
+
+	transform->m_pos = Lerp(_a.m_position, _b.m_position, _t);
+}
+
+
 void SpriterAnimator::Play(const natChar* _name)
 {
 	ref_t hash = Hash::Compute(_name);
+	Play(hash);
 }
 
 void SpriterAnimator::Play(ref_t _hash)
@@ -89,6 +156,8 @@ void SpriterAnimator::InitAnimation()
 	assert(m_currentAnimation);
 
 	m_time = 0;
+	m_keyIndex = 0;
+	ComputeNextKey();
 
 	if(m_managedEntities.size() < m_currentAnimation->m_timelines.size())
 	{

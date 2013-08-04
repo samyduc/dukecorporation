@@ -59,11 +59,14 @@ void GLRender::OnTick(const natU64 _dt)
 	Transform* transform = GetEntity()->GetComponent<Transform>();
 
 	glm::vec3 position = transform->GetPos();
-	glm::mat4 transMat(1.f);
-	transMat = glm::translate(transMat, position);
+	m_transMat = glm::mat4(1.f);
+
+	m_transMat = glm::translate(m_transMat, position);
 
 	glm::vec3 angle = transform->GetDeg();
-	m_transMat = glm::rotate(transMat, angle.z, glm::vec3(0, 0, 1));
+	m_transMat = glm::rotate(m_transMat, angle.z, glm::vec3(0, 0, 1));
+
+	//m_transMat = glm::scale(m_transMat, transform->GetScale());
 
 	if(m_shape->IsAndRemoveDirty())
 	{

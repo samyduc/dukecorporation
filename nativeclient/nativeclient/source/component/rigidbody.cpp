@@ -44,8 +44,9 @@ void RigidBody::OnInit()
 	glm::vec2 size = m_shape->GetSize();
 
 	glm::vec3 pos = m_transform->GetPos();
-	glm::vec3 rad = m_transform->GetRad();
+	glm::quat angle = m_transform->GetRot();
 	m_b2BodyDef.position.Set(pos.x / s_B2RatioPos, pos.y / s_B2RatioPos);
+	glm::vec3 rad = glm::eulerAngles(angle);
 	m_b2BodyDef.angle = rad.z;
 	m_b2BodyDef.userData = static_cast<void*>(GetEntity());
 	
@@ -78,14 +79,8 @@ void RigidBody::OnTick(const natU64 _dt)
 	m_transform->m_pos.x = b2_pos.x * s_B2RatioPos;
 	m_transform->m_pos.y = b2_pos.y * s_B2RatioPos;
 
-	m_transform->m_rad.z = m_b2Body->GetAngle();
-
-	//m_b2Body->GetLinearVelocity();
-
-	// compute forward vector
-	//m_transform->m_forward.x = glm::cos(m_transform->m_rad.z);
-	//m_transform->m_forward.y = glm::sin(m_transform->m_rad.z);
-
+	glm::vec3 angle(0.f, 0.f, m_b2Body->GetAngle());
+	m_transform->m_rot = glm::quat(angle);
 }
 
 void RigidBody::OnDeInit()
@@ -116,6 +111,13 @@ void RigidBody::OnDisable()
 {
 	assert(m_b2Body != NULL);
 	m_b2Body->SetActive(false);
+}
+
+void RigidBody::SetAngle(glm::quat& _angle) 
+{ 
+	assert(m_b2Body); 
+	glm::vec3 euler = glm::eulerAngles(_angle);
+	m_b2Body->SetTransform(m_b2Body->GetPosition(), euler.z);
 }
 
 void RigidBody::ApplyLinearImpulse(glm::vec3& _impulse)

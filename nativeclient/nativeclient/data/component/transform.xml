@@ -1,1 +1,1 @@
-<component class="Transform" version="793112338"><property name="m_pos" type="glm::vec3" value="0" /><property name="m_rad" type="glm::vec3" value="0" /><property name="m_scale" type="glm::vec3" value="0" /><property name="m_forward" type="glm::vec3" value="0" /></component>
+<component class="Transform" version="263511854"><property name="m_pos" type="glm::vec3" value="0" /><property name="m_rot" type="glm::quat" value="0" /><property name="m_scale" type="glm::vec3" value="0" /><property name="m_forward" type="glm::vec3" value="0" /></component>

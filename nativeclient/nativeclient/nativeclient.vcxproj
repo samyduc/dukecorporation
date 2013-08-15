@@ -2132,7 +2132,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>EMSCRIPTEN_TARGET</PreprocessorDefinitions>
+      <PreprocessorDefinitions>EMSCRIPTEN_TARGET;GLM_FORCE_RADIANS;</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>./include;../extern/;../extern/box2d/Box2D_v2.2.1/;../extern/physfs-2.0.3/;../extern/SOIL/src;..\extern\freetype-2.5.0\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -2147,7 +2147,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>./include;../extern/SDL-1.2.15/include;../extern/;../extern/glew-1.9.0/include;../extern/box2d/Box2D_v2.2.1/;../extern/physfs-2.0.3;../extern/SOIL/src;..\extern\freetype-2.5.0\include</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WINDOWS_TARGET;WIN32_LEAN_AND_MEAN;GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WINDOWS_TARGET;WIN32_LEAN_AND_MEAN;GLEW_STATIC;GLM_FORCE_RADIANS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <BrowseInformation>true</BrowseInformation>
       <StringPooling>true</StringPooling>
@@ -2183,7 +2183,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>EMSCRIPTEN_TARGET;FT2_BUILD_LIBRARY</PreprocessorDefinitions>
+      <PreprocessorDefinitions>EMSCRIPTEN_TARGET;GLM_FORCE_RADIANS;FT2_BUILD_LIBRARY</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>./include;../extern/;../extern/box2d/Box2D_v2.2.1/;../extern/physfs-2.0.3/;../extern/SOIL/src;source\freetype\include</AdditionalIncludeDirectories>
       <LanguageStandardMode>LanguageStandardC++11</LanguageStandardMode>
       <LanguageExtensions>EnableLanguageExtensions</LanguageExtensions>
@@ -2213,7 +2213,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>./include;../extern/SDL-1.2.15/include;../extern/;../extern/glew-1.9.0/include;../extern/box2d/Box2D_v2.2.1/;../extern/physfs-2.0.3;../extern/SOIL/src;..\extern\freetype-2.5.0\include</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WINDOWS_TARGET;WIN32_LEAN_AND_MEAN;GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WINDOWS_TARGET;WIN32_LEAN_AND_MEAN;GLEW_STATIC;GLM_FORCE_RADIANS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
     </ClCompile>
     <Link>

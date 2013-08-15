@@ -10,6 +10,8 @@
 
 #include <assert.h>
 
+#include <glm/gtc/quaternion.hpp>
+#include <glm/gtx/quaternion.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
@@ -63,8 +65,12 @@ void GLRender::OnTick(const natU64 _dt)
 
 	m_transMat = glm::translate(m_transMat, position);
 
-	glm::vec3 angle = transform->GetDeg();
-	m_transMat = glm::rotate(m_transMat, angle.z, glm::vec3(0, 0, 1));
+	glm::quat rot = transform->GetRot();
+	//glm::mat4 rotationMatrix = glm::mat4_cast(angle);
+	glm::vec3 euler = glm::eulerAngles(rot);
+	m_transMat = glm::rotate(m_transMat, euler.z, glm::vec3(0, 0, 1));
+	//m_transMat = glm::rotate(m_transMat, euler.x, glm::vec3(1, 0, 0));
+	//m_transMat =  m_transMat * rotationMatrix;
 
 	//m_transMat = glm::scale(m_transMat, transform->GetScale());
 

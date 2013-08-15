@@ -68,11 +68,10 @@ glm::vec3 Camera::GetPos()
 
 }
 
-glm::vec3 Camera::GetDeg()
+glm::quat Camera::GetRot()
 {
 	Transform* transform = GetEntity()->GetComponent<Transform>();
-
-	return transform->GetDeg();
+	return transform->GetRot();
 }
 
 glm::vec2 Camera::GetPosWorldToScreen(const glm::vec3& _world)

@@ -7,6 +7,8 @@
 #include <Box2D/Box2D.h>
 
 #include <glm/glm.hpp>
+#include <glm/gtc/quaternion.hpp>
+
 #include <assert.h>
 
 namespace Natorium
@@ -44,7 +46,7 @@ public:
 	void			ApplyLinearImpulse(glm::vec3& _impulse);
 
 	void			SetDensity(natF32 _density) { assert(m_b2Fixture); m_density = _density; m_b2Fixture->SetDensity(_density); m_b2Body->ResetMassData(); }
-	void			SetAngle(glm::vec3& _angle) { assert(m_b2Body); m_b2Body->SetTransform(m_b2Body->GetPosition(), _angle.z); }
+	void			SetAngle(glm::quat& _angle);
 
 	Shape*			GetShape() { return m_shape; }
 

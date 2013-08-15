@@ -84,7 +84,7 @@ void BaseWeapon::ShootAt(glm::vec3 _pos)
 		Shape* shape = GetEntity()->GetComponent<RigidBody>()->GetShape();
 		Transform* bullet_transform = bullet->GetComponent<Transform>();
 		bullet_transform->m_pos = transform->m_pos;
-		bullet_transform->m_rad = transform->m_rad;
+		bullet_transform->m_rot = transform->m_rot;
 
 		bullet_transform->m_forward = _pos - transform->GetPos();
 		bullet_transform->m_forward = glm::normalize(bullet_transform->m_forward);

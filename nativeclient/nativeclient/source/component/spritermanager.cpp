@@ -295,9 +295,11 @@ void SpriterManager::LoadTimelines(struct animation_sprite_t& _animation, sprite
 			key.m_scale.y = static_cast<natF32>(object_element->FloatAttribute("scale_y"));
 			key.m_scale.z = 0.0f;
 
-			key.m_rotation.x = 0.0f;
-			key.m_rotation.y = 0.0f;
-			key.m_rotation.z = glm::radians(static_cast<natF32>(object_element->FloatAttribute("angle")));
+			glm::vec3 euler;
+			euler.x = 0.0f;
+			euler.y = 0.0f;
+			euler.z = glm::radians(static_cast<natF32>(object_element->FloatAttribute("angle")));
+			key.m_rotation = glm::quat(euler);
 
 			const natChar* alpha = object_element->Attribute("a");
 

@@ -5,6 +5,8 @@
 #include <string>
 
 #include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 
 //#include <algorithm>
 #include <assert.h>
@@ -94,16 +96,14 @@ public:
 	Serializer& operator <<(const glm::vec3&);
 	Serializer& operator <<(const glm::vec4&);
 	Serializer& operator <<(const glm::mat4&);
+	Serializer& operator <<(const glm::quat&);
 
 	Serializer& operator >>(std::string&);
 	Serializer& operator >>(glm::vec2&);
 	Serializer& operator >>(glm::vec3&);
 	Serializer& operator >>(glm::vec4&);
 	Serializer& operator >>(glm::mat4&);
-
-	// the ugly
-	Serializer& operator <<(const void**);
-	Serializer& operator >>(void**);
+	Serializer& operator >>(glm::quat&);
 
 	// ref counting
 	virtual void		IncRef() { ++m_ref_nb; }

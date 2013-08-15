@@ -598,6 +598,18 @@ Serializer& Serializer::operator <<(const glm::mat4& _val)
 	return *this;
 }
 
+Serializer& Serializer::operator <<(const glm::quat& _val)
+{
+	assert(m_state == E_WRITE);
+
+	*this << _val.x;
+	*this << _val.y;
+	*this << _val.z;
+	*this << _val.w;
+
+	return *this;
+}
+
 Serializer& Serializer::operator >>(std::string& _val)
 {
 	assert(m_state == E_READ);
@@ -668,23 +680,14 @@ Serializer& Serializer::operator >>(glm::mat4& _val)
 	return *this;
 }
 
-Serializer& Serializer::operator <<(const void** _val)
+Serializer& Serializer::operator >>(glm::quat& _val)
 {
-	// Woot!
-	natU32 length = static_cast<natU32>(sizeof(void*));
+	assert(m_state == E_READ);
 
-	memcpy(m_buffer + m_cursor_pos, _val, length);
-	SetCursor(GetCursor() + length);
-
-	return *this;
-}
-
-Serializer& Serializer::operator >>(void** _val)
-{
-	natU32 length = static_cast<natU32>(sizeof(void*));
-
-	memcpy(_val, m_buffer + m_cursor_pos, length);
-	SetCursor(GetCursor() + length);
+	*this >> _val.x;
+	*this >> _val.y;
+	*this >> _val.z;
+	*this >> _val.w;
 
 	return *this;
 }

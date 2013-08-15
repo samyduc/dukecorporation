@@ -159,13 +159,20 @@ void SpriterAnimator::Interpolate(Entity* _entity, const struct key_sprite_t& _a
 	SquareShape *squareshape = _entity->GetComponent<SquareShape>();
 
 	transform->m_pos = Lerp(_a.m_position, _b.m_position, _t);
-	//transform->m_rad = Slerp(_a.m_rotation, _b.m_rotation, _t, _b.m_spin);
+	transform->m_rot = glm::slerp(_a.m_rotation, _b.m_rotation, _t);
+	//transform->m_rot = transform->m_rot * glm::quat(glm::vec3(s_PI, 0.f, 0.f));
 	transform->m_scale = Lerp(_a.m_scale, _b.m_scale, _t);
 
 	squareshape->SetAlpha(Lerp(_a.m_alpha, _b.m_alpha, _t));
 
 	// TODO : found a way to do rotation around a pivot
 	glm::vec3 pivot = Lerp(_a.m_pivot, _b.m_pivot, _t);
+
+	glm::vec3 abs_pivot(0.f);
+	abs_pivot.x = (transform->m_pos.x - (pivot.x * _a.m_ressource.m_size.x)) + _a.m_ressource.m_size.x / 2.f;
+	abs_pivot.y = (transform->m_pos.y - (pivot.y * _a.m_ressource.m_size.y)) + _a.m_ressource.m_size.y / 2.f;
+
+	transform->m_pos = abs_pivot;
 }
 
 void SpriterAnimator::Animate(Entity* _entity, const struct key_sprite_t& _a)
@@ -275,7 +282,7 @@ void SpriterAnimator::SetupEntity(Entity* _entity, const timeline_sprite_t& _tim
 	Transform* transform = _entity->AddComponent<Transform>();
 	transform->m_pos = _timeline.m_keys[0].m_position;
 	transform->m_scale = _timeline.m_keys[0].m_scale;
-	transform->m_rad =_timeline.m_keys[0].m_rotation;
+	transform->m_rot =_timeline.m_keys[0].m_rotation;
 
 	SquareShape* squareshape = _entity->AddComponent<SquareShape>();
 	squareshape->m_color = glm::vec4(1.f, 1.f, 1.f, _timeline.m_keys[0].m_alpha);

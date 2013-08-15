@@ -9,6 +9,9 @@
 
 #include <tinyxml/tinyxml2.h>
 
+#include <glm/gtc/type_ptr.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+
 #include <string>
 #include <sstream>
 #include <cassert>
@@ -114,6 +117,7 @@ const ref_t s_type_glm_vec2 = Hash::Compute("glm::vec2");
 const ref_t s_type_glm_vec3 = Hash::Compute("glm::vec3");
 const ref_t s_type_glm_vec4 = Hash::Compute("glm::vec4");
 const ref_t s_type_glm_mat4 = Hash::Compute("glm::mat4");
+const ref_t s_type_glm_quat = Hash::Compute("glm::quat");
 
 
 void ComponentFactory::ParseType(Serializer& _ser, tinyxml2::XMLElement* _element)
@@ -325,6 +329,46 @@ void ComponentFactory::ParseType(Serializer& _ser, tinyxml2::XMLElement* _elemen
 		// bored to death
 		glm::mat4 mat(0.f);
 		_ser << mat;
+	}
+	else if(type == s_type_glm_quat)
+	{
+		// ugly stl
+		const natChar* value = _element->Attribute("value");
+		std::istringstream iss(value);
+
+		std::string value0;
+		std::string value1;
+		std::string value2;
+		std::string value3;
+
+		glm::quat ret;
+		std::getline(iss, value0, ' ');
+		if(!std::getline(iss, value1, ' '))
+		{
+			value1 = "0";
+		}
+		if(!std::getline(iss, value2, ' '))
+		{
+			value2 = "0";
+		}
+		if(!std::getline(iss, value3, ' '))
+		{
+			value3 = "0";
+		}
+
+		std::istringstream iss0(value0);
+		iss0 >> ret.x;
+
+		std::istringstream iss1(value1);
+		iss1 >> ret.y;
+
+		std::istringstream iss2(value2);
+		iss2 >> ret.z;
+
+		std::istringstream iss3(value3);
+		iss3 >> ret.w;
+
+		_ser << ret;
 	}
 	else
 	{

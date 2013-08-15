@@ -10,7 +10,6 @@ namespace Natorium
 Transform::Transform()
 	: m_scale(1.0f)
 	, m_pos(0.0f)
-	, m_rad(0.0f)
 	, m_forward(0.0f)
 {
 
@@ -48,7 +47,7 @@ glm::vec3 Transform::GetPos()
 	}
 }
 
-glm::vec3 Transform::GetRad()
+glm::quat Transform::GetRot()
 {
 	/*Transform* parent = GetEntity()->GetParent()->GetComponent<Transform>();
 
@@ -61,7 +60,7 @@ glm::vec3 Transform::GetRad()
 		return m_rad;
 	}*/
 
-	return m_rad;
+	return m_rot;
 }
 
 

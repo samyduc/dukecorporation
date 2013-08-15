@@ -100,15 +100,41 @@ void CharacterController::LookAtScreen(glm::vec3& _look)
 
 	//camera->GetPosScreenToWorld(glm::vec2(10, 10));
 
+
 	natF32 vector_x = screen_pos.x - _look.x;
 	natF32 vector_y = screen_pos.y - _look.y;
 
-
+	//glm::vec3 screen(screen_pos.x, screen_pos.y, 0.f);
 	//transform->m_rad.z = glm::fastAtan(vector_y, vector_x);
-	transform->m_rad.z = std::atan2(vector_y, vector_x);
+	glm::vec3 euler(0.f);
+	euler.z = std::atan2(vector_y, vector_x);
+
+	transform->m_rot = glm::quat(euler);
+
+	glm::vec3 angle(0.f);
+
+	/*euler.z = 3* s_PI / 2;
+	transform->m_rot = glm::quat(euler);
+	angle = glm::eulerAngles(transform->m_rot);
+
+	euler.z = -1 * s_PI / 2;
+	transform->m_rot = glm::quat(euler);
+	angle = glm::eulerAngles(transform->m_rot);
+
+	euler.z = 1 * s_PI / 2;
+	transform->m_rot = glm::quat(euler);
+	angle = glm::eulerAngles(transform->m_rot);
+
+	euler.z = s_PI + s_PI / 4;
+	transform->m_rot = glm::quat(euler);
+	angle = glm::eulerAngles(transform->m_rot);
+
+	euler.z = -1 * 3 * s_PI / 4;
+	transform->m_rot = glm::quat(euler);
+	angle = glm::eulerAngles(transform->m_rot);*/
 
 	RigidBody* rigidbody = GetEntity()->GetComponent<RigidBody>();
-	rigidbody->SetAngle(transform->m_rad);
+	rigidbody->SetAngle(transform->m_rot);
 }
 
 

@@ -5,6 +5,8 @@
 #include "base/hash.h"
 
 #include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 
 namespace Natorium
 {
@@ -32,17 +34,15 @@ public:
 
 public:
 	glm::vec3		m_pos;
-	glm::vec3		m_rad;
+	glm::quat		m_rot;
 	glm::vec3		m_scale;
 
 	glm::vec3		m_forward;
 public:
 
 	glm::vec3		GetPos();
-	glm::vec3		GetRad();
+	glm::quat		GetRot();
 	glm::vec3		GetScale() { return m_scale; }
-
-	glm::vec3		GetDeg() { return glm::degrees(GetRad()); }
 
 
 protected:

@@ -5,6 +5,7 @@
 #include "base/hash.h"
 
 #include <glm/glm.hpp>
+#include <glm/gtc/quaternion.hpp>
 
 namespace Natorium
 {
@@ -28,7 +29,7 @@ public:
 	void			ReadData(Serializer& _ser);
 
 	glm::vec3		GetPos();
-	glm::vec3		GetDeg();
+	glm::quat		GetRot();
 	glm::mat4		GetViewMatrix() { return m_viewMatrix; }
 	glm::mat4		GetProjectionMatrix() { return m_projectionMatrix; }
 

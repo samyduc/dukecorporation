@@ -44,6 +44,7 @@ public:
 	glm::quat		GetRot();
 	glm::vec3		GetScale() { return m_scale; }
 
+	void			ComputeTransformMatrix(glm::mat4& _mat);
 
 protected:
 	natF32			RadToDeg(natF32 _rad);

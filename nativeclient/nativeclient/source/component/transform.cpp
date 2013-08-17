@@ -3,6 +3,11 @@
 
 #include "base/entity.h"
 
+#include <glm/gtc/quaternion.hpp>
+#include <glm/gtx/quaternion.hpp>
+#include <glm/gtc/type_ptr.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+
 namespace Natorium
 {
 
@@ -49,20 +54,34 @@ glm::vec3 Transform::GetPos()
 
 glm::quat Transform::GetRot()
 {
-	/*Transform* parent = GetEntity()->GetParent()->GetComponent<Transform>();
+	Transform* parent = GetEntity()->GetParent()->GetComponent<Transform>();
 
 	if(parent)
 	{
-		return m_rad + parent->GetRad();
+		return m_rot * parent->GetRot();
 	}
 	else
 	{
-		return m_rad;
-	}*/
-
-	return m_rot;
+		return m_rot;
+	}
 }
 
+void Transform::ComputeTransformMatrix(glm::mat4& _mat)
+{
+	Transform* parent = GetEntity()->GetParent()->GetComponent<Transform>();
 
+	if(parent)
+	{
+		parent->ComputeTransformMatrix(_mat);
+	}
+
+	// translation
+	_mat = glm::translate(_mat, m_pos);
+
+	// rotation
+	_mat *= glm::toMat4(m_rot);
+
+	// scale ?
+}
 
 }

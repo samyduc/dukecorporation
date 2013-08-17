@@ -60,19 +60,8 @@ void GLRender::OnTick(const natU64 _dt)
 
 	Transform* transform = GetEntity()->GetComponent<Transform>();
 
-	glm::vec3 position = transform->GetPos();
 	m_transMat = glm::mat4(1.f);
-
-	m_transMat = glm::translate(m_transMat, position);
-
-	glm::quat rot = transform->GetRot();
-	//glm::mat4 rotationMatrix = glm::mat4_cast(angle);
-	glm::vec3 euler = glm::eulerAngles(rot);
-	m_transMat = glm::rotate(m_transMat, euler.z, glm::vec3(0, 0, 1));
-	//m_transMat = glm::rotate(m_transMat, euler.x, glm::vec3(1, 0, 0));
-	//m_transMat =  m_transMat * rotationMatrix;
-
-	//m_transMat = glm::scale(m_transMat, transform->GetScale());
+	transform->ComputeTransformMatrix(m_transMat);
 
 	if(m_shape->IsAndRemoveDirty())
 	{

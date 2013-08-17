@@ -8,6 +8,8 @@
 #include "component/camera.h"
 #include "component/gameplay/baseweapon.h"
 #include "component/gameplay/shotgunweapon.h"
+#include "component/spritermanager.h"
+#include "component/spriteranimator.h"
 
 #include "entity/player.h"
 
@@ -72,6 +74,20 @@ void CharacterController::OnTick(const natU64 _dt)
 			m_currentWeapon->ShootAt(world_pos);
 		}
 	}
+	if(input->IsAction(Input::jump))
+	{
+		SpriterAnimator* animator = GetEntity()->GetComponent<SpriterAnimator>();
+		const struct scml_sprite_t* sprite = animator->GetSpriteSource();
+		static animationMap_t::const_iterator it = sprite->m_animations.begin();
+		
+		++it;
+		if(it == sprite->m_animations.end())
+		{
+			it = sprite->m_animations.begin();
+		}
+		
+		animator->Play(it->second.m_name.c_str());
+	}
 
 	if(impulse.x != 0.f || impulse.y != 0.f)
 	{
@@ -110,28 +126,6 @@ void CharacterController::LookAtScreen(glm::vec3& _look)
 	euler.z = std::atan2(vector_y, vector_x);
 
 	transform->m_rot = glm::quat(euler);
-
-	glm::vec3 angle(0.f);
-
-	/*euler.z = 3* s_PI / 2;
-	transform->m_rot = glm::quat(euler);
-	angle = glm::eulerAngles(transform->m_rot);
-
-	euler.z = -1 * s_PI / 2;
-	transform->m_rot = glm::quat(euler);
-	angle = glm::eulerAngles(transform->m_rot);
-
-	euler.z = 1 * s_PI / 2;
-	transform->m_rot = glm::quat(euler);
-	angle = glm::eulerAngles(transform->m_rot);
-
-	euler.z = s_PI + s_PI / 4;
-	transform->m_rot = glm::quat(euler);
-	angle = glm::eulerAngles(transform->m_rot);
-
-	euler.z = -1 * 3 * s_PI / 4;
-	transform->m_rot = glm::quat(euler);
-	angle = glm::eulerAngles(transform->m_rot);*/
 
 	RigidBody* rigidbody = GetEntity()->GetComponent<RigidBody>();
 	rigidbody->SetAngle(transform->m_rot);

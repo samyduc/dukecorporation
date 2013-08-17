@@ -118,39 +118,13 @@ natF32 SpriterAnimator::Lerp(natF32 _a, natF32 _b, natF32 _t) const
 	return ((_b-_a)*_t) + _a;
 }
 
+// http://www.brashmonkeygames.com/spriter/ScmlDocs/ScmlReference.html
 glm::vec3 SpriterAnimator::Lerp(const glm::vec3& _a, const glm::vec3& _b, natF32 _t) const
 {
 	assert(_t >= 0);
 	assert(_t <= 1);
 
 	return ((_b-_a)*_t) + _a;
-}
-
-// http://www.brashmonkeygames.com/spriter/ScmlDocs/ScmlReference.html
-glm::vec3 SpriterAnimator::Slerp(const glm::vec3& _a, const glm::vec3& _b, natF32 _t, natS32 _spin) const
-{
-	glm::vec3 b(_b);
-
-	if(_spin == 0)
-	{
-		return _a;
-	}
-	if(_spin > 0)
-	{
-		if((_b.z - _a.z) < 0.0f)
-		{
-			b.z += s_PI*2;
-		}
-	}
-	else if( _spin < 0)
-	{
-		if((_b.z - _a.z) > 0)
-		{    
-			b.z -= s_PI*2;
-		}
-	}
-
-	return Lerp(_a, b, _t);
 }
 
 void SpriterAnimator::Interpolate(Entity* _entity, const struct key_sprite_t& _a,  const struct key_sprite_t& _b, natF32 _t)
@@ -198,7 +172,7 @@ void SpriterAnimator::Play(ref_t _hash)
 {
 	assert(m_sprite);
 
-	const animationMap_t::const_iterator it = m_sprite->m_animations.find(_hash);
+	animationMap_t::const_iterator it = m_sprite->m_animations.find(_hash);
 
 	if(it != m_sprite->m_animations.end())
 	{
@@ -221,53 +195,52 @@ void SpriterAnimator::InitAnimation()
 	m_keyIndex = 0;
 	ComputeNextKey();
 
-	if(m_managedEntities.size() < m_currentAnimation->m_timelines.size())
+	//if(m_managedEntities.size() <= m_currentAnimation->m_timelines.size())
+
+	entities_t entities_to_add;
+	// create missing entities
+	for(size_t i = m_managedEntities.size(); i < m_currentAnimation->m_timelines.size(); ++i)
 	{
-		entities_t entities_to_add;
-		// create missing entities
-		for(size_t i = m_managedEntities.size(); i < m_currentAnimation->m_timelines.size(); ++i)
-		{
-			Entity* entity = new Entity();
-			entities_to_add.push_back(entity);
-		}
+		Entity* entity = new Entity();
+		entities_to_add.push_back(entity);
+	}
 		
-		// entity settings
-		size_t original_size = m_managedEntities.size();
-		for(size_t i = 0; i < m_currentAnimation->m_timelines.size(); ++i)
+	// entity settings
+	size_t original_size = m_managedEntities.size();
+	for(size_t i = 0; i < m_currentAnimation->m_timelines.size(); ++i)
+	{
+		const timeline_sprite_t& timeline = m_currentAnimation->m_timelines[i];
+		Entity* entity;
+		natBool is_new = false;
+
+		if(i < original_size)
 		{
-			const timeline_sprite_t& timeline = m_currentAnimation->m_timelines[i];
-			Entity* entity;
-			natBool is_new = false;
-
-			if(i < original_size)
-			{
-				entity = m_managedEntities[i];
-			}
-			else
-			{
-				entity = entities_to_add[i - original_size];
-				is_new = true;
-			}
-
-			SetupEntity(entity, timeline);
-
-			if(is_new)
-			{
-				GetEntity()->GetKernel()->AddEntity(GetEntity()->GetLayer()->GetEnumLayer(), entity, GetEntity());
-				m_managedEntities.push_back(entity);
-			}
-			else
-			{
-				entity->Reset();
-			}
+			entity = m_managedEntities[i];
+		}
+		else
+		{
+			entity = entities_to_add[i - original_size];
+			is_new = true;
 		}
 
-		// if more entity than necessary, deactivate the rest
-		for(size_t i = m_currentAnimation->m_timelines.size(); i < m_managedEntities.size(); ++i)
+		SetupEntity(entity, timeline);
+
+		if(is_new)
 		{
-			Entity* entity = m_managedEntities[i];
-			entity->SetEnabled(false);
+			GetEntity()->GetKernel()->AddEntity(GetEntity()->GetLayer()->GetEnumLayer(), entity, GetEntity());
+			m_managedEntities.push_back(entity);
 		}
+		else
+		{
+			entity->Reset();
+		}
+	}
+
+	// if more entity than necessary, deactivate the rest
+	for(size_t i = m_currentAnimation->m_timelines.size(); i < m_managedEntities.size(); ++i)
+	{
+		Entity* entity = m_managedEntities[i];
+		entity->SetEnabled(false);
 	}
 }
 

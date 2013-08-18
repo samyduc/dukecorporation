@@ -284,7 +284,17 @@ void SpriterManager::LoadTimelines(struct animation_sprite_t& _animation, sprite
 			key.m_spin = key_spin;
 
 			key.m_pivot.x = static_cast<natF32>(object_element->FloatAttribute("pivot_x"));
-			key.m_pivot.y = static_cast<natF32>(object_element->FloatAttribute("pivot_y"));
+
+			const natChar* pivot_y = object_element->Attribute("pivot_y");
+			if(pivot_y != nullptr)
+			{
+				key.m_pivot.y = static_cast<natF32>(object_element->FloatAttribute("pivot_y"));
+			}
+			else
+			{
+				key.m_pivot.y = 1.0f;
+			}
+
 			key.m_pivot.z = 0.0f;
 
 			key.m_position.x = static_cast<natF32>(object_element->FloatAttribute("x"));

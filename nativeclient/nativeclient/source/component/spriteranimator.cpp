@@ -143,6 +143,8 @@ void SpriterAnimator::Interpolate(Entity* _entity, const struct key_sprite_t& _a
 	glm::vec3 pivot = Lerp(_a.m_pivot, _b.m_pivot, _t);
 
 	glm::vec3 abs_pivot(0.f);
+	//glm::vec3 abs_pivot = transform->m_pos + _a.m_ressource.m_size.x / 2.f;
+	
 	abs_pivot.x = (transform->m_pos.x - (pivot.x * _a.m_ressource.m_size.x)) + _a.m_ressource.m_size.x / 2.f;
 	abs_pivot.y = (transform->m_pos.y - (pivot.y * _a.m_ressource.m_size.y)) + _a.m_ressource.m_size.y / 2.f;
 

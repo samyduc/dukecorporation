@@ -291,9 +291,26 @@ void SpriterManager::LoadTimelines(struct animation_sprite_t& _animation, sprite
 			key.m_position.y = static_cast<natF32>(object_element->FloatAttribute("y"));
 			key.m_position.z = 0.0f;
 
-			key.m_scale.x = static_cast<natF32>(object_element->FloatAttribute("scale_x"));
-			key.m_scale.y = static_cast<natF32>(object_element->FloatAttribute("scale_y"));
-			key.m_scale.z = 0.0f;
+			const natChar* scale_x = object_element->Attribute("scale_x");
+			if(scale_x != nullptr)
+			{
+				key.m_scale.x = static_cast<natF32>(object_element->FloatAttribute("scale_x"));
+			}
+			else
+			{
+				key.m_scale.x = 1.0f;
+			}
+
+			const natChar* scale_y = object_element->Attribute("scale_y");
+			if(scale_y != nullptr)
+			{
+				key.m_scale.y = static_cast<natF32>(object_element->FloatAttribute("scale_y"));
+			}
+			else
+			{
+				key.m_scale.y = 1.0f;
+			}
+			key.m_scale.z = 1.0f;
 
 			glm::vec3 euler;
 			euler.x = 0.0f;
@@ -302,7 +319,6 @@ void SpriterManager::LoadTimelines(struct animation_sprite_t& _animation, sprite
 			key.m_rotation = glm::quat(euler);
 
 			const natChar* alpha = object_element->Attribute("a");
-
 			if(alpha != nullptr)
 			{
 				key.m_alpha = static_cast<natF32>(object_element->FloatAttribute("a"));

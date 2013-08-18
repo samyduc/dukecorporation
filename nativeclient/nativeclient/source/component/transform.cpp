@@ -81,7 +81,8 @@ void Transform::ComputeTransformMatrix(glm::mat4& _mat)
 	// rotation
 	_mat *= glm::toMat4(m_rot);
 
-	// scale ?
+	// scale
+	_mat = glm::scale(_mat, m_scale);
 }
 
 }

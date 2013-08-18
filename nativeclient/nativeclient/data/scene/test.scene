@@ -7,27 +7,24 @@
 <entity prefab="/data/prefab/player.prefab" layer="2">
 	<component class="Transform" version="-1904110229">
 		<property name="m_pos" type="glm::vec3" value="100 100 0" />
-		<property name="m_rad" type="glm::vec3" value="0" />
-		<property name="m_scale" type="glm::vec3" value="0" />
-		<property name="m_forward" type="glm::vec3" value="0" />
+		<property name="m_rot" type="glm::quat" value="0" />
+		<property name="m_scale" type="glm::vec3" value="1 1 1" />
 	</component>
 </entity>
 
 <entity prefab="/data/prefab/spawnercivilian.prefab" layer="4">
 	<component class="Transform" version="-1904110229">
 		<property name="m_pos" type="glm::vec3" value="1024 0 0" />
-		<property name="m_rad" type="glm::vec3" value="0" />
-		<property name="m_scale" type="glm::vec3" value="0" />
-		<property name="m_forward" type="glm::vec3" value="0" />
+		<property name="m_rot" type="glm::quat" value="1 1 1" />
+		<property name="m_scale" type="glm::vec3" value="1 1 1" />
 	</component>
 </entity>
 
 <entity prefab="/data/prefab/spawnercivilian.prefab" layer="4" >
 	<component class="Transform" version="-1904110229">
 		<property name="m_pos" type="glm::vec3" value="-100 -100 0" />
-		<property name="m_rad" type="glm::vec3" value="0" />
-		<property name="m_scale" type="glm::vec3" value="0" />
-		<property name="m_forward" type="glm::vec3" value="0" />
+		<property name="m_rot" type="glm::quat" value="0" />
+		<property name="m_scale" type="glm::vec3" value="1 1 1" />
 	</component>
 </entity>
 

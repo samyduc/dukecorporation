@@ -14,6 +14,7 @@
 
 #include "tinyxml/tinyxml2.h"
 
+
 #include <cassert>
 #include <sstream>
 
@@ -168,7 +169,7 @@ void SpriterManager::LoadRessources(spriter_ressources_t& _ressources, const nat
 
 			std::string file_path;
 			filemanager->ConcatenatePath(_baseDir, file_relativePath, file_path);
-			texturemanager->Preload(file_path.c_str());
+			texturemanager->Preload(file_path.c_str(), FLAG_MIPMAPS | FLAG_COMPRESS_TO_DXT | FLAG_TEXTURE_REPEATS);
 
 			struct ressource_sprite_t ressourceinfo;
 			ressourceinfo.m_ref = Hash::Compute(file_path.c_str());
@@ -274,9 +275,10 @@ void SpriterManager::LoadTimelines(struct animation_sprite_t& _animation, sprite
 
 		tinyxml2::XMLElement* key_element = element->FirstChildElement("key");
 
+		natU32 key_id;
 		while(key_element)
 		{
-			natU32 key_id = static_cast<natU32>(key_element->IntAttribute("id"));
+			key_id = static_cast<natU32>(key_element->IntAttribute("id"));
 			natS32 key_spin = static_cast<natS32>(key_element->IntAttribute("spin"));
 			tinyxml2::XMLElement* object_element = key_element->FirstChildElement("object");
 
@@ -343,6 +345,12 @@ void SpriterManager::LoadTimelines(struct animation_sprite_t& _animation, sprite
 			key.m_ressource = _ressources[folder_id][file_id];
 
 			key_element = key_element->NextSiblingElement("key");
+		}
+
+		// clean unused key
+		while(key_id+1 < timeline.m_keys.size())
+		{
+			timeline.m_keys.pop_back();
 		}
 
 		element = element->NextSiblingElement("timeline");

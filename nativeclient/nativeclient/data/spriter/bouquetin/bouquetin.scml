@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b4">
+    <folder id="0" name="pics">
+        <file id="0" name="pics/minibouc.png" width="88" height="88" pivot_x="0" pivot_y="1"/>
+        <file id="1" name="pics/patte.png" width="4" height="12" pivot_x="0" pivot_y="1"/>
+    </folder>
+    <folder id="1" name="/pics">
+        <file id="0" name="/pics/minibouc.png" width="88" height="88" pivot_x="0" pivot_y="1"/>
+        <file id="1" name="/pics/patte.png" width="4" height="12" pivot_x="0" pivot_y="1"/>
+    </folder>
+    <entity id="0" name="entity_000">
+        <animation id="0" name="walk" length="1000">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" name="minibouc" folder="1" file="0" abs_x="-55.849057" abs_y="33.207547" abs_pivot_x="0" abs_pivot_y="1" abs_angle="19.117009" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" name="patte" folder="1" file="1" abs_x="-21.886792" abs_y="-5.660377" abs_pivot_x="0" abs_pivot_y="1" abs_angle="360" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" name="patte_000" folder="1" file="1" abs_x="-16.981132" abs_y="-6.415094" abs_pivot_x="0" abs_pivot_y="1" abs_angle="360" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="2" key="0" z_index="2"/>
+                    <object_ref id="3" name="patte_001" folder="1" file="1" abs_x="12.830189" abs_y="-10.566038" abs_pivot_x="0" abs_pivot_y="1" abs_angle="360" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="3" key="0" z_index="3"/>
+                    <object_ref id="4" name="patte_002" folder="1" file="1" abs_x="19.622642" abs_y="-5.283019" abs_pivot_x="0" abs_pivot_y="1" abs_angle="360" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="4" key="0" z_index="4"/>
+                </key>
+                <key id="1" time="392">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="1" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="0" z_index="3"/>
+                    <object_ref id="4" timeline="4" key="1" z_index="4"/>
+                </key>
+                <key id="2" time="667">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="1" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="2" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="1" z_index="3"/>
+                    <object_ref id="4" timeline="4" key="2" z_index="4"/>
+                </key>
+                <key id="3" time="849">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="2" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="3" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="2" z_index="3"/>
+                    <object_ref id="4" timeline="4" key="3" z_index="4"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="minibouc">
+                <key id="0" spin="0">
+                    <object folder="1" file="0" x="-55.849057" y="33.207547" angle="19.117009"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="patte">
+                <key id="0">
+                    <object folder="1" file="1" x="-21.886792" y="-5.660377"/>
+                </key>
+                <key id="1" time="667">
+                    <object folder="1" file="1" x="-21.886792" y="-5.660377" angle="14.036243" scale_y="1"/>
+                </key>
+                <key id="2" time="849" spin="-1">
+                    <object folder="1" file="1" x="-21.886792" y="-5.660377" angle="20.556045" scale_y="1"/>
+                </key>
+            </timeline>
+            <timeline id="2" name="patte_000">
+                <key id="0">
+                    <object folder="1" file="1" x="-16.981132" y="-6.415094"/>
+                </key>
+                <key id="1" time="392" spin="-1">
+                    <object folder="1" file="1" x="-16.981132" y="-6.415094" angle="23.962489" scale_y="1"/>
+                </key>
+                <key id="2" time="667" spin="-1">
+                    <object folder="1" file="1" x="-16.981132" y="-6.415094" angle="347.905243" scale_x="1" scale_y="1"/>
+                </key>
+                <key id="3" time="849">
+                    <object folder="1" file="1" x="-16.981132" y="-6.415094" angle="320.710593" scale_x="1"/>
+                </key>
+            </timeline>
+            <timeline id="3" name="patte_001">
+                <key id="0">
+                    <object folder="1" file="1" x="12.830189" y="-10.566038"/>
+                </key>
+                <key id="1" time="667">
+                    <object folder="1" file="1" x="12.830189" y="-10.566038" angle="12.200469" scale_x="1" scale_y="1"/>
+                </key>
+                <key id="2" time="849" spin="-1">
+                    <object folder="1" file="1" x="12.830189" y="-10.566038" angle="29.427456" scale_x="1" scale_y="1"/>
+                </key>
+            </timeline>
+            <timeline id="4" name="patte_002">
+                <key id="0">
+                    <object folder="1" file="1" x="19.622642" y="-5.283019"/>
+                </key>
+                <key id="1" time="392" spin="-1">
+                    <object folder="1" file="1" x="19.622642" y="-5.283019" angle="29.475889" scale_x="1" scale_y="1"/>
+                </key>
+                <key id="2" time="667" spin="-1">
+                    <object folder="1" file="1" x="19.622642" y="-5.283019" angle="355.236358" scale_x="1" scale_y="1"/>
+                </key>
+                <key id="3" time="849">
+                    <object folder="1" file="1" x="19.622642" y="-5.283019" angle="340.016893" scale_x="1" scale_y="1"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="1" name="jump" length="1000">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" name="minibouc_000" folder="1" file="0" abs_x="-47.924528" abs_y="43.018868" abs_pivot_x="0" abs_pivot_y="1" abs_angle="6.241914" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" name="patte_003" folder="1" file="1" abs_x="-23.396226" abs_y="-3.396226" abs_pivot_x="0" abs_pivot_y="1" abs_angle="360" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" name="patte_004" folder="1" file="1" abs_x="-16.981132" abs_y="-5.283019" abs_pivot_x="0" abs_pivot_y="1" abs_angle="360" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="2" key="0" z_index="2"/>
+                    <object_ref id="3" name="patte_005" folder="1" file="1" abs_x="10.943396" abs_y="-12.830189" abs_pivot_x="0" abs_pivot_y="1" abs_angle="360" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="3" key="0" z_index="3"/>
+                    <object_ref id="4" name="patte_006" folder="1" file="1" abs_x="17.735849" abs_y="-11.320755" abs_pivot_x="0" abs_pivot_y="1" abs_angle="360" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="4" key="0" z_index="4"/>
+                </key>
+                <key id="1" time="456">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="1" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="1" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="1" z_index="3"/>
+                    <object_ref id="4" timeline="4" key="1" z_index="4"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="minibouc_000">
+                <key id="0" spin="0">
+                    <object folder="1" file="0" x="-47.924528" y="43.018868" angle="6.241914" scale_x="1"/>
+                </key>
+                <key id="1" time="456" spin="0">
+                    <object folder="1" file="0" x="-41.886792" y="63.018868" angle="6.241914" scale_x="1"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="patte_003">
+                <key id="0" spin="-1">
+                    <object folder="1" file="1" x="-23.396226" y="-3.396226"/>
+                </key>
+                <key id="1" time="456">
+                    <object folder="1" file="1" x="-17.358491" y="16.603774" angle="339.676863" scale_x="1" scale_y="1"/>
+                </key>
+            </timeline>
+            <timeline id="2" name="patte_004">
+                <key id="0" spin="-1">
+                    <object folder="1" file="1" x="-16.981132" y="-5.283019"/>
+                </key>
+                <key id="1" time="456">
+                    <object folder="1" file="1" x="-10.943396" y="14.716981" angle="331.82141" scale_x="1"/>
+                </key>
+            </timeline>
+            <timeline id="3" name="patte_005">
+                <key id="0" spin="-1">
+                    <object folder="1" file="1" x="10.943396" y="-12.830189"/>
+                </key>
+                <key id="1" time="456">
+                    <object folder="1" file="1" x="16.981132" y="7.169811" angle="336.037511" scale_x="1" scale_y="1"/>
+                </key>
+            </timeline>
+            <timeline id="4" name="patte_006">
+                <key id="0" spin="-1">
+                    <object folder="1" file="1" x="17.735849" y="-11.320755"/>
+                </key>
+                <key id="1" time="456">
+                    <object folder="1" file="1" x="23.773585" y="8.679245" angle="335.376435" scale_y="1"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="2" name="idle" length="1000">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" name="minibouc_001" folder="1" file="0" abs_x="-56.226415" abs_y="34.339623" abs_pivot_x="0" abs_pivot_y="1" abs_angle="18.570721" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" name="patte_007" folder="1" file="1" abs_x="-21.886792" abs_y="-3.018868" abs_pivot_x="0" abs_pivot_y="1" abs_angle="360" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" name="patte_008" folder="1" file="1" abs_x="-13.584906" abs_y="-4.150943" abs_pivot_x="0" abs_pivot_y="1" abs_angle="360" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="2" key="0" z_index="2"/>
+                    <object_ref id="3" name="patte_009" folder="1" file="1" abs_x="7.54717" abs_y="-9.056604" abs_pivot_x="0" abs_pivot_y="1" abs_angle="360" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="3" key="0" z_index="3"/>
+                    <object_ref id="4" name="patte_010" folder="1" file="1" abs_x="16.226415" abs_y="-7.169811" abs_pivot_x="0" abs_pivot_y="1" abs_angle="360" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="4" key="0" z_index="4"/>
+                </key>
+                <key id="1" time="469">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="0" z_index="3"/>
+                    <object_ref id="4" timeline="4" key="0" z_index="4"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="minibouc_001">
+                <key id="0">
+                    <object folder="1" file="0" x="-56.226415" y="34.339623" angle="18.570721"/>
+                </key>
+                <key id="1" time="469" spin="-1">
+                    <object folder="1" file="0" x="-56.226415" y="34.339623" angle="20.095231"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="patte_007">
+                <key id="0" spin="0">
+                    <object folder="1" file="1" x="-21.886792" y="-3.018868"/>
+                </key>
+            </timeline>
+            <timeline id="2" name="patte_008">
+                <key id="0" spin="0">
+                    <object folder="1" file="1" x="-13.584906" y="-4.150943"/>
+                </key>
+            </timeline>
+            <timeline id="3" name="patte_009">
+                <key id="0" spin="0">
+                    <object folder="1" file="1" x="7.54717" y="-9.056604"/>
+                </key>
+            </timeline>
+            <timeline id="4" name="patte_010">
+                <key id="0" spin="0">
+                    <object folder="1" file="1" x="16.226415" y="-7.169811"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>

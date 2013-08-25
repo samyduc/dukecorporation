@@ -49,7 +49,8 @@ void SceneManager::OnInit()
 	fontmanager->Load("/data/font/StalinistOne-Regular.ttf", 100);
 	fontmanager->Load("/data/font/StalinistOne-Regular.ttf", 12);
 
-	Load("/data/scene/test.scene");
+	//Load("/data/scene/test.scene");
+	Load("/data/scene/bougon.scene");
 
 
 	// prefabs
@@ -131,9 +132,10 @@ void SceneManager::Load(const natChar* _path)
 		GetEntity()->GetKernel()->AddEntity(static_cast<Layer::eLayer>(layer), entity);
 		element = element->NextSiblingElement();
 
-		// ugly hack to remove
+		// ugly hack to remove !!!
 		ref_t hash_player = Hash::Compute("/data/prefab/player.prefab");
-		if(Hash::Compute(prefab_path) == hash_player)
+		ref_t hash_camera = Hash::Compute("/data/prefab/camera.prefab");
+		if(Hash::Compute(prefab_path) == hash_player || Hash::Compute(prefab_path) == hash_camera)
 		{
 			Camera* camera = entity->GetComponent<Camera>();
 			GLManager* glmanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<GLManager>();

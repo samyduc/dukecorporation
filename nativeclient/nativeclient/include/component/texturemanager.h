@@ -16,6 +16,7 @@
 
 #endif
 
+
 #include <string>
 #include <map>
 
@@ -29,6 +30,20 @@ struct TextureSimple
 {
 	natU8*	m_buffer;
 	size_t	m_size;
+};
+
+struct PreloadTextureSimple
+{
+	std::string m_path;
+	size_t		m_option;
+};
+
+enum TextureOptions
+{
+	FLAG_MIPMAPS = 2,
+	FLAG_INVERT_Y = 16,
+	FLAG_COMPRESS_TO_DXT = 32,
+	FLAG_TEXTURE_REPEATS = 33
 };
 
 class TextureManager : public Component
@@ -49,20 +64,20 @@ public:
 
 	void			InitFromDirectory(const natChar* _path);
 
-	void			Preload(const natChar* _path);
-	GLuint			Load(const natChar* _path);
+	void			Preload(const natChar* _path, size_t _options=FLAG_MIPMAPS | FLAG_INVERT_Y | FLAG_COMPRESS_TO_DXT | FLAG_TEXTURE_REPEATS);
+	GLuint			Load(const natChar* _path, size_t _options=FLAG_MIPMAPS | FLAG_INVERT_Y | FLAG_COMPRESS_TO_DXT | FLAG_TEXTURE_REPEATS);
 
 	GLuint			Get(const natChar* _path);
 	GLuint			Get(natU32 _id);
 
 protected:
-	GLuint			Load(const natU8* _bytes, size_t _size);
+	GLuint			Load(const natU8* _bytes, size_t _size, size_t _options);
 
 private:
 	typedef std::map<tex_t, GLuint> textures_ref_t;
 	textures_ref_t	m_textures;
 
-	typedef std::map<tex_t, std::string> textures_path_t;
+	typedef std::map<tex_t, struct PreloadTextureSimple> textures_path_t;
 	textures_path_t m_preloads;
 
 	typedef std::map<GLuint, struct TextureSimple> textures_buf_t;

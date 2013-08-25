@@ -18,7 +18,7 @@
 #include "component/spritermanager.h"
 #include "component/charactercontroller.h"
 #include "component/fontmanager.h"
-#include "component/physicsmanager.h"
+#include "component/spriteranimatorslave.h"
 #include "component/texturemanager.h"
 #include "component/sdlinput.h"
 #include "component/ui/fpscounter.h"
@@ -30,6 +30,7 @@
 #include "component/scenemanager.h"
 #include "component/squareshape.h"
 #include "component/gameplay/bulletcontroller.h"
+#include "component/physicsmanager.h"
 #include "component/gameplay/spawner.h"
 #include "component/filemanager.h"
 #include "component/prefabmanager.h"
@@ -56,7 +57,7 @@ void ComponentFactory::PopulateFactory()
 	m_componentFactory[SpriterManager::GetType()] = new SpriterManager();
 	m_componentFactory[CharacterController::GetType()] = new CharacterController();
 	m_componentFactory[FontManager::GetType()] = new FontManager();
-	m_componentFactory[PhysicsManager::GetType()] = new PhysicsManager();
+	m_componentFactory[SpriterAnimatorSlave::GetType()] = new SpriterAnimatorSlave();
 	m_componentFactory[TextureManager::GetType()] = new TextureManager();
 	m_componentFactory[SDLInput::GetType()] = new SDLInput();
 	m_componentFactory[FPSCounter::GetType()] = new FPSCounter();
@@ -68,6 +69,7 @@ void ComponentFactory::PopulateFactory()
 	m_componentFactory[SceneManager::GetType()] = new SceneManager();
 	m_componentFactory[SquareShape::GetType()] = new SquareShape();
 	m_componentFactory[BulletController::GetType()] = new BulletController();
+	m_componentFactory[PhysicsManager::GetType()] = new PhysicsManager();
 	m_componentFactory[Spawner::GetType()] = new Spawner();
 	m_componentFactory[FileManager::GetType()] = new FileManager();
 	m_componentFactory[PrefabManager::GetType()] = new PrefabManager();

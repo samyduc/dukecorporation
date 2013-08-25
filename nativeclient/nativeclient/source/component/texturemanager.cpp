@@ -55,10 +55,13 @@ void TextureManager::OnDeInit()
 	m_textures.clear();
 }
 
-void TextureManager::Preload(const natChar* _path)
+void TextureManager::Preload(const natChar* _path, size_t _options)
 {
 	ref_t hash = Hash::Compute(_path);
-	m_preloads[hash] = _path;
+	struct PreloadTextureSimple preload;
+	preload.m_path = _path;
+	preload.m_option = _options;
+	m_preloads[hash] = preload;
 }
 
 GLuint TextureManager::Get(const natChar* _path)
@@ -82,15 +85,15 @@ GLuint TextureManager::Get(natU32 _id)
 		textures_path_t::const_iterator it_path = m_preloads.find(_id);
 		if(it_path != m_preloads.end())
 		{
-			const natChar* path = (it_path->second).c_str();
-			ret = Load(path);
+			const struct PreloadTextureSimple &preload = (it_path->second);
+			ret = Load(preload.m_path.c_str(), preload.m_option);
 		}
 	}
 
 	return ret;
 }
 
-GLuint TextureManager::Load(const natChar* _path)
+GLuint TextureManager::Load(const natChar* _path, size_t _options)
 {
 	// not protected against multiple loading, get should do this, can leak on m_buffers
 	natU32 hash = Hash::Compute(_path);
@@ -107,21 +110,21 @@ GLuint TextureManager::Load(const natChar* _path)
 	texture_simple.m_size = size;
 	m_buffers[hash] = texture_simple;
 
-	ret = Load(buffer, size);
+	ret = Load(buffer, size, _options);
 	m_textures[hash] = ret;
 
 	return ret;
 }
 
 
-GLuint TextureManager::Load(const natU8* _bytes, size_t _size)
+GLuint TextureManager::Load(const natU8* _bytes, size_t _size, size_t _options)
 {
 	GLuint ret = SOIL_load_OGL_texture_from_memory(
 		_bytes,
 		static_cast<int>(_size),
 		SOIL_LOAD_AUTO,
 		SOIL_CREATE_NEW_ID,
-		SOIL_FLAG_MIPMAPS | SOIL_FLAG_INVERT_Y | SOIL_FLAG_COMPRESS_TO_DXT | SOIL_FLAG_TEXTURE_REPEATS
+		(unsigned int)_options
 	);
 
 	return ret;

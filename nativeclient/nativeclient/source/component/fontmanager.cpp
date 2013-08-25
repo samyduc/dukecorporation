@@ -26,8 +26,10 @@ FontManager::~FontManager()
 
 void FontManager::OnInit()
 {
+#if !defined(EMSCRIPTEN_TARGET)
 	FT_Error error = FT_Init_FreeType( &m_ft_library );
 	assert(error == 0);
+#endif
 }
 
 
@@ -40,8 +42,9 @@ void FontManager::OnDeInit()
 {
 	// TODO: free a lot of stuff
 	// WARNING : it leaks for the moment
-
+#if !defined(EMSCRIPTEN_TARGET)
 	FT_Done_FreeType(m_ft_library);
+#endif
 }
 
 Font* FontManager::Get(const natChar* _path, natU32 _fontSize)
@@ -94,6 +97,7 @@ void FontManager::Load(const natChar* _path, natU32 _fontSize)
 // algorithm courtesy of http://damianpaz.wordpress.com/2011/10/09/load-truetype-fonts-with-freetype2-and-build-an-opengl-vertex-array-to-render-text/
 Font* FontManager::Load(const natU8* _buffer, size_t _size, natU32 _fontSize)
 {
+#if !defined(EMSCRIPTEN_TARGET)
 	Font* font = new Font();
 	FT_Face ft_face;
 
@@ -233,6 +237,9 @@ Font* FontManager::Load(const natU8* _buffer, size_t _size, natU32 _fontSize)
 	FT_Done_Face(ft_face);
 
 	return font;
+#else
+	return nullptr;
+#endif
 }
 
 void FontManager::fill_texture_data(size_t ch, Font::font_info_t* font, natU32 texture_width, natU8* texture_data)

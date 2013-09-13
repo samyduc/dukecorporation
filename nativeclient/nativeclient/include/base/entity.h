@@ -34,6 +34,7 @@ class Entity
 public:
 
 	friend class Layer;
+	friend class Kernel;
 
 						Entity();
 	virtual				~Entity();
@@ -161,6 +162,8 @@ private:
 	Entity*				m_parent;
 
 	natU64				m_id;
+
+protected:
 	natBool				m_isInit;
 
 	natBool				m_enabled;

@@ -95,7 +95,7 @@ Component* ComponentFactory::ParseComponent(Entity* _entity, tinyxml2::XMLElemen
 	component->ReadData(serializer);
 	serializer.Close();
 
-	return nullptr;
+	return component;
 }
 
 const ref_t s_type_ref_t = Hash::Compute("ref_t");

@@ -45,12 +45,14 @@ void SceneManager::OnInit()
 
 
 	FontManager* fontmanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<FontManager>();
+	assert(fontmanager);
 	fontmanager->Load("/data/font/EBGaramond-Regular.ttf", 50);
 	fontmanager->Load("/data/font/StalinistOne-Regular.ttf", 100);
 	fontmanager->Load("/data/font/StalinistOne-Regular.ttf", 12);
 
 	//Load("/data/scene/test.scene");
-	Load("/data/scene/bougon.scene");
+	//Load("/data/scene/bougon.scene");
+	Load(m_bootScene.c_str());
 
 
 	// prefabs

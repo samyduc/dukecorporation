@@ -7,13 +7,11 @@
 #include "component/scenemanager.h"
 #include "component/playersmanager.h"
 #include "component/filemanager.h"
-#include "component/texturemanager.h"
-#include "component/fontmanager.h"
 #include "component/componentfactory.h"
-#include "component/prefabmanager.h"
-#include "component/spritermanager.h"
 
-#include <assert.h>
+#include "tinyxml/tinyxml2.h"
+
+#include <cassert>
 
 namespace Natorium
 {
@@ -50,13 +48,10 @@ void Kernel::Init()
 	m_currentId = 0;
 	m_acc = 0;
 
-	// add manager on layer 0
-	Layer* layer = m_layers[0];
-	Entity* entity = layer->GetRootEntity();
+	// start boot loading
+	BootLoader("/data/boot.cfg");
 
-	entity->AddComponent<ComponentFactory>();
-	entity->AddComponent<FileManager>();
-	SDLManager* sdlmanager = entity->AddComponent<SDLManager>();
+	/*SDLManager* sdlmanager = entity->AddComponent<SDLManager>();
 	entity->AddComponent<SDLInput>();
 	entity->AddComponent<GLManager>();
 	entity->AddComponent<PhysicsManager>();
@@ -74,7 +69,7 @@ void Kernel::Init()
 		layer->Init(*this, static_cast<Layer::eLayer>(i));
 	}
 
-	entity->AddComponent<SceneManager>();
+	entity->AddComponent<SceneManager>();*/
 
 }
 
@@ -141,6 +136,63 @@ void Kernel::RemoveEntity(Entity* _entity)
 {
 	Layer* layer = _entity->GetLayer();
 	layer->RemoveEntity(_entity);
+}
+
+void Kernel::BootLoader(const natChar* _path)
+{
+	// add manager on layer 0
+	Layer* layer0 = m_layers[0];
+	Entity* entity = layer0->GetRootEntity();
+
+	// base component needed for everything else
+	ComponentFactory* componenfactory = entity->AddComponent<ComponentFactory>();
+	FileManager* filemanager = entity->AddComponent<FileManager>();
+	assert(componenfactory);
+	assert(filemanager);
+
+	// hack because inheritance is bad, and it is not a valid component 
+	entity->AddComponent<SDLInput>();
+
+	layer0->Init(*this, Layer::Layer_0);
+
+	size_t size;
+	natU8 *buffer = filemanager->Read(_path, &size);
+
+	tinyxml2::XMLDocument doc;
+	doc.Parse(reinterpret_cast<natChar*>(buffer), size);
+
+	tinyxml2::XMLElement* element = doc.FirstChildElement("boot");
+	assert(element);
+
+	tinyxml2::XMLElement* element_sequence = element->FirstChildElement("sequence");
+
+	// iterate over all boot sequence
+	while(element_sequence)
+	{
+		tinyxml2::XMLElement* element_component = element_sequence->FirstChildElement("component");
+
+		while(element_component)
+		{
+			// hack to avoid premature init of global manager
+			entity->m_isInit = false;
+
+			Component * new_component = componenfactory->ParseComponent(entity, element_component);
+			entity->m_isInit = true;
+			new_component->_Init(*entity);
+
+			element_component = element_component->NextSiblingElement();
+		}
+
+		element_sequence = element_sequence->NextSiblingElement();
+	}
+
+	for(size_t i = Layer::Layer_1; i < Layer::Layer_Max; ++i)
+	{
+		Layer* layer = m_layers[i];
+		layer->Init(*this, static_cast<Layer::eLayer>(i));
+	}
+
+	delete buffer;
 }
 
 }

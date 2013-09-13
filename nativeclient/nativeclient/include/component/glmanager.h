@@ -77,6 +77,9 @@ private:
 
 	void			ComputeCamera();
 
+public:
+	glm::vec4		m_clearColor;
+
 private:
 	shaders_t		m_shaderPrograms;
 	render_map_t	m_renderMap;

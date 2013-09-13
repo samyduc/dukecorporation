@@ -61,10 +61,14 @@ void BulletController::OnTick(const natU64 _dt)
 void BulletController::OnEnterCollide(Contact* _contact)
 {
 	Spawned* spawned = GetEntity()->GetComponent<Spawned>();
+
 	assert(spawned);
-	
-	BaseWeapon* weapon = static_cast<BaseWeapon*>(spawned->GetSpawner());
-	weapon->OnHit(_contact);
+
+	//if(spawned)
+	//{
+		BaseWeapon* weapon = static_cast<BaseWeapon*>(spawned->GetSpawner());
+		weapon->OnHit(_contact);
+	//}
 }
 
 }

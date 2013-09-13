@@ -27,16 +27,19 @@ void GLManager::Clone(Entity* _entity, natU32 _type) const
 		base_type = _type;
 	}
 
+	component->m_clearColor = m_clearColor;
 }
 
 
 void GLManager::WriteData(Serializer& _ser)
 {
+	_ser << m_clearColor;
 }
 
 
 void GLManager::ReadData(Serializer& _ser)
 {
+	_ser >> m_clearColor;
 }
 
 

@@ -32,6 +32,8 @@ public:
 
 	Layer*			GetLayer(Layer::eLayer _layer) { return m_layers[_layer]; }
 
+	void			BootLoader(const natChar* _path);
+
 private:
 	natU64			m_acc;
 	natU64			m_rateStep;

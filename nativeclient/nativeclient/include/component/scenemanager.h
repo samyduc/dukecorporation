@@ -37,6 +37,9 @@ public:
 
 	void			Load(const natChar* _path);
 
+public:
+	std::string		m_bootScene;
+
 private:
 	void			OverridePrefab(Entity* _entity, tinyxml2::XMLElement* _element);
 

@@ -17,6 +17,7 @@ class Component
 public:
 
 	friend class Entity;
+	friend class Kernel;
 
 						Component();
 	virtual				~Component();

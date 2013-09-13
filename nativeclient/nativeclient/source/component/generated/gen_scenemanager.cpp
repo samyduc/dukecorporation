@@ -27,16 +27,19 @@ void SceneManager::Clone(Entity* _entity, natU32 _type) const
 		base_type = _type;
 	}
 
+	component->m_bootScene = m_bootScene;
 }
 
 
 void SceneManager::WriteData(Serializer& _ser)
 {
+	_ser << m_bootScene;
 }
 
 
 void SceneManager::ReadData(Serializer& _ser)
 {
+	_ser >> m_bootScene;
 }
 
 

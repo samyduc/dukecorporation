@@ -72,7 +72,7 @@ void GLManager::OnInit()
 	OnInitCamera();
 
 	// must happen when we have a valid opengl context opened (like with sdl)
-	glClearColor(0x00, 0xB1, 0xEE, 1.0);
+	glClearColor(m_clearColor.r, m_clearColor.g, m_clearColor.b, m_clearColor.a);
 
 	//glMatrixMode(GL_PROJECTION);
 	//glLoadIdentity();

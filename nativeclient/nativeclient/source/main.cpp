@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
 	kernel->Init();
 
 #if defined(EMSCRIPTEN_TARGET)
-	emscripten_set_main_loop(one_iter, 60, true);
+	emscripten_set_main_loop(one_iter, 0, 0);
 #else
 	while(true)
 	{

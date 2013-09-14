@@ -27,16 +27,22 @@ void SDLManager::Clone(Entity* _entity, natU32 _type) const
 		base_type = _type;
 	}
 
+	component->m_resolution = m_resolution;
+	component->m_isFullScreen = m_isFullScreen;
 }
 
 
 void SDLManager::WriteData(Serializer& _ser)
 {
+	_ser << m_resolution;
+	_ser << m_isFullScreen;
 }
 
 
 void SDLManager::ReadData(Serializer& _ser)
 {
+	_ser >> m_resolution;
+	_ser >> m_isFullScreen;
 }
 
 

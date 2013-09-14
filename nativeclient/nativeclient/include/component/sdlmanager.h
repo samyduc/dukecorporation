@@ -4,6 +4,7 @@
 #include "base/component.h"
 #include "base/hash.h"
 
+#include <glm/glm.hpp>
 #include <SDL.h>
 
 
@@ -33,6 +34,10 @@ public:
 	SDL_Surface*	GetScreen() { return m_screen; }
 
 	natU64			GetTick() { return SDL_GetTicks(); }
+
+public:
+	glm::vec2		m_resolution;
+	natBool			m_isFullScreen;
 
 private:
 	SDL_Surface*	m_screen;

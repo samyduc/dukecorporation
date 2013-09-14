@@ -341,7 +341,7 @@ void ComponentFactory::ParseType(Serializer& _ser, tinyxml2::XMLElement* _elemen
 		std::string value2;
 		std::string value3;
 
-		glm::quat ret;
+		
 		std::getline(iss, value0, ' ');
 		if(!std::getline(iss, value1, ' '))
 		{
@@ -351,23 +351,26 @@ void ComponentFactory::ParseType(Serializer& _ser, tinyxml2::XMLElement* _elemen
 		{
 			value2 = "0";
 		}
-		if(!std::getline(iss, value3, ' '))
-		{
-			value3 = "0";
-		}
+		//if(!std::getline(iss, value3, ' '))
+		//{
+		//	value3 = "0";
+		//}
+
+		glm::vec3 temp_ret;
 
 		std::istringstream iss0(value0);
-		iss0 >> ret.x;
+		iss0 >> temp_ret.x;
 
 		std::istringstream iss1(value1);
-		iss1 >> ret.y;
+		iss1 >> temp_ret.y;
 
 		std::istringstream iss2(value2);
-		iss2 >> ret.z;
+		iss2 >> temp_ret.z;
 
-		std::istringstream iss3(value3);
-		iss3 >> ret.w;
+		//std::istringstream iss3(value3);
+		//iss3 >> ret.w;
 
+		glm::quat ret(glm::radians(temp_ret));
 		_ser << ret;
 	}
 	else

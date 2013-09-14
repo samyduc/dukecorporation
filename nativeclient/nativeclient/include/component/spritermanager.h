@@ -103,7 +103,7 @@ public:
 
 protected:
 	// type helper, do not use as permanent storage
-	typedef			std::map<natU32, std::map<natU32, struct ressource_sprite_t>> spriter_ressources_t;
+	typedef			std::map<natU32, std::map<natU32, struct ressource_sprite_t> > spriter_ressources_t;
 
 	typedef			std::map<ref_t, scml_sprite_t> spriter_scml_t;
 	spriter_scml_t	m_sprites;

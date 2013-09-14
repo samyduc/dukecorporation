@@ -22,6 +22,7 @@ void SDLInput::OnInit()
 	SetAction(Input::right, static_cast<natU32>(SDLK_RIGHT));
 	SetAction(Input::jump, static_cast<natU32>(SDLK_SPACE));
 	SetAction(Input::shoot1, static_cast<natU8>(SDL_BUTTON_LEFT));
+	SetAction(Input::exit, static_cast<natU8>(SDLK_ESCAPE));
 }
 
 void SDLInput::OnTick(const natU64 _dt)
@@ -31,7 +32,7 @@ void SDLInput::OnTick(const natU64 _dt)
 	while ( SDL_PollEvent(&event) ) {
 		switch (event.type) {
 			case SDL_QUIT:
-				exit(0);
+				std::exit(0);
 				break;
 			case SDL_KEYDOWN:
 				{

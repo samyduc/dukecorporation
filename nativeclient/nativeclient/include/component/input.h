@@ -25,7 +25,8 @@ public:
 		left,
 		right,
 		jump,
-		shoot1
+		shoot1,
+		exit
 	};
 
 	virtual eAction	GetAction(natU32 _key) = 0;

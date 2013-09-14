@@ -74,13 +74,16 @@ void RigidBody::OnInit()
 
 void RigidBody::OnTick(const natU64 _dt)
 {
-	// warning global coordinates (not local !)
-	b2Vec2 b2_pos = m_b2Body->GetPosition();
-	m_transform->m_pos.x = b2_pos.x * s_B2RatioPos;
-	m_transform->m_pos.y = b2_pos.y * s_B2RatioPos;
+	if(m_b2BodyDef.type != b2_staticBody)
+	{
+		// warning global coordinates (not local !)
+		b2Vec2 b2_pos = m_b2Body->GetPosition();
+		m_transform->m_pos.x = b2_pos.x * s_B2RatioPos;
+		m_transform->m_pos.y = b2_pos.y * s_B2RatioPos;
 
-	glm::vec3 angle(0.f, 0.f, m_b2Body->GetAngle());
-	m_transform->m_rot = glm::quat(angle);
+		glm::vec3 angle(0.f, 0.f, m_b2Body->GetAngle());
+		m_transform->m_rot = glm::quat(angle);
+	}
 }
 
 void RigidBody::OnDeInit()

@@ -679,7 +679,7 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>../extern/box2d/Box2D_v2.2.1/Build/Box2D/Release</AdditionalLibraryDirectories>
-      <EmbedFile>data/data.zip</EmbedFile>
+      <EmbedFile>data/</EmbedFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -744,6 +744,7 @@
       <PreloadFile>
       </PreloadFile>
       <TypedArrays>NotSet</TypedArrays>
+      <RunMinify>false</RunMinify>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

@@ -44,11 +44,11 @@ void SceneManager::OnInit()
 	texturemanager->Load("/data/zombie3.png");*/
 
 
-	FontManager* fontmanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<FontManager>();
+	/*FontManager* fontmanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<FontManager>();
 	assert(fontmanager);
 	fontmanager->Load("/data/font/EBGaramond-Regular.ttf", 50);
 	fontmanager->Load("/data/font/StalinistOne-Regular.ttf", 100);
-	fontmanager->Load("/data/font/StalinistOne-Regular.ttf", 12);
+	fontmanager->Load("/data/font/StalinistOne-Regular.ttf", 12);*/
 
 	//Load("/data/scene/test.scene");
 	//Load("/data/scene/bougon.scene");
@@ -137,7 +137,10 @@ void SceneManager::Load(const natChar* _path)
 		// ugly hack to remove !!!
 		ref_t hash_player = Hash::Compute("/data/prefab/player.prefab");
 		ref_t hash_camera = Hash::Compute("/data/prefab/camera.prefab");
-		if(Hash::Compute(prefab_path) == hash_player || Hash::Compute(prefab_path) == hash_camera)
+		//ref_t hash_player_hyperdisk = Hash::Compute("/data/prefab/player_hyperdisk.prefab");
+		// :(
+
+		if(Hash::Compute(prefab_path) == hash_player || Hash::Compute(prefab_path) == hash_camera /*|| Hash::Compute(prefab_path) == hash_player_hyperdisk*/)
 		{
 			Camera* camera = entity->GetComponent<Camera>();
 			GLManager* glmanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<GLManager>();

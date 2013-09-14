@@ -1,0 +1,33 @@
+<prefab>
+
+<component class="Transform" version="-1904110229">
+	<property name="m_pos" type="glm::vec3" value="0 0 0" />
+	<property name="m_rot" type="glm::quat" value="0" />
+	<property name="m_scale" type="glm::vec3" value="1 1 1" />
+	<property name="m_forward" type="glm::vec3" value="0" />
+</component>
+
+
+<component class="SquareShape" version="1970426499">
+	<property name="m_textureRef" type="tex_t" value="" />
+	<property name="m_size" type="glm::vec2" value="1000 3" />
+	<property name="m_color" type="glm::vec4" value="1 1 1 1" />
+	<property name="m_repeat" type="natF32" value="1" />
+</component>
+
+
+<component class="RigidBody" version="763789349">
+	<property name="m_isDynamic" type="natBool" value="false" />
+	<property name="m_isBullet" type="natBool" value="false" />
+	<property name="m_maxSpeed" type="natF32" value="1.0" />
+	<property name="m_density" type="natF32" value="1.0" />
+	<property name="m_shapeType" type="ref_t" value="SquareShape" />
+</component>
+
+<component class="GLRender" version="2029438579">
+	<property name="m_type" type="ref_t" value="position" />
+	<property name="m_shapeType" type="ref_t" value="SquareShape" />
+</component>
+
+
+</prefab>

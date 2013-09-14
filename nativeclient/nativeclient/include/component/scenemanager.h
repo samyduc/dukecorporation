@@ -4,7 +4,8 @@
 #include "base/component.h"
 #include "base/hash.h"
 
-#include <assert.h>
+#include <string>
+#include <cassert>
 #include <list>
 
 namespace tinyxml2

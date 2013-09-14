@@ -39,7 +39,24 @@ void SDLManager::OnInit()
 	//SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 32);
 	SDL_GL_SetAttribute( SDL_GL_DOUBLEBUFFER, 1 );
 
-	m_screen = SDL_SetVideoMode(1024, 768, 32, SDL_OPENGL);
+	natU32 sdl_flags = SDL_OPENGL;
+
+	if(m_isFullScreen)
+	{
+		//const SDL_VideoInfo* info = SDL_GetVideoInfo();
+		//m_resolution.x = static_cast<natF32>(info->current_w);
+		//m_resolution.y = static_cast<natF32>(info->current_h);
+#if defined(WINDOWS_TARGET)
+		_putenv(_strdup("SDL_VIDEO_CENTERED=1")); 
+#endif
+
+		m_resolution.x = 0;
+		m_resolution.y = 0;
+
+		sdl_flags |= SDL_NOFRAME;
+	}
+
+	m_screen = SDL_SetVideoMode(static_cast<natU32>(m_resolution.x), static_cast<natU32>(m_resolution.y), 32, sdl_flags);
 
 	assert(m_screen);
 }

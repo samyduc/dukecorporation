@@ -1,0 +1,79 @@
+<scene>
+
+
+
+<entity prefab="/data/prefab/player_hyperdisk.prefab" layer="2">
+	<component class="Transform" version="-1904110229">
+		<property name="m_pos" type="glm::vec3" value="400 400 0" />
+		<property name="m_rot" type="glm::quat" value="0" />
+		<property name="m_scale" type="glm::vec3" value="1 1 1" />
+	</component>
+</entity>
+
+<entity prefab="/data/prefab/camera.prefab" layer="2">
+	<component class="Transform" version="-1904110229">
+		<property name="m_pos" type="glm::vec3" value="400 400 0" />
+		<property name="m_rot" type="glm::quat" value="0" />
+		<property name="m_scale" type="glm::vec3" value="1 1 1" />
+	</component>
+</entity>
+
+
+<entity prefab="/data/prefab/wall.prefab" layer="2">
+	<component class="Transform" version="-1904110229">
+		<property name="m_pos" type="glm::vec3" value="400 0 0" />
+		<property name="m_rot" type="glm::quat" value="0 0 0" />
+		<property name="m_scale" type="glm::vec3" value="1 1 1" />
+	</component>
+	<component class="SquareShape" version="1970426499">
+		<property name="m_textureRef" type="tex_t" value="" />
+		<property name="m_size" type="glm::vec2" value="800 3" />
+		<property name="m_color" type="glm::vec4" value="1 1 1 1" />
+		<property name="m_repeat" type="natF32" value="1" />
+	</component>
+</entity>
+
+<entity prefab="/data/prefab/wall.prefab" layer="2">
+	<component class="Transform" version="-1904110229">
+		<property name="m_pos" type="glm::vec3" value="0 400 0" />
+		<property name="m_rot" type="glm::quat" value="0 0 0" />
+		<property name="m_scale" type="glm::vec3" value="1 1 1" />
+	</component>
+	<component class="SquareShape" version="1970426499">
+		<property name="m_textureRef" type="tex_t" value="" />
+		<property name="m_size" type="glm::vec2" value="3 800" />
+		<property name="m_color" type="glm::vec4" value="1 1 1 1" />
+		<property name="m_repeat" type="natF32" value="1" />
+	</component>
+</entity>
+
+<entity prefab="/data/prefab/wall.prefab" layer="2">
+	<component class="Transform" version="-1904110229">
+		<property name="m_pos" type="glm::vec3" value="800 400 0" />
+		<property name="m_rot" type="glm::quat" value="0 0 0" />
+		<property name="m_scale" type="glm::vec3" value="1 1 1" />
+	</component>
+	<component class="SquareShape" version="1970426499">
+		<property name="m_textureRef" type="tex_t" value="" />
+		<property name="m_size" type="glm::vec2" value="3 800" />
+		<property name="m_color" type="glm::vec4" value="1 1 1 1" />
+		<property name="m_repeat" type="natF32" value="1" />
+	</component>
+</entity>
+
+<entity prefab="/data/prefab/wall.prefab" layer="2">
+	<component class="Transform" version="-1904110229">
+		<property name="m_pos" type="glm::vec3" value="400 800 0" />
+		<property name="m_rot" type="glm::quat" value="0 0 0" />
+		<property name="m_scale" type="glm::vec3" value="1 1 1" />
+	</component>
+	<component class="SquareShape" version="1970426499">
+		<property name="m_textureRef" type="tex_t" value="" />
+		<property name="m_size" type="glm::vec2" value="800 3" />
+		<property name="m_color" type="glm::vec4" value="1 1 1 1" />
+		<property name="m_repeat" type="natF32" value="1" />
+	</component>
+</entity>
+
+
+</scene>

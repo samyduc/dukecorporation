@@ -1,23 +1,23 @@
 /*
-    SDL - Simple DirectMedia Layer
-    Copyright (C) 1997-2012 Sam Lantinga
+	SDL - Simple DirectMedia Layer
+	Copyright (C) 1997-2012 Sam Lantinga
 
-    This library is free software; you can redistribute it and/or
-    modify it under the terms of the GNU Lesser General Public
-    License as published by the Free Software Foundation; either
-    version 2.1 of the License, or (at your option) any later version.
+	This library is free software; you can redistribute it and/or
+	modify it under the terms of the GNU Lesser General Public
+	License as published by the Free Software Foundation; either
+	version 2.1 of the License, or (at your option) any later version.
 
-    This library is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-    Lesser General Public License for more details.
+	This library is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+	Lesser General Public License for more details.
 
-    You should have received a copy of the GNU Lesser General Public
-    License along with this library; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+	You should have received a copy of the GNU Lesser General Public
+	License along with this library; if not, write to the Free Software
+	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
-    Sam Lantinga
-    slouken@libsdl.org
+	Sam Lantinga
+	slouken@libsdl.org
 */
 
 /** @file SDL_video.h
@@ -213,38 +213,38 @@ typedef struct SDL_Overlay {
 	Uint8 **pixels;				/**< Read-write */
 
 	/** @name Hardware-specific surface info */
-        /*@{*/
+		/*@{*/
 	struct private_yuvhwfuncs *hwfuncs;
 	struct private_yuvhwdata *hwdata;
-        /*@{*/
+		/*@{*/
 
 	/** @name Special flags */
-        /*@{*/
+		/*@{*/
 	Uint32 hw_overlay :1;	/**< Flag: This overlay hardware accelerated? */
 	Uint32 UnusedBits :31;
-        /*@}*/
+		/*@}*/
 } SDL_Overlay;
 
 
 /** Public enumeration for setting the OpenGL window attributes. */
 typedef enum {
-    SDL_GL_RED_SIZE,
-    SDL_GL_GREEN_SIZE,
-    SDL_GL_BLUE_SIZE,
-    SDL_GL_ALPHA_SIZE,
-    SDL_GL_BUFFER_SIZE,
-    SDL_GL_DOUBLEBUFFER,
-    SDL_GL_DEPTH_SIZE,
-    SDL_GL_STENCIL_SIZE,
-    SDL_GL_ACCUM_RED_SIZE,
-    SDL_GL_ACCUM_GREEN_SIZE,
-    SDL_GL_ACCUM_BLUE_SIZE,
-    SDL_GL_ACCUM_ALPHA_SIZE,
-    SDL_GL_STEREO,
-    SDL_GL_MULTISAMPLEBUFFERS,
-    SDL_GL_MULTISAMPLESAMPLES,
-    SDL_GL_ACCELERATED_VISUAL,
-    SDL_GL_SWAP_CONTROL
+	SDL_GL_RED_SIZE,
+	SDL_GL_GREEN_SIZE,
+	SDL_GL_BLUE_SIZE,
+	SDL_GL_ALPHA_SIZE,
+	SDL_GL_BUFFER_SIZE,
+	SDL_GL_DOUBLEBUFFER,
+	SDL_GL_DEPTH_SIZE,
+	SDL_GL_STENCIL_SIZE,
+	SDL_GL_ACCUM_RED_SIZE,
+	SDL_GL_ACCUM_GREEN_SIZE,
+	SDL_GL_ACCUM_BLUE_SIZE,
+	SDL_GL_ACCUM_ALPHA_SIZE,
+	SDL_GL_STEREO,
+	SDL_GL_MULTISAMPLEBUFFERS,
+	SDL_GL_MULTISAMPLESAMPLES,
+	SDL_GL_ACCELERATED_VISUAL,
+	SDL_GL_SWAP_CONTROL
 } SDL_GLattr;
 
 /** @name flags for SDL_SetPalette() */
@@ -940,8 +940,8 @@ extern DECLSPEC SDL_GrabMode SDLCALL SDL_WM_GrabInput(SDL_GrabMode mode);
 
 /** @internal Not in public API at the moment - do not use! */
 extern DECLSPEC int SDLCALL SDL_SoftStretch(SDL_Surface *src, SDL_Rect *srcrect,
-                                    SDL_Surface *dst, SDL_Rect *dstrect);
-                    
+									SDL_Surface *dst, SDL_Rect *dstrect);
+					
 /* Ends C function definitions when using C++ */
 #ifdef __cplusplus
 }

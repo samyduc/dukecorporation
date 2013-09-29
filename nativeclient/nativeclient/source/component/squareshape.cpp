@@ -144,7 +144,7 @@ natF32* SquareShape::GetVertex(size_t &_size)
 	return m_vertex;
 }
 
-natU32* SquareShape::GetIndices(size_t &_size)
+natU16* SquareShape::GetIndices(size_t &_size)
 {
 	_size = sizeof(m_indices);
 	return m_indices;

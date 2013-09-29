@@ -31,7 +31,7 @@ public:
 
 	natU32			GetVertexNumber() { return 4; }
 	natF32*			GetVertex(size_t &_size);
-	natU32*			GetIndices(size_t &_size);
+	natU16*			GetIndices(size_t &_size);
 
 	glm::vec2		GetSize() const { return m_size; }
 	glm::vec4		GetColor() const { return m_color; }
@@ -57,7 +57,7 @@ private:
 	natBool			m_isDirty;
 	size_t			m_length;
 	natF32			m_vertex[40];
-	natU32			m_indices[6];
+	natU16			m_indices[6];
 
 };
 

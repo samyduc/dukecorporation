@@ -34,7 +34,7 @@ public:
 
 	size_t			GetVertexNumber() { return m_vertexNumber; }
 	natF32*			GetVertex(size_t &_size);
-	natU32*			GetIndices(size_t &_size);
+	natU16*			GetIndices(size_t &_size);
 
 	glm::vec2		GetSize() const { return m_size; }
 	glm::vec4		GetColor() const { return m_color; }
@@ -61,7 +61,7 @@ private:
 	size_t			m_length;
 	natF32*			m_vertex;
 	size_t			m_vertexNumber;
-	natU32*			m_indices;
+	natU16*			m_indices;
 	size_t			m_indicesNumber;
 	size_t			m_colorOffset;
 	size_t			m_uvOffset;

@@ -64,8 +64,8 @@ public:
 
 	void			InitFromDirectory(const natChar* _path);
 
-	void			Preload(const natChar* _path, size_t _options=FLAG_MIPMAPS | FLAG_INVERT_Y | FLAG_COMPRESS_TO_DXT | FLAG_TEXTURE_REPEATS);
-	GLuint			Load(const natChar* _path, size_t _options=FLAG_MIPMAPS | FLAG_INVERT_Y | FLAG_COMPRESS_TO_DXT | FLAG_TEXTURE_REPEATS);
+	void			Preload(const natChar* _path, size_t _options=/*FLAG_MIPMAPS |*/ FLAG_INVERT_Y | FLAG_COMPRESS_TO_DXT | FLAG_TEXTURE_REPEATS);
+	GLuint			Load(const natChar* _path, size_t _options=/*FLAG_MIPMAPS |*/ FLAG_INVERT_Y | FLAG_COMPRESS_TO_DXT | FLAG_TEXTURE_REPEATS);
 
 	GLuint			Get(const natChar* _path);
 	GLuint			Get(natU32 _id);

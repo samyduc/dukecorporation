@@ -10,6 +10,8 @@
 namespace Natorium
 {
 
+class Transform;
+
 static natU32 s_Camera = Hash::Compute("Camera");
 
 class Camera : public Component
@@ -41,6 +43,7 @@ public:
 	void			ApplyEffectFollowMouse();
 
 public:
+	Transform*		m_transform;
 	natBool			m_effect_followMouse;
 	natF32			m_efect_followMouseSmooth;
 

@@ -18,7 +18,7 @@ PlayersManager::~PlayersManager()
 
 void PlayersManager::OnInit()
 {
-	assert(m_players.size() == 0);
+	//assert(m_players.size() == 0);
 }
 
 void PlayersManager::OnTick(const natU64 _dt)

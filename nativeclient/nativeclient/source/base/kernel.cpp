@@ -13,6 +13,8 @@
 
 #include <cassert>
 
+#include <cstdio>
+
 namespace Natorium
 {
 
@@ -75,10 +77,10 @@ void Kernel::Init()
 
 void Kernel::Tick()
 {
-	Layer* layer = m_layers[0];
-	Entity* entity = layer->GetRootEntity();
-	SDLManager* sdlmanager = entity->GetComponent<SDLManager>();
-	GLManager* glmanager = entity->GetComponent<GLManager>();
+	static Layer* layer = m_layers[0];
+	static Entity* entity = layer->GetRootEntity();
+	static SDLManager* sdlmanager = entity->GetComponent<SDLManager>();
+	static GLManager* glmanager = entity->GetComponent<GLManager>();
 
 	natU64 now = sdlmanager->GetTick();
 	natU64 dt = now - m_currentTime;
@@ -140,6 +142,7 @@ void Kernel::RemoveEntity(Entity* _entity)
 
 void Kernel::BootLoader(const natChar* _path)
 {
+	printf("BootLoader\n");
 	// add manager on layer 0
 	Layer* layer0 = m_layers[0];
 	Entity* entity = layer0->GetRootEntity();
@@ -170,9 +173,10 @@ void Kernel::BootLoader(const natChar* _path)
 	while(element_sequence)
 	{
 		tinyxml2::XMLElement* element_component = element_sequence->FirstChildElement("component");
-
+		printf("sequence \n");
 		while(element_component)
 		{
+			printf("component %s\n", element_component->Attribute("class"));
 			// hack to avoid premature init of global manager
 			entity->m_isInit = false;
 

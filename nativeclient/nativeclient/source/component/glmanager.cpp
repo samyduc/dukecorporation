@@ -180,16 +180,15 @@ void GLManager::Render(natU64 _tick)
 	{
 		natU32 type = it->first;
 		render_list_t& renderList = it->second;
-		GLuint program = m_shaderPrograms[type];
+
+		shaders_info_t& info = m_shaderPrograms[type];
 
 		// start using program
-		glUseProgram(program);
+		glUseProgram(info.m_program);
 
 		// globals
-		m_viewUnif = glGetUniformLocation(program, "view");
-		m_projectionUnif = glGetUniformLocation(program, "projection");
-		glUniformMatrix4fv(m_viewUnif, 1, GL_FALSE, glm::value_ptr(m_viewMatrixCorrected));
-		glUniformMatrix4fv(m_projectionUnif, 1, GL_FALSE, glm::value_ptr(m_projectionMatrixCopy));
+		glUniformMatrix4fv(info.m_uniformView, 1, GL_FALSE, glm::value_ptr(m_viewMatrixCorrected));
+		glUniformMatrix4fv(info.m_uniformProjection, 1, GL_FALSE, glm::value_ptr(m_projectionMatrixCopy));
 
 		//glUseProgram(0);
 
@@ -198,7 +197,7 @@ void GLManager::Render(natU64 _tick)
 		{
 			GLRender* render = *it_render;
 			render->PreRender(_tick);
-			render->Render(program);
+			render->Render(info.m_program);
 
 			++it_render;
 		}
@@ -231,7 +230,7 @@ GLuint GLManager::GetProgram(natU32 _type)
 	shaders_t::iterator it = m_shaderPrograms.find(_type);
 	if(it != m_shaderPrograms.end())
 	{
-		ret = it->second;
+		ret = it->second.m_program;
 	}
 
 	return ret;
@@ -268,8 +267,16 @@ void GLManager::RegisterProgram(const natChar *_name, const std::string &_strVer
 	shaders_t::iterator it = m_shaderPrograms.find(type);
 	if(it == m_shaderPrograms.end())
 	{
-		m_shaderPrograms[type] = program;
+		glUseProgram(program);
+
+		shaders_info_t info;
+		info.m_program = program;
+		info.m_uniformProjection = glGetUniformLocation(program, "projection");
+		info.m_uniformView = glGetUniformLocation(program, "view");
+		m_shaderPrograms[type] = info;
 		m_renderMap[type];
+
+		glUseProgram(0);
 	}
 	else
 	{

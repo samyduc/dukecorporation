@@ -104,7 +104,7 @@ void TextShape::SetText(std::string& _text)
 		assert(m_vertex == nullptr);
 		assert(m_indices == nullptr);
 		m_vertex = new natF32[m_length];
-		m_indices = new natU32[m_indicesNumber];
+		m_indices = new natU16[m_indicesNumber];
 
 		m_bufferAllocated = m_text.size();
 	}
@@ -270,11 +270,11 @@ natF32* TextShape::GetVertex(size_t &_size)
 #endif
 }
 
-natU32* TextShape::GetIndices(size_t &_size)
+natU16* TextShape::GetIndices(size_t &_size)
 {
 #if !defined(EMSCRIPTEN_TARGET)
 	assert(m_indices != nullptr);
-	_size = m_indicesNumber * sizeof(natU32);
+	_size = m_indicesNumber * sizeof(natU16);
 	return m_indices;
 #else
 	return nullptr;

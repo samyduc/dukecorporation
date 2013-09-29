@@ -74,7 +74,7 @@ void GLRender::OnTick(const natU64 _dt)
 		m_shape->GetOffset(m_vertexNumber, m_indicesNumber, m_colorOffset, m_uvOffset);
 
 		size_t indicesLength;
-		natU32 *indicesPositions = m_shape->GetIndices(indicesLength);
+		natU16 *indicesPositions = m_shape->GetIndices(indicesLength);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_indicesBuffer);
 		glBufferData(GL_ELEMENT_ARRAY_BUFFER, indicesLength, indicesPositions, GL_DYNAMIC_DRAW);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
@@ -108,7 +108,7 @@ void GLRender::Render(GLuint _program)
 	// call to draw
 	//glDrawArrays(GL_TRIANGLES, 0, static_cast<natU32>(m_vertexNumber));
 	//glDrawArrays(GL_TRIANGLE_STRIP, 0, static_cast<natU32>(m_vertexNumber));
-	glDrawElements(GL_TRIANGLES, static_cast<natU32>(m_indicesNumber), GL_UNSIGNED_INT, (void*)0);
+	glDrawElements(GL_TRIANGLES, static_cast<natU32>(m_indicesNumber), GL_UNSIGNED_SHORT, (void*)0);
 
 	glBindTexture(GL_TEXTURE_2D , 0);
 

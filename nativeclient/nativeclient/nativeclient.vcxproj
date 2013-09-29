@@ -680,6 +680,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>../extern/box2d/Box2D_v2.2.1/Build/Box2D/Release</AdditionalLibraryDirectories>
       <EmbedFile>data/</EmbedFile>
+      <AdditionalOptions>-s FULL_ES2=1 -s TOTAL_MEMORY=33554432 %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -726,14 +727,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>EMSCRIPTEN_TARGET;GLM_FORCE_RADIANS;FT2_BUILD_LIBRARY</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>./include;../extern/;../extern/box2d/Box2D_v2.2.1/;../extern/physfs-2.0.3/;../extern/SOIL/src;source\freetype\include</AdditionalIncludeDirectories>
-      <LanguageStandardMode>LanguageStandardC++11</LanguageStandardMode>
+      <LanguageStandardMode>NoLanguageStandardSet</LanguageStandardMode>
       <LanguageExtensions>EnableLanguageExtensions</LanguageExtensions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <LinkerOptimizationLevel>O2</LinkerOptimizationLevel>
+      <LinkerOptimizationLevel>O1</LinkerOptimizationLevel>
       <RunClosureCompiler>false</RunClosureCompiler>
       <AdditionalOptions>-s FULL_ES2=1  -s ASM_JS=1 -s TOTAL_MEMORY=33554432 %(AdditionalOptions)</AdditionalOptions>
       <AdditionalLibraryDirectories>

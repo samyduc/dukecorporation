@@ -31,10 +31,20 @@ static natU32 s_GLManager = Hash::Compute("GLManager");
 
 class GLRender;
 
-typedef std::map<natU32, GLuint> shaders_t;
+
+struct shaders_info_t
+{
+	GLuint m_program;
+	GLuint m_uniformView;
+	GLuint m_uniformProjection;
+};
+
+typedef std::map<natU32, shaders_info_t> shaders_t;
 typedef std::vector<GLuint> shaders_list_t;
 typedef std::list<GLRender*> render_list_t;
 typedef std::map<natU32, render_list_t> render_map_t;
+
+
 
 class GLManager : public Component
 {

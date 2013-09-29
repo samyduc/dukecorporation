@@ -30,7 +30,6 @@ void Transform::Clone(Entity* _entity, natU32 _type) const
 	component->m_pos = m_pos;
 	component->m_rot = m_rot;
 	component->m_scale = m_scale;
-	component->m_forward = m_forward;
 }
 
 
@@ -39,7 +38,6 @@ void Transform::WriteData(Serializer& _ser)
 	_ser << m_pos;
 	_ser << m_rot;
 	_ser << m_scale;
-	_ser << m_forward;
 }
 
 
@@ -48,7 +46,6 @@ void Transform::ReadData(Serializer& _ser)
 	_ser >> m_pos;
 	_ser >> m_rot;
 	_ser >> m_scale;
-	_ser >> m_forward;
 }
 
 

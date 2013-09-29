@@ -18,11 +18,13 @@
 #include "component/spritermanager.h"
 #include "component/charactercontroller.h"
 #include "component/fontmanager.h"
+#include "component/gameplay/hyperdiskcontroller.h"
 #include "component/spriteranimatorslave.h"
 #include "component/texturemanager.h"
 #include "component/sdlinput.h"
 #include "component/ui/fpscounter.h"
 #include "component/glrender.h"
+#include "component/gameplay/diskcontroller.h"
 #include "component/gameplay/baseweapon.h"
 #include "component/textshape.h"
 #include "component/sdlrender.h"
@@ -57,11 +59,13 @@ void ComponentFactory::PopulateFactory()
 	m_componentFactory[SpriterManager::GetType()] = new SpriterManager();
 	m_componentFactory[CharacterController::GetType()] = new CharacterController();
 	m_componentFactory[FontManager::GetType()] = new FontManager();
+	m_componentFactory[HyperdiskController::GetType()] = new HyperdiskController();
 	m_componentFactory[SpriterAnimatorSlave::GetType()] = new SpriterAnimatorSlave();
 	m_componentFactory[TextureManager::GetType()] = new TextureManager();
 	m_componentFactory[SDLInput::GetType()] = new SDLInput();
 	m_componentFactory[FPSCounter::GetType()] = new FPSCounter();
 	m_componentFactory[GLRender::GetType()] = new GLRender();
+	m_componentFactory[DiskController::GetType()] = new DiskController();
 	m_componentFactory[BaseWeapon::GetType()] = new BaseWeapon();
 	m_componentFactory[TextShape::GetType()] = new TextShape();
 	m_componentFactory[SDLRender::GetType()] = new SDLRender();

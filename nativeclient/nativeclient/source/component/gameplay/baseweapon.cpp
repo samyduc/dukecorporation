@@ -74,6 +74,7 @@ void BaseWeapon::OnDeInit()
 
 void BaseWeapon::ShootAt(glm::vec3 _pos)
 {
+	// TODO : Samy : refactor to not use m_forward
 	if(m_acc == 0)
 	{
 		m_acc += m_rateShot;
@@ -86,11 +87,8 @@ void BaseWeapon::ShootAt(glm::vec3 _pos)
 		bullet_transform->m_pos = transform->m_pos;
 		bullet_transform->m_rot = transform->m_rot;
 
-		bullet_transform->m_forward = _pos - transform->GetPos();
-		bullet_transform->m_forward = glm::normalize(bullet_transform->m_forward);
-
 		glm::vec2 size = shape->GetSize();
-		bullet_transform->m_pos += bullet_transform->m_forward * glm::vec3(size, 0.f);
+		//bullet_transform->m_pos += bullet_transform->m_forward * glm::vec3(size, 0.f);
 
 		bullet->Reset();
 	}

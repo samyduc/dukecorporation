@@ -10,6 +10,22 @@
 	</component>
 </entity>
 
+<entity prefab="/data/prefab/disk.prefab" layer="2">
+	<component class="Transform" version="-1904110229">
+		<property name="m_pos" type="glm::vec3" value="100 400 0" />
+		<property name="m_rot" type="glm::quat" value="0" />
+		<property name="m_scale" type="glm::vec3" value="1 1 1" />
+	</component>
+</entity>
+
+<entity prefab="/data/prefab/disk.prefab" layer="2">
+	<component class="Transform" version="-1904110229">
+		<property name="m_pos" type="glm::vec3" value="600 400 0" />
+		<property name="m_rot" type="glm::quat" value="0" />
+		<property name="m_scale" type="glm::vec3" value="1 1 1" />
+	</component>
+</entity>
+
 <entity prefab="/data/prefab/camera.prefab" layer="2">
 	<component class="Transform" version="-1904110229">
 		<property name="m_pos" type="glm::vec3" value="400 400 0" />

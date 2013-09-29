@@ -15,7 +15,6 @@ namespace Natorium
 Transform::Transform()
 	: m_scale(1.0f)
 	, m_pos(0.0f)
-	, m_forward(0.0f)
 {
 
 }

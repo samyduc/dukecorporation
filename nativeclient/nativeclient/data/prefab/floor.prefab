@@ -6,7 +6,6 @@
 	<property name="m_pos" type="glm::vec3" value="-1000 -1000 -1" />
 	<property name="m_rot" type="glm::quat" value="0" />
 	<property name="m_scale" type="glm::vec3" value="1 1 1" />
-	<property name="m_forward" type="glm::vec3" value="0" />
 </component>
 
 <component class="SquareShape" version="1970426499">

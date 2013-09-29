@@ -52,7 +52,8 @@ public:
 	void				OnEnterCollide(Contact *_contact);
 	void				OnExitCollide(Contact *_contact);
 
-	natBool				IsInit() { return m_isInit; }
+	natBool				IsInit() const { return m_isInit; }
+	natBool				IsEnabled() const { return m_enabled; }
 
 	Entity*				Clone(Entity* _entity=nullptr) const;
 

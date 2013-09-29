@@ -192,6 +192,15 @@ void Entity::OnEnterCollide(Contact* _contact)
 	// can happen since we are testing after the physics stepping
 	if(m_enabled)
 	{
+		Entity* entity = static_cast<Entity*>(_contact->B->GetUserData());
+		if(entity->GetId() == GetId())
+		{
+			// swap
+			b2Fixture* temp = _contact->A;
+			_contact->A = _contact->B;
+			_contact->B = temp;
+		}
+
 		for(components_t::iterator it = m_components.begin(); it != m_components.end(); ++it)
 		{
 			Component* component = (*it).m_component;
@@ -205,6 +214,15 @@ void Entity::OnExitCollide(Contact* _contact)
 	// can happen since we are testing after the physics stepping
 	if(m_enabled)
 	{
+		Entity* entity = static_cast<Entity*>(_contact->B->GetUserData());
+		if(entity->GetId() == GetId())
+		{
+			// swap
+			b2Fixture* temp = _contact->A;
+			_contact->A = _contact->B;
+			_contact->B = temp;
+		}
+
 		for(components_t::iterator it = m_components.begin(); it != m_components.end(); ++it)
 		{
 			Component* component = (*it).m_component;

@@ -510,6 +510,18 @@
     <ClCompile Include="source\component\generated\gen_spriteranimatorslave.cpp">
       <Filter>Source Files\component\generated</Filter>
     </ClCompile>
+    <ClCompile Include="source\component\gameplay\hyperdiskcontroller.cpp">
+      <Filter>Source Files\component\gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="source\component\generated\gen_hyperdiskcontroller.cpp">
+      <Filter>Source Files\component\generated</Filter>
+    </ClCompile>
+    <ClCompile Include="source\component\gameplay\diskcontroller.cpp">
+      <Filter>Source Files\component\gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="source\component\generated\gen_diskcontroller.cpp">
+      <Filter>Source Files\component\generated</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\base\entity.h">
@@ -877,6 +889,12 @@
     </ClInclude>
     <ClInclude Include="include\component\spriteranimatorslave.h">
       <Filter>Source Files\component</Filter>
+    </ClInclude>
+    <ClInclude Include="include\component\gameplay\hyperdiskcontroller.h">
+      <Filter>Source Files\component\gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="include\component\gameplay\diskcontroller.h">
+      <Filter>Source Files\component\gameplay</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

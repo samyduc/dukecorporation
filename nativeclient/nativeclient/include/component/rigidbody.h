@@ -51,10 +51,14 @@ public:
 	Shape*			GetShape() { return m_shape; }
 
 public:
+	natBool			m_forceCircle;
 	natBool			m_isDynamic;
 	natBool			m_isBullet;
 	natF32			m_maxSpeed;
 	natF32			m_density;
+	natF32			m_friction;
+	natF32			m_restitution;
+	natF32			m_linearDampling;
 	ref_t			m_shapeType;
 
 protected:
@@ -62,7 +66,7 @@ protected:
 	Shape*			m_shape;
 	b2World*		m_b2World;
 	b2BodyDef		m_b2BodyDef;
-	b2PolygonShape	m_b2Shape;
+	b2Shape*		m_b2Shape;
 	b2Fixture*		m_b2Fixture;
 	b2Body*			m_b2Body;
 };

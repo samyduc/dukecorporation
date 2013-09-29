@@ -19,7 +19,10 @@ RigidBody::RigidBody()
 	, m_isBullet(false)
 	, m_maxSpeed(1.0f)
 	, m_density(1.0f)
+	, m_restitution(0.0f)
+	, m_linearDampling(0.0f)
 	, m_shape(nullptr)
+	, m_b2Shape(nullptr)
 {
 
 }
@@ -62,13 +65,31 @@ void RigidBody::OnInit()
 	{
 		m_b2BodyDef.type = b2_staticBody;
 	}
+
 	m_b2BodyDef.bullet = m_isBullet;
 	size /= 2.f;
 	m_b2Body = m_b2World->CreateBody(&m_b2BodyDef);
-	m_b2Shape.SetAsBox(size.x / s_B2RatioPos, size.y / s_B2RatioPos);
-	m_b2Fixture = m_b2Body->CreateFixture(&m_b2Shape, m_density);
-	m_b2Fixture->SetFriction(0.2f);
-	m_b2Body->SetLinearDamping(10.f);
+
+	// shape allocation
+	if(m_forceCircle)
+	{
+		b2CircleShape* circleShape = new b2CircleShape();
+		m_b2Shape = circleShape;
+
+		circleShape->m_radius = size.x / s_B2RatioPos;
+	}
+	else
+	{
+		b2PolygonShape* polygonShape = new b2PolygonShape();
+		m_b2Shape = polygonShape;
+
+		polygonShape->SetAsBox(size.x / s_B2RatioPos, size.y / s_B2RatioPos);
+	}
+	
+	m_b2Fixture = m_b2Body->CreateFixture(m_b2Shape, m_density);
+	m_b2Fixture->SetFriction(m_friction);
+	m_b2Fixture->SetUserData(static_cast<void*>(GetEntity()));
+	m_b2Fixture->SetRestitution(m_restitution);
 }
 
 
@@ -91,6 +112,9 @@ void RigidBody::OnDeInit()
 	assert(m_b2World != nullptr);
 	assert(m_b2Body != nullptr);
 	m_b2World->DestroyBody(m_b2Body);
+
+	delete m_b2Shape;
+	m_b2Shape = nullptr;
 }
 
 void RigidBody::OnEnable()
@@ -99,7 +123,7 @@ void RigidBody::OnEnable()
 
 	if(m_b2Fixture == nullptr)
 	{
-		m_b2Fixture = m_b2Body->CreateFixture(&m_b2Shape, m_density);
+		m_b2Fixture = m_b2Body->CreateFixture(m_b2Shape, m_density);
 		m_b2Fixture->SetFriction(0.2f);
 		m_b2Body->SetLinearDamping(10.f);
 	}

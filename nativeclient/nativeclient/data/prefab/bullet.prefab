@@ -4,7 +4,6 @@
 	<property name="m_pos" type="glm::vec3" value="100 100 0" />
 	<property name="m_rot" type="glm::quat" value="0" />
 	<property name="m_scale" type="glm::vec3" value="1 1 1" />
-	<property name="m_forward" type="glm::vec3" value="0" />
 </component>
 
 <component class="SquareShape" version="1970426499">
@@ -15,10 +14,14 @@
 </component>
 
 <component class="RigidBody" version="763789349">
+	<property name="m_forceCircle" type="natBool" value="0" />
 	<property name="m_isDynamic" type="natBool" value="true" />
 	<property name="m_isBullet" type="natBool" value="true" />
 	<property name="m_maxSpeed" type="natF32" value="100.0" />
 	<property name="m_density" type="natF32" value="1.0" />
+	<property name="m_friction" type="natF32" value="0" />
+	<property name="m_restitution" type="natF32" value="1.0" />
+	<property name="m_linearDampling" type="natF32" value="0" />
 	<property name="m_shapeType" type="ref_t" value="SquareShape" />
 </component>
 

@@ -43,7 +43,6 @@ public:
 	void			ApplyEffectFollowMouse();
 
 public:
-	Transform*		m_transform;
 	natBool			m_effect_followMouse;
 	natF32			m_efect_followMouseSmooth;
 
@@ -51,6 +50,9 @@ public:
 	glm::mat4		m_projectionMatrix;
 
 	glm::vec2		m_resolution;
+
+private:
+	Transform*		m_transform;
 
 };
 

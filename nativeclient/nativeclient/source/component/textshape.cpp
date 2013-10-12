@@ -24,7 +24,6 @@ TextShape::TextShape()
 
 void TextShape::OnInit()
 {
-#if !defined(EMSCRIPTEN_TARGET)
 	FontManager* fontmanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<FontManager>();
 	m_font = fontmanager->Get(m_fontType);
 
@@ -37,12 +36,10 @@ void TextShape::OnInit()
 	SetText(m_text);
 
 	m_isDirty = true;
-#endif
 }
 
 void TextShape::OnDeInit()
 {
-#if !defined(EMSCRIPTEN_TARGET)
 	m_font = nullptr;
 
 	if(m_vertex)
@@ -56,12 +53,10 @@ void TextShape::OnDeInit()
 		m_indices = nullptr;
 	}
 	m_bufferAllocated = 0;
-#endif
 }
 
 void TextShape::SetText(std::string& _text)
 {
-#if !defined(EMSCRIPTEN_TARGET)
 	Font* _font = m_font;
 
 	natBool doAllocate = false;
@@ -182,12 +177,10 @@ void TextShape::SetText(std::string& _text)
 	SetIndices();
 
 	m_isDirty = true;
-#endif
 }
 
 void TextShape::SetIndices()
 {
-#if !defined(EMSCRIPTEN_TARGET)
 	assert(m_indices);
 
 	natU32 index = 0;
@@ -202,7 +195,6 @@ void TextShape::SetIndices()
 
 		index += 4;
 	}
-#endif
 }
 
 void TextShape::SetSize(glm::vec2& _size)
@@ -213,7 +205,6 @@ void TextShape::SetSize(glm::vec2& _size)
 
 void TextShape::SetColor(glm::vec4& _color)
 {
-#if !defined(EMSCRIPTEN_TARGET)
 	m_color = _color;
 
 	assert(m_vertex != nullptr);
@@ -243,7 +234,6 @@ void TextShape::SetColor(glm::vec4& _color)
 	}
 
 	m_isDirty = true;
-#endif
 }
 
 void TextShape::SetAlpha(natF32 _alpha)
@@ -261,24 +251,16 @@ void TextShape::SetAlpha(natF32 _alpha)
 
 natF32* TextShape::GetVertex(size_t &_size)
 {
-#if !defined(EMSCRIPTEN_TARGET)
 	assert(m_vertex != nullptr);
 	_size = m_length*sizeof(natF32);
 	return m_vertex;
-#else
-	return nullptr;
-#endif
 }
 
 natU16* TextShape::GetIndices(size_t &_size)
 {
-#if !defined(EMSCRIPTEN_TARGET)
 	assert(m_indices != nullptr);
 	_size = m_indicesNumber * sizeof(natU16);
 	return m_indices;
-#else
-	return nullptr;
-#endif
 }
 
 void TextShape::GetOffset(size_t& _vertexNumber, size_t& _indicesNumber, size_t& _color, size_t& _uv)

@@ -49,6 +49,8 @@ enum TextureOptions
 class TextureManager : public Component
 {
 public:
+	friend class FontManager;
+
 					TextureManager();
 	virtual			~TextureManager();
 

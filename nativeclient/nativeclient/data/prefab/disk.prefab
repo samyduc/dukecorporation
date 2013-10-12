@@ -18,9 +18,9 @@
 </component>
 
 <component class="RigidBody" version="763789349">
-	<property name="m_forceCircle" type="natBool" value="1" />
+	<property name="m_forceCircle" type="natBool" value="true" />
 	<property name="m_isDynamic" type="natBool" value="true" />
-	<property name="m_isBullet" type="natBool" value="false" />
+	<property name="m_isBullet" type="natBool" value="true" />
 	<property name="m_maxSpeed" type="natF32" value="1.0" />
 	<property name="m_density" type="natF32" value="1.0" />
 	<property name="m_friction" type="natF32" value="0" />

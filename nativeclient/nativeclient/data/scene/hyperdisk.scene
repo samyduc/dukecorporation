@@ -1,6 +1,7 @@
 <scene>
 
 
+<entity prefab="/data/prefab/fps.prefab" layer="5" />
 
 <entity prefab="/data/prefab/player_hyperdisk.prefab" layer="2">
 	<component class="Transform" version="-1904110229">

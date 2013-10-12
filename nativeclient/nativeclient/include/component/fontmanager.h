@@ -10,6 +10,8 @@
 #include <ft2build.h>
 #include <freetype/freetype.h>
 #include <freetype/ftglyph.h>
+#else
+#include "FreeTypeAmalgam.h"
 #endif
 
 #if defined(WINDOWS_TARGET)
@@ -94,9 +96,7 @@ private:
 	typedef std::map<natU32, Font*> fonts_t;
 	fonts_t			m_fonts;
 
-#if !defined(EMSCRIPTEN_TARGET)
 	FT_Library		m_ft_library;
-#endif
 
 	const natU32	m_number_of_chars;
 	const natU32	m_texture_max_width;

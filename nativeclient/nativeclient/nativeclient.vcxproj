@@ -279,6 +279,12 @@
     <ClCompile Include="source\component\texturemanager.cpp" />
     <ClCompile Include="source\component\transform.cpp" />
     <ClCompile Include="source\component\ui.cpp" />
+    <ClCompile Include="source\freetype\FreeTypeAmalgam.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="source\linux\linux_timeplatform.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
@@ -570,6 +576,7 @@
     <ClCompile Include="source\component\ui\fpscounter.cpp">
       <FileType>CppHeader</FileType>
     </ClCompile>
+    <ClInclude Include="source\freetype\FreeTypeAmalgam.h" />
     <ClInclude Include="source\physfs\physfs.h" />
     <ClInclude Include="source\physfs\physfs_casefolding.h" />
     <ClInclude Include="source\physfs\physfs_internal.h" />
@@ -734,7 +741,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>EMSCRIPTEN_TARGET;GLM_FORCE_RADIANS;FT2_BUILD_LIBRARY</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>./include;../extern/;../extern/box2d/Box2D_v2.2.1/;../extern/physfs-2.0.3/;../extern/SOIL/src;source\freetype\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./include;../extern/;../extern/box2d/Box2D_v2.2.1/;../extern/physfs-2.0.3/;../extern/SOIL/src;source\freetype\</AdditionalIncludeDirectories>
       <LanguageStandardMode>NoLanguageStandardSet</LanguageStandardMode>
       <LanguageExtensions>EnableLanguageExtensions</LanguageExtensions>
     </ClCompile>
@@ -742,9 +749,9 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <LinkerOptimizationLevel>O1</LinkerOptimizationLevel>
+      <LinkerOptimizationLevel>O2</LinkerOptimizationLevel>
       <RunClosureCompiler>false</RunClosureCompiler>
-      <AdditionalOptions>-s FULL_ES2=1  -s ASM_JS=1 -s TOTAL_MEMORY=33554432 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>-s FULL_ES2=1  -s TOTAL_MEMORY=134217728 %(AdditionalOptions)</AdditionalOptions>
       <AdditionalLibraryDirectories>
       </AdditionalLibraryDirectories>
       <PreJsFile>

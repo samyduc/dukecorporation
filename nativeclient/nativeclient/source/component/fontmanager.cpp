@@ -5,6 +5,7 @@
 #include "base/layer.h"
 
 #include "component/filemanager.h"
+#include "component/texturemanager.h"
 
 
 #include <sstream>
@@ -26,10 +27,8 @@ FontManager::~FontManager()
 
 void FontManager::OnInit()
 {
-#if !defined(EMSCRIPTEN_TARGET)
 	FT_Error error = FT_Init_FreeType( &m_ft_library );
 	assert(error == 0);
-#endif
 }
 
 
@@ -42,9 +41,7 @@ void FontManager::OnDeInit()
 {
 	// TODO: free a lot of stuff
 	// WARNING : it leaks for the moment
-#if !defined(EMSCRIPTEN_TARGET)
 	FT_Done_FreeType(m_ft_library);
-#endif
 }
 
 Font* FontManager::Get(const natChar* _path, natU32 _fontSize)
@@ -97,7 +94,6 @@ void FontManager::Load(const natChar* _path, natU32 _fontSize)
 // algorithm courtesy of http://damianpaz.wordpress.com/2011/10/09/load-truetype-fonts-with-freetype2-and-build-an-opengl-vertex-array-to-render-text/
 Font* FontManager::Load(const natU8* _buffer, size_t _size, natU32 _fontSize)
 {
-#if !defined(EMSCRIPTEN_TARGET)
 	Font* font = new Font();
 	FT_Face ft_face;
 
@@ -186,7 +182,8 @@ Font* FontManager::Load(const natU8* _buffer, size_t _size, natU32 _fontSize)
 	natU32 texture_height = next_p2(font->m_info.max_height*(max_rows+1));
  
 	// Create the temporary buffer for the texture
-	natU8* texture_data = new natU8[m_texture_max_width*texture_height*2];
+	size_t texture_size = m_texture_max_width*texture_height*2;
+	natU8* texture_data = new natU8[texture_size];
 
 	// Fill the texture, set the vertex and uv array values and delete the bitmap
 	for(size_t ch=0; ch<m_number_of_chars; ++ch)
@@ -224,6 +221,11 @@ Font* FontManager::Load(const natU8* _buffer, size_t _size, natU32 _fontSize)
 		delete [] font->m_info.ch[ch].bitmap;
 	}
 
+	//TextureManager* texturemanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<TextureManager>();
+	//assert(texturemanager);
+
+	//font->m_texture = texturemanager->Load(texture_data, texture_size, FLAG_INVERT_Y | FLAG_COMPRESS_TO_DXT | FLAG_TEXTURE_REPEATS);
+
 	// todo : maybe use texture manager
 	// Create the texture and delete the temporary buffer
 	glGenTextures(1, &font->m_texture);
@@ -231,15 +233,12 @@ Font* FontManager::Load(const natU8* _buffer, size_t _size, natU32 _fontSize)
 	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
  
-	glTexImage2D( GL_TEXTURE_2D, 0, GL_RGBA, m_texture_max_width, texture_height, 0, GL_LUMINANCE_ALPHA, GL_UNSIGNED_BYTE, texture_data);
+	glTexImage2D( GL_TEXTURE_2D, 0, /*GL_RGBA*/ GL_LUMINANCE_ALPHA, m_texture_max_width, texture_height, 0, GL_LUMINANCE_ALPHA, GL_UNSIGNED_BYTE, texture_data);
 	delete [] texture_data;
  
 	FT_Done_Face(ft_face);
 
 	return font;
-#else
-	return nullptr;
-#endif
 }
 
 void FontManager::fill_texture_data(size_t ch, Font::font_info_t* font, natU32 texture_width, natU8* texture_data)

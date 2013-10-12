@@ -52,6 +52,9 @@
     <Filter Include="tinyxml">
       <UniqueIdentifier>{9a414c49-7690-4e93-94ab-39847c16232a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="freetype">
+      <UniqueIdentifier>{8df0060a-8aa5-42cc-8bb2-319e2247108c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\main.cpp">
@@ -522,6 +525,9 @@
     <ClCompile Include="source\component\generated\gen_diskcontroller.cpp">
       <Filter>Source Files\component\generated</Filter>
     </ClCompile>
+    <ClCompile Include="source\freetype\FreeTypeAmalgam.c">
+      <Filter>freetype</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\base\entity.h">
@@ -895,6 +901,9 @@
     </ClInclude>
     <ClInclude Include="include\component\gameplay\diskcontroller.h">
       <Filter>Source Files\component\gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="source\freetype\FreeTypeAmalgam.h">
+      <Filter>freetype</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

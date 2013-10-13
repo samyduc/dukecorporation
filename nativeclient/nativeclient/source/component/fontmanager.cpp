@@ -39,6 +39,13 @@ void FontManager::OnTick(const natU64 _dt)
 
 void FontManager::OnDeInit()
 {
+	for(fonts_t::iterator it = m_fonts.begin(); it != m_fonts.end(); ++it)
+	{
+		Font* font = it->second;
+		delete font;
+	}
+	m_fonts.clear();
+
 	// TODO: free a lot of stuff
 	// WARNING : it leaks for the moment
 	FT_Done_FreeType(m_ft_library);
@@ -86,6 +93,11 @@ void FontManager::Load(const natChar* _path, natU32 _fontSize)
 
 		font = Load(buffer, size, _fontSize);
 		m_fonts[hash] = font;
+
+		TextureManager* texturemanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<TextureManager>();
+		assert(texturemanager);
+
+		texturemanager->Add(hash, font->m_texture);
 
 		delete buffer;
 	}
@@ -220,11 +232,6 @@ Font* FontManager::Load(const natU8* _buffer, size_t _size, natU32 _fontSize)
  
 		delete [] font->m_info.ch[ch].bitmap;
 	}
-
-	//TextureManager* texturemanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<TextureManager>();
-	//assert(texturemanager);
-
-	//font->m_texture = texturemanager->Load(texture_data, texture_size, FLAG_INVERT_Y | FLAG_COMPRESS_TO_DXT | FLAG_TEXTURE_REPEATS);
 
 	// todo : maybe use texture manager
 	// Create the texture and delete the temporary buffer

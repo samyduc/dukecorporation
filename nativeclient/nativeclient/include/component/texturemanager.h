@@ -49,8 +49,6 @@ enum TextureOptions
 class TextureManager : public Component
 {
 public:
-	friend class FontManager;
-
 					TextureManager();
 	virtual			~TextureManager();
 
@@ -71,6 +69,8 @@ public:
 
 	GLuint			Get(const natChar* _path);
 	GLuint			Get(natU32 _id);
+
+	void			Add(ref_t _id, GLuint _texture);
 
 protected:
 	GLuint			Load(const natU8* _bytes, size_t _size, size_t _options);

@@ -93,6 +93,21 @@ GLuint TextureManager::Get(natU32 _id)
 	return ret;
 }
 
+void TextureManager::Add(ref_t _id, GLuint _texture)
+{
+	textures_ref_t::const_iterator it = m_textures.find(_id);
+
+	if(it == m_textures.end())
+	{
+		m_textures[_id] = _texture;
+	}
+	else
+	{
+		// texture already present
+		assert(false);
+	}
+}
+
 GLuint TextureManager::Load(const natChar* _path, size_t _options)
 {
 	// not protected against multiple loading, get should do this, can leak on m_buffers

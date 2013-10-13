@@ -120,6 +120,7 @@ void GLRender::Render(GLuint _program)
 void GLRender::OnDeInit()
 {
 	glDeleteBuffers(1, &m_bufferObject);
+	glDeleteBuffers(1, &m_indicesBuffer);
 }
 
 }

@@ -1,4 +1,9 @@
 #include "component/sdlinput.h"
+
+#include "base/entity.h"
+#include "base/layer.h"
+#include "base/kernel.h"
+
 #include <assert.h>
 
 namespace Natorium
@@ -32,7 +37,7 @@ void SDLInput::OnTick(const natU64 _dt)
 	while ( SDL_PollEvent(&event) ) {
 		switch (event.type) {
 			case SDL_QUIT:
-				std::exit(0);
+				GetEntity()->GetKernel()->SetShutdown();
 				break;
 			case SDL_KEYDOWN:
 				{

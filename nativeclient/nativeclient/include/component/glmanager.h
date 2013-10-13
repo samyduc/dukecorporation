@@ -49,6 +49,9 @@ typedef std::map<natU32, render_list_t> render_map_t;
 class GLManager : public Component
 {
 public:
+
+	friend class Kernel;
+
 					GLManager();
 	virtual			~GLManager();
 
@@ -75,7 +78,6 @@ public:
 	natU64			GetLastTick() const { return m_lastRenderTick; }
 
 	void			Render(natU64 _tick);
-	void			ClearRender();
 
 private:
 	void			OnInitShaders();
@@ -86,6 +88,9 @@ private:
 	GLuint			CreateShaderProgram(const shaders_list_t &shaderList);
 
 	void			ComputeCamera();
+
+	void			ClearRender();
+	void			ClearProgram();
 
 public:
 	glm::vec4		m_clearColor;

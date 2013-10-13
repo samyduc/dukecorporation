@@ -211,7 +211,7 @@ void GLManager::Render(natU64 _tick)
 void GLManager::OnDeInit()
 {
 	ClearRender();
-	m_shaderPrograms.clear();
+	ClearProgram();
 }
 
 void GLManager::ClearRender()
@@ -221,6 +221,16 @@ void GLManager::ClearRender()
 		render_list_t &renderList = it->second;
 		renderList.clear();
 	}
+}
+
+void GLManager::ClearProgram()
+{
+	for(shaders_t::iterator it = m_shaderPrograms.begin(); it != m_shaderPrograms.end(); ++it)
+	{
+		struct shaders_info_t programInfo = it->second;
+		glDeleteProgram(programInfo.m_program);
+	}
+	m_shaderPrograms.clear();
 }
 
 GLuint GLManager::GetProgram(natU32 _type)

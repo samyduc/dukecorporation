@@ -34,7 +34,14 @@ public:
 
 	void			BootLoader(const natChar* _path);
 
+	natBool			IsReady() const { return m_isReady; }
+	natBool			IsRunning() const { return !m_isShutdown; }
+
+	void			SetShutdown() { m_isShutdown = true;} 
+
 private:
+	natBool			m_isReady;
+	natBool			m_isShutdown;
 	natU64			m_acc;
 	natU64			m_rateStep;
 	

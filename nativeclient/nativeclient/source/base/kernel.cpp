@@ -23,6 +23,8 @@ Kernel::Kernel()
 	: m_currentTime(0L)
 	, m_currentId(0L)
 	, m_acc(0)
+	, m_isReady(false)
+	, m_isShutdown(false)
 {
 	m_layers.reserve(Layer::Layer_Max);
 
@@ -37,6 +39,11 @@ Kernel::Kernel()
 
 Kernel::~Kernel()
 {
+	if(m_isReady)
+	{
+		DeInit();
+	}
+
 	for(layers_t::iterator it = m_layers.begin(); it != m_layers.end(); ++it)
 	{
 		Layer* layer = (*it);
@@ -52,32 +59,12 @@ void Kernel::Init()
 
 	// start boot loading
 	BootLoader("/data/boot.cfg");
-
-	/*SDLManager* sdlmanager = entity->AddComponent<SDLManager>();
-	entity->AddComponent<SDLInput>();
-	entity->AddComponent<GLManager>();
-	entity->AddComponent<PhysicsManager>();
-	entity->AddComponent<PlayersManager>();
-	entity->AddComponent<TextureManager>();
-	entity->AddComponent<FontManager>();
-	entity->AddComponent<PrefabManager>();
-	entity->AddComponent<SpriterManager>();
-
-	m_currentTime = sdlmanager->GetTick();
-
-	for(size_t i = Layer::Layer_0; i < Layer::Layer_Max; ++i)
-	{
-		Layer* layer = m_layers[i];
-		layer->Init(*this, static_cast<Layer::eLayer>(i));
-	}
-
-	entity->AddComponent<SceneManager>();*/
-
+	m_isReady = true;
 }
 
 void Kernel::Tick()
 {
-	static Layer* layer = m_layers[0];
+	Layer* layer = m_layers[0];
 	static Entity* entity = layer->GetRootEntity();
 	static SDLManager* sdlmanager = entity->GetComponent<SDLManager>();
 	static GLManager* glmanager = entity->GetComponent<GLManager>();
@@ -108,14 +95,14 @@ void Kernel::Tick()
 		}
 	}
 	sdlmanager->PostRender(dt);
-
 }
 
 void Kernel::DeInit()
 {
+	m_isReady = false;
 	m_currentId = 0;
 
-	for(layers_t::iterator it = m_layers.begin(); it != m_layers.end(); ++it)
+	for(layers_t::reverse_iterator it = m_layers.rbegin(); it != m_layers.rend(); ++it)
 	{
 		Layer* layer = (*it);
 		layer->DeInit();

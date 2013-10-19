@@ -45,7 +45,7 @@ void TextureManager::OnDeInit()
 	{
 		GLuint id = it->first;
 		struct TextureSimple &texture = it->second;
-
+		
 		glDeleteTextures(1, &id);
 		delete texture.m_buffer;
 	}

@@ -71,8 +71,7 @@ void GLManager::OnInit()
 	OnInitShaders();
 	OnInitCamera();
 
-	// must happen when we have a valid opengl context opened (like with sdl)
-	glClearColor(m_clearColor.r, m_clearColor.g, m_clearColor.b, m_clearColor.a);
+	SetClearColor(m_clearColor);
 
 	//glMatrixMode(GL_PROJECTION);
 	//glLoadIdentity();
@@ -84,6 +83,13 @@ void GLManager::OnInit()
 	glGetIntegerv(GL_VIEWPORT, m_viewport);
 	m_screenResolution.x = static_cast<natF32>(m_viewport[2]);
 	m_screenResolution.y = static_cast<natF32>(m_viewport[3]);
+}
+
+void GLManager::SetClearColor(glm::vec4 &_color)
+{
+	m_clearColor = _color;
+	// must happen when we have a valid opengl context opened (like with sdl)
+	glClearColor(m_clearColor.r, m_clearColor.g, m_clearColor.b, m_clearColor.a);
 }
 
 void GLManager::OnInitShaders()

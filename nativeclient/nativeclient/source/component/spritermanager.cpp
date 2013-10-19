@@ -114,7 +114,6 @@ void SpriterManager::Load(const natChar* _path, const natChar* _baseDir)
 	natU8* buffer = filemanager->Read(_path, &size);
 
 	tinyxml2::XMLDocument doc;
-
 	doc.Parse(reinterpret_cast<natChar*>(buffer), size);
 
 	tinyxml2::XMLElement* element = doc.FirstChildElement("spriter_data");

@@ -528,6 +528,12 @@
     <ClCompile Include="source\freetype\FreeTypeAmalgam.c">
       <Filter>freetype</Filter>
     </ClCompile>
+    <ClCompile Include="source\component\tiledmapmanager.cpp">
+      <Filter>Source Files\component</Filter>
+    </ClCompile>
+    <ClCompile Include="source\component\generated\gen_tiledmapmanager.cpp">
+      <Filter>Source Files\component\generated</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\base\entity.h">
@@ -904,6 +910,9 @@
     </ClInclude>
     <ClInclude Include="source\freetype\FreeTypeAmalgam.h">
       <Filter>freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="include\component\tiledmapmanager.h">
+      <Filter>Source Files\component</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

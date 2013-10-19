@@ -15,6 +15,7 @@
 #include "component/prefabmanager.h"
 #include "component/filemanager.h"
 #include "component/componentfactory.h"
+#include "component/tiledmapmanager.h"
 
 #include <cassert>
 
@@ -109,6 +110,9 @@ void SceneManager::Load(const natChar* _path)
 	PrefabManager* prefabmanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<PrefabManager>();
 	assert(prefabmanager);
 
+	TiledMapManager* tiledmapmanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<TiledMapManager>();
+	assert(tiledmapmanager);
+
 	size_t size;
 	natU8* buffer = filemanager->Read(_path, &size);
 
@@ -149,6 +153,15 @@ void SceneManager::Load(const natChar* _path)
 			PlayersManager *playersManager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<PlayersManager>();
 			playersManager->AddPlayer(entity);
 		}
+	}
+
+	element = doc.FirstChildElement("scene");
+	assert(element);
+	element = element->FirstChildElement("tiledmap");
+	if(element)
+	{
+		const natChar* tiledMapName = element->Attribute("name");
+		tiledmapmanager->Load(tiledMapName);
 	}
 
 	delete buffer;

@@ -258,6 +258,7 @@
     <ClCompile Include="source\component\generated\gen_squareshape.cpp" />
     <ClCompile Include="source\component\generated\gen_textshape.cpp" />
     <ClCompile Include="source\component\generated\gen_texturemanager.cpp" />
+    <ClCompile Include="source\component\generated\gen_tiledmapmanager.cpp" />
     <ClCompile Include="source\component\generated\gen_timespawner.cpp" />
     <ClCompile Include="source\component\generated\gen_transform.cpp" />
     <ClCompile Include="source\component\generated\gen_ui.cpp" />
@@ -277,6 +278,7 @@
     <ClCompile Include="source\component\squareshape.cpp" />
     <ClCompile Include="source\component\textshape.cpp" />
     <ClCompile Include="source\component\texturemanager.cpp" />
+    <ClCompile Include="source\component\tiledmapmanager.cpp" />
     <ClCompile Include="source\component\transform.cpp" />
     <ClCompile Include="source\component\ui.cpp" />
     <ClCompile Include="source\freetype\FreeTypeAmalgam.c">
@@ -508,6 +510,7 @@
     <ClInclude Include="include\component\squareshape.h" />
     <ClInclude Include="include\component\textshape.h" />
     <ClInclude Include="include\component\texturemanager.h" />
+    <ClInclude Include="include\component\tiledmapmanager.h" />
     <ClInclude Include="include\component\transform.h" />
     <ClInclude Include="include\component\ui.h" />
     <ClInclude Include="include\component\ui\fpscounter.h" />

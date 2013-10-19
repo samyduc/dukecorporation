@@ -79,6 +79,8 @@ public:
 
 	void			Render(natU64 _tick);
 
+	void			SetClearColor(glm::vec4 &_color);
+
 private:
 	void			OnInitShaders();
 	void			OnInitCamera();

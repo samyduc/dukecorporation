@@ -9,6 +9,7 @@
 
 #include "component/gameplay/lifecontroller.h"
 #include "component/gameplay/aicontroller.h"
+#include "component/tiledmapmanager.h"
 #include "component/transform.h"
 #include "component/spriteranimator.h"
 #include "component/camera.h"
@@ -50,6 +51,7 @@ void ComponentFactory::PopulateFactory()
 {
 	m_componentFactory[LifeController::GetType()] = new LifeController();
 	m_componentFactory[AiController::GetType()] = new AiController();
+	m_componentFactory[TiledMapManager::GetType()] = new TiledMapManager();
 	m_componentFactory[Transform::GetType()] = new Transform();
 	m_componentFactory[SpriterAnimator::GetType()] = new SpriterAnimator();
 	m_componentFactory[Camera::GetType()] = new Camera();

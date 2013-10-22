@@ -96,6 +96,7 @@ public:
 	Serializer& operator <<(const glm::vec3&);
 	Serializer& operator <<(const glm::vec4&);
 	Serializer& operator <<(const glm::mat4&);
+	Serializer& operator <<(const glm::mat4x2&);
 	Serializer& operator <<(const glm::quat&);
 
 	Serializer& operator >>(std::string&);
@@ -103,6 +104,7 @@ public:
 	Serializer& operator >>(glm::vec3&);
 	Serializer& operator >>(glm::vec4&);
 	Serializer& operator >>(glm::mat4&);
+	Serializer& operator >>(glm::mat4x2&);
 	Serializer& operator >>(glm::quat&);
 
 	// ref counting

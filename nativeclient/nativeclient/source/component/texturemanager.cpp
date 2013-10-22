@@ -70,7 +70,7 @@ GLuint TextureManager::Get(const natChar* _path)
 	return Get(hash);
 }
 
-GLuint TextureManager::Get(natU32 _id)
+GLuint TextureManager::Get(ref_t _id)
 {
 	GLuint ret = 0;
 	textures_ref_t::const_iterator it = m_textures.find(_id);
@@ -86,7 +86,7 @@ GLuint TextureManager::Get(natU32 _id)
 		if(it_path != m_preloads.end())
 		{
 			const struct PreloadTextureSimple &preload = (it_path->second);
-			ret = Load(preload.m_path.c_str(), preload.m_option);
+			ret = Load(preload.m_path.c_str(), preload.m_option, false);
 		}
 	}
 
@@ -108,25 +108,32 @@ void TextureManager::Add(ref_t _id, GLuint _texture)
 	}
 }
 
-GLuint TextureManager::Load(const natChar* _path, size_t _options)
+GLuint TextureManager::Load(const natChar* _path, size_t _options, natBool _checkGet)
 {
-	// not protected against multiple loading, get should do this, can leak on m_buffers
-	natU32 hash = Hash::Compute(_path);
+	ref_t hash = Hash::Compute(_path);
+	// protect against multiple loading
+	GLuint ret = 0;
+	
+	if(_checkGet)
+	{
+		ret = Get(hash);
+	}
 
-	GLuint ret;
+	if(ret == 0)
+	{
+		FileManager* filemanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<FileManager>();
+		assert(filemanager);
 
-	FileManager* filemanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<FileManager>();
-	assert(filemanager);
+		size_t size;
+		natU8 *buffer = filemanager->Read(_path, &size);
+		struct TextureSimple texture_simple;
+		texture_simple.m_buffer = buffer;
+		texture_simple.m_size = size;
+		m_buffers[hash] = texture_simple;
 
-	size_t size;
-	natU8 *buffer = filemanager->Read(_path, &size);
-	struct TextureSimple texture_simple;
-	texture_simple.m_buffer = buffer;
-	texture_simple.m_size = size;
-	m_buffers[hash] = texture_simple;
-
-	ret = Load(buffer, size, _options);
-	m_textures[hash] = ret;
+		ret = Load(buffer, size, _options);
+		m_textures[hash] = ret;
+	}
 
 	return ret;
 }
@@ -143,6 +150,25 @@ GLuint TextureManager::Load(const natU8* _bytes, size_t _size, size_t _options)
 	);
 
 	return ret;
+}
+
+glm::vec2 TextureManager::GetTextureSize(const natChar* _path)
+{
+	// overkill solution ...
+	natS32 width, height, channels;
+
+	FileManager* filemanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<FileManager>();
+	assert(filemanager);
+
+	size_t size;
+	natU8 *buffer = filemanager->Read(_path, &size);
+
+	natU8 *img = SOIL_load_image_from_memory(buffer, static_cast<natS32>(size), &width, &height, &channels, 0 );
+
+	delete buffer;
+	SOIL_free_image_data(img);
+
+	return glm::vec2(width, height);
 }
 
 void TextureManager::InitFromDirectory(const natChar* _path)

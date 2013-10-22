@@ -13,6 +13,7 @@
 	<property name="m_size" type="glm::vec2" value="50000 50000" />
 	<property name="m_color" type="glm::vec4" value="1 1 1 1" />
 	<property name="m_repeat" type="natF32" value="48" />
+	<property name="m_uv" type="glm::mat4x2" value="0" />
 </component>
 
 <component class="GLRender" version="2029438579">

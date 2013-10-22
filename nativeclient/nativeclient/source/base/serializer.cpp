@@ -598,6 +598,19 @@ Serializer& Serializer::operator <<(const glm::mat4& _val)
 	return *this;
 }
 
+Serializer& Serializer::operator <<(const glm::mat4x2& _val)
+{
+	assert(m_state == E_WRITE);
+
+	for(size_t i=0; i < 4; ++i)
+	{
+		*this << _val[i].x;
+		*this << _val[i].y;
+	}
+
+	return *this;
+}
+
 Serializer& Serializer::operator <<(const glm::quat& _val)
 {
 	assert(m_state == E_WRITE);
@@ -675,6 +688,19 @@ Serializer& Serializer::operator >>(glm::mat4& _val)
 		*this >> _val[i].y;
 		*this >> _val[i].z;
 		*this >> _val[i].w;
+	}
+
+	return *this;
+}
+
+Serializer& Serializer::operator >>(glm::mat4x2& _val)
+{
+	assert(m_state == E_READ);
+
+	for(size_t i=0; i < 4; ++i)
+	{
+		*this >> _val[i].x;
+		*this >> _val[i].y;
 	}
 
 	return *this;

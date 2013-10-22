@@ -117,6 +117,7 @@ const ref_t s_type_glm_vec2 = Hash::Compute("glm::vec2");
 const ref_t s_type_glm_vec3 = Hash::Compute("glm::vec3");
 const ref_t s_type_glm_vec4 = Hash::Compute("glm::vec4");
 const ref_t s_type_glm_mat4 = Hash::Compute("glm::mat4");
+const ref_t s_type_glm_mat4x2 = Hash::Compute("glm::mat4x2");
 const ref_t s_type_glm_quat = Hash::Compute("glm::quat");
 
 
@@ -326,9 +327,83 @@ void ComponentFactory::ParseType(Serializer& _ser, tinyxml2::XMLElement* _elemen
 	}
 	else if(type == s_type_glm_mat4)
 	{
-		// bored to death
+		// bored to death !! NOT IMPLEMENTED
 		glm::mat4 mat(0.f);
 		_ser << mat;
+
+		//assert(false);
+	}
+	else if(type == s_type_glm_mat4x2)
+	{
+		// ugly stl
+		const natChar* value = _element->Attribute("value");
+		std::istringstream iss(value);
+
+		std::string value0;
+		std::string value1;
+		std::string value2;
+		std::string value3;
+		std::string value4;
+		std::string value5;
+		std::string value6;
+		std::string value7;
+
+		glm::mat4x2 ret(0.f);
+		std::getline(iss, value0, ' ');
+		if(!std::getline(iss, value1, ' '))
+		{
+			value1 = "0";
+		}
+		if(!std::getline(iss, value2, ' '))
+		{
+			value2 = "0";
+		}
+		if(!std::getline(iss, value3, ' '))
+		{
+			value3 = "0";
+		}
+		if(!std::getline(iss, value4, ' '))
+		{
+			value4 = "0";
+		}
+		if(!std::getline(iss, value5, ' '))
+		{
+			value5 = "0";
+		}
+		if(!std::getline(iss, value6, ' '))
+		{
+			value6 = "0";
+		}
+		if(!std::getline(iss, value7, ' '))
+		{
+			value7 = "0";
+		}
+
+		std::istringstream iss0(value0);
+		iss0 >> ret[0].x;
+
+		std::istringstream iss1(value1);
+		iss1 >> ret[0].y;
+
+		std::istringstream iss2(value2);
+		iss2 >> ret[1].x;
+
+		std::istringstream iss3(value3);
+		iss3 >> ret[1].y;
+
+		std::istringstream iss4(value4);
+		iss4 >> ret[2].x;
+
+		std::istringstream iss5(value5);
+		iss5 >> ret[2].y;
+
+		std::istringstream iss6(value6);
+		iss6 >> ret[3].x;
+
+		std::istringstream iss7(value7);
+		iss7 >> ret[3].y;
+
+		_ser << ret;
 	}
 	else if(type == s_type_glm_quat)
 	{

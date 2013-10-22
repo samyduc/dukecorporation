@@ -31,6 +31,7 @@ void SquareShape::Clone(Entity* _entity, natU32 _type) const
 	component->m_size = m_size;
 	component->m_color = m_color;
 	component->m_repeat = m_repeat;
+	component->m_uv = m_uv;
 }
 
 
@@ -40,6 +41,7 @@ void SquareShape::WriteData(Serializer& _ser)
 	_ser << m_size;
 	_ser << m_color;
 	_ser << m_repeat;
+	_ser << m_uv;
 }
 
 
@@ -49,6 +51,7 @@ void SquareShape::ReadData(Serializer& _ser)
 	_ser >> m_size;
 	_ser >> m_color;
 	_ser >> m_repeat;
+	_ser >> m_uv;
 }
 
 

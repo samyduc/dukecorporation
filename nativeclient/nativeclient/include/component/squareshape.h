@@ -43,6 +43,7 @@ public:
 	void			SetColor(glm::vec4& _color);
 	void			SetAlpha(natF32 _alpha);
 	void			SetTextureCoordinate(natF32 _repeat);
+	void			SetTextureCoordinate(glm::mat4x2& _uv);
 	void			SetIndices();
 
 	natBool			IsAndRemoveDirty() {natBool ret = m_isDirty; m_isDirty = false; return ret; };
@@ -52,6 +53,7 @@ public:
 	glm::vec2		m_size;
 	glm::vec4		m_color;
 	natF32			m_repeat;
+	glm::mat4x2		m_uv;
 
 private:
 	natBool			m_isDirty;

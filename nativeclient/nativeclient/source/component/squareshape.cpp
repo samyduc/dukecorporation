@@ -34,7 +34,16 @@ void SquareShape::OnInit()
 
 	SetSize(m_size);
 	SetColor(m_color);
-	SetTextureCoordinate(m_repeat);
+
+	if(m_repeat != 0.0f)
+	{
+		SetTextureCoordinate(m_repeat);
+	}
+	else
+	{
+		SetTextureCoordinate(m_uv);
+	}
+	
 	SetIndices();
 
 	m_isDirty = true;
@@ -122,6 +131,23 @@ void SquareShape::SetTextureCoordinate(natF32 _repeat)
 
 	m_vertex[38] = _repeat;
 	m_vertex[39] = _repeat;
+
+	m_isDirty= true;
+}
+
+void SquareShape::SetTextureCoordinate(glm::mat4x2& _uv)
+{
+	m_vertex[32] = _uv[0].x;
+	m_vertex[33] = _uv[0].y;
+
+	m_vertex[34] = _uv[1].x;
+	m_vertex[35] = _uv[1].y;
+
+	m_vertex[36] = _uv[2].x;
+	m_vertex[37] = _uv[2].y;
+
+	m_vertex[38] = _uv[3].x;
+	m_vertex[39] = _uv[3].y;
 
 	m_isDirty= true;
 }

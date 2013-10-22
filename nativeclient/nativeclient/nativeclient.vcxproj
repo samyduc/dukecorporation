@@ -690,14 +690,14 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>EMSCRIPTEN_TARGET;GLM_FORCE_RADIANS;</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>./include;../extern/;../extern/box2d/Box2D_v2.2.1/;../extern/physfs-2.0.3/;../extern/SOIL/src;..\extern\freetype-2.5.0\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./include;../extern/;../extern/box2d/Box2D_v2.2.1/;../extern/physfs-2.0.3/;../extern/SOIL/src;..\extern\freetype-2.5.0\include;source\freetype\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>../extern/box2d/Box2D_v2.2.1/Build/Box2D/Release</AdditionalLibraryDirectories>
       <EmbedFile>
       </EmbedFile>
-      <AdditionalOptions>-s FULL_ES2=1 -s TOTAL_MEMORY=33554432 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>-s FULL_ES2=1 -s TOTAL_MEMORY=134217728 %(AdditionalOptions)</AdditionalOptions>
       <PreloadFile>data/</PreloadFile>
     </Link>
   </ItemDefinitionGroup>

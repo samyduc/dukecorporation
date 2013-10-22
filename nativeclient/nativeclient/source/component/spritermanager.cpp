@@ -168,7 +168,7 @@ void SpriterManager::LoadRessources(spriter_ressources_t& _ressources, const nat
 
 			std::string file_path;
 			filemanager->ConcatenatePath(_baseDir, file_relativePath, file_path);
-			texturemanager->Preload(file_path.c_str(), FLAG_MIPMAPS | FLAG_COMPRESS_TO_DXT | FLAG_TEXTURE_REPEATS);
+			texturemanager->Preload(file_path.c_str(), FLAG_MIPMAPS | FLAG_INVERT_Y | FLAG_COMPRESS_TO_DXT | FLAG_TEXTURE_REPEATS);
 
 			struct ressource_sprite_t ressourceinfo;
 			ressourceinfo.m_ref = Hash::Compute(file_path.c_str());

@@ -121,16 +121,16 @@ void SquareShape::SetAlpha(natF32 _alpha)
 void SquareShape::SetTextureCoordinate(natF32 _repeat)
 {
 	m_vertex[32] = 0.f;
-	m_vertex[33] = 0.f;
+	m_vertex[33] = 1.f - 0.f;
 
 	m_vertex[34] = _repeat;
-	m_vertex[35] = 0.f;
+	m_vertex[35] = 1.0f - 0.f;
 
 	m_vertex[36] = 0.f;
-	m_vertex[37] = _repeat;
+	m_vertex[37] = 1.0f - _repeat;
 
 	m_vertex[38] = _repeat;
-	m_vertex[39] = _repeat;
+	m_vertex[39] = 1.0f - _repeat;
 
 	m_isDirty= true;
 }

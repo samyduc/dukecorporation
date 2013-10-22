@@ -178,7 +178,7 @@ void TiledMapManager::LoadRessources(tiledSets_t& _tileSets)
 		for(tiledTiles_t::iterator it_tiles = set.m_tiles.begin(); it_tiles != set.m_tiles.end(); ++it_tiles)
 		{
 			TiledTiles& tiles =  (*it_tiles);
-			texturemanager->Load(tiles.m_pathTexture.c_str(), FLAG_MIPMAPS | FLAG_COMPRESS_TO_DXT | FLAG_TEXTURE_REPEATS);
+			texturemanager->Load(tiles.m_pathTexture.c_str(), FLAG_MIPMAPS |  FLAG_COMPRESS_TO_DXT | FLAG_TEXTURE_REPEATS);
 
 			if(tiles.m_size.x == 0.0f || tiles.m_size.y == 0.0f)
 			{

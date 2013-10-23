@@ -150,7 +150,7 @@ void ComponentFactory::ParseType(Serializer& _ser, tinyxml2::XMLElement* _elemen
 			ref = Hash::Compute(value);
 
 			// add it to preload
-			TextureManager* texturemanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<TextureManager>();
+			TextureManager* texturemanager = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<TextureManager>();
 			texturemanager->Preload(value);
 		}
 		else

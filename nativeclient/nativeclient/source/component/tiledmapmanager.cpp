@@ -51,7 +51,7 @@ void TiledMapManager::OnDeInit()
 
 void TiledMapManager::Load(const natChar* _path)
 {
-	FileManager* filemanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<FileManager>();
+	FileManager* filemanager = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<FileManager>();
 	assert(filemanager);
 
 	size_t size;
@@ -73,7 +73,7 @@ void TiledMapManager::Load(const natU8* _bytes, size_t _size)
 	LoadMap(tileMap, element);
 
 	// override clear color
-	GLManager* glmanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<GLManager>();
+	GLManager* glmanager = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<GLManager>();
 	assert(glmanager);
 	glmanager->SetClearColor(tileMap.m_backgroundColor);
 
@@ -169,7 +169,7 @@ void TiledMapManager::LoadImage(struct TiledSet& _tileSet, natBool _isTile, tiny
 
 void TiledMapManager::LoadRessources(tiledSets_t& _tileSets)
 {
-	TextureManager* texturemanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<TextureManager>();
+	TextureManager* texturemanager = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<TextureManager>();
 
 	for(tiledSets_t::iterator it_sets = _tileSets.begin(); it_sets != _tileSets.end(); ++it_sets)
 	{
@@ -193,6 +193,8 @@ void TiledMapManager::LoadLayers(struct TiledMap& _tiledMap, tiledSets_t& _tileS
 	tinyxml2::XMLElement* element_layer = _element->FirstChildElement("layer");
 	while(element_layer)
 	{
+		Layer* layer = GetEntity()->GetKernel()->AppendLayer();
+
 		size_t tileNumber = 0;
 		tinyxml2::XMLElement* element_data = element_layer->FirstChildElement("data");
 
@@ -204,7 +206,8 @@ void TiledMapManager::LoadLayers(struct TiledMap& _tiledMap, tiledSets_t& _tileS
 			// load here the good tile
 			if(gid != 0)
 			{
-				LoadTile(_tiledMap, _tileSets, gid, tileNumber);
+				Entity* entity = LoadTile(_tiledMap, _tileSets, gid, tileNumber);
+				GetEntity()->GetKernel()->AddEntity(layer->GetLayerID(), entity);
 			}
 
 			++tileNumber;
@@ -215,7 +218,7 @@ void TiledMapManager::LoadLayers(struct TiledMap& _tiledMap, tiledSets_t& _tileS
 	}
 }
 
-void TiledMapManager::LoadTile(struct TiledMap& _tiledMap, tiledSets_t& _tileSets, size_t _gid, size_t _cellNumber)
+Entity* TiledMapManager::LoadTile(struct TiledMap& _tiledMap, tiledSets_t& _tileSets, size_t _gid, size_t _cellNumber)
 {
 	Entity* blueprint = GetCacheEntity(_gid);
 
@@ -295,7 +298,7 @@ void TiledMapManager::LoadTile(struct TiledMap& _tiledMap, tiledSets_t& _tileSet
 	transform->m_pos.y = line * _tiledMap.m_tileSize.y - squareshape->m_size.y / 2.f;
 	//transform->m_rot = glm::quat(glm::vec3(0.f, 0.f, s_PI));
 
-	GetEntity()->GetKernel()->AddEntity(Layer::Layer_1, entity);
+	return entity;
 }
 
 Entity* TiledMapManager::GetCacheEntity(size_t _gid)

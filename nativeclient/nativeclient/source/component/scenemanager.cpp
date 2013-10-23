@@ -34,9 +34,9 @@ SceneManager::~SceneManager()
 
 void SceneManager::OnInit()
 {
-	/*PrefabManager* prefabmanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<PrefabManager>();
+	/*PrefabManager* prefabmanager = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<PrefabManager>();
 
-	TextureManager* texturemanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<TextureManager>();
+	TextureManager* texturemanager = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<TextureManager>();
 
 	texturemanager->Load("/data/idle-0.png");
 	texturemanager->Load("/data/grass-texture-2.jpg");
@@ -45,7 +45,7 @@ void SceneManager::OnInit()
 	texturemanager->Load("/data/zombie3.png");*/
 
 
-	FontManager* fontmanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<FontManager>();
+	FontManager* fontmanager = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<FontManager>();
 	assert(fontmanager);
 	fontmanager->Load("/data/font/EBGaramond-Regular.ttf", 50);
 	fontmanager->Load("/data/font/StalinistOne-Regular.ttf", 100);
@@ -67,7 +67,7 @@ void SceneManager::OnInit()
 	//GetEntity()->GetKernel()->AddEntity(Layer::Layer_1, floor);
 
 	//
-	//PlayersManager *playersManager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<PlayersManager>();
+	//PlayersManager *playersManager = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<PlayersManager>();
 
 	/*Entity* player = prefabmanager->CreateFromType("/data/prefab/player.prefab");
 	GetEntity()->GetKernel()->AddEntity(Layer::Layer_2, player);
@@ -88,7 +88,7 @@ void SceneManager::OnInit()
 	//Camera* camera = player->GetComponent<Camera>();
 	//Camera* camera = text->GetComponent<Camera>();
 	//camera->m_effect_followMouse = false;
-	//GLManager* glmanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<GLManager>();
+	//GLManager* glmanager = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<GLManager>();
 	//glmanager->SetCamera(camera);
 }
 
@@ -104,13 +104,13 @@ void SceneManager::OnDeInit()
 
 void SceneManager::Load(const natChar* _path)
 {
-	FileManager* filemanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<FileManager>();
+	FileManager* filemanager = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<FileManager>();
 	assert(filemanager);
 
-	PrefabManager* prefabmanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<PrefabManager>();
+	PrefabManager* prefabmanager = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<PrefabManager>();
 	assert(prefabmanager);
 
-	TiledMapManager* tiledmapmanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<TiledMapManager>();
+	TiledMapManager* tiledmapmanager = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<TiledMapManager>();
 	assert(tiledmapmanager);
 
 	size_t size;
@@ -131,11 +131,11 @@ void SceneManager::Load(const natChar* _path)
 		Entity* entity = prefabmanager->CreateFromType(prefab_path);
 		
 		natU32 layer = element->IntAttribute("layer");
-		assert(layer < Layer::Layer_Max);
+		GetEntity()->GetKernel()->ReserverLayer(layer);
 		
 		OverridePrefab(entity, element->FirstChildElement("component"));
 
-		GetEntity()->GetKernel()->AddEntity(static_cast<Layer::eLayer>(layer), entity);
+		GetEntity()->GetKernel()->AddEntity(layer, entity);
 		element = element->NextSiblingElement();
 
 		// ugly hack to remove !!!
@@ -147,10 +147,10 @@ void SceneManager::Load(const natChar* _path)
 		if(Hash::Compute(prefab_path) == hash_player || Hash::Compute(prefab_path) == hash_camera /*|| Hash::Compute(prefab_path) == hash_player_hyperdisk*/)
 		{
 			Camera* camera = entity->GetComponent<Camera>();
-			GLManager* glmanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<GLManager>();
+			GLManager* glmanager = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<GLManager>();
 			glmanager->SetCamera(camera);
 
-			PlayersManager *playersManager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<PlayersManager>();
+			PlayersManager *playersManager = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<PlayersManager>();
 			playersManager->AddPlayer(entity);
 		}
 	}
@@ -169,7 +169,7 @@ void SceneManager::Load(const natChar* _path)
 
 void SceneManager::OverridePrefab(Entity* _entity, tinyxml2::XMLElement* _element)
 {
-	ComponentFactory* componentFactory = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<ComponentFactory>();
+	ComponentFactory* componentFactory = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<ComponentFactory>();
 	assert(componentFactory);
 
 	while(_element)

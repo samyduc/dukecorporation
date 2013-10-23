@@ -30,7 +30,7 @@ void Spawner::OnInit()
 {
 	assert(m_prefabType != 0);
 
-	PrefabManager* prefabmanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<PrefabManager>();
+	PrefabManager* prefabmanager = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<PrefabManager>();
 	assert(prefabmanager);
 
 	m_refEntity = prefabmanager->CreateFromType(m_prefabType);
@@ -40,7 +40,7 @@ void Spawner::OnInit()
 	for(size_t i = 0; i < m_max; ++i)
 	{
 		Entity* entity = m_refEntity->Clone();
-		GetEntity()->GetKernel()->AddEntity(Layer::Layer_3, entity);
+		GetEntity()->GetKernel()->AddEntity(GetEntity()->GetLayer()->GetLayerID(), entity);
 		entity->SetEnabled(false);
 
 		m_pool_entities.push_back(entity);

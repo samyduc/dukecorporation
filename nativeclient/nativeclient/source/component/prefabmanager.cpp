@@ -50,10 +50,10 @@ void PrefabManager::OnDeInit()
 
 void PrefabManager::Load(const natChar* _path)
 {
-	FileManager* filemanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<FileManager>();
+	FileManager* filemanager = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<FileManager>();
 	assert(filemanager);
 
-	ComponentFactory* componentFactory = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<ComponentFactory>();
+	ComponentFactory* componentFactory = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<ComponentFactory>();
 	assert(filemanager);
 
 	size_t size;
@@ -125,7 +125,7 @@ Entity* PrefabManager::CreateFromType(natU32 _id)
 
 void PrefabManager::InitFromDirectory(const natChar* _path)
 {
-	FileManager* filemanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<FileManager>();
+	FileManager* filemanager = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<FileManager>();
 	assert(filemanager);
 
 	// load all prefab

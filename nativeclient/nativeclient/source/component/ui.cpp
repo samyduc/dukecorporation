@@ -30,7 +30,7 @@ UI::~UI()
 
 void UI::OnInit()
 {
-	m_glManager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<GLManager>();
+	m_glManager = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<GLManager>();
 	m_transform = GetEntity()->GetComponent<Transform>();
 
 	assert(m_glManager);

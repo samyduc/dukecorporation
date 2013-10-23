@@ -25,7 +25,7 @@ void SquareShape::OnInit()
 {
 	if(m_textureRef)
 	{
-		TextureManager* texturemanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<TextureManager>();
+		TextureManager* texturemanager = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<TextureManager>();
 		GLuint texture_id = texturemanager->Get(m_textureRef);
 
 		GLRender* glrender = GetEntity()->GetComponent<GLRender>();

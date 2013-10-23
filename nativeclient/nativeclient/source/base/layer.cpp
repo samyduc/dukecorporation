@@ -16,10 +16,10 @@ Layer::~Layer()
 
 }
 
-void Layer::Init(Kernel& _kernel, eLayer _layer)
+void Layer::Init(Kernel& _kernel, size_t _layerID)
 {
 	m_kernel = &_kernel;
-	m_id = _layer;
+	m_id = _layerID;
 	m_rootEntity._Init(_kernel, *this);
 }
 
@@ -31,7 +31,7 @@ void Layer::Tick(const natU64 _dt)
 void Layer::DeInit()
 {
 	m_rootEntity._DeInit();
-	m_id = Layer::Layer_Undefined;
+	m_id = 0;
 }
 
 void Layer::AddEntity(Entity* _entity, Entity* _parent)

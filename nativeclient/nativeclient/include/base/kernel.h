@@ -27,10 +27,13 @@ public:
 
 	natU64			GetUniqueId();
 
-	void			AddEntity(Layer::eLayer _layer, Entity* _entity, Entity* _parent=nullptr);
+	void			AddEntity(size_t _layerID, Entity* _entity, Entity* _parent=nullptr);
 	void			RemoveEntity(Entity* _entity);
 
-	Layer*			GetLayer(Layer::eLayer _layer) { return m_layers[_layer]; }
+	Layer*			AppendLayer();
+	Layer*			GetLayer(size_t _layerID);
+	size_t			GetNbLayer() const { return m_layers.size(); }
+	void			ReserverLayer(size_t _layerID);
 
 	void			BootLoader(const natChar* _path);
 

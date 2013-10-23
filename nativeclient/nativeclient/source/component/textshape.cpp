@@ -24,7 +24,7 @@ TextShape::TextShape()
 
 void TextShape::OnInit()
 {
-	FontManager* fontmanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<FontManager>();
+	FontManager* fontmanager = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<FontManager>();
 	m_font = fontmanager->Get(m_fontType);
 
 	assert(m_font);

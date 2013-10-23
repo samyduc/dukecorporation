@@ -36,7 +36,7 @@ void HyperdiskController::OnInit()
 
 void HyperdiskController::OnTick(const natU64 _dt)
 {
-	Input* input = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<Input>();
+	Input* input = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<Input>();
 	Transform* transform = GetEntity()->GetComponent<Transform>();
 	RigidBody* rigidbody = GetEntity()->GetComponent<RigidBody>();
 
@@ -65,7 +65,7 @@ void HyperdiskController::OnTick(const natU64 _dt)
 	{
 		glm::vec2 mouse_pos;
 		input->GetMousePosition(mouse_pos);
-		Camera* camera = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<GLManager>()->GetCamera();
+		Camera* camera = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<GLManager>()->GetCamera();
 		glm::vec3 world_pos = camera->GetPosScreenToWorld(mouse_pos);
 
 		ShootDisk(world_pos);
@@ -129,7 +129,7 @@ void HyperdiskController::ShootDisk(glm::vec3& _pos)
 void HyperdiskController::LookAtScreen(glm::vec3& _look)
 {
 	Transform* transform = GetEntity()->GetComponent<Transform>();
-	Camera* camera = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<GLManager>()->GetCamera();
+	Camera* camera = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<GLManager>()->GetCamera();
 
 	glm::vec2 screen_pos = camera->GetPosWorldToScreen(transform->GetPos());
 

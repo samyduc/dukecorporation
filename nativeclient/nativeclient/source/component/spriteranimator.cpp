@@ -37,7 +37,7 @@ SpriterAnimator::~SpriterAnimator()
 
 void SpriterAnimator::OnInit()
 {
-	SpriterManager* spritermanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<SpriterManager>();
+	SpriterManager* spritermanager = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<SpriterManager>();
 	assert(spritermanager);
 
 	m_sprite = spritermanager->Get(m_animatorRef);
@@ -123,7 +123,7 @@ void SpriterAnimator::InitAnimation()
 
 		if(is_new)
 		{
-			GetEntity()->GetKernel()->AddEntity(GetEntity()->GetLayer()->GetEnumLayer(), entity, GetEntity());
+			GetEntity()->GetKernel()->AddEntity(GetEntity()->GetLayer()->GetLayerID(), entity, GetEntity());
 			m_managedEntities.push_back(entity);
 		}
 		else

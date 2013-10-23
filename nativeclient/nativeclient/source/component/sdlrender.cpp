@@ -30,7 +30,7 @@ void SDLRender::OnInit()
 
 void SDLRender::OnTick(const natU64 _dt)
 {
-	SDLManager* sdlmanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<SDLManager>();
+	SDLManager* sdlmanager = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<SDLManager>();
 	Transform* transform = GetEntity()->GetComponent<Transform>();
 
 	SDL_Rect position;

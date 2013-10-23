@@ -26,14 +26,6 @@ Kernel::Kernel()
 	, m_isReady(false)
 	, m_isShutdown(false)
 {
-	m_layers.reserve(Layer::Layer_Max);
-
-	for(size_t i = Layer::Layer_0; i < Layer::Layer_Max; ++i)
-	{
-		Layer* layer = new Layer();
-		m_layers.push_back(layer);
-	}
-
 	m_rateStep = static_cast<natU64>(1/60.f * 1000.f);
 }
 
@@ -64,7 +56,7 @@ void Kernel::Init()
 
 void Kernel::Tick()
 {
-	Layer* layer = m_layers[0];
+	static Layer* layer = m_layers[0];
 	static Entity* entity = layer->GetRootEntity();
 	static SDLManager* sdlmanager = entity->GetComponent<SDLManager>();
 	static GLManager* glmanager = entity->GetComponent<GLManager>();
@@ -115,9 +107,9 @@ natU64 Kernel::GetUniqueId()
 	return m_currentId;
 }
 
-void Kernel::AddEntity(Layer::eLayer _layer, Entity* _entity, Entity* _parent)
+void Kernel::AddEntity(size_t _layerID, Entity* _entity, Entity* _parent)
 {
-	Layer* layer = m_layers[_layer];
+	Layer* layer = m_layers[_layerID];
 	layer->AddEntity(_entity, _parent);
 }
 
@@ -127,11 +119,48 @@ void Kernel::RemoveEntity(Entity* _entity)
 	layer->RemoveEntity(_entity);
 }
 
+Layer* Kernel::AppendLayer()
+{
+	size_t id = m_layers.size();
+	Layer* layer = new Layer();
+	layer->Init(*this, id);
+
+	m_layers.push_back(layer);
+
+	return layer;
+}
+
+Layer* Kernel::GetLayer(size_t _layerID)
+{
+	Layer* ret = nullptr;
+	if(m_layers.size() > _layerID)
+	{
+		ret = m_layers[_layerID];
+	}
+
+	return ret;
+}
+
+void Kernel::ReserverLayer(size_t _layerID)
+{
+	if(_layerID > (m_layers.size() + 1))
+	{
+		size_t layerToAdd = _layerID - m_layers.size() + 1;
+		while(layerToAdd > 0)
+		{
+			AppendLayer();
+			--layerToAdd;
+		}
+	}
+}
+
 void Kernel::BootLoader(const natChar* _path)
 {
 	printf("BootLoader\n");
 	// add manager on layer 0
-	Layer* layer0 = m_layers[0];
+	//Layer* layer0 = m_layers[0];
+	Layer* layer0 = AppendLayer();
+
 	Entity* entity = layer0->GetRootEntity();
 
 	// base component needed for everything else
@@ -143,7 +172,7 @@ void Kernel::BootLoader(const natChar* _path)
 	// hack because inheritance is bad, and it is not a valid component 
 	entity->AddComponent<SDLInput>();
 
-	layer0->Init(*this, Layer::Layer_0);
+	//layer0->Init(*this, Layer::s_LayerManager);
 
 	size_t size;
 	natU8 *buffer = filemanager->Read(_path, &size);
@@ -175,12 +204,6 @@ void Kernel::BootLoader(const natChar* _path)
 		}
 
 		element_sequence = element_sequence->NextSiblingElement();
-	}
-
-	for(size_t i = Layer::Layer_1; i < Layer::Layer_Max; ++i)
-	{
-		Layer* layer = m_layers[i];
-		layer->Init(*this, static_cast<Layer::eLayer>(i));
 	}
 
 	delete buffer;

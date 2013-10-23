@@ -48,7 +48,7 @@ void SpriterManager::OnDeInit()
 
 void SpriterManager::InitFromDirectory(const natChar* _path)
 {
-	FileManager* filemanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<FileManager>();
+	FileManager* filemanager = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<FileManager>();
 	assert(filemanager);
 
 	// load all prefab
@@ -104,10 +104,10 @@ const scml_sprite_t* SpriterManager::Get(ref_t _id) const
 
 void SpriterManager::Load(const natChar* _path, const natChar* _baseDir)
 {
-	FileManager* filemanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<FileManager>();
+	FileManager* filemanager = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<FileManager>();
 	assert(filemanager);
 
-	TextureManager* texturemanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<TextureManager>();
+	TextureManager* texturemanager = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<TextureManager>();
 	assert(texturemanager);
 
 	size_t size;
@@ -145,10 +145,10 @@ void SpriterManager::Load(const natChar* _path, const natChar* _baseDir)
 
 void SpriterManager::LoadRessources(spriter_ressources_t& _ressources, const natChar* _baseDir, tinyxml2::XMLElement* _element)
 {
-	FileManager* filemanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<FileManager>();
+	FileManager* filemanager = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<FileManager>();
 	assert(filemanager);
 
-	TextureManager* texturemanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<TextureManager>();
+	TextureManager* texturemanager = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<TextureManager>();
 	assert(texturemanager);
 
 	tinyxml2::XMLElement* element = _element;

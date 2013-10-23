@@ -32,7 +32,7 @@ void BaseWeapon::OnInit()
 	if(m_refEntity == nullptr)
 	{
 		// default bullet
-		//PrefabManager* prefabmanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<PrefabManager>();
+		//PrefabManager* prefabmanager = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<PrefabManager>();
 		//m_refEntity = prefabmanager->CreateFromType(m_prefabType);
 
 		// TODO : this must be done as a public parameter

@@ -33,7 +33,7 @@ void AiController::OnInit()
 	m_radius = 200.0f;
 	m_t = 0.0f;
 
-	m_playersManager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<PlayersManager>();
+	m_playersManager = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<PlayersManager>();
 	m_lifeController = GetEntity()->GetComponent<LifeController>();
 
 	assert(m_playersManager);

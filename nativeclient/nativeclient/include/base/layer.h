@@ -12,22 +12,12 @@ class Layer
 {
 public:
 
-	enum eLayer
-	{
-		Layer_0,
-		Layer_1,
-		Layer_2,
-		Layer_3,
-		Layer_4,
-		Layer_5,
-		Layer_Max,
-		Layer_Undefined
-	};
+	static const size_t s_LayerManager = 0;
 
-	Layer();
+	explicit Layer();
 	virtual ~Layer();
 
-	void			Init(Kernel& _kernel, eLayer _layer);
+	void			Init(Kernel& _kernel, size_t _layerID);
 	void			Tick(const natU64 _dt);
 	void			DeInit();
 
@@ -36,10 +26,10 @@ public:
 
 	Entity*			GetRootEntity() { return &m_rootEntity; }
 
-	eLayer			GetEnumLayer() const { return m_id; }
+	size_t			GetLayerID() const { return m_id; }
 
 protected:
-	eLayer			m_id;
+	size_t			m_id;
 	Root			m_rootEntity;
 	Kernel*			m_kernel;
 

@@ -36,7 +36,7 @@ RigidBody::~RigidBody()
 void RigidBody::OnInit()
 {
 	m_transform = GetEntity()->GetComponent<Transform>();
-	m_b2World = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<PhysicsManager>()->GetWorld();
+	m_b2World = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<PhysicsManager>()->GetWorld();
 
 	m_shape = static_cast<Shape*>(GetEntity()->GetComponentByType(m_shapeType));
 

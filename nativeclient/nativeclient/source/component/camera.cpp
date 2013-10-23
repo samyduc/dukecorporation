@@ -29,7 +29,7 @@ Camera::~Camera()
 
 void Camera::OnInit()
 {
-	m_resolution = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<GLManager>()->GetScreenResolution();
+	m_resolution = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<GLManager>()->GetScreenResolution();
 	m_projectionMatrix = glm::ortho<natF32>(0.f, static_cast<float>(m_resolution.x), static_cast<natF32>(m_resolution.y), 0.f, 0.f, 100.f);
 
 	m_transform = GetEntity()->GetComponent<Transform>();
@@ -117,7 +117,7 @@ glm::vec3 Camera::GetPosScreenToWorld(const glm::vec2& _screen)
 
 void Camera::ApplyEffectFollowMouse()
 {
-	Input* input = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<Input>();
+	Input* input = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<Input>();
 	glm::vec2 mouse;
 	input->GetMousePosition(mouse);
 

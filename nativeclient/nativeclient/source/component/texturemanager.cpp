@@ -121,7 +121,7 @@ GLuint TextureManager::Load(const natChar* _path, size_t _options, natBool _chec
 
 	if(ret == 0)
 	{
-		FileManager* filemanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<FileManager>();
+		FileManager* filemanager = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<FileManager>();
 		assert(filemanager);
 
 		size_t size;
@@ -157,7 +157,7 @@ glm::vec2 TextureManager::GetTextureSize(const natChar* _path)
 	// overkill solution ...
 	natS32 width, height, channels;
 
-	FileManager* filemanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<FileManager>();
+	FileManager* filemanager = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<FileManager>();
 	assert(filemanager);
 
 	size_t size;
@@ -173,7 +173,7 @@ glm::vec2 TextureManager::GetTextureSize(const natChar* _path)
 
 void TextureManager::InitFromDirectory(const natChar* _path)
 {
-	FileManager* filemanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<FileManager>();
+	FileManager* filemanager = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<FileManager>();
 	assert(filemanager);
 
 	// load all prefab

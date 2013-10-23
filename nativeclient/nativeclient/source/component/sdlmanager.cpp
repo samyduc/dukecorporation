@@ -81,7 +81,7 @@ void SDLManager::PreRender()
 
 void SDLManager::PostRender(natU64 _tick)
 {
-	static GLManager* glmanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<GLManager>();
+	static GLManager* glmanager = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<GLManager>();
 	glmanager->Render(_tick);
 
 	//glFinish();

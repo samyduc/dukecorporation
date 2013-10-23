@@ -85,7 +85,7 @@ void FontManager::Load(const natChar* _path, natU32 _fontSize)
 	
 	if(font == nullptr)
 	{
-		FileManager* filemanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<FileManager>();
+		FileManager* filemanager = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<FileManager>();
 		assert(filemanager);
 
 		size_t size;
@@ -94,7 +94,7 @@ void FontManager::Load(const natChar* _path, natU32 _fontSize)
 		font = Load(buffer, size, _fontSize);
 		m_fonts[hash] = font;
 
-		TextureManager* texturemanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<TextureManager>();
+		TextureManager* texturemanager = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<TextureManager>();
 		assert(texturemanager);
 
 		texturemanager->Add(hash, font->m_texture);

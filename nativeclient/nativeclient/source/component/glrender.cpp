@@ -39,7 +39,7 @@ void GLRender::OnInit()
 
 	assert(m_shape);
 
-	GLManager* glmanager = GetEntity()->GetKernel()->GetLayer(Layer::Layer_0)->GetRootEntity()->GetComponent<GLManager>();
+	GLManager* glmanager = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<GLManager>();
 	//m_shaderProgram = glmanager->GetShaderProgram();
 	m_renderList = glmanager->GetRenderList(m_type);
 

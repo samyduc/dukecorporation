@@ -111,7 +111,6 @@ void SceneManager::Load(const natChar* _path)
 	assert(prefabmanager);
 
 	TiledMapManager* tiledmapmanager = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<TiledMapManager>();
-	assert(tiledmapmanager);
 
 	size_t size;
 	natU8* buffer = filemanager->Read(_path, &size);
@@ -157,12 +156,15 @@ void SceneManager::Load(const natChar* _path)
 
 	element = doc.FirstChildElement("scene");
 	assert(element);
+
 	element = element->FirstChildElement("tiledmap");
 	if(element)
 	{
+		assert(tiledmapmanager);
 		const natChar* tiledMapName = element->Attribute("name");
 		tiledmapmanager->Load(tiledMapName);
 	}
+
 
 	delete buffer;
 }

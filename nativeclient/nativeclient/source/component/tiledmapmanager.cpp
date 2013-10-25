@@ -100,21 +100,25 @@ void TiledMapManager::LoadMap(struct TiledMap& _tiledMap, tinyxml2::XMLElement* 
 	_tiledMap.m_tileSize.y = static_cast<natF32>(_element->IntAttribute("tileheight"));
 
 	// HEX to RGB convertion
-	std::string hexColor = _element->Attribute("backgroundcolor");
-	assert(hexColor[0] == '#');
+	const natChar* color = _element->Attribute("backgroundcolor");
+	if(color)
+	{
+		std::string hexColor = color;
+		assert(hexColor[0] == '#');
 
-	natChar *end;
+		natChar *end;
 
-	std::string R = hexColor.substr(1, 2);
-	_tiledMap.m_backgroundColor.r = static_cast<natF32>(strtol(R.c_str(), &end, 16)) / 255.f;
+		std::string R = hexColor.substr(1, 2);
+		_tiledMap.m_backgroundColor.r = static_cast<natF32>(strtol(R.c_str(), &end, 16)) / 255.f;
 
-	std::string G = hexColor.substr(3, 2);
-	_tiledMap.m_backgroundColor.g = static_cast<natF32>(strtol(G.c_str(), &end, 16)) / 255.f;
+		std::string G = hexColor.substr(3, 2);
+		_tiledMap.m_backgroundColor.g = static_cast<natF32>(strtol(G.c_str(), &end, 16)) / 255.f;
 
-	std::string B = hexColor.substr(5, 2);
-	_tiledMap.m_backgroundColor.b = static_cast<natF32>(strtol(B.c_str(), &end, 16)) / 255.f;
+		std::string B = hexColor.substr(5, 2);
+		_tiledMap.m_backgroundColor.b = static_cast<natF32>(strtol(B.c_str(), &end, 16)) / 255.f;
 
-	_tiledMap.m_backgroundColor.a = 1.0f;
+		_tiledMap.m_backgroundColor.a = 1.0f;
+	}
 }
 
 void TiledMapManager::LoadTileSets(tiledSets_t& _tileSets, tinyxml2::XMLElement* _element)

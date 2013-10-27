@@ -38,6 +38,7 @@ public:
 	void			Play(ref_t _hash);
 
 	const struct scml_sprite_t* GetSpriteSource() { return m_sprite; }
+	const struct animation_sprite_t* GetCurrentAnimation() { return m_currentAnimation; }
 
 public:
 	ref_t			m_animatorRef;

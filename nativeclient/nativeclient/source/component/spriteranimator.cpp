@@ -121,6 +121,9 @@ void SpriterAnimator::InitAnimation()
 
 		SetupEntity(entity, timeline);
 
+		SpriterAnimatorSlave* spriteranimationslave = entity->GetComponent<SpriterAnimatorSlave>();
+		spriteranimationslave->Play(m_currentAnimation, &timeline);
+
 		if(is_new)
 		{
 			GetEntity()->GetKernel()->AddEntity(GetEntity()->GetLayer()->GetLayerID(), entity, GetEntity());
@@ -130,9 +133,6 @@ void SpriterAnimator::InitAnimation()
 		{
 			entity->Reset();
 		}
-
-		SpriterAnimatorSlave* spriteranimationslave = entity->GetComponent<SpriterAnimatorSlave>();
-		spriteranimationslave->Play(m_currentAnimation, &timeline);
 	}
 
 	// if more entity than necessary, deactivate the rest

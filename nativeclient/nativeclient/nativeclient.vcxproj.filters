@@ -534,6 +534,12 @@
     <ClCompile Include="source\component\generated\gen_tiledmapmanager.cpp">
       <Filter>Source Files\component\generated</Filter>
     </ClCompile>
+    <ClCompile Include="source\component\gameplay\clickcontroller .cpp">
+      <Filter>Source Files\component\gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="source\component\generated\gen_clickcontroller.cpp">
+      <Filter>Source Files\component\generated</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\base\entity.h">
@@ -913,6 +919,9 @@
     </ClInclude>
     <ClInclude Include="include\component\tiledmapmanager.h">
       <Filter>Source Files\component</Filter>
+    </ClInclude>
+    <ClInclude Include="include\component\gameplay\clickcontroller.h">
+      <Filter>Source Files\component\gameplay</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

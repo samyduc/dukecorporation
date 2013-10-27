@@ -1,0 +1,19 @@
+<prefab>
+
+<component class="Transform" version="-1904110229">
+	<property name="m_pos" type="glm::vec3" value="0 0 0" />
+	<property name="m_rot" type="glm::quat" value="0" />
+	<property name="m_scale" type="glm::vec3" value="1 1 1" />
+</component>
+
+<component class="SpriterAnimator" version="952492699">
+	<property name="m_animatorRef" type="ref_t" value="/data/spriter/astronauts/astronauts.scml:0" />
+	<property name="m_defaultAction" type="ref_t" value="idle" />
+</component>
+
+<component class="ClickController" version="952492699">
+	<property name="m_speed" type="glm::vec2" value="2 0" />
+</component>
+
+
+</prefab>

@@ -143,7 +143,7 @@ Layer* Kernel::GetLayer(size_t _layerID)
 
 void Kernel::ReserverLayer(size_t _layerID)
 {
-	if(_layerID > (m_layers.size() + 1))
+	if(_layerID >= (m_layers.size()))
 	{
 		size_t layerToAdd = _layerID - m_layers.size() + 1;
 		while(layerToAdd > 0)

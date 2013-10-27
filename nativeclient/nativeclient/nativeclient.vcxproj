@@ -220,6 +220,7 @@
     <ClCompile Include="source\component\gameplay\baseweapon.cpp" />
     <ClCompile Include="source\component\gameplay\bulletcontroller.cpp" />
     <ClCompile Include="source\component\gameplay\aicontroller.cpp" />
+    <ClCompile Include="source\component\gameplay\clickcontroller .cpp" />
     <ClCompile Include="source\component\gameplay\diskcontroller.cpp" />
     <ClCompile Include="source\component\gameplay\hyperdiskcontroller.cpp" />
     <ClCompile Include="source\component\gameplay\lifecontroller.cpp" />
@@ -232,6 +233,7 @@
     <ClCompile Include="source\component\generated\gen_bulletcontroller.cpp" />
     <ClCompile Include="source\component\generated\gen_camera.cpp" />
     <ClCompile Include="source\component\generated\gen_charactercontroller.cpp" />
+    <ClCompile Include="source\component\generated\gen_clickcontroller.cpp" />
     <ClCompile Include="source\component\generated\gen_componentfactory.cpp" />
     <ClCompile Include="source\component\generated\gen_diskcontroller.cpp" />
     <ClCompile Include="source\component\generated\gen_filemanager.cpp" />
@@ -485,6 +487,7 @@
     <ClInclude Include="include\component\gameplay\baseweapon.h" />
     <ClInclude Include="include\component\gameplay\bulletcontroller.h" />
     <ClInclude Include="include\component\gameplay\aicontroller.h" />
+    <ClInclude Include="include\component\gameplay\clickcontroller.h" />
     <ClInclude Include="include\component\gameplay\diskcontroller.h" />
     <ClInclude Include="include\component\gameplay\hyperdiskcontroller.h" />
     <ClInclude Include="include\component\gameplay\lifecontroller.h" />

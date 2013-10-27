@@ -119,8 +119,18 @@ void SceneManager::Load(const natChar* _path)
 
 	doc.Parse(reinterpret_cast<natChar*>(buffer), size);
 
-
 	tinyxml2::XMLElement* element = doc.FirstChildElement("scene");
+	assert(element);
+
+	element = element->FirstChildElement("tiledmap");
+	if(element)
+	{
+		assert(tiledmapmanager);
+		const natChar* tiledMapName = element->Attribute("name");
+		tiledmapmanager->Load(tiledMapName);
+	}
+
+	element = doc.FirstChildElement("scene");
 	assert(element);
 	element = element->FirstChildElement("entity");
 
@@ -153,18 +163,6 @@ void SceneManager::Load(const natChar* _path)
 			playersManager->AddPlayer(entity);
 		}
 	}
-
-	element = doc.FirstChildElement("scene");
-	assert(element);
-
-	element = element->FirstChildElement("tiledmap");
-	if(element)
-	{
-		assert(tiledmapmanager);
-		const natChar* tiledMapName = element->Attribute("name");
-		tiledmapmanager->Load(tiledMapName);
-	}
-
 
 	delete buffer;
 }

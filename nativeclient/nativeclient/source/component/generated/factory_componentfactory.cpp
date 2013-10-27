@@ -20,6 +20,7 @@
 #include "component/charactercontroller.h"
 #include "component/fontmanager.h"
 #include "component/gameplay/hyperdiskcontroller.h"
+#include "component/gameplay/clickcontroller.h"
 #include "component/spriteranimatorslave.h"
 #include "component/texturemanager.h"
 #include "component/sdlinput.h"
@@ -62,6 +63,7 @@ void ComponentFactory::PopulateFactory()
 	m_componentFactory[CharacterController::GetType()] = new CharacterController();
 	m_componentFactory[FontManager::GetType()] = new FontManager();
 	m_componentFactory[HyperdiskController::GetType()] = new HyperdiskController();
+	m_componentFactory[ClickController::GetType()] = new ClickController();
 	m_componentFactory[SpriterAnimatorSlave::GetType()] = new SpriterAnimatorSlave();
 	m_componentFactory[TextureManager::GetType()] = new TextureManager();
 	m_componentFactory[SDLInput::GetType()] = new SDLInput();

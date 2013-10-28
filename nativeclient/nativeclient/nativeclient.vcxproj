@@ -220,7 +220,9 @@
     <ClCompile Include="source\component\gameplay\baseweapon.cpp" />
     <ClCompile Include="source\component\gameplay\bulletcontroller.cpp" />
     <ClCompile Include="source\component\gameplay\aicontroller.cpp" />
-    <ClCompile Include="source\component\gameplay\clickcontroller .cpp" />
+    <ClCompile Include="source\component\gameplay\clickcontroller .cpp">
+      <LanguageStandardMode Condition="'$(Configuration)|$(Platform)'=='Debug|Emscripten'">LanguageStandardC++11</LanguageStandardMode>
+    </ClCompile>
     <ClCompile Include="source\component\gameplay\diskcontroller.cpp" />
     <ClCompile Include="source\component\gameplay\hyperdiskcontroller.cpp" />
     <ClCompile Include="source\component\gameplay\lifecontroller.cpp" />
@@ -694,6 +696,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>EMSCRIPTEN_TARGET;GLM_FORCE_RADIANS;</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>./include;../extern/;../extern/box2d/Box2D_v2.2.1/;../extern/physfs-2.0.3/;../extern/SOIL/src;..\extern\freetype-2.5.0\include;source\freetype\</AdditionalIncludeDirectories>
+      <GenerateDependencyFile>false</GenerateDependencyFile>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>

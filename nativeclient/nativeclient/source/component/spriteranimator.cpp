@@ -131,6 +131,7 @@ void SpriterAnimator::InitAnimation()
 		}
 		else
 		{
+			entity->SetEnabled(true);
 			entity->Reset();
 		}
 	}

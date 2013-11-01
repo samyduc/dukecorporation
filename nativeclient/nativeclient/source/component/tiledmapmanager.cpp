@@ -12,6 +12,7 @@
 
 #include "component/filemanager.h"
 #include "component/texturemanager.h"
+#include "component/prefabmanager.h"
 #include "component/glmanager.h"
 #include "component/componentfactory.h"
 
@@ -72,11 +73,6 @@ void TiledMapManager::Load(const natU8* _bytes, size_t _size)
 	struct TiledMap tileMap;
 	LoadMap(tileMap, element);
 
-	// override clear color
-	GLManager* glmanager = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<GLManager>();
-	assert(glmanager);
-	glmanager->SetClearColor(tileMap.m_backgroundColor);
-
 	// load tiledsheet
 	tiledSets_t sheets;
 	LoadTileSets(sheets, element);
@@ -86,6 +82,9 @@ void TiledMapManager::Load(const natU8* _bytes, size_t _size)
 
 	// start loading maps (tiles)
 	LoadLayers(tileMap, sheets, element);
+
+	//load objects now
+	LoadObjectGroup(tileMap, element);
 
 	// clean
 	ClearCacheEntities();
@@ -118,6 +117,11 @@ void TiledMapManager::LoadMap(struct TiledMap& _tiledMap, tinyxml2::XMLElement* 
 		_tiledMap.m_backgroundColor.b = static_cast<natF32>(strtol(B.c_str(), &end, 16)) / 255.f;
 
 		_tiledMap.m_backgroundColor.a = 1.0f;
+
+		// override clear color
+		GLManager* glmanager = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<GLManager>();
+		assert(glmanager);
+		glmanager->SetClearColor(_tiledMap.m_backgroundColor);
 	}
 }
 
@@ -197,6 +201,7 @@ void TiledMapManager::LoadLayers(struct TiledMap& _tiledMap, tiledSets_t& _tileS
 	tinyxml2::XMLElement* element_layer = _element->FirstChildElement("layer");
 	while(element_layer)
 	{
+		// allocate layer
 		Layer* layer = GetEntity()->GetKernel()->AppendLayer();
 
 		size_t tileNumber = 0;
@@ -220,6 +225,47 @@ void TiledMapManager::LoadLayers(struct TiledMap& _tiledMap, tiledSets_t& _tileS
 
 		element_layer = element_layer->NextSiblingElement("layer");
 	}
+}
+
+void TiledMapManager::LoadObjectGroup(struct TiledMap& _tiledMap, tinyxml2::XMLElement* _element)
+{
+	PrefabManager* prefabmanager = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<PrefabManager>();
+	assert(prefabmanager);
+
+	tinyxml2::XMLElement* element_objectgroup = _element->FirstChildElement("objectgroup");
+	while(element_objectgroup)
+	{
+		// allocate layer
+		Layer* layer = GetEntity()->GetKernel()->AppendLayer();
+
+		tinyxml2::XMLElement* element_object = element_objectgroup->FirstChildElement("object");
+		while(element_object)
+		{
+			//
+			glm::vec3 spawn_pos(0.f);
+			spawn_pos.x = static_cast<natF32>(element_object->IntAttribute("x"));
+			spawn_pos.y = static_cast<natF32>(element_object->IntAttribute("y"));
+
+			const natChar* type_str = element_object->Attribute("type");
+			ref_t type = Hash::Compute(type_str);
+
+			Entity* entity = prefabmanager->CreateFromType(type);
+
+			Transform* transform = entity->GetComponent<Transform>();
+			if(transform)
+			{
+				transform->m_pos = spawn_pos;
+			}
+
+			layer->AddEntity(entity);
+			//
+
+			element_object = element_object->NextSiblingElement("object");
+		}
+
+		element_objectgroup = element_objectgroup->NextSiblingElement("objectgroup");
+	}
+
 }
 
 Entity* TiledMapManager::LoadTile(struct TiledMap& _tiledMap, tiledSets_t& _tileSets, size_t _gid, size_t _cellNumber)

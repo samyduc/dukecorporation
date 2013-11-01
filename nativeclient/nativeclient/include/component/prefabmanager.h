@@ -32,7 +32,7 @@ public:
 	void			InitFromDirectory(const natChar* _path);
 
 	Entity*			Get(const natChar* _path);
-	Entity*			Get(natU32 _id);
+	Entity*			Get(ref_t _id);
 
 	Entity*			CreateFromType(const natChar* _path);
 	Entity*			CreateFromType(ref_t _id);

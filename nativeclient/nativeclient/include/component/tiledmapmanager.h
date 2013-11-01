@@ -73,6 +73,7 @@ protected:
 	void			LoadImage(struct TiledSet& _tileSet, natBool _isTile, tinyxml2::XMLElement* _element);
 	void			LoadRessources(tiledSets_t& _tileSets);
 	void			LoadLayers(struct TiledMap& _tiledMap, tiledSets_t& _tileSets, tinyxml2::XMLElement* _element);
+	void			LoadObjectGroup(struct TiledMap& _tiledMap, tinyxml2::XMLElement* _element);
 	Entity*			LoadTile(struct TiledMap& _tiledMap, tiledSets_t& _tileSets, size_t _gid, size_t _cellNumber);
 	
 	TiledTiles		GetTile(tiledSets_t& _tileSets, size_t _gid);

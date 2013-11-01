@@ -112,7 +112,7 @@ Entity* PrefabManager::CreateFromType(const natChar* _path)
 	return CreateFromType(hash);
 }
 
-Entity* PrefabManager::CreateFromType(natU32 _id)
+Entity* PrefabManager::CreateFromType(ref_t _id)
 {
 	Entity* orig = Get(_id);
 	assert(orig);

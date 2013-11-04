@@ -227,6 +227,8 @@ void TiledMapManager::LoadLayers(struct TiledMap& _tiledMap, tiledSets_t& _tileS
 	}
 }
 
+static ref_t s_hash_collision = Hash::Compute("collision");
+
 void TiledMapManager::LoadObjectGroup(struct TiledMap& _tiledMap, tinyxml2::XMLElement* _element)
 {
 	PrefabManager* prefabmanager = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<PrefabManager>();
@@ -246,19 +248,52 @@ void TiledMapManager::LoadObjectGroup(struct TiledMap& _tiledMap, tinyxml2::XMLE
 			spawn_pos.x = static_cast<natF32>(element_object->IntAttribute("x"));
 			spawn_pos.y = static_cast<natF32>(element_object->IntAttribute("y"));
 
+			glm::vec2 spawn_size(0.f);
+			spawn_size.x = static_cast<natF32>(element_object->IntAttribute("width"));
+			spawn_size.y = static_cast<natF32>(element_object->IntAttribute("height"));
+
 			const natChar* type_str = element_object->Attribute("type");
-			ref_t type = Hash::Compute(type_str);
-
-			Entity* entity = prefabmanager->CreateFromType(type);
-
-			Transform* transform = entity->GetComponent<Transform>();
-			if(transform)
+			if(type_str)
 			{
-				transform->m_pos = spawn_pos;
-			}
+				ref_t type = Hash::Compute(type_str);
+				Entity* entity = prefabmanager->CreateFromType(type);
 
-			layer->AddEntity(entity);
-			//
+				Transform* transform = entity->GetComponent<Transform>();
+				if(transform)
+				{
+					transform->m_pos = spawn_pos;
+				}
+
+				// scan properties
+				tinyxml2::XMLElement* element_properties = element_object->FirstChildElement("properties");
+
+				if(element_properties)
+				{
+					tinyxml2::XMLElement* element_property = element_properties->FirstChildElement("property");
+
+					while(element_property)
+					{
+						const natChar* property_name = element_property->Attribute("name");
+						ref_t property_name_ref = Hash::Compute(property_name);
+
+						// here the list of custom property
+						if(property_name_ref == s_hash_collision)
+						{
+							natBool property_value = element_property->BoolAttribute("value");
+							SquareShape* squareshape = entity->GetComponent<SquareShape>();
+							if(property_value && squareshape)
+							{
+								squareshape->m_size = spawn_size;
+							}
+						}
+						
+						element_property = element_property->NextSiblingElement("property");
+					}
+				}
+
+				layer->AddEntity(entity);
+				//
+			}
 
 			element_object = element_object->NextSiblingElement("object");
 		}

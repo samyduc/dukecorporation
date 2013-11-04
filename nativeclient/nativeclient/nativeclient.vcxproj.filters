@@ -540,6 +540,9 @@
     <ClCompile Include="source\component\generated\gen_clickcontroller.cpp">
       <Filter>Source Files\component\generated</Filter>
     </ClCompile>
+    <ClCompile Include="source\base\hash.cpp">
+      <Filter>Source Files\base</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\base\entity.h">

@@ -4,7 +4,8 @@
 
 #include "base/component.h"
 #include "component/transform.h"
-#include "entity/bullet.h"
+#include "component/shape.h"
+#include "component/rigidbody.h"
 
 namespace Natorium
 {

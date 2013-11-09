@@ -13,10 +13,10 @@ namespace Natorium
 {
 
 
-void SDLManager::Clone(Entity* _entity, natU32 _type) const
+void SDLManager::Clone(Entity* _entity, ref_t _type) const
 {
 	SDLManager* component;
-	natU32 base_type = SDLManager::GetType();
+	ref_t base_type = SDLManager::GetType();
 	if(_type == 0)
 	{
 		component = _entity->AddComponent<SDLManager>();

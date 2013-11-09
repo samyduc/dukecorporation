@@ -13,10 +13,10 @@ namespace Natorium
 {
 
 
-void BaseWeapon::Clone(Entity* _entity, natU32 _type) const
+void BaseWeapon::Clone(Entity* _entity, ref_t _type) const
 {
 	BaseWeapon* component;
-	natU32 base_type = BaseWeapon::GetType();
+	ref_t base_type = BaseWeapon::GetType();
 	if(_type == 0)
 	{
 		component = _entity->AddComponent<BaseWeapon>();

@@ -27,7 +27,7 @@
 namespace Natorium
 {
 
-static natU32 s_GLManager = Hash::Compute("GLManager");
+static ref_t s_GLManager = Hash::Compute("GLManager");
 
 class GLRender;
 
@@ -59,16 +59,16 @@ public:
 	virtual void	OnTick(const natU64 _dt);
 	virtual void	OnDeInit();
 
-	static natU32	GetType() { return s_GLManager; }
+	static ref_t	GetType() { return s_GLManager; }
 
-	virtual void	Clone(Entity* _entity, natU32 _type) const;
+	virtual void	Clone(Entity* _entity, ref_t _type) const;
 	void			WriteData(Serializer& _ser);
 	void			ReadData(Serializer& _ser);
 
 	const int		GetGlobalBindingIndex() { return m_globalBindingIndex; }
 
-	GLuint			GetProgram(natU32 _type);
-	render_list_t*	GetRenderList(natU32 _type);
+	GLuint			GetProgram(ref_t _type);
+	render_list_t*	GetRenderList(ref_t _type);
 
 	Camera*			GetCamera() { return m_currentCamera; }
 	void			SetCamera(Camera* _camera) { m_currentCamera = _camera; }

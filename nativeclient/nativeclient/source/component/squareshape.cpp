@@ -16,22 +16,12 @@ SquareShape::SquareShape()
 	, m_color(1.f, 1.f, 1.f, 1.f)
 	, m_repeat(1.f)
 	, m_isDirty(true)
-	, m_textureRef(0)
 {
 
 }
 
 void SquareShape::OnInit()
 {
-	if(m_textureRef)
-	{
-		TextureManager* texturemanager = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<TextureManager>();
-		GLuint texture_id = texturemanager->Get(m_textureRef);
-
-		GLRender* glrender = GetEntity()->GetComponent<GLRender>();
-		glrender->SetTexture(texture_id);
-	}
-
 	SetSize(m_size);
 	SetColor(m_color);
 

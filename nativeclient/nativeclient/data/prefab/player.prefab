@@ -8,10 +8,13 @@
 
 <component class="CharacterController" version="1076720789" />
 
-<component class="SquareShape" version="1970426499">
-	<property name="m_textureRef" type="tex_t" value="/data/texture/idle-0.png" />
-	<property name="m_size" type="glm::vec2" value="50 50" />
+<component class="MonoTexture" version="-2090084992">
+	<property name="m_textureRef" type="ref_t" value="/data/texture/idle-0.png" />
 	<property name="m_color" type="glm::vec4" value="1 1 1 1" />
+</component>
+
+<component class="SquareShape" version="1970426499">
+	<property name="m_size" type="glm::vec2" value="50 50" />
 	<property name="m_repeat" type="natF32" value="1" />
 	<property name="m_uv" type="glm::mat4x2" value="0" />
 </component>
@@ -48,7 +51,7 @@
 </component>
 
 <component class="GLRender" version="2029438579">
-	<property name="m_type" type="ref_t" value="monotexture" />
+	<property name="m_materialType" type="ref_t" value="MonoTexture" />
 	<property name="m_shapeType" type="ref_t" value="SquareShape" />
 </component>
 

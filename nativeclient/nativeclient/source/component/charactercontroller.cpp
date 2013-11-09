@@ -10,8 +10,7 @@
 #include "component/gameplay/shotgunweapon.h"
 #include "component/spritermanager.h"
 #include "component/spriteranimator.h"
-
-#include "entity/player.h"
+#include "component/rigidbody.h"
 
 #include "base/kernel.h"
 

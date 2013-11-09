@@ -13,10 +13,10 @@ namespace Natorium
 {
 
 
-void Transform::Clone(Entity* _entity, natU32 _type) const
+void Transform::Clone(Entity* _entity, ref_t _type) const
 {
 	Transform* component;
-	natU32 base_type = Transform::GetType();
+	ref_t base_type = Transform::GetType();
 	if(_type == 0)
 	{
 		component = _entity->AddComponent<Transform>();

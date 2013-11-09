@@ -1,7 +1,7 @@
 #pragma once
 
 #include "base/natdef.h"
-#include "entity/root.h"
+#include "base/entity.h"
 
 namespace Natorium
 {
@@ -30,7 +30,7 @@ public:
 
 protected:
 	size_t			m_id;
-	Root			m_rootEntity;
+	Entity			m_rootEntity;
 	Kernel*			m_kernel;
 
 };

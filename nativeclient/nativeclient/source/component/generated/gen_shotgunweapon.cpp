@@ -13,10 +13,10 @@ namespace Natorium
 {
 
 
-void ShotgunWeapon::Clone(Entity* _entity, natU32 _type) const
+void ShotgunWeapon::Clone(Entity* _entity, ref_t _type) const
 {
 	ShotgunWeapon* component;
-	natU32 base_type = ShotgunWeapon::GetType();
+	ref_t base_type = ShotgunWeapon::GetType();
 	if(_type == 0)
 	{
 		component = _entity->AddComponent<ShotgunWeapon>();

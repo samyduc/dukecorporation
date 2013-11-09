@@ -13,10 +13,10 @@ namespace Natorium
 {
 
 
-void SceneManager::Clone(Entity* _entity, natU32 _type) const
+void SceneManager::Clone(Entity* _entity, ref_t _type) const
 {
 	SceneManager* component;
-	natU32 base_type = SceneManager::GetType();
+	ref_t base_type = SceneManager::GetType();
 	if(_type == 0)
 	{
 		component = _entity->AddComponent<SceneManager>();

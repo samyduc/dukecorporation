@@ -7,6 +7,7 @@
 #include "component/transform.h"
 
 #include "component/shape.h"
+#include "component/material/material.h"
 
 #include <assert.h>
 
@@ -18,13 +19,12 @@
 namespace Natorium
 {
 
-const natU32 programPosition = Hash::Compute("position");
-
 GLRender::GLRender()
 	: m_shape(nullptr)
-	, m_type(programPosition)
+	, m_shapeType(0)
+	, m_material(nullptr)
+	, m_materialType(0)
 	, m_vertexNumber(0)
-	, m_texture(0)
 {
 
 }
@@ -36,12 +36,14 @@ GLRender::~GLRender()
 void GLRender::OnInit()
 {
 	m_shape = static_cast<Shape*>(GetEntity()->GetComponentByType(m_shapeType));
-
 	assert(m_shape);
+
+	m_material = static_cast<Material*>(GetEntity()->GetComponentByType(m_materialType));
+	assert(m_material);
 
 	GLManager* glmanager = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<GLManager>();
 	//m_shaderProgram = glmanager->GetShaderProgram();
-	m_renderList = glmanager->GetRenderList(m_type);
+	m_renderList = glmanager->GetRenderList(m_material->GetProgramType());
 
 	//m_modelUnif = glGetUniformLocation(m_shaderProgram, "model");
 	glGenBuffers(1, &m_bufferObject);
@@ -50,7 +52,7 @@ void GLRender::OnInit()
 
 	//glUniformBlockBinding(m_shaderProgram, m_globalUnifBlockIndex, glmanager->GetGlobalBindingIndex());
 
-	GLuint program = glmanager->GetProgram(m_type);
+	GLuint program = m_material->GetProgram();
 	m_modelUnif = glGetUniformLocation(program, "model");
 }
 
@@ -92,35 +94,51 @@ void GLRender::Render(GLuint _program)
 	
 	glBindBuffer(GL_ARRAY_BUFFER, m_bufferObject);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_indicesBuffer);
-	glEnableVertexAttribArray(0);
+	
+	/*glEnableVertexAttribArray(0);
 	glEnableVertexAttribArray(1);
 	glEnableVertexAttribArray(2);
 
 
 	glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, 0);
 	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, (void*)(sizeof(natF32)*m_colorOffset));
-	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, (void*)(sizeof(natF32)*m_uvOffset));
-	////////
+	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, (void*)(sizeof(natF32)*m_uvOffset));*/
 
-	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D , m_texture);
+	m_material->EnableAndSetVertexAttribute(m_colorOffset, m_uvOffset);
+
+	////////
+	m_material->BindTexture();
+	/*glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D , m_texture);*/
 
 	// call to draw
 	//glDrawArrays(GL_TRIANGLES, 0, static_cast<natU32>(m_vertexNumber));
 	//glDrawArrays(GL_TRIANGLE_STRIP, 0, static_cast<natU32>(m_vertexNumber));
 	glDrawElements(GL_TRIANGLES, static_cast<natU32>(m_indicesNumber), GL_UNSIGNED_SHORT, (void*)0);
 
-	glBindTexture(GL_TEXTURE_2D , 0);
+	//glBindTexture(GL_TEXTURE_2D , 0);
+	m_material->UnBindTexture();
+	m_material->DisableVertexAttribute();
 
-	glDisableVertexAttribArray(0);
+	/*glDisableVertexAttribArray(0);
 	glDisableVertexAttribArray(1);
-	glDisableVertexAttribArray(3);
+	glDisableVertexAttribArray(2);*/
 }
 
 void GLRender::OnDeInit()
 {
 	glDeleteBuffers(1, &m_bufferObject);
 	glDeleteBuffers(1, &m_indicesBuffer);
+}
+
+Shape* GLRender::GetShape()
+{
+	return m_shape;
+}
+
+Material* GLRender::GetMaterial()
+{
+	return m_material;
 }
 
 }

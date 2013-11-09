@@ -95,10 +95,10 @@ class Writer:
 
 	def write_clone(self, cpp_file):
 
-		cpp_file.write("void %s::Clone(Entity* _entity, natU32 _type) const\n" % (self.name))
+		cpp_file.write("void %s::Clone(Entity* _entity, ref_t _type) const\n" % (self.name))
 		cpp_file.write('{\n')
 		cpp_file.write("	%s* component;\n" % (self.name))
-		cpp_file.write("	natU32 base_type = %s::GetType();\n" % (self.name))
+		cpp_file.write("	ref_t base_type = %s::GetType();\n" % (self.name))
 		cpp_file.write('	if(_type == 0)\n')
 		cpp_file.write('	{\n')
 		cpp_file.write("		component = _entity->AddComponent<%s>();\n" % (self.name))

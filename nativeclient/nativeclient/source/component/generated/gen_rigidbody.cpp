@@ -13,10 +13,10 @@ namespace Natorium
 {
 
 
-void RigidBody::Clone(Entity* _entity, natU32 _type) const
+void RigidBody::Clone(Entity* _entity, ref_t _type) const
 {
 	RigidBody* component;
-	natU32 base_type = RigidBody::GetType();
+	ref_t base_type = RigidBody::GetType();
 	if(_type == 0)
 	{
 		component = _entity->AddComponent<RigidBody>();

@@ -13,10 +13,10 @@ namespace Natorium
 {
 
 
-void SquareShape::Clone(Entity* _entity, natU32 _type) const
+void SquareShape::Clone(Entity* _entity, ref_t _type) const
 {
 	SquareShape* component;
-	natU32 base_type = SquareShape::GetType();
+	ref_t base_type = SquareShape::GetType();
 	if(_type == 0)
 	{
 		component = _entity->AddComponent<SquareShape>();
@@ -27,9 +27,7 @@ void SquareShape::Clone(Entity* _entity, natU32 _type) const
 		base_type = _type;
 	}
 
-	component->m_textureRef = m_textureRef;
 	component->m_size = m_size;
-	component->m_color = m_color;
 	component->m_repeat = m_repeat;
 	component->m_uv = m_uv;
 }
@@ -37,9 +35,7 @@ void SquareShape::Clone(Entity* _entity, natU32 _type) const
 
 void SquareShape::WriteData(Serializer& _ser)
 {
-	_ser << m_textureRef;
 	_ser << m_size;
-	_ser << m_color;
 	_ser << m_repeat;
 	_ser << m_uv;
 }
@@ -47,9 +43,7 @@ void SquareShape::WriteData(Serializer& _ser)
 
 void SquareShape::ReadData(Serializer& _ser)
 {
-	_ser >> m_textureRef;
 	_ser >> m_size;
-	_ser >> m_color;
 	_ser >> m_repeat;
 	_ser >> m_uv;
 }

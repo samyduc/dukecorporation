@@ -13,10 +13,10 @@ namespace Natorium
 {
 
 
-void SpriterAnimator::Clone(Entity* _entity, natU32 _type) const
+void SpriterAnimator::Clone(Entity* _entity, ref_t _type) const
 {
 	SpriterAnimator* component;
-	natU32 base_type = SpriterAnimator::GetType();
+	ref_t base_type = SpriterAnimator::GetType();
 	if(_type == 0)
 	{
 		component = _entity->AddComponent<SpriterAnimator>();

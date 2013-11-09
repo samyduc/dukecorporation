@@ -13,10 +13,10 @@ namespace Natorium
 {
 
 
-void SDLRender::Clone(Entity* _entity, natU32 _type) const
+void SDLRender::Clone(Entity* _entity, ref_t _type) const
 {
 	SDLRender* component;
-	natU32 base_type = SDLRender::GetType();
+	ref_t base_type = SDLRender::GetType();
 	if(_type == 0)
 	{
 		component = _entity->AddComponent<SDLRender>();

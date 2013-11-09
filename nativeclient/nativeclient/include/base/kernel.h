@@ -5,8 +5,6 @@
 #include "base/entity.h"
 #include "base/layer.h"
 
-#include "entity/root.h"
-
 #include <vector>
 
 namespace Natorium

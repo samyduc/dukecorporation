@@ -25,7 +25,7 @@ struct PackComponent
 	PackComponent(natU32 _id, Component* _component) : m_id(_id), m_component(_component)
 	{}
 
-	natU32 m_id;
+	ref_t m_id;
 	Component* m_component;
 };
 
@@ -123,7 +123,7 @@ public:
 		return ret;
 	}
 
-	Component* GetComponentByType(natU32 _type)
+	Component* GetComponentByType(ref_t _type)
 	{
 		Component* ret = nullptr;
 

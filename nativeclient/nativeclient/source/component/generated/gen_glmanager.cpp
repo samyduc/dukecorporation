@@ -13,10 +13,10 @@ namespace Natorium
 {
 
 
-void GLManager::Clone(Entity* _entity, natU32 _type) const
+void GLManager::Clone(Entity* _entity, ref_t _type) const
 {
 	GLManager* component;
-	natU32 base_type = GLManager::GetType();
+	ref_t base_type = GLManager::GetType();
 	if(_type == 0)
 	{
 		component = _entity->AddComponent<GLManager>();

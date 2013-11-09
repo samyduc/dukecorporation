@@ -13,10 +13,10 @@ namespace Natorium
 {
 
 
-void FontManager::Clone(Entity* _entity, natU32 _type) const
+void FontManager::Clone(Entity* _entity, ref_t _type) const
 {
 	FontManager* component;
-	natU32 base_type = FontManager::GetType();
+	ref_t base_type = FontManager::GetType();
 	if(_type == 0)
 	{
 		component = _entity->AddComponent<FontManager>();

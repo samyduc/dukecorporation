@@ -13,10 +13,10 @@ namespace Natorium
 {
 
 
-void TextShape::Clone(Entity* _entity, natU32 _type) const
+void TextShape::Clone(Entity* _entity, ref_t _type) const
 {
 	TextShape* component;
-	natU32 base_type = TextShape::GetType();
+	ref_t base_type = TextShape::GetType();
 	if(_type == 0)
 	{
 		component = _entity->AddComponent<TextShape>();
@@ -29,7 +29,6 @@ void TextShape::Clone(Entity* _entity, natU32 _type) const
 
 	component->m_text = m_text;
 	component->m_fontType = m_fontType;
-	component->m_color = m_color;
 }
 
 
@@ -37,7 +36,6 @@ void TextShape::WriteData(Serializer& _ser)
 {
 	_ser << m_text;
 	_ser << m_fontType;
-	_ser << m_color;
 }
 
 
@@ -45,7 +43,6 @@ void TextShape::ReadData(Serializer& _ser)
 {
 	_ser >> m_text;
 	_ser >> m_fontType;
-	_ser >> m_color;
 }
 
 

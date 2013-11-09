@@ -9,9 +9,8 @@
 #include "component/spritermanager.h"
 #include "component/spriteranimator.h"
 #include "component/gameplay/diskcontroller.h"
-
-
-#include "entity/player.h"
+#include "component/rigidbody.h"
+#include "component/shape.h"
 
 #include "base/kernel.h"
 

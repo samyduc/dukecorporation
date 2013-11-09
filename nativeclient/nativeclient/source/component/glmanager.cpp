@@ -239,7 +239,7 @@ void GLManager::ClearProgram()
 	m_shaderPrograms.clear();
 }
 
-GLuint GLManager::GetProgram(natU32 _type)
+GLuint GLManager::GetProgram(ref_t _type)
 {
 	GLuint ret = 0;
 
@@ -252,7 +252,7 @@ GLuint GLManager::GetProgram(natU32 _type)
 	return ret;
 }
 
-render_list_t* GLManager::GetRenderList(natU32 _type)
+render_list_t* GLManager::GetRenderList(ref_t _type)
 {
 	render_list_t* ret = nullptr;
 	render_map_t::iterator it = m_renderMap.find(_type);
@@ -278,7 +278,7 @@ void GLManager::RegisterProgram(const natChar *_name, const std::string &_strVer
 	GLuint program = CreateShaderProgram(shaders);
 
 
-	natU32 type = Hash::Compute(_name);
+	ref_t type = Hash::Compute(_name);
 
 	shaders_t::iterator it = m_shaderPrograms.find(type);
 	if(it == m_shaderPrograms.end())

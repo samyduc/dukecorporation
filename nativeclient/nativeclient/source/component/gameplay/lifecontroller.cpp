@@ -48,11 +48,11 @@ void LifeController::TakeDamage(natS32 _damage)
 			textureRef = m_BigDamageTexture;
 		}
 
-		TextureManager* texturemanager = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<TextureManager>();
-		GLuint texture_id = texturemanager->Get(textureRef);
+		//TextureManager* texturemanager = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<TextureManager>();
+		//GLuint texture_id = texturemanager->Get(textureRef);
 
-		GLRender* glrender = GetEntity()->GetComponent<GLRender>();
-		glrender->SetTexture(texture_id);
+		//GLRender* glrender = GetEntity()->GetComponent<GLRender>();
+		//glrender->SetTexture(texture_id);
 
 	}
 

@@ -13,10 +13,10 @@ namespace Natorium
 {
 
 
-void TiledMapManager::Clone(Entity* _entity, natU32 _type) const
+void TiledMapManager::Clone(Entity* _entity, ref_t _type) const
 {
 	TiledMapManager* component;
-	natU32 base_type = TiledMapManager::GetType();
+	ref_t base_type = TiledMapManager::GetType();
 	if(_type == 0)
 	{
 		component = _entity->AddComponent<TiledMapManager>();

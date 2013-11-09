@@ -35,10 +35,10 @@ public:
 			natBool		IsInit() { return m_isInit; }		
 			Entity*		GetEntity() { return m_entity; }
 
-	static	natU32		GetType() { return 0; }
+	static	ref_t		GetType() { return 0; }
 
 	// generated code
-	virtual void		Clone(Entity* _entity, natU32 _type) const = 0; 
+	virtual void		Clone(Entity* _entity, ref_t _type) const = 0; 
 	virtual void		WriteData(Serializer& _ser) = 0;
 	virtual void		ReadData(Serializer& _ser) = 0;
 

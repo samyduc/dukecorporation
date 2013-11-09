@@ -13,10 +13,10 @@ namespace Natorium
 {
 
 
-void Camera::Clone(Entity* _entity, natU32 _type) const
+void Camera::Clone(Entity* _entity, ref_t _type) const
 {
 	Camera* component;
-	natU32 base_type = Camera::GetType();
+	ref_t base_type = Camera::GetType();
 	if(_type == 0)
 	{
 		component = _entity->AddComponent<Camera>();

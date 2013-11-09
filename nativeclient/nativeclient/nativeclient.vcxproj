@@ -236,6 +236,7 @@
     <ClCompile Include="source\component\generated\gen_aicontroller.cpp" />
     <ClCompile Include="source\component\generated\gen_baseweapon.cpp" />
     <ClCompile Include="source\component\generated\gen_bulletcontroller.cpp" />
+    <ClCompile Include="source\component\generated\gen_bumpmapping.cpp" />
     <ClCompile Include="source\component\generated\gen_camera.cpp" />
     <ClCompile Include="source\component\generated\gen_charactercontroller.cpp" />
     <ClCompile Include="source\component\generated\gen_clickcontroller.cpp" />
@@ -248,6 +249,9 @@
     <ClCompile Include="source\component\generated\gen_glrender.cpp" />
     <ClCompile Include="source\component\generated\gen_hyperdiskcontroller.cpp" />
     <ClCompile Include="source\component\generated\gen_lifecontroller.cpp" />
+    <ClCompile Include="source\component\generated\gen_material.cpp" />
+    <ClCompile Include="source\component\generated\gen_monocolor.cpp" />
+    <ClCompile Include="source\component\generated\gen_monotexture.cpp" />
     <ClCompile Include="source\component\generated\gen_physicsmanager.cpp" />
     <ClCompile Include="source\component\generated\gen_playersmanager.cpp" />
     <ClCompile Include="source\component\generated\gen_prefabmanager.cpp" />
@@ -271,6 +275,10 @@
     <ClCompile Include="source\component\generated\gen_ui.cpp" />
     <ClCompile Include="source\component\glmanager.cpp" />
     <ClCompile Include="source\component\glrender.cpp" />
+    <ClCompile Include="source\component\material\bumpmapping.cpp" />
+    <ClCompile Include="source\component\material\material.cpp" />
+    <ClCompile Include="source\component\material\monocolor.cpp" />
+    <ClCompile Include="source\component\material\monotexture.cpp" />
     <ClCompile Include="source\component\physicsmanager.cpp" />
     <ClCompile Include="source\component\playersmanager.cpp" />
     <ClCompile Include="source\component\prefabmanager.cpp" />
@@ -503,6 +511,10 @@
     <ClInclude Include="include\component\glmanager.h" />
     <ClInclude Include="include\component\glrender.h" />
     <ClInclude Include="include\component\input.h" />
+    <ClInclude Include="include\component\material\bumpmapping.h" />
+    <ClInclude Include="include\component\material\material.h" />
+    <ClInclude Include="include\component\material\monocolor.h" />
+    <ClInclude Include="include\component\material\monotexture.h" />
     <ClInclude Include="include\component\physicsmanager.h" />
     <ClInclude Include="include\component\playersmanager.h" />
     <ClInclude Include="include\component\prefabmanager.h" />
@@ -522,14 +534,6 @@
     <ClInclude Include="include\component\transform.h" />
     <ClInclude Include="include\component\ui.h" />
     <ClInclude Include="include\component\ui\fpscounter.h" />
-    <ClInclude Include="include\entity\bullet.h" />
-    <ClInclude Include="include\entity\civilian.h" />
-    <ClInclude Include="include\entity\floor.h" />
-    <ClInclude Include="include\entity\fps.h" />
-    <ClInclude Include="include\entity\player.h" />
-    <ClInclude Include="include\entity\root.h" />
-    <ClInclude Include="include\entity\spawnercivilian.h" />
-    <ClInclude Include="include\entity\text.h" />
     <ClInclude Include="include\shader\monotexture.h" />
     <ClInclude Include="include\shader\monotexture_es.h" />
     <ClInclude Include="include\shader\position.h" />

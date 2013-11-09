@@ -37,7 +37,6 @@ public:
 	natU16*			GetIndices(size_t &_size);
 
 	glm::vec2		GetSize() const { return m_size; }
-	glm::vec4		GetColor() const { return m_color; }
 
 	void			GetOffset(size_t& _vertexNumber, size_t& _indicesNumber, size_t& _color, size_t& _uv);
 
@@ -54,9 +53,9 @@ public:
 public:
 	std::string		m_text;
 	ref_t			m_fontType;
-	glm::vec4		m_color;
 
 private:
+	glm::vec4		m_color;
 	natBool			m_isDirty;
 	size_t			m_length;
 	natF32*			m_vertex;

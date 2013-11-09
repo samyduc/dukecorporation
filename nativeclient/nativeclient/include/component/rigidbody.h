@@ -17,7 +17,7 @@ namespace Natorium
 class Transform;
 class Shape;
 
-static natU32 s_RigidBody = Hash::Compute("RigidBody");
+static ref_t s_RigidBody = Hash::Compute("RigidBody");
 
 static natF32 s_B2RatioPos = 10.f;
 
@@ -35,9 +35,9 @@ public:
 	virtual void	OnEnable();
 	virtual void	OnDisable();
 
-	static natU32	GetType() { return s_RigidBody; }
+	static ref_t	GetType() { return s_RigidBody; }
 
-	virtual void	Clone(Entity* _entity, natU32 _type) const;
+	virtual void	Clone(Entity* _entity, ref_t _type) const;
 	void			WriteData(Serializer& _ser);
 	void			ReadData(Serializer& _ser);
 

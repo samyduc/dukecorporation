@@ -11,6 +11,7 @@
 #include "component/glrender.h"
 #include "component/squareshape.h"
 #include "component/transform.h"
+#include "component/material/monotexture.h"
 
 #include "component/spritermanager.h"
 #include "component/texturemanager.h"
@@ -144,22 +145,24 @@ void SpriterAnimator::InitAnimation()
 	}
 }
 
-ref_t s_MonoTexture = Hash::Compute("monotexture");
+extern ref_t s_MonoTexture;
 
 void SpriterAnimator::SetupEntity(Entity* _entity, const timeline_sprite_t& _timeline)
 {
-	GLRender* glrender = _entity->AddComponent<GLRender>();
-	glrender->m_shapeType = s_SquareShape;
-	glrender->m_type = s_MonoTexture;
-
 	Transform* transform = _entity->AddComponent<Transform>();
 	// init of transform done on OnInit in slave
 
 	SquareShape* squareshape = _entity->AddComponent<SquareShape>();
-	squareshape->m_color = glm::vec4(1.f, 1.f, 1.f, _timeline.m_keys[0].m_alpha);
 	squareshape->m_size = _timeline.m_keys[0].m_ressource.m_size;
-	squareshape->m_textureRef = _timeline.m_keys[0].m_ressource.m_ref;
 	squareshape->m_repeat = 1.f;
+
+	MonoTexture* monotexture = _entity->AddComponent<MonoTexture>();
+	monotexture->m_color = glm::vec4(1.f, 1.f, 1.f, _timeline.m_keys[0].m_alpha);
+	monotexture->m_textureRef = _timeline.m_keys[0].m_ressource.m_ref;
+
+	GLRender* glrender = _entity->AddComponent<GLRender>();
+	glrender->m_shapeType = s_SquareShape;
+	glrender->m_materialType = s_MonoTexture;
 
 	SpriterAnimatorSlave* spriteranimationslave = _entity->AddComponent<SpriterAnimatorSlave>();
 }

@@ -13,10 +13,10 @@ namespace Natorium
 {
 
 
-void DiskController::Clone(Entity* _entity, natU32 _type) const
+void DiskController::Clone(Entity* _entity, ref_t _type) const
 {
 	DiskController* component;
-	natU32 base_type = DiskController::GetType();
+	ref_t base_type = DiskController::GetType();
 	if(_type == 0)
 	{
 		component = _entity->AddComponent<DiskController>();

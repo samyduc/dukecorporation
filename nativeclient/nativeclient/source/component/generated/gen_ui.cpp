@@ -13,10 +13,10 @@ namespace Natorium
 {
 
 
-void UI::Clone(Entity* _entity, natU32 _type) const
+void UI::Clone(Entity* _entity, ref_t _type) const
 {
 	UI* component;
-	natU32 base_type = UI::GetType();
+	ref_t base_type = UI::GetType();
 	if(_type == 0)
 	{
 		component = _entity->AddComponent<UI>();

@@ -23,7 +23,6 @@ public:
 	virtual	natU16*		GetIndices(size_t &_size) = 0;
 
 	virtual glm::vec2	GetSize() const = 0;
-	virtual glm::vec4	GetColor() const = 0;
 	virtual void		SetColor(glm::vec4& _color) = 0;
 	virtual void		SetAlpha(natF32 _alpha) = 0;
 

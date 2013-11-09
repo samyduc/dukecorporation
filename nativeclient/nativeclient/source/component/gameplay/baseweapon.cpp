@@ -4,10 +4,11 @@
 #include "base/entity.h"
 #include "base/component.h"
 #include "component/transform.h"
-#include "entity/bullet.h"
-
 #include "component/prefabmanager.h"
 #include "component/gameplay/lifecontroller.h"
+#include "component/shape.h"
+#include "component/rigidbody.h"
+#include "component/gameplay/bulletcontroller.h"
 
 #include <cassert>
 

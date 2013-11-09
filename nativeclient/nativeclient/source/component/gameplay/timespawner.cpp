@@ -8,8 +8,6 @@
 #include "base/timeplatform.h"
 
 
-#include "entity/civilian.h"
-
 #include <cassert>
 
 namespace Natorium

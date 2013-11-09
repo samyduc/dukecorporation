@@ -6,6 +6,7 @@
 
 #include "component/fontmanager.h"
 #include "component/glrender.h"
+#include "component/material/material.h"
 
 namespace Natorium
 {
@@ -29,9 +30,14 @@ void TextShape::OnInit()
 
 	assert(m_font);
 
-	// bad  :(
+	// push good texture to material
 	GLRender* render = GetEntity()->GetComponent<GLRender>();
-	render->SetTexture(m_font->m_texture);
+	assert(render);
+
+	// helper because a font texture does not exists on the disk
+	Material* material = static_cast<Material*>(GetEntity()->GetComponentByType(render->m_materialType));
+	assert(material);
+	material->SetMainTexture(m_font->m_texture);
 
 	SetText(m_text);
 

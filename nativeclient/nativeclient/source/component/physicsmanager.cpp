@@ -2,9 +2,7 @@
 #include "base/kernel.h"
 #include "base/layer.h"
 
-#include "entity/player.h"
-#include "entity/civilian.h"
-#include "entity/spawnercivilian.h"
+
 
 
 

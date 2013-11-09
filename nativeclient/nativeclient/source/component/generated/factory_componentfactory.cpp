@@ -20,7 +20,10 @@
 #include "component/charactercontroller.h"
 #include "component/fontmanager.h"
 #include "component/gameplay/hyperdiskcontroller.h"
+#include "component/material/material.h"
+#include "component/material/bumpmapping.h"
 #include "component/gameplay/clickcontroller.h"
+#include "component/material/monotexture.h"
 #include "component/spriteranimatorslave.h"
 #include "component/texturemanager.h"
 #include "component/sdlinput.h"
@@ -42,6 +45,7 @@
 #include "component/gameplay/shotgunweapon.h"
 #include "component/ui.h"
 #include "component/sdlmanager.h"
+#include "component/material/monocolor.h"
 #include "component/playersmanager.h"
 
 
@@ -63,7 +67,10 @@ void ComponentFactory::PopulateFactory()
 	m_componentFactory[CharacterController::GetType()] = new CharacterController();
 	m_componentFactory[FontManager::GetType()] = new FontManager();
 	m_componentFactory[HyperdiskController::GetType()] = new HyperdiskController();
+	m_componentFactory[Material::GetType()] = new Material();
+	m_componentFactory[BumpMapping::GetType()] = new BumpMapping();
 	m_componentFactory[ClickController::GetType()] = new ClickController();
+	m_componentFactory[MonoTexture::GetType()] = new MonoTexture();
 	m_componentFactory[SpriterAnimatorSlave::GetType()] = new SpriterAnimatorSlave();
 	m_componentFactory[TextureManager::GetType()] = new TextureManager();
 	m_componentFactory[SDLInput::GetType()] = new SDLInput();
@@ -85,6 +92,7 @@ void ComponentFactory::PopulateFactory()
 	m_componentFactory[ShotgunWeapon::GetType()] = new ShotgunWeapon();
 	m_componentFactory[UI::GetType()] = new UI();
 	m_componentFactory[SDLManager::GetType()] = new SDLManager();
+	m_componentFactory[MonoColor::GetType()] = new MonoColor();
 	m_componentFactory[PlayersManager::GetType()] = new PlayersManager();
 }
 

@@ -5,6 +5,8 @@
 
 #include "component/transform.h"
 
+#include "component/sdlmanager.h"
+
 #include <assert.h>
 
 namespace Natorium

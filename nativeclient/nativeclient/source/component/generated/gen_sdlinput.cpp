@@ -13,10 +13,10 @@ namespace Natorium
 {
 
 
-void SDLInput::Clone(Entity* _entity, natU32 _type) const
+void SDLInput::Clone(Entity* _entity, ref_t _type) const
 {
 	SDLInput* component;
-	natU32 base_type = SDLInput::GetType();
+	ref_t base_type = SDLInput::GetType();
 	if(_type == 0)
 	{
 		component = _entity->AddComponent<SDLInput>();

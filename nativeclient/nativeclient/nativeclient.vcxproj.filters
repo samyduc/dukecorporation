@@ -16,9 +16,6 @@
     <Filter Include="Source Files\base">
       <UniqueIdentifier>{889aad48-c268-4723-87f6-bd4807189f3b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\entity">
-      <UniqueIdentifier>{2ca58c7e-fa67-449b-b364-2c19ff1a30cd}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\component">
       <UniqueIdentifier>{163fcdd1-c104-4d05-bdbe-a68e5cd144e0}</UniqueIdentifier>
     </Filter>
@@ -54,6 +51,9 @@
     </Filter>
     <Filter Include="freetype">
       <UniqueIdentifier>{8df0060a-8aa5-42cc-8bb2-319e2247108c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\component\material">
+      <UniqueIdentifier>{286039dd-2595-4025-aea2-cd13cbf1c276}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -543,6 +543,30 @@
     <ClCompile Include="source\base\hash.cpp">
       <Filter>Source Files\base</Filter>
     </ClCompile>
+    <ClCompile Include="source\component\material\material.cpp">
+      <Filter>Source Files\component\material</Filter>
+    </ClCompile>
+    <ClCompile Include="source\component\material\monocolor.cpp">
+      <Filter>Source Files\component\material</Filter>
+    </ClCompile>
+    <ClCompile Include="source\component\material\monotexture.cpp">
+      <Filter>Source Files\component\material</Filter>
+    </ClCompile>
+    <ClCompile Include="source\component\material\bumpmapping.cpp">
+      <Filter>Source Files\component\material</Filter>
+    </ClCompile>
+    <ClCompile Include="source\component\generated\gen_monocolor.cpp">
+      <Filter>Source Files\component\generated</Filter>
+    </ClCompile>
+    <ClCompile Include="source\component\generated\gen_monotexture.cpp">
+      <Filter>Source Files\component\generated</Filter>
+    </ClCompile>
+    <ClCompile Include="source\component\generated\gen_material.cpp">
+      <Filter>Source Files\component\generated</Filter>
+    </ClCompile>
+    <ClCompile Include="source\component\generated\gen_bumpmapping.cpp">
+      <Filter>Source Files\component\generated</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\base\entity.h">
@@ -560,14 +584,8 @@
     <ClInclude Include="include\base\timeplatform.h">
       <Filter>Source Files\base</Filter>
     </ClInclude>
-    <ClInclude Include="include\entity\root.h">
-      <Filter>Source Files\entity</Filter>
-    </ClInclude>
     <ClInclude Include="include\component\sdlmanager.h">
       <Filter>Source Files\component</Filter>
-    </ClInclude>
-    <ClInclude Include="include\entity\player.h">
-      <Filter>Source Files\entity</Filter>
     </ClInclude>
     <ClInclude Include="include\component\sdlrender.h">
       <Filter>Source Files\component</Filter>
@@ -614,20 +632,11 @@
     <ClInclude Include="include\component\squareshape.h">
       <Filter>Source Files\component</Filter>
     </ClInclude>
-    <ClInclude Include="include\entity\civilian.h">
-      <Filter>Source Files\entity</Filter>
-    </ClInclude>
     <ClInclude Include="include\component\gameplay\spawner.h">
       <Filter>Source Files\component\gameplay</Filter>
     </ClInclude>
-    <ClInclude Include="include\entity\spawnercivilian.h">
-      <Filter>Source Files\entity</Filter>
-    </ClInclude>
     <ClInclude Include="include\component\gameplay\baseweapon.h">
       <Filter>Source Files\component\gameplay</Filter>
-    </ClInclude>
-    <ClInclude Include="include\entity\bullet.h">
-      <Filter>Source Files\entity</Filter>
     </ClInclude>
     <ClInclude Include="include\component\gameplay\bulletcontroller.h">
       <Filter>Source Files\component\gameplay</Filter>
@@ -869,26 +878,17 @@
     <ClInclude Include="include\shader\monotexture_es.h">
       <Filter>Source Files\shader</Filter>
     </ClInclude>
-    <ClInclude Include="include\entity\floor.h">
-      <Filter>Source Files\entity</Filter>
-    </ClInclude>
     <ClInclude Include="include\component\fontmanager.h">
       <Filter>Source Files\component</Filter>
     </ClInclude>
     <ClInclude Include="include\component\textshape.h">
       <Filter>Source Files\component</Filter>
     </ClInclude>
-    <ClInclude Include="include\entity\text.h">
-      <Filter>Source Files\entity</Filter>
-    </ClInclude>
     <ClInclude Include="include\component\ui.h">
       <Filter>Source Files\component</Filter>
     </ClInclude>
     <ClInclude Include="include\component\ui\fpscounter.h">
       <Filter>Source Files\component\ui</Filter>
-    </ClInclude>
-    <ClInclude Include="include\entity\fps.h">
-      <Filter>Source Files\entity</Filter>
     </ClInclude>
     <ClInclude Include="include\base\serializer.h">
       <Filter>Source Files\base</Filter>
@@ -925,6 +925,18 @@
     </ClInclude>
     <ClInclude Include="include\component\gameplay\clickcontroller.h">
       <Filter>Source Files\component\gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="include\component\material\bumpmapping.h">
+      <Filter>Source Files\component\material</Filter>
+    </ClInclude>
+    <ClInclude Include="include\component\material\material.h">
+      <Filter>Source Files\component\material</Filter>
+    </ClInclude>
+    <ClInclude Include="include\component\material\monocolor.h">
+      <Filter>Source Files\component\material</Filter>
+    </ClInclude>
+    <ClInclude Include="include\component\material\monotexture.h">
+      <Filter>Source Files\component\material</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

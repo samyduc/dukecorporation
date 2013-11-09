@@ -34,7 +34,6 @@ public:
 	natU16*			GetIndices(size_t &_size);
 
 	glm::vec2		GetSize() const { return m_size; }
-	glm::vec4		GetColor() const { return m_color; }
 
 	void			GetOffset(size_t& _vertexNumber, size_t& _indicesNumber, size_t& color, size_t& _uv);
 
@@ -49,13 +48,12 @@ public:
 	natBool			IsAndRemoveDirty() {natBool ret = m_isDirty; m_isDirty = false; return ret; };
 
 public:
-	tex_t			m_textureRef;
 	glm::vec2		m_size;
-	glm::vec4		m_color;
 	natF32			m_repeat;
 	glm::mat4x2		m_uv;
 
 private:
+	glm::vec4		m_color;
 	natBool			m_isDirty;
 	size_t			m_length;
 	natF32			m_vertex[40];

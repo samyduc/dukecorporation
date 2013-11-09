@@ -15,6 +15,7 @@
 #include "component/prefabmanager.h"
 #include "component/glmanager.h"
 #include "component/componentfactory.h"
+#include "component/material/monotexture.h"
 
 #include <vector>
 #include <string>
@@ -303,6 +304,9 @@ void TiledMapManager::LoadObjectGroup(struct TiledMap& _tiledMap, tinyxml2::XMLE
 
 }
 
+extern ref_t s_Monotexture;
+extern ref_t s_SquareShape;
+
 Entity* TiledMapManager::LoadTile(struct TiledMap& _tiledMap, tiledSets_t& _tileSets, size_t _gid, size_t _cellNumber)
 {
 	Entity* blueprint = GetCacheEntity(_gid);
@@ -313,22 +317,23 @@ Entity* TiledMapManager::LoadTile(struct TiledMap& _tiledMap, tiledSets_t& _tile
 		blueprint = new Entity();
 		blueprint->AddComponent<Transform>();
 		SquareShape* squareshape = blueprint->AddComponent<SquareShape>();
+		MonoTexture* monotexture = blueprint->AddComponent<MonoTexture>();
 		GLRender* glrender = blueprint->AddComponent<GLRender>();
 
 		// build blueprint
 		TiledTiles tile =  GetTile(_tileSets, _gid);
-		
+
+		glrender->m_shapeType = s_SquareShape;
+		glrender->m_materialType = s_MonoTexture;
+			
+		monotexture->m_textureRef = tile.m_refTexture;
+		monotexture->m_color = glm::vec4(1.f, 1.f, 1.f, 1.f);
+
 		if(tile.m_isTile)
 		{
-			// raw picture
-			squareshape->m_size = tile.m_size;
-			squareshape->m_textureRef = tile.m_refTexture;
-			squareshape->m_color = glm::vec4(1.f, 1.f, 1.f, 1.f);
 			squareshape->m_repeat = 1.f;
 			squareshape->m_uv = glm::mat4x2(0.f);
-
-			glrender->m_shapeType = Hash::Compute("SquareShape");
-			glrender->m_type = Hash::Compute("monotexture");
+			squareshape->m_size = tile.m_size;
 		}
 		else
 		{
@@ -355,15 +360,9 @@ Entity* TiledMapManager::LoadTile(struct TiledMap& _tiledMap, tiledSets_t& _tile
 			uv[3].x = (pixel_pos.x + _tiledMap.m_tileSize.x) / tile.m_size.x;
 			uv[3].y = 1.f - (pixel_pos.y + _tiledMap.m_tileSize.y) / tile.m_size.y;
 
-
-			squareshape->m_size = _tiledMap.m_tileSize;
-			squareshape->m_textureRef = tile.m_refTexture;
-			squareshape->m_color = glm::vec4(1.f, 1.f, 1.f, 1.f);
 			squareshape->m_repeat = 0.f;
 			squareshape->m_uv = uv;
-
-			glrender->m_shapeType = Hash::Compute("SquareShape");
-			glrender->m_type = Hash::Compute("monotexture");
+			squareshape->m_size = _tiledMap.m_tileSize;
 		}
 
 		// update cache

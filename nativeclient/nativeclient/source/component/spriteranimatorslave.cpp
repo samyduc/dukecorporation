@@ -175,13 +175,14 @@ void SpriterAnimatorSlave::Animate(const struct key_sprite_t& _a)
 {
 	SquareShape *squareshape = GetEntity()->GetComponent<SquareShape>();
 
-	if(squareshape->m_textureRef != _a.m_ressource.m_ref)
+	// TODO: SAMY REFACTOR USING MATERIAL
+	/*if(squareshape->m_textureRef != _a.m_ressource.m_ref)
 	{
 		squareshape->m_textureRef = _a.m_ressource.m_ref;
 		squareshape->m_size = _a.m_ressource.m_size;
 
 		squareshape->Reset();
-	}
+	}*/
 }
 
 void SpriterAnimatorSlave::Play(const struct animation_sprite_t* _animation, const struct timeline_sprite_t* _timeline)

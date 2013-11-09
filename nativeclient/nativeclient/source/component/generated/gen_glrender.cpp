@@ -13,10 +13,10 @@ namespace Natorium
 {
 
 
-void GLRender::Clone(Entity* _entity, natU32 _type) const
+void GLRender::Clone(Entity* _entity, ref_t _type) const
 {
 	GLRender* component;
-	natU32 base_type = GLRender::GetType();
+	ref_t base_type = GLRender::GetType();
 	if(_type == 0)
 	{
 		component = _entity->AddComponent<GLRender>();
@@ -27,21 +27,21 @@ void GLRender::Clone(Entity* _entity, natU32 _type) const
 		base_type = _type;
 	}
 
-	component->m_type = m_type;
+	component->m_materialType = m_materialType;
 	component->m_shapeType = m_shapeType;
 }
 
 
 void GLRender::WriteData(Serializer& _ser)
 {
-	_ser << m_type;
+	_ser << m_materialType;
 	_ser << m_shapeType;
 }
 
 
 void GLRender::ReadData(Serializer& _ser)
 {
-	_ser >> m_type;
+	_ser >> m_materialType;
 	_ser >> m_shapeType;
 }
 

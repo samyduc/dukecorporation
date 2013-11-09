@@ -7,8 +7,7 @@
 #include "component/gameplay/spawned.h"
 #include "component/gameplay/spawner.h"
 #include "component/gameplay/baseweapon.h"
-
-#include "entity/bullet.h"
+#include "component/rigidbody.h"
 
 #include <assert.h>
 

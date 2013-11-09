@@ -2,12 +2,6 @@
 #include "base/kernel.h"
 #include "base/layer.h"
 
-#include "entity/player.h"
-#include "entity/civilian.h"
-#include "entity/spawnercivilian.h"
-#include "entity/floor.h"
-#include "entity/text.h"
-#include "entity/fps.h"
 #include "component/playersmanager.h"
 #include "component/glrender.h"
 #include "component/texturemanager.h"

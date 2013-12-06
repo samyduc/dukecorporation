@@ -69,6 +69,7 @@ void RigidBody::OnInit()
 	m_b2BodyDef.bullet = m_isBullet;
 	size /= 2.f;
 	m_b2Body = m_b2World->CreateBody(&m_b2BodyDef);
+	m_b2Body->SetLinearDamping(m_linearDampling);
 
 	// shape allocation
 	if(m_forceCircle)

@@ -938,6 +938,12 @@
     <ClInclude Include="include\component\material\monotexture.h">
       <Filter>Source Files\component\material</Filter>
     </ClInclude>
+    <ClInclude Include="include\shader\bumpmapping.h">
+      <Filter>Source Files\shader</Filter>
+    </ClInclude>
+    <ClInclude Include="include\shader\bumpmapping_es.h">
+      <Filter>Source Files\shader</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="source\physfs\zlib123\README">

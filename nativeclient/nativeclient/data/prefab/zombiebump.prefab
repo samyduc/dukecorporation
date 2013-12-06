@@ -1,0 +1,30 @@
+<prefab>
+
+<component class="Transform" version="-1904110229">
+	<property name="m_pos" type="glm::vec3" value="0 0 0" />
+	<property name="m_rot" type="glm::quat" value="0" />
+	<property name="m_scale" type="glm::vec3" value="1 1 1" />
+</component>
+
+<component class="BumpMapping" version="-2090084992">
+	<property name="m_diffuseColor" type="glm::vec4" value="1 1 1 1" />
+	<property name="m_diffuseRef" type="ref_t" value="/data/texture/zombie.png" />
+	<property name="m_ambientColor" type="glm::vec4" value="1 1 1 1" />
+	<property name="m_normalRef" type="ref_t" value="/data/texture/zombie4_NRM.png" />
+	
+</component>
+
+<component class="SquareShape" version="1970426499">
+	<property name="m_size" type="glm::vec2" value="200 200" />
+	<property name="m_repeat" type="natF32" value="1" />
+	<property name="m_uv" type="glm::mat4x2" value="0" />
+</component>
+
+
+<component class="GLRender" version="2029438579">
+	<property name="m_materialType" type="ref_t" value="BumpMapping" />
+	<property name="m_shapeType" type="ref_t" value="SquareShape" />
+</component>
+
+
+</prefab>

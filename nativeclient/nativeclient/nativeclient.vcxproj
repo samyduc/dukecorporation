@@ -534,6 +534,8 @@
     <ClInclude Include="include\component\transform.h" />
     <ClInclude Include="include\component\ui.h" />
     <ClInclude Include="include\component\ui\fpscounter.h" />
+    <ClInclude Include="include\shader\bumpmapping.h" />
+    <ClInclude Include="include\shader\bumpmapping_es.h" />
     <ClInclude Include="include\shader\monotexture.h" />
     <ClInclude Include="include\shader\monotexture_es.h" />
     <ClInclude Include="include\shader\position.h" />

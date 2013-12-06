@@ -29,17 +29,12 @@
 	<property name="m_forceCircle" type="natBool" value="0" />
 	<property name="m_isDynamic" type="natBool" value="true" />
 	<property name="m_isBullet" type="natBool" value="false" />
-	<property name="m_maxSpeed" type="natF32" value="1.0" />
+	<property name="m_maxSpeed" type="natF32" value="0.7" />
 	<property name="m_density" type="natF32" value="1.0" />
-	<property name="m_friction" type="natF32" value="0.2" />
+	<property name="m_friction" type="natF32" value="0.6" />
 	<property name="m_restitution" type="natF32" value="0.0" />
-	<property name="m_linearDampling" type="natF32" value="0.7" />
+	<property name="m_linearDampling" type="natF32" value="6" />d
 	<property name="m_shapeType" type="ref_t" value="SquareShape" />
-</component>
-
-<component class="SpriterAnimator" version="952492699">
-	<property name="m_animatorRef" type="ref_t" value="/data/spriter/monster/Example.scml:0" />
-	<property name="m_defaultAction" type="ref_t" value="Idle" />
 </component>
 
 <component class="Camera" version="-981956596">

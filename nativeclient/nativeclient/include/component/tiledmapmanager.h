@@ -80,6 +80,8 @@ protected:
 	Entity*			GetCacheEntity(size_t _gid);
 	void			ClearCacheEntities();
 
+	void			InitForceCollisionEntity(Entity* _entity, glm::vec2& _size);
+
 private:
 	cacheEntities_t	m_cacheEntities;
 

@@ -39,10 +39,10 @@ struct shaders_info_t
 	GLuint m_uniformProjection;
 };
 
-typedef std::map<natU32, shaders_info_t> shaders_t;
+typedef std::map<ref_t, shaders_info_t> shaders_t;
 typedef std::vector<GLuint> shaders_list_t;
 typedef std::list<GLRender*> render_list_t;
-typedef std::map<natU32, render_list_t> render_map_t;
+typedef std::map<ref_t, render_list_t> render_map_t;
 
 
 

@@ -9,6 +9,9 @@
 #include "component/transform.h"
 #include "component/glrender.h"
 #include "component/squareshape.h"
+#include "component/rigidbody.h"
+
+#include "component/material/monocolor.h"
 
 #include "component/filemanager.h"
 #include "component/texturemanager.h"
@@ -25,6 +28,9 @@
 
 namespace Natorium
 {
+
+
+extern ref_t s_MonoColor;
 
 TiledMapManager::TiledMapManager()
 {
@@ -241,6 +247,17 @@ void TiledMapManager::LoadObjectGroup(struct TiledMap& _tiledMap, tinyxml2::XMLE
 		// allocate layer
 		Layer* layer = GetEntity()->GetKernel()->AppendLayer();
 
+		// get name
+		const natChar* groupObjectName = element_objectgroup->Attribute("name");
+
+		// all object in this group have an automatic collision mask
+		natBool collisionBypasse = false;
+		// if it starts with collision, it a collision mask
+		if(strncmp(groupObjectName, "collision", 9) == 0)
+		{
+			collisionBypasse = true;
+		}
+
 		tinyxml2::XMLElement* element_object = element_objectgroup->FirstChildElement("object");
 		while(element_object)
 		{
@@ -253,12 +270,30 @@ void TiledMapManager::LoadObjectGroup(struct TiledMap& _tiledMap, tinyxml2::XMLE
 			spawn_size.x = static_cast<natF32>(element_object->IntAttribute("width"));
 			spawn_size.y = static_cast<natF32>(element_object->IntAttribute("height"));
 
+			// correct pos to go from top left to center
+			spawn_pos.x = spawn_pos.x + spawn_size.x / 2.f;
+			spawn_pos.y = spawn_pos.y + spawn_size.y / 2.f - _tiledMap.m_tileSize.y;
+
+			Entity* entity = nullptr;
+
 			const natChar* type_str = element_object->Attribute("type");
 			if(type_str)
 			{
 				ref_t type = Hash::Compute(type_str);
-				Entity* entity = prefabmanager->CreateFromType(type);
+				entity = prefabmanager->CreateFromType(type);
+			}
+			else if(collisionBypasse)
+			{
+				entity = new Entity();
+				InitForceCollisionEntity(entity, spawn_size);
+			}
+			else
+			{
+				assert(false);
+			}
 
+			if(entity)
+			{
 				Transform* transform = entity->GetComponent<Transform>();
 				if(transform)
 				{
@@ -293,9 +328,9 @@ void TiledMapManager::LoadObjectGroup(struct TiledMap& _tiledMap, tinyxml2::XMLE
 				}
 
 				layer->AddEntity(entity);
-				//
 			}
 
+			//
 			element_object = element_object->NextSiblingElement("object");
 		}
 
@@ -450,5 +485,35 @@ TiledTiles TiledMapManager::GetTile(tiledSets_t& _tileSets, size_t _gid)
 	
 	return ret;
 }
+
+void TiledMapManager::InitForceCollisionEntity(Entity* _entity, glm::vec2& _size)
+{
+	Transform* transform = _entity->AddComponent<Transform>();
+	SquareShape* squareshape = _entity->AddComponent<SquareShape>();
+	//MonoColor* monocolor = _entity->AddComponent<MonoColor>();
+	//GLRender* glrender = _entity->AddComponent<GLRender>();
+	RigidBody* rigidbody = _entity->AddComponent<RigidBody>();
+	
+	
+
+	squareshape->m_size = _size;
+
+	rigidbody->m_forceCircle = false;
+	rigidbody->m_isDynamic = false;
+	rigidbody->m_isBullet = false;
+	rigidbody->m_maxSpeed = 0.0f;
+	rigidbody->m_density = 1.0f;
+	rigidbody->m_friction = 0.f;
+	rigidbody->m_restitution = 0.f;
+	rigidbody->m_linearDampling = 0.f;
+	rigidbody->m_shapeType = s_SquareShape;
+
+	//glrender->m_materialType = s_MonoColor;
+	//glrender->m_shapeType = s_SquareShape;
+
+	//monocolor->m_color = glm::vec4(1.0f, 0.3f, 1.0f, 1.f);
+
+}
+
 
 }

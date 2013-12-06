@@ -10,6 +10,7 @@
 #if defined(WINDOWS_TARGET)
 #include "shader/position.h"
 #include "shader/monotexture.h"
+#include "shader/bumpmapping.h"
 #elif defined(EMSCRIPTEN_TARGET)
 #include "shader/position_es.h"
 #include "shader/monotexture_es.h"
@@ -97,6 +98,7 @@ void GLManager::OnInitShaders()
 	// load position
 	RegisterProgram("position", strPositionVertex, strPositionFragment);
 	RegisterProgram("monotexture", strMonoTextureVertex, strMonoTextureFragment);
+	RegisterProgram("bumpmapping", strBumpMappingVertex, strBumpMappingFragment);
 
 	//m_shaderProgram = CreateShaderProgram(m_shaders);
 
@@ -349,6 +351,7 @@ GLuint GLManager::CreateShaderProgram(const shaders_list_t &shaderList)
 	glBindAttribLocation(program, 1, "color");
 	glBindAttribLocation(program, 2, "textureCoord");
 	glBindAttribLocation(program, 3, "baseTexture");
+	glBindAttribLocation(program, 4, "normalTexture");
 
 	glLinkProgram(program);
 	

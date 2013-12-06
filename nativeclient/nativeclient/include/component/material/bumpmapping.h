@@ -34,10 +34,17 @@ public:
 	void			UnBindTexture();
 
 public:
-
+	glm::vec4		m_diffuseColor;
+	ref_t			m_diffuseRef;
+	glm::vec4		m_ambientColor;
+	ref_t			m_normalRef;
+	
 
 private:
+	GLuint			m_diffuse;
+	GLuint			m_normal;
 
+	GLuint			m_uniformAmbientColor;
 
 
 };

@@ -10,9 +10,33 @@
 	</component>
 </entity>
 
-<entity prefab="/data/prefab/disk.prefab" layer="2">
+<entity prefab="/data/prefab/zombiemono.prefab" layer="2">
 	<component class="Transform" version="-1904110229">
-		<property name="m_pos" type="glm::vec3" value="100 100 0" />
+		<property name="m_pos" type="glm::vec3" value="-200 0 0" />
+		<property name="m_rot" type="glm::quat" value="0" />
+		<property name="m_scale" type="glm::vec3" value="1 1 1" />
+	</component>
+</entity>
+
+<entity prefab="/data/prefab/zombiebump.prefab" layer="2">
+	<component class="Transform" version="-1904110229">
+		<property name="m_pos" type="glm::vec3" value="200 0 0" />
+		<property name="m_rot" type="glm::quat" value="0" />
+		<property name="m_scale" type="glm::vec3" value="1 1 1" />
+	</component>
+</entity>
+
+<entity prefab="/data/prefab/rockmono.prefab" layer="2">
+	<component class="Transform" version="-1904110229">
+		<property name="m_pos" type="glm::vec3" value="-200 -250 0" />
+		<property name="m_rot" type="glm::quat" value="0" />
+		<property name="m_scale" type="glm::vec3" value="1 1 1" />
+	</component>
+</entity>
+
+<entity prefab="/data/prefab/rockbump.prefab" layer="2">
+	<component class="Transform" version="-1904110229">
+		<property name="m_pos" type="glm::vec3" value="200 -250 0" />
 		<property name="m_rot" type="glm::quat" value="0" />
 		<property name="m_scale" type="glm::vec3" value="1 1 1" />
 	</component>

@@ -1,0 +1,9 @@
+<scene>
+
+<tiledmap name="/data/tiledmap/city.tmx" />
+
+<entity prefab="/data/prefab/fps.prefab" layer="5" />
+
+
+
+</scene>

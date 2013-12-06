@@ -33,6 +33,11 @@ void Camera::OnInit()
 	m_projectionMatrix = glm::ortho<natF32>(0.f, static_cast<float>(m_resolution.x), static_cast<natF32>(m_resolution.y), 0.f, 0.f, 100.f);
 
 	m_transform = GetEntity()->GetComponent<Transform>();
+	assert(m_transform);
+
+	//hack .. does not work with multiple camera
+	GLManager* glmanager = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<GLManager>();
+	glmanager->SetCamera(this);
 }
 
 void Camera::OnTick(const natU64 _dt)

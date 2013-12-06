@@ -28,18 +28,30 @@ void BumpMapping::Clone(Entity* _entity, ref_t _type) const
 	}
 
 	Material::Clone(_entity, base_type);
+	component->m_diffuseColor = m_diffuseColor;
+	component->m_diffuseRef = m_diffuseRef;
+	component->m_ambientColor = m_ambientColor;
+	component->m_normalRef = m_normalRef;
 }
 
 
 void BumpMapping::WriteData(Serializer& _ser)
 {
 	Material::WriteData(_ser);
+	_ser << m_diffuseColor;
+	_ser << m_diffuseRef;
+	_ser << m_ambientColor;
+	_ser << m_normalRef;
 }
 
 
 void BumpMapping::ReadData(Serializer& _ser)
 {
 	Material::ReadData(_ser);
+	_ser >> m_diffuseColor;
+	_ser >> m_diffuseRef;
+	_ser >> m_ambientColor;
+	_ser >> m_normalRef;
 }
 
 

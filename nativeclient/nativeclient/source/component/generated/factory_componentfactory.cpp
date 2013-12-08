@@ -8,6 +8,7 @@
 #include "base/serializer.h"
 
 #include "component/gameplay/lifecontroller.h"
+#include "component/gameplay/spawner.h"
 #include "component/gameplay/aicontroller.h"
 #include "component/tiledmapmanager.h"
 #include "component/transform.h"
@@ -38,7 +39,7 @@
 #include "component/squareshape.h"
 #include "component/gameplay/bulletcontroller.h"
 #include "component/physicsmanager.h"
-#include "component/gameplay/spawner.h"
+#include "component/netdukemanager.h"
 #include "component/filemanager.h"
 #include "component/prefabmanager.h"
 #include "component/gameplay/spawned.h"
@@ -55,6 +56,7 @@ namespace Natorium
 void ComponentFactory::PopulateFactory()
 {
 	m_componentFactory[LifeController::GetType()] = new LifeController();
+	m_componentFactory[Spawner::GetType()] = new Spawner();
 	m_componentFactory[AiController::GetType()] = new AiController();
 	m_componentFactory[TiledMapManager::GetType()] = new TiledMapManager();
 	m_componentFactory[Transform::GetType()] = new Transform();
@@ -85,7 +87,7 @@ void ComponentFactory::PopulateFactory()
 	m_componentFactory[SquareShape::GetType()] = new SquareShape();
 	m_componentFactory[BulletController::GetType()] = new BulletController();
 	m_componentFactory[PhysicsManager::GetType()] = new PhysicsManager();
-	m_componentFactory[Spawner::GetType()] = new Spawner();
+	m_componentFactory[NetDukeManager::GetType()] = new NetDukeManager();
 	m_componentFactory[FileManager::GetType()] = new FileManager();
 	m_componentFactory[PrefabManager::GetType()] = new PrefabManager();
 	m_componentFactory[Spawned::GetType()] = new Spawned();

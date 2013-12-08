@@ -1,0 +1,3 @@
+[submodule "nativeclient/extern/netduke"]
+	path = nativeclient/extern/netduke
+	url = ssh://deckard@star-killer.net/mnt/sda4/repositories/netduke

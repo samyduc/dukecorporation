@@ -34,7 +34,7 @@ void FileManager::OnInit()
 	assert(ret);
 
 #if defined(WINDOWS_TARGET)
-	if(PHYSFS_mount(".\\data\\", "/data", 0) == 0)
+	if(PHYSFS_mount("\\data\\", "/data", 0) == 0)
 	{
 		assert(false);
 	}

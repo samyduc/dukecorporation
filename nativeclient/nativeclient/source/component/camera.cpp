@@ -37,7 +37,12 @@ void Camera::OnInit()
 
 	//hack .. does not work with multiple camera
 	GLManager* glmanager = GetEntity()->GetKernel()->GetLayer(Layer::s_LayerManager)->GetRootEntity()->GetComponent<GLManager>();
-	glmanager->SetCamera(this);
+
+	if(glmanager)
+	{
+		// gl manager can be deactivated due to server mode
+		glmanager->SetCamera(this);
+	}
 }
 
 void Camera::OnTick(const natU64 _dt)
